@@ -86,6 +86,21 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 }
 .mcu-main{font-size:22px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--fg);line-height:1;opacity:.18;}
 .mcu-year{font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);opacity:.12;margin-top:2px;}
+
+/* HISTORY */
+.hist-view{padding:0 16px 100px;}
+.hist-empty{padding:40px 0;text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.5;}
+.hist-session{margin-top:20px;}
+.hist-hdr{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);padding:7px 0;margin-bottom:0;}
+.hist-date{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;}
+.hist-day{font-size:9px;color:var(--muted);letter-spacing:.1em;font-weight:500;}
+.hist-row{display:grid;grid-template-columns:1fr auto auto auto;padding:8px 0;border-bottom:1px solid var(--rim2);gap:8px;align-items:center;}
+.hist-row:last-child{border-bottom:none;}
+.hist-ex{font-size:12px;font-weight:600;letter-spacing:-.01em;}
+.hist-val{font-size:11px;font-weight:500;text-align:right;color:var(--muted);min-width:38px;}
+.hist-col-hdr{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;padding:5px 0 3px;}
+.hch{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;min-width:38px;}
+.hch:first-child{text-align:left;}
 </style>
 </head>
 <body>
@@ -94,7 +109,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <div class="header">
   <div class="header-top">
-    <div class="ht-cell left">MUHAMMET ÇAĞRI ULU</div>
+    <div class="ht-cell left">M. ÇAĞRI ULU</div>
     <div class="ht-cell center">5-DAY TRAINING PROGRAM</div>
     <div class="ht-cell right">
       <span class="theme-toggle" onclick="toggleTheme()" id="theme-btn">LIGHT</span>
@@ -111,6 +126,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <div class="scroll">
   <div class="day-view" id="day-view"></div>
+  <div class="hist-view" id="hist-view" style="display:none"></div>
 </div>
 
 </div>
@@ -134,6 +150,7 @@ const DAYS=[
       {num:'II.',name:'Cable Lateral Raise',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'III.',name:'Cable Triceps Extension',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'IV.',name:'Triceps Pushdown',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'V.',name:'Dips',sets:'3',reps:'Max',notes:'Failure',warmup:[]},
     ]},
   ]},
   {key:'pull-a',label:'PULL A',title:'PULL A',target:'BACK · BICEPS · FOREARMS',
@@ -161,9 +178,10 @@ const DAYS=[
     {name:'BLOCK #2 — ISOLATION',exercises:[
       {num:'I.',name:'Cable Lateral Raise',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'II.',name:'Pec Deck',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
-      {num:'III.',name:'Cable Rear Delt Fly',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'III.',name:'Cable Rear Delt Fly',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'IV.',name:'Triceps Pushdown',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
       {num:'V.',name:'Overhead Rope Extension',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'VI.',name:'Dips',sets:'3',reps:'Max',notes:'Failure',warmup:[]},
     ]},
   ]},
   {key:'pull-b',label:'PULL B',title:'PULL B',target:'BACK · BICEPS · FOREARMS',
@@ -197,7 +215,28 @@ const DAYS=[
   ]},
 ];
 
+
+const INITIAL_SESSIONS = [
+  {
+    date: 'Jun 03, 2026',
+    day: 'PUSH B',
+    exercises: [
+      {name:'Barbell OHP (Standing)', sets:'2', reps:'5 / 5', kg:'50'},
+      {name:'Barbell Incline Bench Press', sets:'2', reps:'9 / 4', kg:'60 / 65'},
+      {name:'Cable Lateral Raise', sets:'3', reps:'9 / 6 / 5', kg:'20'},
+      {name:'Pec Deck', sets:'2', reps:'14 / 7', kg:'54'},
+      {name:'Cable Rear Delt Fly', sets:'2', reps:'12 / 7', kg:'44'},
+      {name:'Dips', sets:'2', reps:'10 / 10', kg:'BW'},
+      {name:'Triceps Pushdown', sets:'2', reps:'6 / 8', kg:'56'},
+      {name:'Overhead Rope Extension', sets:'2', reps:'7 / 6', kg:'49'},
+    ]
+  }
+];
+
 let cur=0,light=false;
+let stored=[];
+try{stored=JSON.parse(localStorage.getItem('mcu_history')||'[]');}catch(e){}
+const sessions=[...INITIAL_SESSIONS,...stored.filter(s=>s.date!=='Jun 03, 2026')];
 
 function toggleTheme(){
   light=!light;
@@ -205,10 +244,30 @@ function toggleTheme(){
   document.getElementById('theme-btn').textContent=light?'DARK':'LIGHT';
 }
 
+
+
+
 function renderNav(){
-  document.getElementById('nav').innerHTML=DAYS.map((d,i)=>
-    '<div class="nav-tab'+(i===cur?' on':'')+'" onclick="setDay('+i+')">'+d.label+'</div>'
-  ).join('');
+  const tabs=DAYS.map((d,i)=>'<div class="nav-tab'+(i===cur?' on':'')+'" onclick="setDay('+i+')">'+d.label+'</div>').join('');
+  const hist='<div class="nav-tab'+(cur===-1?' on':'')+'" onclick="setDay(-1)">HISTORY</div>';
+  document.getElementById('nav').innerHTML=tabs+hist;
+}
+
+function renderHistory(){
+  document.getElementById('day-view').style.display='none';
+  document.getElementById('hist-view').style.display='block';
+  document.getElementById('hdr-title').textContent='HISTORY';
+  document.getElementById('hdr-target').textContent='TRAINING LOG';
+  const el=document.getElementById('hist-view');
+  if(sessions.length===0){el.innerHTML='<div class="hist-empty">No sessions logged yet.</div>';return;}
+  el.innerHTML=sessions.slice().reverse().map(s=>{
+    const rows=s.exercises.map(ex=>
+      '<div class="hist-row"><div class="hist-ex">'+ex.name+'</div><div class="hist-val">'+ex.sets+'</div><div class="hist-val">'+ex.reps+'</div><div class="hist-val">'+ex.kg+'</div></div>'
+    ).join('');
+    return '<div class="hist-session"><div class="hist-hdr"><div class="hist-date">'+s.date+'</div><div class="hist-day">'+s.day+'</div></div>'
+      +'<div class="hist-col-hdr"><div class="hch">EXERCISE</div><div class="hch">SETS</div><div class="hch">REPS</div><div class="hch">KG</div></div>'
+      +rows+'</div>';
+  }).join('');
 }
 
 function renderDay(){
@@ -226,10 +285,17 @@ function renderDay(){
     html+='</div>';
   });
   document.getElementById('day-view').innerHTML=html;
+  document.getElementById('day-view').style.display='block';
+  document.getElementById('hist-view').style.display='none';
   document.querySelector('.scroll').scrollTop=0;
 }
 
-function setDay(i){cur=i;renderNav();renderDay();}
+function setDay(i){
+  cur=i;
+  renderNav();
+  if(i===-1){renderHistory();}
+  else{renderDay();}
+}
 renderNav();renderDay();
 </script>
 </body>
