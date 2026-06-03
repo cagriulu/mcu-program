@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>MCU — Training Program</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+:root{
+  --bg:#000;--fg:#fff;
+  --rim:rgba(255,255,255,0.15);
+  --rim2:rgba(255,255,255,0.07);
+  --muted:rgba(255,255,255,0.4);
+  --muted2:rgba(255,255,255,0.25);
+  --safe-top:env(safe-area-inset-top,44px);
+  --safe-bot:env(safe-area-inset-bottom,0px);
+}
+html[data-theme="light"]{
+  --bg:#fff;--fg:#000;
+  --rim:rgba(0,0,0,0.15);
+  --rim2:rgba(0,0,0,0.06);
+  --muted:rgba(0,0,0,0.4);
+  --muted2:rgba(0,0,0,0.2);
+}
+html,body{height:100%;background:var(--bg);color:var(--fg);font-family:'Inter Tight',sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.05;pointer-events:none;z-index:9999;}
+.app{display:flex;flex-direction:column;height:100dvh;max-width:430px;margin:0 auto;}
+.sb{height:var(--safe-top);flex-shrink:0;}
+
+/* HEADER */
+.header{flex-shrink:0;padding:0 16px;border-bottom:1px solid var(--rim);}
+.header-top{display:grid;grid-template-columns:1fr auto 1fr;border-bottom:1px solid var(--rim);}
+.ht-cell{padding:8px 10px;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;}
+.ht-cell.left{border-right:1px solid var(--rim);}
+.ht-cell.center{text-align:center;border-right:1px solid var(--rim);color:var(--muted);font-weight:400;}
+.ht-cell.right{text-align:right;color:var(--muted);font-weight:400;display:flex;align-items:center;justify-content:flex-end;gap:8px;}
+.theme-toggle{cursor:pointer;font-size:9px;font-weight:700;letter-spacing:.08em;padding:2px 6px;border:1px solid var(--rim);color:var(--muted);text-transform:uppercase;}
+.header-title{padding:14px 0 10px;font-size:52px;font-weight:900;letter-spacing:-.02em;line-height:1;text-transform:uppercase;}
+.header-sub{display:flex;border-top:1px solid var(--rim);}
+.hs-cell{padding:7px 10px;font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.hs-cell span{color:var(--fg);font-weight:600;}
+
+/* NAV */
+.nav{flex-shrink:0;display:flex;overflow-x:auto;border-bottom:1px solid var(--rim);scrollbar-width:none;}
+.nav::-webkit-scrollbar{display:none;}
+.nav-tab{flex-shrink:0;padding:11px 14px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;position:relative;white-space:nowrap;}
+.nav-tab.on{color:var(--fg);}
+.nav-tab.on::after{content:'';position:absolute;bottom:0;left:14px;right:14px;height:1.5px;background:var(--fg);}
+
+/* SCROLL */
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
+.scroll::-webkit-scrollbar{display:none;}
+
+/* DAY VIEW */
+.day-view{padding:0 16px 100px;}
+
+/* BLOCK */
+.block{margin-top:20px;}
+.block-hdr{display:grid;grid-template-columns:1fr auto auto auto;border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);}
+.bh-title{padding:7px 0;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;}
+.bh-col{padding:7px 0 7px 12px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;min-width:42px;}
+
+/* EX ROW */
+.ex-row{display:grid;grid-template-columns:1fr auto auto auto;padding:9px 0;border-bottom:1px solid var(--rim2);align-items:start;}
+.ex-row:last-child{border-bottom:none;}
+.ex-num{font-size:9px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px;}
+.ex-name{font-size:13px;font-weight:700;letter-spacing:-.01em;line-height:1.25;}
+.warmup-pills{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;}
+.wp{font-size:8px;font-weight:600;letter-spacing:.06em;padding:2px 6px;border:1px solid var(--rim);color:var(--muted2);text-transform:uppercase;}
+.ex-val{font-size:12px;font-weight:600;text-align:right;padding-left:12px;min-width:42px;padding-top:14px;}
+.ex-val.muted{color:var(--muted);}
+.block-sep{height:1px;background:var(--rim2);margin:24px 0 0;}
+
+/* MCU LOGO — fixed bottom */
+.mcu-logo{
+  position:fixed;
+  bottom:calc(var(--safe-bot) + 16px);
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  pointer-events:none;
+  z-index:100;
+}
+.mcu-main{font-size:22px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--fg);line-height:1;opacity:.18;}
+.mcu-year{font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);opacity:.12;margin-top:2px;}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<div class="sb"></div>
+
+<div class="header">
+  <div class="header-top">
+    <div class="ht-cell left">MUHAMMET ÇAĞRI ULU</div>
+    <div class="ht-cell center">5-DAY TRAINING PROGRAM</div>
+    <div class="ht-cell right">
+      <span class="theme-toggle" onclick="toggleTheme()" id="theme-btn">LIGHT</span>
+      <span>2026</span>
+    </div>
+  </div>
+  <div class="header-title" id="hdr-title">PUSH A</div>
+  <div class="header-sub">
+    <div class="hs-cell">TARGET: <span id="hdr-target">CHEST · SHOULDER · TRICEPS</span></div>
+  </div>
+</div>
+
+<div class="nav" id="nav"></div>
+
+<div class="scroll">
+  <div class="day-view" id="day-view"></div>
+</div>
+
+</div>
+
+<div class="mcu-logo">
+  <div class="mcu-main">MCU</div>
+  <div class="mcu-year">2026</div>
+</div>
+
+<script>
+const DAYS=[
+  {key:'push-a',label:'PUSH A',title:'PUSH A',target:'CHEST · SHOULDER · TRICEPS',
+   blocks:[
+    {name:'BLOCK #1 — COMPOUND',exercises:[
+      {num:'I.',name:'Barbell Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['40% × 12','60% × 6','80% × 3']},
+      {num:'II.',name:'Barbell Incline Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['50% × 8','70% × 4','85% × 2']},
+      {num:'III.',name:'Barbell OHP (Standing)',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['40% × 10','60% × 5','80% × 3']},
+    ]},
+    {name:'BLOCK #2 — ISOLATION',exercises:[
+      {num:'I.',name:'Pec Deck',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'II.',name:'Cable Lateral Raise',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'III.',name:'Cable Triceps Extension',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'IV.',name:'Triceps Pushdown',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+    ]},
+  ]},
+  {key:'pull-a',label:'PULL A',title:'PULL A',target:'BACK · BICEPS · FOREARMS',
+   blocks:[
+    {name:'BLOCK #1 — COMPOUND',exercises:[
+      {num:'I.',name:'Deadlift',sets:'2',reps:'4–5',notes:'RIR 1',warmup:['40% × 8','65% × 4','85% × 2']},
+      {num:'II.',name:'Lat Pulldown',sets:'2',reps:'6–8',notes:'RIR 1 / Failure',warmup:['55% × 8']},
+      {num:'III.',name:'Weighted Pull-up',sets:'1',reps:'3–5',notes:'RIR 1',warmup:['BW × 5']},
+      {num:'IV.',name:'Chest Supported T-Bar Row',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['50% × 8','75% × 4','88% × 2']},
+    ]},
+    {name:'BLOCK #2 — ISOLATION',exercises:[
+      {num:'I.',name:'Cable Row',sets:'1',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'II.',name:'Incline Dumbbell Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:['50% × 8']},
+      {num:'III.',name:'Cable Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'IV.',name:'Hammer Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'V.',name:'Reverse Barbell Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+    ]},
+  ]},
+  {key:'push-b',label:'PUSH B',title:'PUSH B',target:'SHOULDER · CHEST · TRICEPS',
+   blocks:[
+    {name:'BLOCK #1 — COMPOUND',exercises:[
+      {num:'I.',name:'Barbell OHP (Standing)',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['40% × 10','60% × 5','82% × 3']},
+      {num:'II.',name:'Barbell Incline Bench Press',sets:'2',reps:'5–6',notes:'RIR 1',warmup:['50% × 6']},
+    ]},
+    {name:'BLOCK #2 — ISOLATION',exercises:[
+      {num:'I.',name:'Cable Lateral Raise',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'II.',name:'Pec Deck',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'III.',name:'Cable Rear Delt Fly',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'IV.',name:'Triceps Pushdown',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'V.',name:'Overhead Rope Extension',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+    ]},
+  ]},
+  {key:'pull-b',label:'PULL B',title:'PULL B',target:'BACK · BICEPS · FOREARMS',
+   blocks:[
+    {name:'BLOCK #1 — COMPOUND',exercises:[
+      {num:'I.',name:'Chest Supported T-Bar Row',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['45% × 10','65% × 5','82% × 3']},
+      {num:'II.',name:'Lat Pulldown V-bar',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['55% × 8']},
+      {num:'III.',name:'Weighted Pull-up',sets:'1',reps:'3–5',notes:'RIR 1',warmup:['BW × 5']},
+    ]},
+    {name:'BLOCK #2 — ISOLATION',exercises:[
+      {num:'I.',name:'Cable Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'II.',name:'Hammer Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'III.',name:'Reverse Barbell Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+    ]},
+  ]},
+  {key:'hybrid',label:'HYBRID',title:'HYBRID',target:'LEGS · CORE · CONDITIONING',
+   blocks:[
+    {name:'BLOCK #1 — STRENGTH',exercises:[
+      {num:'I.',name:'Back Squat',sets:'2',reps:'4–5',notes:'RIR 1–2',warmup:['40% × 10','60% × 5','80% × 3']},
+      {num:'II.',name:'Front Squat',sets:'2',reps:'4–5',notes:'RIR 1–2',warmup:['50% × 5']},
+    ]},
+    {name:'BLOCK #2 — CONDITIONING',exercises:[
+      {num:'I.',name:'Walking Lunges (Dumbbell)',sets:'3',reps:'12 steps',notes:'RIR 1–2',warmup:[]},
+      {num:'II.',name:'Rowing Ergometer',sets:'3',reps:'250m',notes:'90s rest',warmup:[]},
+    ]},
+    {name:'BLOCK #3 — CORE & CALVES',exercises:[
+      {num:'I.',name:'Toes-to-Bar',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'II.',name:'Hanging Leg Raises',sets:'3',reps:'10–12',notes:'Failure',warmup:[]},
+      {num:'III.',name:'Standing Calf Raise',sets:'3',reps:'12–15',notes:'Failure',warmup:[]},
+    ]},
+  ]},
+];
+
+let cur=0,light=false;
+
+function toggleTheme(){
+  light=!light;
+  document.documentElement.setAttribute('data-theme',light?'light':'');
+  document.getElementById('theme-btn').textContent=light?'DARK':'LIGHT';
+}
+
+function renderNav(){
+  document.getElementById('nav').innerHTML=DAYS.map((d,i)=>
+    '<div class="nav-tab'+(i===cur?' on':'')+'" onclick="setDay('+i+')">'+d.label+'</div>'
+  ).join('');
+}
+
+function renderDay(){
+  const d=DAYS[cur];
+  document.getElementById('hdr-title').textContent=d.title;
+  document.getElementById('hdr-target').textContent=d.target;
+  let html='';
+  d.blocks.forEach((b,bi)=>{
+    if(bi>0) html+='<div class="block-sep"></div>';
+    html+='<div class="block"><div class="block-hdr"><div class="bh-title">'+b.name+'</div><div class="bh-col">SETS</div><div class="bh-col">REPS</div><div class="bh-col">NOTES</div></div>';
+    b.exercises.forEach(ex=>{
+      const pills=ex.warmup.length>0?'<div class="warmup-pills">'+ex.warmup.map(w=>'<div class="wp">'+w+'</div>').join('')+'</div>':'';
+      html+='<div class="ex-row"><div><div class="ex-num">'+ex.num+'</div><div class="ex-name">'+ex.name+'</div>'+pills+'</div><div class="ex-val">'+ex.sets+'</div><div class="ex-val">'+ex.reps+'</div><div class="ex-val muted">'+ex.notes+'</div></div>';
+    });
+    html+='</div>';
+  });
+  document.getElementById('day-view').innerHTML=html;
+  document.querySelector('.scroll').scrollTop=0;
+}
+
+function setDay(i){cur=i;renderNav();renderDay();}
+renderNav();renderDay();
+</script>
+</body>
+</html>
