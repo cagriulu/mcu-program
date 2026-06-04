@@ -31,24 +31,102 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .sb{height:var(--safe-top);flex-shrink:0;}
 
 /* HEADER */
-.header{flex-shrink:0;padding:0 16px;border-bottom:1px solid var(--rim);}
-.header-top{display:grid;grid-template-columns:1fr auto 1fr;border-bottom:1px solid var(--rim);}
-.ht-cell{padding:8px 10px;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;}
-.ht-cell.left{border-right:1px solid var(--rim);}
-.ht-cell.center{text-align:center;border-right:1px solid var(--rim);color:var(--muted);font-weight:400;}
-.ht-cell.right{text-align:right;color:var(--muted);font-weight:400;display:flex;align-items:center;justify-content:flex-end;gap:8px;}
-.theme-toggle{cursor:pointer;font-size:9px;font-weight:700;letter-spacing:.08em;padding:2px 6px;border:1px solid var(--rim);color:var(--muted);text-transform:uppercase;}
-.header-title{padding:14px 0 10px;font-size:52px;font-weight:900;letter-spacing:-.02em;line-height:1;text-transform:uppercase;}
-.header-sub{display:flex;border-top:1px solid var(--rim);}
-.hs-cell{padding:7px 10px;font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.hs-cell span{color:var(--fg);font-weight:600;}
+.header{flex-shrink:0;border-bottom:1px solid var(--rim);}
+
+.header-identity{
+  display:flex;align-items:stretch;justify-content:space-between;
+  padding:0;border-bottom:1px solid var(--rim);
+}
+.header-logo{
+  padding:14px 16px;
+  display:flex;flex-direction:column;gap:3px;
+}
+.logo-name{
+  font-size:20px;font-weight:800;letter-spacing:-.01em;
+  text-transform:uppercase;line-height:1;color:var(--fg);
+}
+.logo-name span{font-weight:400;opacity:.45;}
+.logo-sub{
+  font-size:7px;font-weight:500;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--muted);
+}
+.header-controls{
+  display:flex;align-items:center;gap:0;border-left:1px solid var(--rim);
+}
+.header-year{
+  padding:0 14px;font-size:9px;font-weight:400;
+  letter-spacing:.1em;color:var(--muted);border-right:1px solid var(--rim);
+}
+.theme-toggle{
+  cursor:pointer;padding:0 14px;height:100%;
+  display:flex;align-items:center;
+  font-size:8px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+  border:none;background:none;font-family:'Inter Tight',sans-serif;
+  transition:color .15s;
+}
+.theme-toggle:hover{color:var(--fg);}
+
+.header-session{
+  padding:20px 16px 0;
+  display:flex;flex-direction:column;gap:0;
+}
+.session-label{
+  font-size:7.5px;font-weight:500;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:6px;opacity:.5;
+}
+.session-title{
+  font-size:58px;font-weight:800;letter-spacing:-.03em;
+  line-height:.88;text-transform:uppercase;color:var(--fg);
+  margin-bottom:14px;
+}
+.session-title em{
+  font-style:normal;font-weight:400;
+  letter-spacing:.0em;color:var(--fg);opacity:.35;
+}
+.session-target{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 0;border-top:1px solid var(--rim);
+}
+.target-dot{
+  width:3px;height:3px;border-radius:50%;
+  background:var(--fg);opacity:.25;flex-shrink:0;
+}
+.target-text{
+  font-size:8px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--fg);opacity:.45;
+}
 
 /* NAV */
-.nav{flex-shrink:0;display:flex;overflow-x:auto;border-bottom:1px solid var(--rim);scrollbar-width:none;}
+.nav{
+  flex-shrink:0;display:flex;overflow-x:auto;
+  border-bottom:1px solid var(--rim);scrollbar-width:none;
+  background:var(--bg);
+}
 .nav::-webkit-scrollbar{display:none;}
-.nav-tab{flex-shrink:0;padding:11px 14px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;position:relative;white-space:nowrap;}
-.nav-tab.on{color:var(--fg);}
-.nav-tab.on::after{content:'';position:absolute;bottom:0;left:14px;right:14px;height:1.5px;background:var(--fg);}
+.nav-tab{
+  flex:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:10px 10px;gap:3px;
+  cursor:pointer;position:relative;
+  border-right:1px solid var(--rim);
+  transition:background .12s;
+}
+.nav-tab:last-child{border-right:none;}
+.nav-tab-num{
+  font-size:7.5px;font-weight:400;
+  letter-spacing:.08em;color:var(--muted);opacity:.35;
+  line-height:1;font-family:'Inter Tight',sans-serif;
+}
+.nav-tab-lbl{
+  font-size:9px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+  line-height:1;white-space:nowrap;font-family:'Inter Tight',sans-serif;
+}
+.nav-tab.on{background:var(--fg);}
+.nav-tab.on .nav-tab-num{color:var(--bg);opacity:.35;}
+.nav-tab.on .nav-tab-lbl{color:var(--bg);}
 
 /* SCROLL */
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
@@ -60,21 +138,21 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* BLOCK */
 .block{margin-top:20px;}
 .block-hdr{display:grid;grid-template-columns:1fr auto auto auto;border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);}
-.bh-title{padding:7px 0;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;}
-.bh-col{padding:7px 0 7px 12px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;min-width:42px;}
+.bh-title{padding:7px 0;font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;}
+.bh-col{padding:7px 0 7px 12px;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:right;min-width:42px;}
 
 /* EX ROW */
-.ex-row{display:grid;grid-template-columns:1fr auto auto auto;padding:9px 0;border-bottom:1px solid var(--rim2);align-items:start;}
+.ex-row{display:grid;grid-template-columns:1fr auto auto auto;padding:10px 0;border-bottom:1px solid var(--rim2);align-items:start;}
 .ex-row:last-child{border-bottom:none;}
-.ex-num{font-size:9px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px;}
-.ex-name{font-size:13px;font-weight:700;letter-spacing:-.01em;line-height:1.25;}
-.warmup-pills{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;}
-.wp{font-size:8px;font-weight:600;letter-spacing:.06em;padding:2px 6px;border:1px solid var(--rim);color:var(--muted2);text-transform:uppercase;}
-.ex-val{font-size:12px;font-weight:600;text-align:right;padding-left:12px;min-width:42px;padding-top:14px;}
-.ex-val.muted{color:var(--muted);}
+.ex-num{font-size:8px;font-weight:400;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;opacity:.5;}
+.ex-name{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.2;}
+.warmup-pills{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;}
+.wp{font-size:7.5px;font-weight:500;letter-spacing:.08em;padding:2px 7px;border:1px solid var(--rim);color:var(--muted2);text-transform:uppercase;}
+.ex-val{font-size:12px;font-weight:700;text-align:right;padding-left:12px;min-width:42px;padding-top:14px;}
+.ex-val.muted{color:var(--muted);font-weight:400;}
 .block-sep{height:1px;background:var(--rim2);margin:24px 0 0;}
 
-/* MCU LOGO — fixed bottom */
+/* MCU LOGO */
 .mcu-logo{
   position:fixed;
   bottom:calc(var(--safe-bot) + 16px);
@@ -84,22 +162,22 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   pointer-events:none;
   z-index:100;
 }
-.mcu-main{font-size:22px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--fg);line-height:1;opacity:.18;}
-.mcu-year{font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);opacity:.12;margin-top:2px;}
+.mcu-main{font-size:20px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);line-height:1;opacity:.12;}
+.mcu-year{font-size:8px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--fg);opacity:.08;margin-top:2px;}
 
 
 .lift-block{margin-top:24px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.08);}
 [data-theme="light"] .lift-block{border-color:rgba(0,0,0,0.08);}
-.lift-name{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px;}
+.lift-name{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;}
 .lift-info{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:12px;font-weight:400;}
 .lift-targets{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px;}
 .lt{padding:8px;border:1px solid var(--rim);text-align:center;}
 .lt-val{font-size:14px;font-weight:800;line-height:1;}
-.lt-lbl{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;}
+.lt-lbl{font-size:7.5px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:3px;}
 .chart-area{width:100%;height:110px;position:relative;overflow:hidden;}
 .chart-svg{width:100%;height:100%;}
 .milestone-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-.ms{font-size:8px;font-weight:600;letter-spacing:.08em;padding:2px 7px;border:1px solid var(--rim);color:var(--muted);text-transform:uppercase;}
+.ms{font-size:7.5px;font-weight:700;letter-spacing:.1em;padding:2px 7px;border:1px solid var(--rim);color:var(--muted);text-transform:uppercase;}
 .ms.key{border-color:var(--fg);color:var(--fg);}
 
 /* PHILOSOPHY */
@@ -184,36 +262,32 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <div class="sb"></div>
 
 <div class="header">
-  <div class="header-top">
-    <div class="ht-cell left">M. ÇAĞRI ULU</div>
-    <div class="ht-cell center" onclick="setDay(-3)" style="cursor:pointer;">5-DAY TRAINING PROGRAM</div>
-    <div class="ht-cell right">
-      <span class="theme-toggle" onclick="toggleTheme()" id="theme-btn">LIGHT</span>
-      <span>2026</span>
+  <div class="header-identity">
+    <div class="header-logo">
+      <div class="logo-name">M. Çağrı <span>Ulu</span></div>
+      <div class="logo-sub">5 · Day · Training · 2026</div>
+    </div>
+    <div class="header-controls">
+      <div class="header-year">MMXXVI</div>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">LIGHT</button>
     </div>
   </div>
-  <div class="header-title" id="hdr-title">PUSH A</div>
-  <div class="header-sub">
-    <div class="hs-cell">TARGET: <span id="hdr-target">CHEST · SHOULDER · TRICEPS</span></div>
+  <div class="header-session">
+    <div class="session-label">Active Session</div>
+    <div class="session-title" id="hdr-title">PUSH <em>A</em></div>
+    <div class="session-target">
+      <div class="target-dot"></div>
+      <div class="target-text" id="hdr-target">CHEST · SHOULDER · TRICEPS</div>
+    </div>
   </div>
 </div>
 
-<div class="phil-bar" onclick="setDay(-3)">
-  <div class="pb-left">
-    <div class="pb-tag">THE METHOD</div>
-    <div class="pb-title">Training Philosophy</div>
-  </div>
-  <div class="pb-right">
-    <div class="pb-arrow">→</div>
-  </div>
-</div>
+
 <div class="nav" id="nav"></div>
 
 <div class="scroll">
   <div class="day-view" id="day-view"></div>
-  <div id="prog-view" style="display:none;padding:0 16px 80px;"></div>
-  <div id="phil-view" style="display:none;padding:0 0 80px;"></div>
-</div>
+  </div>
 
 </div>
 
@@ -255,6 +329,24 @@ const DAYS=[
       {num:'V.',name:'Reverse Barbell Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
     ]},
   ]},
+  {key:'legs',label:'LEGS',title:'LEGS',target:'QUAD · HAMSTRING · GLUTES · CORE',
+   blocks:[
+    {name:'BLOCK #1 — STRENGTH',exercises:[
+      {num:'I.',name:'Back Squat',sets:'3',reps:'4–5',notes:'RIR 1–2',warmup:['40% × 10','60% × 5','80% × 3']},
+    ]},
+    {name:'BLOCK #2 — COMPOUND',exercises:[
+      {num:'I.',name:'Leg Press',sets:'2',reps:'6–8',notes:'RIR 1–2',warmup:[]},
+    ]},
+    {name:'BLOCK #3 — ISOLATION',exercises:[
+      {num:'I.',name:'Seated Leg Extension',sets:'3',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'II.',name:'Lying Leg Curl',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
+    ]},
+    {name:'BLOCK #4 — CORE & CALVES',exercises:[
+      {num:'I.',name:'Toes-to-Bar',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'II.',name:'Hanging Leg Raises',sets:'3',reps:'10–12',notes:'Failure',warmup:[]},
+      {num:'III.',name:'Standing Calf Raise',sets:'3',reps:'12–15',notes:'Failure',warmup:[]},
+    ]},
+  ]},
   {key:'push-b',label:'PUSH B',title:'PUSH B',target:'SHOULDER · CHEST · TRICEPS',
    blocks:[
     {name:'BLOCK #1 — COMPOUND',exercises:[
@@ -270,7 +362,7 @@ const DAYS=[
       {num:'VI.',name:'Dips',sets:'3',reps:'Max',notes:'Failure',warmup:[]},
     ]},
   ]},
-  {key:'pull-b',label:'PULL B',title:'PULL B',target:'BACK · BICEPS · FOREARMS',
+  {key:'pull-b',label:'PULL B+LEGS',title:'PULL B+LEGS',target:'BACK · BICEPS · FOREARMS · LEGS',
    blocks:[
     {name:'BLOCK #1 — COMPOUND',exercises:[
       {num:'I.',name:'Chest Supported T-Bar Row',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['45% × 10','65% × 5','82% × 3']},
@@ -278,26 +370,11 @@ const DAYS=[
       {num:'III.',name:'Pull-up',sets:'1',reps:'6–8',notes:'BW',warmup:[]},
     ]},
     {name:'BLOCK #2 — ISOLATION',exercises:[
-      {num:'I.',name:'Cable Row',sets:'1',reps:'8–10',notes:'Failure',warmup:[]},
-      {num:'II.',name:'Face Pull',sets:'2',reps:'12–15',notes:'Failure',warmup:[]},
-      {num:'III.',name:'Cable Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
-      {num:'IV.',name:'Hammer Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
-      {num:'V.',name:'Reverse Barbell Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
-    ]},
-  ]},
-  {key:'hybrid',label:'HYBRID',title:'HYBRID',target:'LEGS · CORE · CONDITIONING',
-   blocks:[
-    {name:'BLOCK #1 — STRENGTH',exercises:[
-      {num:'I.',name:'Back Squat',sets:'3',reps:'4–5',notes:'RIR 1–2',warmup:['40% × 10','60% × 5','80% × 3']},
-    ]},
-    {name:'BLOCK #2 — CONDITIONING',exercises:[
-      {num:'I.',name:'Walking Lunges (Dumbbell)',sets:'3',reps:'12 steps',notes:'RIR 1–2',warmup:[]},
-      {num:'II.',name:'Rowing Ergometer',sets:'3',reps:'250m',notes:'90s rest',warmup:[]},
-    ]},
-    {name:'BLOCK #3 — CORE & CALVES',exercises:[
-      {num:'I.',name:'Toes-to-Bar',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
-      {num:'II.',name:'Hanging Leg Raises',sets:'3',reps:'10–12',notes:'Failure',warmup:[]},
-      {num:'III.',name:'Standing Calf Raise',sets:'3',reps:'12–15',notes:'Failure',warmup:[]},
+      {num:'I.',name:'Cable Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'II.',name:'Hammer Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'III.',name:'Reverse Barbell Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'IV.',name:'Leg Extension',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'V.',name:'Lying Leg Curl',sets:'1',reps:'8–10',notes:'Failure',warmup:[]},
     ]},
   ]},
 ];
@@ -317,568 +394,17 @@ function toggleTheme(){
 
 
 
-function renderPhilosophy(){
-  var lang=window._philLang||'en';
-  var T={
-    en:{
-      tag:'Training Philosophy · M. Çağrı Ulu · 2026',
-      heroTitle:'Built for<br>Hypertrophy.<br>Built for Power.',
-      heroSub:'A science-based Push/Pull/Hybrid system engineered for simultaneous hypertrophy, functional strength, and athletic performance — for an intermediate-advanced male at 80 kg, 32 years old.',
-      btnLang:'Türkçe',
-      s1label:'Section 01',s1title:'Why This Program Exists',
-      s1a:'Most programs optimize for one goal. This one was built to pursue three simultaneously: <b>hypertrophy, functional strength, and athletic performance.</b> The Push/Pull/Push/Pull/Hybrid architecture solves the classic trade-off — you should not have to choose between being big, strong, and athletic.',
-      s1b:'The 5-day split preserves the scientific gold standard of <b>twice-weekly frequency</b> per muscle group, keeps compound performance high by alternating push and pull days, and dedicates an entire session to athletic development that most hypertrophy programs ignore completely.',
-      s2label:'Section 02',s2title:'The Science of Frequency',
-      s2a:'Schoenfeld et al. (2016) demonstrated that training each muscle group <b>twice per week produces significantly more hypertrophy than once per week</b> with equal volume. Protein synthesis peaks 24–48 hours post-training and returns to baseline shortly after — training once per week leaves enormous anabolic potential unused.',
-      s2b:'This program structurally guarantees 2× frequency for every major muscle group: chest, deltoids, triceps, back, biceps, and forearms. Not by coincidence — by architecture.',
-      s3label:'Section 03',s3title:'Mechanical Tension: The Primary Driver',
-      s3a:'Of the three proposed mechanisms of hypertrophy — mechanical tension, metabolic stress, and muscle damage — <b>mechanical tension is the most potent signal.</b> It is generated when a muscle resists a significant load through a full range of motion, particularly in the lengthened position.',
-      s3b:'Every exercise selection reflects this. Incline Dumbbell Curl over standing curl — the lengthened position stimulus is superior. Chest Supported T-Bar Row over standard row — chest support eliminates momentum, forcing pure back work. <b>Every rep, every exercise choice serves mechanical tension.</b>',
-      s4label:'Section 04',s4title:'RIR: The Intensity Framework',
-      s4a:'Reps In Reserve is the primary intensity metric. <b>Compound movements: RIR 1–2. Isolation movements: Failure (RIR 0).</b> Heavy compounds — Deadlift, Bench, OHP, Squat — carry significant CNS cost. Training these to failure leads to accumulated fatigue and injury risk. Isolations, with lower systemic cost, can and should reach failure for maximum local stimulus.',
-      s5label:'Section 05',s5title:'Free Weights: The Athletic Imperative',
-      s5a:'The transition from Smith Machine to barbell was functional, not aesthetic. Behm & Anderson (2006): free weight exercises activate <b>30–40% more stabilizer musculature</b> than machine equivalents. Rotator cuff, serratus anterior, spinal erectors — these are not accessories, they are longevity infrastructure.',
-      s5b:'This program does not dogmatically reject machines. Pec Deck, Cable Lateral Raise, Cable Row remain — because for isolation movements, cable resistance curves are genuinely superior. <b>Compound movements belong on barbells. Isolation movements belong on cables.</b>',
-      s6label:'Section 06',s6title:'The Hybrid Day: Athletic Layer',
-      s6a:'The Friday Hybrid session is where the program earns its athletic credibility. Back Squat and Front Squat develop total lower body strength. The Rowing Ergometer delivers the highest aerobic-to-fatigue ratio of any conditioning tool. Toes-to-Bar trains the core in its most functional state. <b>This session does not compromise hypertrophy. It extends it.</b>',
-      s7label:'Section 07',s7title:'Warm-Up Protocol: Protecting the Investment',
-      s7a:'Warm-up sets are CNS preparation, not optional volume. The 3-phase protocol: <b>40–50% neuromuscular activation → 65–75% movement pattern encoding → 80–88% CNS priming.</b> When a muscle is already active from a prior exercise, warm-up sets are eliminated. Zero wasted sets. Every set earns its place.',
-      s8label:'Section 08',s8title:'Why This Is Right for You',
-      s8a:'At 32, 80 kg, Deadlift at 150 kg, OHP transitioning to barbell — you are an intermediate-advanced lifter with a high neuromuscular ceiling. You have articulated a clear goal set that few programs address simultaneously: <b>muscular, strong, and athletic.</b> This program does not compromise any of them.',
-      s8b:'Every decision — exercise order, warm-up percentages, Hybrid day placement — was made with one question: <b>does this make you better?</b> If not, it was removed.',
-      quote:'"No junk volume. No wasted sets. Every rep under maximum mechanical tension — that is the only principle that matters."',
-      quoteSource:'The Method — M. Çağrı Ulu Training System · 2026',
-      s9label:'Section 09',s9title:'Progressive Overload: The Only Law',
-      s9a:'Hypertrophy has one non-negotiable law: <b>the muscle must be challenged beyond what it has previously encountered.</b> Progressive overload does not mean adding weight every session — it means systematically increasing demand over time. More reps at the same weight, better form under the same load, reduced rest with the same output — all are valid expressions of progression.',
-      s9b:'This program uses a <b>double progression model</b> for compound movements: stay within the target rep range, add weight only when the upper boundary is hit with RIR 1–2. For isolation movements, the target is failure — progressive overload happens when a higher weight reaches failure in the same rep range.',
-      s9c:'The deload every 6 weeks is not a break from progression. It is progression. Fatigue masks fitness — removing accumulated fatigue reveals the strength you actually built. The week after a deload is almost always a PR week.',
-      s10label:'Section 10',s10title:'The Nervous System Comes First',
-      s10a:'In the first 4–8 weeks of any new movement pattern — especially the transition from machine to free weight — <b>strength gains are primarily neural, not muscular.</b> The brain is learning motor patterns, recruiting motor units more efficiently, and synchronizing inter-muscular coordination. This is why experienced lifters look stronger than beginners at the same muscle size.',
-      s10b:'During this phase, chasing weight is the wrong goal. The goal is encoding the movement. A technically perfect set at 70% builds more long-term capacity than a grinding, compromised set at 85%. <b>The nervous system is the foundation. The muscle is the structure built on top of it.</b>',
-      s10c:'Neural adaptation timeline: 1–3 weeks for basic motor recruitment, 4–6 weeks for inter-muscular coordination, 8–12 weeks for full movement automaticity. After week 12, the weight can be pushed hard.',
-      s11label:'Section 11',s11title:'Volume: How Much Is Enough',
-      s11a:'Volume — sets × reps × load — is the primary driver of hypertrophy when intensity is held constant. Schoenfeld & Krieger (2017) demonstrated a clear <b>dose-response relationship</b>: more weekly sets produce more muscle growth, up to a ceiling. That ceiling varies by individual, muscle group, and recovery capacity.',
-      s11b:'The scientific landmarks per muscle group per week: <b>Minimum Effective Volume (MEV): ~4–6 sets. Maximum Adaptive Volume (MAV): ~12–20 sets. Maximum Recoverable Volume (MRV): ~20–25+ sets.</b> Training above MRV produces fatigue faster than adaptation — it is the point of diminishing return.',
-      s11c:'This program operates in the MAV zone for all major muscle groups, with compound movements contributing significant indirect volume. The 6-week mesocycle allows volume to accumulate toward MRV, after which the deload resets recovery capacity and the next block begins slightly above the previous MAV.',
-      s12label:'Section 12',s12title:'Protein Synthesis: The Cellular Mechanism',
-      s12a:'Every resistance training session triggers a cascade of molecular events. Mechanical loading activates the <b>mTORC1 signaling pathway</b> — the master regulator of muscle protein synthesis (MPS). mTORC1 activation leads to increased ribosomal activity, translating mRNA into new contractile proteins.',
-      s12b:'MPS remains elevated for <b>24–48 hours post-training</b> before returning to baseline. This is the biological rationale for twice-weekly frequency: each training stimulus restarts the synthesis window before the previous one fully closes. Once-per-week training allows MPS to drop to baseline for 5+ days — a significant missed anabolic opportunity.',
-      s12c:'Leucine is the primary amino acid trigger for mTORC1 activation. A threshold of approximately <b>2–3g leucine per meal</b> is required to maximally stimulate MPS — roughly equivalent to 30–40g of high-quality protein. This is why protein timing and per-meal protein targets matter alongside total daily intake.',
-      s13label:'Section 13',s13title:'Mindset: The Discipline Architecture',
-      s13a:'Motivation is unreliable. It peaks and crashes on a schedule no one controls. <b>Discipline is a system, not a feeling.</b> The athletes who build the best physiques over decades are not the ones who feel most motivated — they are the ones who have built the fewest decision points between waking up and training.',
-      s13b:'Decision fatigue is real. Every choice depletes willpower. The solution is to reduce choices: same training time, same pre-workout routine, same session structure. When the brain knows exactly what comes next, resistance collapses. The program is not just a training tool — it is a decision removal system.',
-      s13c:'On low-motivation days, the goal is not a great session. The goal is a session. Showing up at 70% for 5 years beats showing up at 100% for 6 months. <b>Consistency compounds. Intensity peaks and fades.</b>',
-      s14label:'Section 14',s14title:'Sleep: The Anabolic Window You Are Missing',
-      s14a:'No supplement, no training variable, no nutrition protocol produces as much anabolic effect as adequate sleep. During slow-wave sleep, <b>growth hormone secretion reaches its daily peak</b> — accounting for approximately 70–75% of total daily GH release. This is when muscle protein synthesis is highest and cortisol is lowest.',
-      s14b:'Sleep deprivation (below 7 hours) elevates cortisol, suppresses testosterone, reduces insulin sensitivity, and impairs motor learning — the exact adaptation required during a machine-to-barbell transition. A single night of 5-hour sleep reduces anabolic hormone levels measurably the following day.',
-      s14c:'At 6–7 hours of current sleep, there is meaningful performance left on the table. <b>Moving sleep from 6.5 to 7.5 hours is the highest-leverage intervention available</b> — more impactful than any supplement on the current stack, and completely free.',
-      s15label:'Section 15',s15title:'The Long Game: What 12 Months Actually Builds',
-      s15a:'The fitness industry sells 8-week transformations. Biology operates on a different timeline. <b>Intermediate-advanced lifters gain 1–2 kg of lean muscle per month under optimal conditions</b> — approximately 10–20 kg per year at the upper ceiling of natural development, declining as training age increases.',
-      s15b:'At your level, the most accurate expectation is 8–12 kg of lean mass gain over 12 months with consistent training, adequate protein, and a controlled caloric environment. The strength targets in the Progress tab are calibrated to this reality — not to optimism, not to pessimism, but to the data.',
-      s15c:'The compound effect of 12 consistent months is not linear — it is exponential at the end. The first 3 months build the neural foundation. Months 4–8 produce the visible physique changes. Months 9–12 are where the program reveals itself. <b>The athlete who reaches month 12 is a fundamentally different lifter than the one who started.</b>',
-
-    },
-    tr:{
-      tag:'Antrenman Felsefesi · M. Çağrı Ulu · 2026',
-      heroTitle:'Hipertrofi için.<br>Güç için.<br>Atletizm için.',
-      heroSub:'Bilimsel temelli bir Push/Pull/Hibrit sistemi — eş zamanlı hipertrofi, fonksiyonel güç ve atletik performans için tasarlandı. 80 kg, 32 yaş, orta-ileri seviye.',
-      btnLang:'English',
-      s1label:'Bölüm 01',s1title:'Bu Program Neden Var',
-      s1a:'Çoğu program tek hedef için optimize edilir. Bu program aynı anda üç hedefi birden kovalamak için inşa edildi: <b>hipertrofi, fonksiyonel güç ve atletik performans.</b> Push/Pull/Push/Pull/Hibrit mimarisi klasik ödünleşimi çözer — güçlü, büyük ve atletik olmak arasında seçim yapmak zorunda değilsin.',
-      s1b:'5 günlük program bilimsel altın standardı olan <b>haftada 2 frekansı</b> her kas grubu için yapısal olarak garanti eder. Push ve Pull günlerini dönüşümlü yerleştirerek compound performansı yüksek tutar, üstüne çoğu hipertrofi programının görmezden geldiği atletik bir gün ekler.',
-      s2label:'Bölüm 02',s2title:'Frekansın Bilimi',
-      s2a:'Schoenfeld ve ark. (2016): eşit hacimle, <b>haftada 2 frekans haftada 1 frekansa göre anlamlı olarak daha fazla hipertrofi sağlıyor.</b> Protein sentezi antrenman sonrası 24–48 saatte zirveye çıkıyor ve kısa süre içinde baseline\u2019a dönüyor. Haftada 1 antrenman devasa anabolik potansiyeli kullanılmadan bırakıyor.',
-      s2b:'Bu program göğüs, deltoid, triceps, sırt, biceps ve ön kol için haftada 2 frekansı yapısal olarak garantiliyor. Tesadüf değil, mimari tercih.',
-      s3label:'Bölüm 03',s3title:'Mekanik Gerilim: Temel Sürücü',
-      s3a:'Hipertrofinin üç önerilen mekanizması arasında — mekanik gerilim, metabolik stres ve kas hasarı — <b>mekanik gerilim en güçlü sinyaldir.</b> Kasın tam hareket açıklığında, özellikle uzamış pozisyonda ağır bir yüke direnmesiyle üretilir.',
-      s3b:'Her egzersiz seçimi bunu yansıtır. Ayakta curl yerine eğik bank curlü — uzamış pozisyon uyaranı üstündür. Standart sırt hareketi yerine göğüs destekli T-bar row — destek momentumu ortadan kaldırır. <b>Her tekrar, her seçim mekanik gerilimi maximize etmek için vardır.</b>',
-      s4label:'Bölüm 04',s4title:'RIR: Yoğunluk Çerçevesi',
-      s4a:'Kalan Tekrar Sayısı bu programın temel yoğunluk metriği. <b>Compound hareketler: RIR 1–2. İzolasyon hareketler: Failure (RIR 0).</b> Deadlift, Bench, OHP, Squat gibi ağır compound hareketler yüksek CNS maliyeti taşır. Failure\u2019a kadar gitmek kronik yorgunluk ve sakatlanma riskine yol açar. Düşük sistemik maliyetle izolasyonlar failure\u2019a götürülebilir ve götürülmeli.',
-      s5label:'Bölüm 05',s5title:'Serbest Ağırlık: Atletik Zorunluluk',
-      s5a:'Smith Machine\u2019den barbele geçiş estetik değil, fonksiyonel bir karardı. Behm & Anderson (2006): serbest ağırlık hareketler makineye kıyasla <b>%30–40 daha fazla stabilizatör kas aktivasyonu</b> sağlıyor. Rotator cuff, serratus anterior, erector spinae — bunlar aksesuar değil, uzun ömrün altyapısı.',
-      s5b:'Bu program makineleri dogmatik olarak reddetmiyor. Pec Deck, Kablo Lateral Raise, Kablo Row kalıyor — çünkü izolasyon hareketlerde kablo direnç eğrisi gerçekten üstün. <b>Compound hareketler barbelde. İzolasyon hareketler kabloda.</b>',
-      s6label:'Bölüm 06',s6title:'Hibrit Gün: Atletik Katman',
-      s6a:'Cuma Hibrit seansı programın atletik güvenilirliğini kazandığı yer. Back Squat ve Front Squat toplam alt vücut gücünü geliştirir. Kürek ergometre en yüksek aerobik-yorgunluk oranını sunar. Toes-to-Bar core\u2019u en fonksiyonel haliyle çalıştırır. <b>Bu seans hipertrofiye taviz vermez. Onu genişletir.</b>',
-      s7label:'Bölüm 07',s7title:'Isınma Protokolü: Yatırımı Korumak',
-      s7a:'Isınma setleri isteğe bağlı hacim değil — CNS hazırlığı. 3 aşamalı protokol: <b>%40–50 nöromüsküler aktivasyon → %65–75 hareket paterni → %80–88 CNS hazırlığı.</b> Önceki hareketten kas aktifse ısınma setleri kaldırılır. Sıfır çöp set. Her set yerini hak eder.',
-      s8label:'Bölüm 08',s8title:'Bu Program Sana Neden Uygun',
-      s8a:'32 yaşında, 80 kg, 150 kg Deadlift, barbele geçiş sürecinde OHP — orta-ileri seviye, yüksek nöromüsküler tavan. Birçok programın aynı anda ele almadığı net bir hedef seti belirledin: <b>büyük, güçlü ve atletik olmak.</b> Bu program hiçbirinden taviz vermiyor.',
-      s8b:'Her karar — egzersiz sıralaması, ısınma yüzdeleri, Hibrit günün yerleşimi — tek bir soruyla verildi: <b>bu seni daha iyi yapıyor mu?</b> Cevap açıkça evet değilse, çıkarıldı.',
-      quote:'"Çöp hacim yok. Boşa giden set yok. Her tekrar maksimum mekanik gerilim altında — tek prensip budur."',
-      quoteSource:'The Method — M. Çağrı Ulu Antrenman Sistemi · 2026',
-      s9label:'Bölüm 09',s9title:'Progresif Aşırı Yük: Tek Yasa',
-      s9a:'Hipertrofinin tek zorunlu yasası: <b>kas daha önce karşılaştığından daha büyük bir zorlukla yüzleşmek zorundadır.</b> Progresif aşırı yük her seansta kilo artırmak demek değildir — zaman içinde talebi sistematik olarak artırmak demektir. Aynı kiloda daha fazla tekrar, aynı yük altında daha iyi form, aynı çıktıyla daha kısa dinlenme — hepsi geçerli ilerleme biçimleridir.',
-      s9b:'Bu program compound hareketler için <b>çift progresyon modeli</b> kullanır: hedef tekrar aralığında kal, üst sınıra RIR 1–2 ile ulaşıldığında kilo ekle. İzolasyon hareketlerde hedef failure\'dır — progresif aşırı yük, daha yüksek kilonun aynı tekrar aralığında failure\'a ulaşmasıyla gerçekleşir.',
-      s9c:'6 haftada bir yapılan deload, ilerlemeden bir mola değildir. İlerlemenin kendisidir. Yorgunluk fitness\'ı maskeler — birikmiş yorgunluğu kaldırmak gerçekte inşa ettiğin gücü ortaya çıkarır. Deload sonrası haftası neredeyse her zaman PR haftasıdır.',
-      s10label:'Bölüm 10',s10title:'Sinir Sistemi Önce Gelir',
-      s10a:'Herhangi bir yeni hareket paterninin — özellikle makineden serbest ağırlığa geçişin — ilk 4–8 haftasında <b>güç kazanımları ağırlıklı olarak nöral kökenlidir, kas büyümesi değil.</b> Beyin motor paternleri öğreniyor, motor üniteleri daha verimli aktive ediyor ve kaslar arası koordinasyonu senkronize ediyor. Bu nedenle deneyimli sporcular aynı kas kütlesindeki başlangıç seviyesindekilere göre daha güçlü görünür.',
-      s10b:'Bu fazda kilo kovalamak yanlış hedeftir. Hedef hareketi kodlamaktır. %70\'de teknik açıdan mükemmel bir set, %85\'te bozuk formlu bir setten uzun vadede daha fazla kapasite inşa eder. <b>Sinir sistemi temeldır. Kas onun üzerine inşa edilen yapıdır.</b>',
-      s10c:'Nöral adaptasyon zaman çizelgesi: temel motor işe alım için 1–3 hafta, kaslar arası koordinasyon için 4–6 hafta, tam hareket otomatikliği için 8–12 hafta. 12. haftadan sonra ağırlık agresif şekilde artırılabilir.',
-      s11label:'Bölüm 11',s11title:'Hacim: Ne Kadar Yeterlidir',
-      s11a:'Hacim — set × tekrar × yük — yoğunluk sabit tutulduğunda hipertrofinin birincil sürücüsüdür. Schoenfeld & Krieger (2017) net bir <b>doz-yanıt ilişkisi</b> gösterdi: daha fazla haftalık set, belirli bir tavana kadar daha fazla kas büyümesi üretiyor. Bu tavan bireye, kas grubuna ve toparlanma kapasitesine göre değişir.',
-      s11b:'Kas grubu başına haftalık bilimsel eşik değerleri: <b>Minimum Etkili Hacim (MEV): ~4–6 set. Maksimum Adaptif Hacim (MAV): ~12–20 set. Maksimum Toparlanabilir Hacim (MRV): ~20–25+ set.</b> MRV\'nin üzerinde antrenman yapmak adaptasyondan daha hızlı yorgunluk üretir — azalan verim noktasıdır.',
-      s11b2:'Bu program tüm büyük kas grupları için MAV bölgesinde çalışır. 6 haftalık mesosikl hacmin MRV\'ye doğru birikmesine izin verir; ardından deload toparlanma kapasitesini sıfırlar ve bir sonraki blok önceki MAV\'ın biraz üzerinden başlar.',
-      s12label:'Bölüm 12',s12title:'Protein Sentezi: Hücresel Mekanizma',
-      s12a:'Her direnç antrenmanı seansı moleküler olaylar zincirini tetikler. Mekanik yükleme <b>mTORC1 sinyal yolağını</b> aktive eder — kas protein sentezinin (MPS) ana düzenleyicisi. mTORC1 aktivasyonu artan ribozomal aktiviteye yol açarak mRNA\'yı yeni kontraktil proteinlere dönüştürür.',
-      s12b:'MPS antrenman sonrası <b>24–48 saat boyunca yüksek kalır</b>, ardından baseline\'a döner. Haftada 2 frekansın biyolojik gerekçesi budur: her antrenman uyaranı önceki sentez penceresi tamamen kapanmadan yeniden başlatır. Haftada 1 antrenman, MPS\'nin 5+ gün boyunca baseline\'da kalmasına izin verir — önemli bir kaçırılmış anabolik fırsat.',
-      s12c:'Lösin, mTORC1 aktivasyonu için birincil amino asit tetikleyicisidir. MPS\'yi maksimum düzeyde uyarmak için öğün başına yaklaşık <b>2–3g lösin eşiği</b> gereklidir — yüksek kaliteli proteinin yaklaşık 30–40g\'ına eşdeğer. Bu nedenle protein zamanlaması ve öğün başına protein hedefleri, günlük toplam alımın yanında önem taşır.',
-      s13label:'Bölüm 13',s13title:'Zihniyet: Disiplin Mimarisi',
-      s13a:'Motivasyon güvenilmezdir. Kimsenin kontrol edemediği bir programda zirve yapar ve çöker. <b>Disiplin bir sistem, bir his değil.</b> On yıllar içinde en iyi fiziği inşa eden sporcular en çok motive olanlar değil — uyanmak ile antrenman yapmak arasındaki karar noktalarını en aza indirenlerdir.',
-      s13b:'Karar yorgunluğu gerçektir. Her seçim irade gücünü tüketir. Çözüm seçimleri azaltmaktır: aynı antrenman saati, aynı antrenman öncesi rutin, aynı seans yapısı. Beyin sıradakinin ne olduğunu tam olarak bildiğinde direniş çöker. Program sadece bir antrenman aracı değil — bir karar kaldırma sistemidir.',
-      s13c:'Düşük motivasyonlu günlerde hedef harika bir seans değildir. Hedef bir seansın olmasıdır. 5 yıl boyunca %70 ile gelmek, 6 ay %100 ile gelmekten daha değerlidir. <b>Tutarlılık bileşik büyür. Yoğunluk zirve yapar ve solar.</b>',
-      s14label:'Bölüm 14',s14title:'Uyku: Kaçırdığın Anabolik Pencere',
-      s14a:'Hiçbir supplement, hiçbir antrenman değişkeni, hiçbir beslenme protokolü yeterli uyku kadar anabolik etki üretmez. Derin uyku sırasında <b>büyüme hormonu salgısı günlük zirvesine ulaşır</b> — toplam günlük GH salınımının yaklaşık %70–75\'ini oluşturur. Kas protein sentezinin en yüksek, kortizolün en düşük olduğu an budur.',
-      s14b:'Uyku yoksunluğu (7 saatin altı) kortizolü yükseltir, testosteronu baskılar, insülin duyarlılığını azaltır ve motor öğrenmeyi bozar — makineden barbele geçiş sırasında tam olarak ihtiyaç duyulan adaptasyon budur. 5 saatlik uykunun tek bir gecesi ertesi gün anabolik hormon seviyelerini ölçülebilir biçimde düşürür.',
-      s14c:'Mevcut 6–7 saatlik uyku süresiyle masada anlamlı bir performans bırakılıyor. <b>Uykuyu 6,5\'tan 7,5 saate taşımak mevcut koşullar altındaki en yüksek kaldıraç müdahalesidir</b> — mevcut supplement yığınındaki herhangi bir üründen daha etkili ve tamamen ücretsiz.',
-      s15label:'Bölüm 15',s15title:'Uzun Oyun: 12 Ay Gerçekte Ne İnşa Eder',
-      s15a:'Fitness endüstrisi 8 haftalık dönüşümler satar. Biyoloji farklı bir zaman çizelgesinde çalışır. <b>Orta-ileri seviye sporcular optimal koşullarda aylık 1–2 kg yağsız kas kütlesi kazanır</b> — doğal gelişimin üst tavanında yılda yaklaşık 10–20 kg, antrenman yaşı arttıkça azalarak.',
-      s15b:'Seviyende en doğru beklenti: tutarlı antrenman, yeterli protein ve kontrollü kalori ortamıyla 12 ay içinde 8–12 kg yağsız kütle kazanımı. İlerleme sekmesindeki güç hedefleri bu gerçekliğe kalibre edilmiştir — iyimserliğe değil, kötümserliğe değil, verilere.',
-      s15c:'12 tutarlı ayın bileşik etkisi doğrusal değildir — sonunda üsteldir. İlk 3 ay nöral temeli inşa eder. 4–8. aylar görünür fizik değişikliklerini üretir. 9–12. aylar programın kendini ortaya koyduğu dönemdir. <b>12. aya ulaşan sporcu, başladığındakinden temelden farklı bir haltercidir.</b>',
-
-    }
-  };
-  var t=T[lang];
-  var isDark=!document.documentElement.getAttribute('data-theme');
-  var lineC=isDark?'#fff':'#000';
-  var gridC=isDark?'rgba(255,255,255,0.08)':'rgba(0,0,0,0.08)';
-  var muteC=isDark?'rgba(255,255,255,0.35)':'rgba(0,0,0,0.35)';
-
-  function svgBars(data,labels,maxVal){
-    var W=300,H=80,barW=32,gap=8;
-    var bars=data.map(function(v,i){
-      var x=i*(barW+gap);
-      var h=(v/maxVal)*H;
-      var y=H-h;
-      return '<rect x="'+x+'" y="'+y+'" width="'+barW+'" height="'+h+'" fill="'+lineC+'"/>'
-        +'<text x="'+(x+barW/2)+'" y="'+(y-4)+'" font-size="9" fill="'+lineC+'" text-anchor="middle" font-family="Inter Tight,sans-serif" font-weight="700">'+v+'</text>'
-        +'<text x="'+(x+barW/2)+'" y="'+(H+12)+'" font-size="7" fill="'+muteC+'" text-anchor="middle" font-family="Inter Tight,sans-serif">'+labels[i]+'</text>';
-    }).join('');
-    return '<svg viewBox="0 0 '+(data.length*(barW+gap))+' '+(H+20)+'" style="width:100%;height:90px">'+bars+'</svg>';
-  }
-
-  function svgLine(data,labels){
-    var W=320,H=80,PAD=8;
-    var min=Math.min.apply(null,data)*0.95,max=Math.max.apply(null,data)*1.02;
-    var pts=data.map(function(v,i){
-      var x=PAD+(i/(data.length-1))*(W-PAD*2);
-      var y=H-PAD-(v-min)/(max-min)*(H-PAD*2);
-      return [x.toFixed(1),y.toFixed(1)];
-    });
-    var path='M'+pts.map(function(p){return p[0]+','+p[1];}).join('L');
-    var dots=pts.map(function(p,i){
-      return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="2.5" fill="'+lineC+'"/>'
-        +(labels&&labels[i]?'<text x="'+p[0]+'" y="'+(parseFloat(p[1])-6)+'" font-size="7" fill="'+muteC+'" text-anchor="middle" font-family="Inter Tight,sans-serif">'+labels[i]+'</text>':'');
-    }).join('');
-    var gridLines=[0,0.5,1].map(function(t){
-      var y=H-PAD-t*(H-PAD*2);
-      var v=Math.round(min+t*(max-min));
-      return '<line x1="'+PAD+'" x2="'+(W-PAD)+'" y1="'+y.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="'+gridC+'" stroke-width="1"/>'
-        +'<text x="'+PAD+'" y="'+(y-3).toFixed(1)+'" font-size="7" fill="'+muteC+'" font-family="Inter Tight,sans-serif">'+v+'</text>';
-    }).join('');
-    return '<svg viewBox="0 0 '+W+' '+(H+10)+'" style="width:100%;height:90px">'
-      +gridLines
-      +'<path d="'+path+'" fill="none" stroke="'+lineC+'" stroke-width="1.5"/>'
-      +dots
-      +'</svg>';
-  }
-
-  function svgRadar(vals,labels){
-    var cx=90,cy=90,r=70,n=vals.length;
-    var axes=vals.map(function(_,i){
-      var a=(i/n)*Math.PI*2-Math.PI/2;
-      return [cx+r*Math.cos(a),cy+r*Math.sin(a)];
-    });
-    var polyPts=vals.map(function(v,i){
-      var a=(i/n)*Math.PI*2-Math.PI/2;
-      return [(cx+(v/100)*r*Math.cos(a)).toFixed(1),(cy+(v/100)*r*Math.sin(a)).toFixed(1)];
-    });
-    var poly=polyPts.map(function(p){return p[0]+','+p[1];}).join(' ');
-    var axisLines=axes.map(function(p){return '<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="'+gridC+'" stroke-width="1"/>';}).join('');
-    var lbls=axes.map(function(p,i){
-      var dx=p[0]>cx?8:-8,anchor=p[0]>cx?'start':'end';
-      if(Math.abs(p[0]-cx)<10)anchor='middle';
-      return '<text x="'+(p[0]+dx).toFixed(1)+'" y="'+(p[1]+4).toFixed(1)+'" font-size="7" fill="'+muteC+'" text-anchor="'+anchor+'" font-family="Inter Tight,sans-serif">'+labels[i]+'</text>';
-    }).join('');
-    return '<svg viewBox="0 0 180 180" style="width:180px;height:180px;display:block;margin:0 auto">'
-      +'<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+gridC+'" stroke-width="1"/>'
-      +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(r*0.66).toFixed(0)+'" fill="none" stroke="'+gridC+'" stroke-width="1"/>'
-      +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(r*0.33).toFixed(0)+'" fill="none" stroke="'+gridC+'" stroke-width="1"/>'
-      +axisLines
-      +'<polygon points="'+poly+'" fill="'+lineC+'" fill-opacity="0.15" stroke="'+lineC+'" stroke-width="1.5"/>'
-      +lbls
-      +'</svg>';
-  }
-
-  function svgDonut(pct,label){
-    var r=40,cx=50,cy=50,circ=2*Math.PI*r;
-    var dash=circ*(pct/100);
-    return '<svg viewBox="0 0 100 100" style="width:90px;height:90px">'
-      +'<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+gridC+'" stroke-width="8"/>'
-      +'<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+lineC+'" stroke-width="8" stroke-dasharray="'+dash.toFixed(1)+' '+circ.toFixed(1)+'" stroke-dashoffset="'+(circ*0.25).toFixed(1)+'" stroke-linecap="round"/>'
-      +'<text x="'+cx+'" y="'+(cy+4)+'" font-size="13" font-weight="900" text-anchor="middle" fill="'+lineC+'" font-family="Inter Tight,sans-serif">'+pct+'%</text>'
-      +'<text x="'+cx+'" y="'+(cy+16)+'" font-size="6" text-anchor="middle" fill="'+muteC+'" font-family="Inter Tight,sans-serif">'+label+'</text>'
-      +'</svg>';
-  }
-
-  document.getElementById('phil-view').innerHTML=
-  '<div style="padding:20px 16px 16px;border-bottom:1px solid var(--rim);position:relative;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">'+t.tag+'</div>'+
-  '<div style="font-size:34px;font-weight:900;letter-spacing:-.02em;line-height:1.05;text-transform:uppercase;margin-bottom:12px;">'+t.heroTitle+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.75;margin-bottom:16px;">'+t.heroSub+'</div>'+
-  '<div onclick="togglePhilLang()" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--rim);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:var(--muted);">⇆ '+t.btnLang+'</div>'+
-  '</div>'+
-
-  // S1
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s1label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s1title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s1a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:16px;">'+t.s1b+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">Weekly Architecture</div>'+
-  '<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(128,128,128,.2);">'+
-  '<div style="background:var(--fg);padding:10px 6px;text-align:center;"><div style="font-size:20px;font-weight:900;">1</div><div style="font-size:7px;font-weight:700;letter-spacing:.08em;opacity:.5;margin-top:2px;">PUSH A</div></div>'+
-  '<div style="background:var(--fg);padding:10px 6px;text-align:center;"><div style="font-size:20px;font-weight:900;">2</div><div style="font-size:7px;font-weight:700;letter-spacing:.08em;opacity:.5;margin-top:2px;">PULL A</div></div>'+
-  '<div style="background:var(--fg);padding:10px 6px;text-align:center;"><div style="font-size:20px;font-weight:900;">3</div><div style="font-size:7px;font-weight:700;letter-spacing:.08em;opacity:.5;margin-top:2px;">PUSH B</div></div>'+
-  '<div style="background:var(--fg);padding:10px 6px;text-align:center;"><div style="font-size:20px;font-weight:900;">4</div><div style="font-size:7px;font-weight:700;letter-spacing:.08em;opacity:.5;margin-top:2px;">PULL B</div></div>'+
-  '<div style="background:var(--fg);padding:10px 6px;text-align:center;"><div style="font-size:20px;font-weight:900;">5</div><div style="font-size:7px;font-weight:700;letter-spacing:.08em;opacity:.5;margin-top:2px;">HYBRID</div></div>'+
-  '</div></div></div>'+
-
-  // S2 FREQUENCY
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s2label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s2title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s2a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s2b+'</div>'+
-  (function(){
-    var days=['MON','TUE','WED','THU','FRI','SAT','SUN'];
-    var on=[1,1,1,1,1,0,0];
-    var labels=['PUSH','PULL','PUSH','PULL','ATH','REST','REST'];
-    return '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:14px;">'+
-      days.map(function(d,i){
-        var bg=on[i]?'background:var(--fg);color:var(--bg);':'border:1px solid var(--rim);';
-        return '<div style="'+bg+'padding:6px 2px;text-align:center;">'+
-          '<div style="font-size:7px;font-weight:700;letter-spacing:.04em;">'+d+'</div>'+
-          '<div style="font-size:6px;opacity:.5;margin-top:2px;">'+labels[i]+'</div>'+
-          '</div>';
-      }).join('')+'</div>';
-  })()+
-  // Bar chart: 1x vs 2x hypertrophy gain simulation
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;margin-bottom:0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:10px;">Frequency vs Hypertrophy Gain (Schoenfeld 2016)</div>'+
-  (function(){
-    var data=[38,61];var labels=['1×/week','2×/week'];
-    var W=220,H=70,barW=60,gap=40;
-    var svg='<svg viewBox="0 0 220 90" style="width:100%;height:80px">';
-    data.forEach(function(v,i){
-      var x=20+i*(barW+gap);
-      var h=(v/70)*H;var y=H-h;
-      svg+='<rect x="'+x+'" y="'+y+'" width="'+barW+'" height="'+h+'" fill="rgba(0,0,0,0.85)"/>';
-      svg+='<text x="'+( x+barW/2)+'" y="'+( y-4)+'" font-size="11" font-weight="900" fill="rgba(0,0,0,0.85)" text-anchor="middle" font-family="Inter Tight,sans-serif">'+v+'%</text>';
-      svg+='<text x="'+( x+barW/2)+'" y="82" font-size="8" fill="rgba(0,0,0,0.45)" text-anchor="middle" font-family="Inter Tight,sans-serif">'+labels[i]+'</text>';
-    });
-    svg+='</svg>';
-    return svg;
-  })()+'</div></div>'+
-
-  // S3 MECHANICAL TENSION
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s3label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s3title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s3a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s3b+'</div>'+
-  // Mechanism donut charts
-  '<div style="display:flex;justify-content:space-around;align-items:center;padding:12px 0;border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);margin-bottom:14px;">'+
-  svgDonut(68,'Mech. Tension')+
-  svgDonut(21,'Metab. Stress')+
-  svgDonut(11,'Muscle Damage')+
-  '</div>'+
-  // Pyramid bars
-  '<div style="display:flex;flex-direction:column;gap:3px;margin-bottom:0;">'+
-  [['Mechanical Tension',100],['Metabolic Stress',58],['Muscle Damage',30]].map(function(item){
-    return '<div style="display:flex;align-items:center;gap:8px;">'+
-      '<div style="height:28px;background:var(--fg);width:'+item[1]+'%;display:flex;align-items:center;padding:0 10px;flex-shrink:0;">'+
-      '<span style="font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bg);">'+item[0]+'</span></div></div>';
-  }).join('')+'</div></div>'+
-
-  // S4 RIR
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s4label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s4title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s4a+'</div>'+
-  // RIR table
-  '<div style="border:1px solid var(--rim);margin-bottom:0;">'+
-  '<div style="display:grid;grid-template-columns:1.2fr 0.8fr 1.2fr;background:var(--fg);color:var(--bg);">'+
-  ['Type','Intensity','Rationale'].map(function(h){return '<div style="padding:7px 10px;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;">'+h+'</div>';}).join('')+'</div>'+
-  [['Compound','RIR 1–2','CNS protection'],['Isolation','Failure','Max local stimulus']].map(function(row){
-    return '<div style="display:grid;grid-template-columns:1.2fr 0.8fr 1.2fr;border-top:1px solid var(--rim);">'+
-      row.map(function(cell,ci){return '<div style="padding:8px 10px;font-size:10px;font-weight:'+( ci===0?'700':'400')+';color:'+( ci===2?'var(--muted)':'var(--fg')+');">'+cell+'</div>';}).join('')+'</div>';
-  }).join('')+'</div></div>'+
-
-  // S5 FREE WEIGHTS
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s5label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s5title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s5a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s5b+'</div>'+
-  // Stabilizer activation bar chart
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;margin-bottom:0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:10px;">Stabilizer Activation — Free Weight vs Machine</div>'+
-  (function(){
-    var items=[['Free Weight',95],['Machine',62]];
-    return '<div style="display:flex;flex-direction:column;gap:8px;">'+
-      items.map(function(item){
-        return '<div><div style="display:flex;justify-content:space-between;margin-bottom:3px;">'+
-          '<span style="font-size:9px;font-weight:700;opacity:.7;font-family:Inter Tight,sans-serif;">'+item[0]+'</span>'+
-          '<span style="font-size:9px;font-weight:900;font-family:Inter Tight,sans-serif;">'+item[1]+'%</span></div>'+
-          '<div style="height:5px;background:rgba(0,0,0,.2);"><div style="height:100%;width:'+item[1]+'%;background:rgba(0,0,0,0.75);"></div></div></div>';
-      }).join('')+'</div>';
-  })()+'</div></div>'+
-
-  // S6 HYBRID
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s6label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s6title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s6a+'</div>'+
-  // Hybrid radar
-  svgRadar([92,85,78,88,90,70],['Hypertrophy','Strength','Conditioning','Core','Power','Mobility'])+
-  // Hybrid timeline
-  '<div style="display:flex;flex-direction:column;margin-top:14px;">'+
-  [['01','Strength Block','Back Squat + Front Squat — total lower body compound stimulus'],['02','Conditioning Block','Walking Lunges + Rowing Ergometer — aerobic capacity + lactic threshold'],['03','Core & Calves','Toes-to-Bar + Hanging Leg Raises + Calf Raise — functional core, full ROM']].map(function(item){
-    return '<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--rim);">'+
-      '<div style="font-size:24px;font-weight:900;opacity:.2;width:32px;flex-shrink:0;line-height:1;">'+item[0]+'</div>'+
-      '<div><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">'+item[1]+'</div>'+
-      '<div style="font-size:10px;color:var(--muted);line-height:1.5;">'+item[2]+'</div></div></div>';
-  }).join('')+'</div></div>'+
-
-  // S7 WARMUP
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s7label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s7title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s7a+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">Warm-Up Protocol</div>'+
-  '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(0,0,0,.2)">'+
-  [['40–50%','Neuromuscular\nActivation'],['65–75%','Movement\nPattern'],['80–88%','CNS\nPriming']].map(function(item){
-    return '<div style="background:var(--fg);padding:12px 8px;text-align:center;">'+
-      '<div style="font-size:20px;font-weight:900;">'+item[0]+'</div>'+
-      '<div style="font-size:7px;font-weight:600;letter-spacing:.08em;opacity:.45;margin-top:4px;text-transform:uppercase;">'+item[1]+'</div></div>';
-  }).join('')+'</div></div></div>'+
-
-  // S8 WHY YOU
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s8label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s8title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s8a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:16px;">'+t.s8b+'</div>'+
-  // 12-month projection
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;margin-bottom:0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">12-Month Strength Projection</div>'+
-  (function(){
-    var lifts=[['Bench',75,95],['OHP',50,60],['Deadlift',150,175],['Squat',100,122]];
-    return '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.2)">'+
-      lifts.map(function(l){
-        return '<div style="background:var(--fg);padding:10px;">'+
-          '<div style="font-size:8px;font-weight:700;opacity:.45;letter-spacing:.08em;">'+l[0]+'</div>'+
-          '<div style="display:flex;align-items:baseline;gap:6px;margin-top:4px;">'+
-          '<span style="font-size:13px;opacity:.4;font-weight:700;">'+l[1]+'</span>'+
-          '<span style="font-size:8px;opacity:.3;">→</span>'+
-          '<span style="font-size:20px;font-weight:900;">'+l[2]+' kg</span></div></div>';
-      }).join('')+'</div>';
-  })()+'</div></div>'+
-
-  // S9 PROGRESSIVE OVERLOAD
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s9label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s9title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s9a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s9b+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s9c+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">Double Progression Model</div>'+
-  '<div style="display:flex;flex-direction:column;gap:0;">'+
-  [['STEP 1','Hit upper rep boundary at RIR 1–2','e.g. Bench: target 4–6 reps → complete 6 reps @ RIR 1'],
-   ['STEP 2','Add smallest available increment','2.5 kg → new working weight'],
-   ['STEP 3','Work back to upper boundary','May take 1–3 sessions'],
-   ['STEP 4','Repeat','This is how strength compounds']].map(function(item){
-    return '<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.12);">'+
-      '<div style="font-size:8px;font-weight:900;opacity:.4;width:44px;flex-shrink:0;padding-top:2px;">'+item[0]+'</div>'+
-      '<div><div style="font-size:10px;font-weight:700;letter-spacing:.04em;margin-bottom:2px;">'+item[1]+'</div>'+
-      '<div style="font-size:9px;opacity:.5;">'+item[2]+'</div></div></div>';
-  }).join('')+'</div></div></div>'+
-
-  // S10 NERVOUS SYSTEM
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s10label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s10title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s10a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s10b+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;margin-bottom:14px;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">Neural Adaptation Timeline</div>'+
-  (function(){
-    var phases=[['WK 1–3','Motor Recruitment',65],['WK 4–6','Inter-muscular Coord.',80],['WK 8–12','Movement Automaticity',95],['WK 12+','Load Optimization',100]];
-    return '<div style="display:flex;flex-direction:column;gap:8px;">'+
-      phases.map(function(p){
-        return '<div style="display:flex;align-items:center;gap:10px;">'+
-          '<div style="font-size:7px;font-weight:700;opacity:.5;width:42px;flex-shrink:0;">'+p[0]+'</div>'+
-          '<div style="flex:1;height:18px;background:rgba(0,0,0,0.15);position:relative;">'+
-          '<div style="height:100%;width:'+p[2]+'%;background:rgba(0,0,0,0.75);display:flex;align-items:center;padding:0 8px;">'+
-          '<span style="font-size:8px;font-weight:700;white-space:nowrap;">'+p[1]+'</span></div></div>'+
-          '<div style="font-size:9px;font-weight:900;opacity:.7;width:28px;text-align:right;">'+p[2]+'%</div></div>';
-      }).join('')+'</div>';
-  })()+
-  '</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;">'+t.s10c+'</div></div>'+
-
-  // S11 VOLUME
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s11label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s11title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s11a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s11b+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;margin-bottom:14px;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">Weekly Volume Landmarks (sets/muscle group)</div>'+
-  (function(){
-    var zones=[['MEV','Min. Effective','4–6',20],['MAV','Max. Adaptive','12–20',75],['MRV','Max. Recoverable','20–25+',100]];
-    return '<div style="display:flex;flex-direction:column;gap:6px;">'+
-      zones.map(function(z,i){
-        var opacity=i===1?'1':'0.65';
-        var border=i===1?'2px solid rgba(0,0,0,0.4)':'none';
-        return '<div style="display:flex;align-items:center;gap:10px;">'+
-          '<div style="font-size:9px;font-weight:900;opacity:.6;width:32px;flex-shrink:0;">'+z[0]+'</div>'+
-          '<div style="flex:1;height:28px;background:rgba(0,0,0,0.15);position:relative;outline:'+border+';">'+
-          '<div style="height:100%;width:'+z[3]+'%;background:rgba(0,0,0,'+opacity+');display:flex;align-items:center;padding:0 10px;gap:8px;">'+
-          '<span style="font-size:8px;font-weight:700;">'+z[1]+'</span>'+
-          '<span style="font-size:9px;font-weight:900;opacity:.7;">'+z[2]+' sets</span></div></div></div>';
-      }).join('')+
-      '<div style="font-size:8px;opacity:.4;margin-top:6px;font-style:italic;">This program targets MAV zone. Source: Israetel & Krieger, RP Strength, 2019</div>'+
-      '</div>';
-  })()+
-  '</div></div>'+
-
-  // S12 PROTEIN SYNTHESIS
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s12label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s12title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s12a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s12b+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s12c+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;margin-bottom:0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">MPS Window — 2× vs 1× Frequency</div>'+
-  (function(){
-    var isDarkLocal=!document.documentElement.getAttribute('data-theme');
-    var barC=isDarkLocal?'rgba(255,255,255,0.8)':'rgba(0,0,0,0.8)';
-    var gridCL=isDarkLocal?'rgba(255,255,255,0.1)':'rgba(0,0,0,0.1)';
-    var W=300,H=70,days=7;
-    var cellW=W/days;
-    var svg='<svg viewBox="0 0 '+W+' '+(H+24)+'" style="width:100%;height:90px">';
-    for(var d=0;d<days;d++){
-      svg+='<line x1="'+(d*cellW)+'" y1="0" x2="'+(d*cellW)+'" y2="'+H+'" stroke="'+gridCL+'" stroke-width="0.5"/>';
-      svg+='<text x="'+(d*cellW+cellW/2)+'" y="'+(H+14)+'" font-size="7" fill="rgba(0,0,0,0.3)" text-anchor="middle" font-family="Inter Tight,sans-serif">D'+(d+1)+'</text>';
-    }
-    var mps2x=[[0,1],[1,0.9],[2,0.2],[2.5,1],[3.5,0.9],[4,0.15],[5,0.15],[7,0.1]];
-    var mps1x=[[0,1],[1,0.9],[2,0.15],[3,0.1],[4,0.08],[5,0.07],[6,0.07],[7,0.07]];
-    function plotLine(pts,color,dash){
-      var path='M'+pts.map(function(p){return ((p[0]/7)*W).toFixed(1)+','+(H-(p[1]*H*0.85)).toFixed(1);}).join('L');
-      return '<path d="'+path+'" fill="none" stroke="'+color+'" stroke-width="1.5"'+(dash?' stroke-dasharray="4,3"':'')+'/>';
-    }
-    svg+=plotLine(mps2x,'rgba(0,0,0,0.8)',false);
-    svg+=plotLine(mps1x,'rgba(0,0,0,0.35)',true);
-    svg+='<text x="4" y="10" font-size="7" fill="rgba(0,0,0,0.7)" font-family="Inter Tight,sans-serif" font-weight="700">2× / week</text>';
-    svg+='<text x="4" y="22" font-size="7" fill="rgba(0,0,0,0.4)" font-family="Inter Tight,sans-serif">1× / week (dashed)</text>';
-    svg+='</svg>';
-    return svg;
-  })()+
-  '</div></div>'+
-
-  // S13 MINDSET
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s13label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s13title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s13a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s13b+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s13c+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:16px;margin-bottom:0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:14px;">Motivation vs Discipline</div>'+
-  '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,0.2);">'+
-  [['MOTIVATION','Peaks and crashes','Emotion-driven','Unreliable long-term','Feels essential'],
-   ['DISCIPLINE','Slow and steady','System-driven','Compounds over years','Is essential']].map(function(col){
-    return '<div style="background:var(--fg);padding:12px 10px;">'+
-      '<div style="font-size:9px;font-weight:900;letter-spacing:.1em;margin-bottom:8px;opacity:.9;">'+col[0]+'</div>'+
-      col.slice(1).map(function(item){
-        return '<div style="font-size:9px;opacity:.55;margin-bottom:4px;line-height:1.4;">'+item+'</div>';
-      }).join('')+'</div>';
-  }).join('')+'</div></div></div>'+
-
-  // S14 SLEEP
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s14label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s14title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s14a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s14b+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s14c+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;margin-bottom:0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">GH Secretion Profile — Sleep Architecture</div>'+
-  (function(){
-    var stages=[['Awake','0%',5],['Light','15%',22],['Deep','100%',95],['REM','45%',42],['Light','20%',25],['Deep','85%',82],['REM','55%',52],['Wake','5%',8]];
-    var W=300,H=60;
-    var barW=W/stages.length-2;
-    var svg='<svg viewBox="0 0 '+W+' '+(H+28)+'" style="width:100%;height:90px">';
-    stages.forEach(function(s,i){
-      var h=(s[2]/100)*H;
-      var x=i*(barW+2);
-      var y=H-h;
-      var alpha=s[2]>80?'0.85':s[2]>50?'0.55':s[2]>20?'0.35':'0.15';
-      svg+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+barW.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="rgba(0,0,0,'+alpha+')"/>';
-      svg+='<text x="'+(x+barW/2).toFixed(1)+'" y="'+(H+10)+'" font-size="6" fill="rgba(0,0,0,0.4)" text-anchor="middle" font-family="Inter Tight,sans-serif">'+s[0]+'</text>';
-      if(s[2]>70) svg+='<text x="'+(x+barW/2).toFixed(1)+'" y="'+(y-3).toFixed(1)+'" font-size="7" fill="rgba(0,0,0,0.7)" text-anchor="middle" font-family="Inter Tight,sans-serif">GH↑</text>';
-    });
-    svg+='<text x="0" y="'+(H+24)+'" font-size="6" fill="rgba(0,0,0,0.3)" font-family="Inter Tight,sans-serif">Bar height = relative GH secretion. Deep sleep dominates.</text>';
-    svg+='</svg>';
-    return svg;
-  })()+
-  '</div></div>'+
-
-  // S15 LONG GAME
-  '<div style="padding:20px 16px 0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">'+t.s15label+'</div>'+
-  '<div style="font-size:16px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);">'+t.s15title+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s15a+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:10px;">'+t.s15b+'</div>'+
-  '<div style="font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:14px;">'+t.s15c+'</div>'+
-  '<div style="background:var(--fg);color:var(--bg);padding:14px;margin-bottom:0;">'+
-  '<div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:12px;">12-Month Phase Architecture</div>'+
-  '<div style="display:flex;flex-direction:column;gap:0;">'+
-  [['M 1–3','Neural Foundation','Motor patterns, barbell adaptation, stabilizer development. Weight gains fast but it\'s the nervous system, not the muscle.'],
-   ['M 4–8','Visible Transformation','Hypertrophy becomes visible. Compound lifts approach program targets. Body composition shifts.'],
-   ['M 9–12','Program Reveals Itself','Compound numbers hit ceiling projections. Physique reflects the architecture. Athletic capacity fully online.']].map(function(item,i){
-    var opacity=[(0.3),(0.6),(1)][i];
-    return '<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.1);">'+
-      '<div style="font-size:11px;font-weight:900;opacity:'+opacity+';width:44px;flex-shrink:0;line-height:1.2;">'+item[0]+'</div>'+
-      '<div><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;opacity:'+(0.5+opacity*0.5)+';">'+item[1]+'</div>'+
-      '<div style="font-size:9px;opacity:.5;line-height:1.5;">'+item[2]+'</div></div></div>';
-  }).join('')+'</div></div></div>'+
 
 
-  '<div style="padding:18px 16px;background:var(--fg);color:var(--bg);">'+
-  '<div style="font-size:14px;font-weight:900;letter-spacing:-.01em;line-height:1.4;text-transform:uppercase;margin-bottom:8px;">'+t.quote+'</div>'+
-  '<div style="font-size:8px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.4;">'+t.quoteSource+'</div></div></div>'+
-
-  '<div style="height:20px;"></div>';
-}
-
-function togglePhilLang(){
-  window._philLang=(window._philLang==='tr')?'en':'tr';
-  renderPhilosophy();
-  document.querySelector('.scroll').scrollTop=0;
-}
 
 function renderNav(){
   var tabs=DAYS.map(function(d,i){
-    return '<div class="nav-tab'+(i===cur?' on':'')+'" onclick="setDay('+i+')">'+d.label+'</div>';
+    return '<div class="nav-tab'+(i===cur?' on':'')+'" onclick="setDay('+i+')">'+
+      '<div class="nav-tab-num">0'+(i+1)+'</div>'+
+      '<div class="nav-tab-lbl">'+d.label+'</div>'+
+    '</div>';
   }).join('');
-  var prog='<div class="nav-tab'+(cur===-2?' on':'')+'" onclick="setDay(-2)">PROGRESS</div>';
-  document.getElementById('nav').innerHTML=tabs+prog;
+  document.getElementById('nav').innerHTML=tabs;
 }
 
 
@@ -903,115 +429,8 @@ function renderDay(){
 
 function setDay(i){
   cur=i;renderNav();
-  document.getElementById('day-view').style.display=(i<0)?'none':'block';
-  document.getElementById('prog-view').style.display=(i===-2)?'block':'none';
-  document.getElementById('phil-view').style.display=(i===-3)?'block':'none';
-  if(i===-2){renderProgress();document.getElementById('hdr-title').textContent='PROGRESS';document.getElementById('hdr-target').textContent='12-MONTH STRENGTH ROADMAP';}
-  else if(i===-3){renderPhilosophy();document.getElementById('hdr-title').textContent='PHILOSOPHY';document.getElementById('hdr-target').textContent='THE METHOD BEHIND THE PROGRAM';}
-  else{renderDay();}
-}
-
-const LIFT_DATA = [
-  {name:'BENCH PRESS', start:75, m3:80, m6:85, m12:95,
-   info:'First barbell session at 75 kg. Expect +2.5 kg every 1–2 weeks. Deload every 6 weeks.',
-   data:[75,75,77.5,77.5,77.5,80,72.5,80,80,82.5,82.5,82.5,77.5,85,85,87.5,87.5,90,82.5,90,92.5,92.5,92.5,95,87.5],
-   bw:false, pullup:false},
-  {name:'BARBELL INCLINE', start:60, m3:62.5, m6:67.5, m12:72.5,
-   info:'Incline progresses slightly slower than flat — anterior deltoid involvement limits load.',
-   data:[60,60,60,62.5,62.5,62.5,57.5,65,65,65,65,65,62.5,67.5,67.5,67.5,70,70,65,70,72.5,72.5,72.5,72.5,67.5],
-   bw:false, pullup:false},
-  {name:'BARBELL OHP', start:50, m3:52.5, m6:55, m12:60,
-   info:'First standing barbell OHP — transitioning from Smith Machine. Shoulder press progresses slowest of all compounds.',
-   data:[50,50,50,50,52.5,52.5,47.5,52.5,52.5,52.5,55,55,50,55,55,57.5,57.5,57.5,52.5,57.5,57.5,60,60,60,55],
-   bw:false, pullup:false},
-  {name:'DIPS', start:0, m3:5, m6:10, m12:20,
-   info:'BW = 80 kg, 10 reps clean. Added load shown. Consolidate reps before adding weight.',
-   data:[0,0,0,0,2.5,2.5,0,5,5,5,7.5,7.5,5,10,10,10,12.5,12.5,10,15,15,17.5,17.5,20,15],
-   bw:true, pullup:false, bwNote:'Added load (kg)'},
-  {name:'DEADLIFT', start:150, m3:157.5, m6:165, m12:175,
-   info:'150 kg × 6 with straps — elite intermediate. At this weight, monthly gains of 2.5–5 kg are realistic.',
-   data:[150,150,152.5,152.5,155,155,145,157.5,157.5,160,160,162.5,150,165,165,167.5,167.5,170,157.5,172.5,172.5,172.5,175,175,162.5],
-   bw:false, pullup:false},
-  {name:'PULL-UP', start:0, m3:5, m6:12.5, m12:25,
-   info:'Start bodyweight. Add load after hitting 8+ clean reps. Added weight shown below.',
-   data:[0,0,0,0,0,0,0,0,2.5,2.5,5,5,2.5,7.5,7.5,10,10,12.5,7.5,15,15,17.5,20,22.5,25],
-   bw:true, pullup:true, bwNote:'Added load (kg)'},
-  {name:'BACK SQUAT', start:100, m3:107.5, m6:112.5, m12:122.5,
-   info:'100 kg × 5 — solid intermediate base. Squat responds well to consistent weekly training.',
-   data:[100,100,102.5,102.5,102.5,105,97.5,107.5,107.5,107.5,110,110,102.5,112.5,112.5,115,115,117.5,107.5,117.5,120,120,122.5,122.5,115],
-   bw:false, pullup:false},
-  {name:'FRONT SQUAT', start:65, m3:70, m6:72.5, m12:80,
-   info:'Estimated start at 65 kg — typically 70–80% of back squat. Progresses well once rack position is locked.',
-   data:[65,65,65,67.5,67.5,67.5,62.5,70,70,70,70,72.5,65,72.5,72.5,75,75,75,70,77.5,77.5,77.5,77.5,80,72.5],
-   bw:false, pullup:false},
-];
-
-const MONTHS=['Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun'];
-
-function renderProgress(){
-  const el=document.getElementById('prog-view');
-  el.innerHTML=LIFT_DATA.map((l,li)=>{
-    const fg=getComputedStyle(document.documentElement).getPropertyValue('--fg').trim()||'#fff';
-    const muted=getComputedStyle(document.documentElement).getPropertyValue('--muted').trim()||'rgba(255,255,255,0.4)';
-    const isDark=!document.documentElement.getAttribute('data-theme');
-    const lineColor=isDark?'#ffffff':'#000000';
-    const gridColor=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
-    const textColor=isDark?'rgba(255,255,255,0.35)':'rgba(0,0,0,0.35)';
-    const dotColor=isDark?'#fff':'#000';
-    // SVG line chart
-    const vals=l.data;
-    const min=Math.min(...vals)*0.95;
-    const max=Math.max(...vals)*1.02;
-    const W=340,H=90,PAD=4;
-    const pts=vals.map((v,i)=>{
-      const x=PAD+(i/(vals.length-1))*(W-PAD*2);
-      const y=H-PAD-(v-min)/(max-min)*(H-PAD*2);
-      return [x,y];
-    });
-    const path='M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join('L');
-    // Grid lines
-    const grids=[0,0.33,0.66,1].map(t=>{
-      const y=H-PAD-(t)*(H-PAD*2);
-      const val=Math.round((min+t*(max-min))/2.5)*2.5;
-      return `<line x1="${PAD}" x2="${W-PAD}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="${gridColor}" stroke-width="1"/>
-              <text x="${PAD}" y="${(y-3).toFixed(1)}" font-size="8" fill="${textColor}" font-family="Inter Tight,sans-serif">${val}${l.bw?'':' kg'}</text>`;
-    }).join('');
-    // Month labels
-    const mlabels=[0,4,8,12].map(i=>{
-      if(i>=vals.length)return '';
-      const x=PAD+(i/(vals.length-1))*(W-PAD*2);
-      return `<text x="${x.toFixed(1)}" y="${H}" font-size="8" fill="${textColor}" font-family="Inter Tight,sans-serif" text-anchor="middle">${MONTHS[i/4]}</text>`;
-    }).join('');
-    // Key dots: m3 (wk6), m6 (wk12 after deload recovery ~wk14), m12 (wk24 after deload ~wk26)
-    const keyPoints=[[6,l.m3],[14,l.m6],[24,l.m12]].map(([wi,val])=>{
-      if(wi>=pts.length)return '';
-      const [x,y]=pts[wi];
-      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${dotColor}"/>`;
-    }).join('');
-    const svg=`<svg viewBox="0 0 ${W} ${H+10}" xmlns="http://www.w3.org/2000/svg" class="chart-svg">
-      ${grids}
-      ${mlabels}
-      <path d="${path}" fill="none" stroke="${lineColor}" stroke-width="1.5" stroke-linejoin="round"/>
-      ${keyPoints}
-    </svg>`;
-    const unit=l.bw?(l.bwNote||'Added load'):'kg';
-    return `<div class="lift-block">
-      <div class="lift-name">${l.name}</div>
-      <div class="lift-info">${l.info}</div>
-      <div class="lift-targets">
-        <div class="lt"><div class="lt-val">${l.bw?'+'+l.m3:l.m3} ${l.bw?'kg':'kg'}</div><div class="lt-lbl">3 Months</div></div>
-        <div class="lt"><div class="lt-val">${l.bw?'+'+l.m6:l.m6} ${l.bw?'kg':'kg'}</div><div class="lt-lbl">6 Months</div></div>
-        <div class="lt"><div class="lt-val">${l.bw?'+'+l.m12:l.m12} ${l.bw?'kg':'kg'}</div><div class="lt-lbl">12 Months</div></div>
-      </div>
-      <div class="chart-area">${svg}</div>
-      <div class="milestone-row">
-        <div class="ms">Now: ${l.start}${l.bw?' kg BW':' kg'}</div>
-        <div class="ms key">+3M: ${l.bw?l.start+' + '+l.m3:l.m3} kg</div>
-        <div class="ms key">+6M: ${l.bw?l.start+' + '+l.m6:l.m6} kg</div>
-        <div class="ms key">+12M: ${l.bw?l.start+' + '+l.m12:l.m12} kg</div>
-      </div>
-    </div>`;
-  }).join('');
+  document.getElementById('day-view').style.display='block';
+  renderDay();
 }
 
 renderNav();renderDay();
