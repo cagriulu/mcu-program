@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<title>MCU — Training Program</title>
+<title>MCU — Antrenman Programı</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -29,119 +29,39 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:'Inter Ti
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.05;pointer-events:none;z-index:9999;}
 .app{display:flex;flex-direction:column;height:100dvh;max-width:430px;margin:0 auto;}
 .sb{height:var(--safe-top);flex-shrink:0;}
-
-/* HEADER */
 .header{flex-shrink:0;border-bottom:1px solid var(--rim);}
-
-.header-identity{
-  display:flex;align-items:stretch;justify-content:space-between;
-  padding:0;border-bottom:1px solid var(--rim);
-}
-.header-logo{
-  padding:14px 16px;
-  display:flex;flex-direction:column;gap:3px;
-}
-.logo-name{
-  font-size:20px;font-weight:800;letter-spacing:-.01em;
-  text-transform:uppercase;line-height:1;color:var(--fg);
-}
+.header-identity{display:flex;align-items:stretch;justify-content:space-between;padding:0;border-bottom:1px solid var(--rim);}
+.header-logo{padding:14px 16px;display:flex;flex-direction:column;gap:3px;}
+.logo-name{font-size:20px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1;color:var(--fg);}
 .logo-name span{font-weight:400;opacity:.45;}
-.logo-sub{
-  font-size:7px;font-weight:500;letter-spacing:.35em;
-  text-transform:uppercase;color:var(--muted);
-}
-.header-controls{
-  display:flex;align-items:center;gap:0;border-left:1px solid var(--rim);
-}
-.header-year{
-  padding:0 14px;font-size:9px;font-weight:400;
-  letter-spacing:.1em;color:var(--muted);border-right:1px solid var(--rim);
-}
-.theme-toggle{
-  cursor:pointer;padding:0 14px;height:100%;
-  display:flex;align-items:center;
-  font-size:8px;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted);
-  border:none;background:none;font-family:'Inter Tight',sans-serif;
-  transition:color .15s;
-}
+.logo-sub{font-size:7px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);}
+.header-controls{display:flex;align-items:center;gap:0;border-left:1px solid var(--rim);}
+.header-year{padding:0 14px;font-size:9px;font-weight:400;letter-spacing:.1em;color:var(--muted);border-right:1px solid var(--rim);}
+.theme-toggle{cursor:pointer;padding:0 14px;height:100%;display:flex;align-items:center;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:none;background:none;font-family:'Inter Tight',sans-serif;transition:color .15s;}
 .theme-toggle:hover{color:var(--fg);}
-
-.header-session{
-  padding:20px 16px 0;
-  display:flex;flex-direction:column;gap:0;
-}
-.session-label{
-  font-size:7.5px;font-weight:500;letter-spacing:.35em;
-  text-transform:uppercase;color:var(--muted);
-  margin-bottom:6px;opacity:.5;
-}
-.session-title{
-  font-size:58px;font-weight:800;letter-spacing:-.03em;
-  line-height:.88;text-transform:uppercase;color:var(--fg);
-  margin-bottom:14px;
-}
-.session-title em{
-  font-style:normal;font-weight:400;
-  letter-spacing:.0em;color:var(--fg);opacity:.35;
-}
-.session-target{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 0;border-top:1px solid var(--rim);
-}
-.target-dot{
-  width:3px;height:3px;border-radius:50%;
-  background:var(--fg);opacity:.25;flex-shrink:0;
-}
-.target-text{
-  font-size:8px;font-weight:700;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--fg);opacity:.45;
-}
-
-/* NAV */
-.nav{
-  flex-shrink:0;display:flex;overflow-x:auto;
-  border-bottom:1px solid var(--rim);scrollbar-width:none;
-  background:var(--bg);
-}
+.header-session{padding:20px 16px 0;display:flex;flex-direction:column;gap:0;}
+.session-label{font-size:7.5px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;opacity:.5;}
+.session-title{font-size:58px;font-weight:800;letter-spacing:-.03em;line-height:.88;text-transform:uppercase;color:var(--fg);margin-bottom:14px;}
+.session-title em{font-style:normal;font-weight:400;letter-spacing:.0em;color:var(--fg);opacity:.35;}
+.session-target{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--rim);}
+.target-dot{width:3px;height:3px;border-radius:50%;background:var(--fg);opacity:.25;flex-shrink:0;}
+.target-text{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);opacity:.45;}
+.nav{flex-shrink:0;display:flex;overflow-x:auto;border-bottom:1px solid var(--rim);scrollbar-width:none;background:var(--bg);}
 .nav::-webkit-scrollbar{display:none;}
-.nav-tab{
-  flex:1;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:10px 10px;gap:3px;
-  cursor:pointer;position:relative;
-  border-right:1px solid var(--rim);
-  transition:background .12s;
-}
+.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 6px;gap:3px;cursor:pointer;position:relative;border-right:1px solid var(--rim);transition:background .12s;}
 .nav-tab:last-child{border-right:none;}
-.nav-tab-num{
-  font-size:7.5px;font-weight:400;
-  letter-spacing:.08em;color:var(--muted);opacity:.35;
-  line-height:1;font-family:'Inter Tight',sans-serif;
-}
-.nav-tab-lbl{
-  font-size:9px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--muted);
-  line-height:1;white-space:nowrap;font-family:'Inter Tight',sans-serif;
-}
+.nav-tab-num{font-size:7px;font-weight:400;letter-spacing:.06em;color:var(--muted);opacity:.35;line-height:1;font-family:'Inter Tight',sans-serif;}
+.nav-tab-lbl{font-size:7.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);line-height:1;white-space:nowrap;font-family:'Inter Tight',sans-serif;}
 .nav-tab.on{background:var(--fg);}
 .nav-tab.on .nav-tab-num{color:var(--bg);opacity:.35;}
 .nav-tab.on .nav-tab-lbl{color:var(--bg);}
-
-/* SCROLL */
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
 .scroll::-webkit-scrollbar{display:none;}
-
-/* DAY VIEW */
 .day-view{padding:0 16px 100px;}
-
-/* BLOCK */
 .block{margin-top:20px;}
 .block-hdr{display:grid;grid-template-columns:1fr auto auto auto;background:var(--fg);padding:0 8px;}
 .bh-title{padding:7px 0;font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);}
 .bh-col{padding:7px 0 7px 12px;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);opacity:.5;text-align:right;min-width:42px;}
-
-/* EX ROW */
 .ex-row{display:grid;grid-template-columns:1fr auto auto auto;padding:10px 0;border-bottom:1px solid var(--rim2);align-items:start;}
 .ex-row:last-child{border-bottom:none;}
 .ex-num{font-size:8px;font-weight:400;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;opacity:.5;}
@@ -151,110 +71,160 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .ex-val{font-size:12px;font-weight:700;text-align:right;padding-left:12px;min-width:42px;padding-top:14px;}
 .ex-val.muted{color:var(--muted);font-weight:400;}
 .block-sep{display:none;}
-
-/* MCU LOGO */
-.mcu-logo{
-  position:fixed;
-  bottom:calc(var(--safe-bot) + 16px);
-  left:50%;
-  transform:translateX(-50%);
-  text-align:center;
-  pointer-events:none;
-  z-index:100;
-}
+.mcu-logo{position:fixed;bottom:calc(var(--safe-bot) + 16px);left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;z-index:100;}
 .mcu-main{font-size:20px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);line-height:1;opacity:.12;}
 .mcu-year{font-size:8px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--fg);opacity:.08;margin-top:2px;}
 
+/* TARİF BARI */
+.recipe-bar{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--rim);cursor:pointer;transition:background .12s;}
+.recipe-bar:hover{background:var(--rim2);}
+.recipe-bar.on{background:var(--fg);}
+.recipe-bar.on .rb-label{color:var(--bg);}
+.recipe-bar.on .rb-count{color:var(--bg);opacity:.45;}
+.rb-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.rb-count{font-size:8px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.5;}
 
-.lift-block{margin-top:24px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.08);}
-[data-theme="light"] .lift-block{border-color:rgba(0,0,0,0.08);}
-.lift-name{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;}
-.lift-info{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:12px;font-weight:400;}
-.lift-targets{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px;}
-.lt{padding:8px;border:1px solid var(--rim);text-align:center;}
-.lt-val{font-size:14px;font-weight:800;line-height:1;}
-.lt-lbl{font-size:7.5px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:3px;}
-.chart-area{width:100%;height:110px;position:relative;overflow:hidden;}
-.chart-svg{width:100%;height:100%;}
-.milestone-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-.ms{font-size:7.5px;font-weight:700;letter-spacing:.1em;padding:2px 7px;border:1px solid var(--rim);color:var(--muted);text-transform:uppercase;}
-.ms.key{border-color:var(--fg);color:var(--fg);}
+/* TARİFLER */
+.recipe-view{padding:0 16px 100px;}
+.recipe-filter-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:16px 0 12px;}
+.recipe-filter-row::-webkit-scrollbar{display:none;}
+.rf-btn{flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--rim);background:transparent;color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;transition:all .12s;}
+.rf-btn.on{background:var(--fg);color:var(--bg);border-color:var(--fg);}
+.recipe-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.r-card{background:var(--bg);border:1px solid var(--rim);padding:12px;cursor:pointer;transition:border-color .12s;}
+.r-card:hover{border-color:var(--muted);}
+.r-card-emoji{font-size:20px;margin-bottom:8px;}
+.r-card-name{font-size:12px;font-weight:700;letter-spacing:-.01em;line-height:1.2;margin-bottom:8px;color:var(--fg);}
+.r-card-pills{display:flex;flex-wrap:wrap;gap:4px;}
+.r-pill{font-size:7px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--rim);color:var(--muted);}
+.r-pill.protein{border-color:var(--fg);color:var(--fg);}
+.recipe-detail{padding:0 16px 100px;}
+.rd-back{display:flex;align-items:center;gap:8px;padding:16px 0 20px;cursor:pointer;border-bottom:1px solid var(--rim);margin-bottom:20px;}
+.rd-back-arrow{font-size:14px;font-weight:300;color:var(--muted);}
+.rd-back-lbl{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.rd-emoji{font-size:40px;margin-bottom:12px;}
+.rd-name{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1;margin-bottom:12px;color:var(--fg);}
+.rd-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--rim);}
+.rd-pill{font-size:7.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rim);color:var(--muted);}
+.rd-pill.protein{border-color:var(--fg);color:var(--fg);}
+.rd-section{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;background:var(--fg);color:var(--bg);padding:5px 8px;margin-bottom:12px;}
+.rd-ing-list{list-style:none;padding:0;margin:0 0 20px;}
+.rd-ing-list li{font-size:13px;font-weight:400;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--rim2);display:flex;align-items:center;gap:8px;}
+.rd-ing-list li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--muted);flex-shrink:0;}
+.rd-steps-list{list-style:none;padding:0;margin:0 0 20px;}
+.rd-step{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--rim2);}
+.rd-step:last-child{border-bottom:none;}
+.rd-step-num{font-size:9px;font-weight:800;color:var(--bg);background:var(--fg);width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.rd-step-text{font-size:13px;font-weight:400;color:var(--muted);line-height:1.6;}
 
-/* PHILOSOPHY */
-.phil-hero{padding:28px 16px 24px;border-bottom:1px solid var(--rim);}
-.phil-hero-tag{font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.phil-hero-title{font-size:38px;font-weight:900;letter-spacing:-.02em;line-height:1.05;text-transform:uppercase;margin-bottom:8px;}
-.phil-hero-sub{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;max-width:340px;}
-.phil-section{padding:24px 16px 0;}
-.phil-sec-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.phil-sec-title{font-size:19px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--rim);}
-.phil-body{font-size:12px;color:var(--muted);line-height:1.8;font-weight:400;margin-bottom:16px;}
-.phil-body b{color:var(--fg);font-weight:700;}
+/* TAKVİM */
+.takvim-view{padding:0 16px 100px;}
+.tk-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;margin-bottom:4px;}
+.tk-sum-card{background:var(--rim2);padding:.6rem .5rem;text-align:center;}
+.tk-sum-val{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--fg);line-height:1;}
+.tk-sum-lbl{font-size:7px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;line-height:1.3;}
+.tk-row{border-top:1px solid var(--rim);padding:16px 0;display:grid;grid-template-columns:72px 1fr;gap:0;}
+.tk-rest{opacity:.45;}
+.tk-left{padding-right:12px;border-right:1px solid var(--rim2);}
+.tk-gun{font-size:7px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.tk-num{font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--fg);opacity:.15;line-height:1;}
+.tk-right{padding-left:14px;}
+.tk-session-hdr{margin-bottom:10px;}
+.tk-session-name{font-size:16px;font-weight:800;letter-spacing:-.01em;color:var(--fg);margin-bottom:6px;}
+.tk-badges{display:flex;gap:5px;flex-wrap:wrap;}
+.tk-badge{font-size:7px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--rim);color:var(--muted);}
+.tk-badge-yuk{border-color:var(--fg);color:var(--fg);}
+.tk-bars{margin-bottom:12px;}
+.tk-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.tk-bar-kas{font-size:10px;color:var(--muted);min-width:70px;}
+.tk-bar-track{flex:1;height:5px;background:var(--rim2);overflow:hidden;}
+.tk-bar-fill{height:100%;background:var(--fg);opacity:.7;}
+.tk-bar-val{font-size:10px;font-weight:500;color:var(--fg);min-width:16px;text-align:right;}
+.tk-section-lbl{font-size:7px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:2px 6px;margin-bottom:6px;opacity:.7;}
+.tk-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;}
+.tk-pill{font-size:9px;color:var(--muted);border:1px solid var(--rim2);padding:2px 7px;}
+.tk-pill-c{border-color:var(--rim);color:var(--fg);font-weight:500;}
+.tk-note{font-size:10px;color:var(--muted);line-height:1.6;padding-top:8px;border-top:1px solid var(--rim2);opacity:.7;}
+.tk-rest-lbl{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.tk-rest-note{font-size:10px;color:var(--muted);line-height:1.6;opacity:.7;}
 
-/* INFOGRAPHIC BLOCKS */
-.infog{margin:16px 0;background:var(--fg);color:var(--bg);padding:16px;position:relative;overflow:hidden;}
-.infog-title{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;opacity:.5;}
-.infog-grid{display:grid;gap:1px;background:rgba(128,128,128,0.2);}
-.infog-cell{background:var(--fg);padding:12px;display:flex;flex-direction:column;gap:4px;}
-.infog-val{font-size:24px;font-weight:900;letter-spacing:-.02em;line-height:1;}
-.infog-lbl{font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.5;}
+/* BOKS */
+.boks-view{padding:0 16px 100px;}
+.boks-ay-tabs{display:flex;gap:0;margin-top:16px;margin-bottom:14px;border:1px solid var(--rim);}
+.boks-ay-tab{flex:1;padding:8px 4px;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;cursor:pointer;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;line-height:1.4;transition:all .12s;}
+.boks-ay-tab:last-child{border-right:none;}
+.boks-ay-tab.on{background:var(--fg);color:var(--bg);}
+.boks-ay-meta{background:var(--rim2);padding:.8rem 1rem;margin-bottom:12px;}
+.boks-ay-baslik{font-size:13px;font-weight:700;color:var(--fg);margin-bottom:4px;}
+.boks-ay-desc{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:8px;}
+.boks-ay-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.boks-stat{background:var(--bg);padding:.5rem .7rem;border:1px solid var(--rim);}
+.boks-stat-val{font-size:16px;font-weight:800;color:var(--fg);}
+.boks-stat-lbl{font-size:8px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+.boks-hafta{border:1px solid var(--rim);margin-bottom:8px;}
+.boks-hafta-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;cursor:pointer;}
+.boks-hafta-sol{display:flex;align-items:center;gap:10px;}
+.boks-hafta-num{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);min-width:52px;}
+.boks-hafta-baslik{font-size:13px;font-weight:700;color:var(--fg);}
+.boks-hafta-arrow{font-size:14px;color:var(--muted);transition:transform .2s;}
+.boks-hafta-arrow.open{transform:rotate(180deg);}
+.boks-ilerleme{padding:0 12px 8px;}
+.boks-il-lbl{font-size:8px;font-weight:500;letter-spacing:.08em;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:3px;}
+.boks-il-track{height:3px;background:var(--rim);overflow:hidden;}
+.boks-il-fill{height:100%;background:var(--fg);}
+.boks-hafta-body{display:none;border-top:1px solid var(--rim);}
+.boks-hafta-body.open{display:block;}
+.boks-yeni-teknikler{display:flex;flex-wrap:wrap;gap:4px;padding:8px 12px;border-bottom:1px solid var(--rim2);}
+.boks-yt-pill{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;background:var(--fg);color:var(--bg);}
+.boks-seans{padding:10px 12px;}
+.boks-seans-hdr{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.boks-seans-lbl{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.boks-seans-sure{font-size:8px;color:var(--muted);border:1px solid var(--rim);padding:2px 6px;}
+.boks-bolum{margin-bottom:10px;}
+.boks-bolum-ad{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--fg);color:var(--bg);display:inline-block;padding:2px 7px;margin-bottom:6px;}
+.boks-adim{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--rim2);}
+.boks-adim:last-child{border-bottom:none;}
+.boks-adim-num{font-size:9px;font-weight:700;color:var(--muted);min-width:16px;padding-top:1px;}
+.boks-adim-ad{font-size:12px;font-weight:700;color:var(--fg);margin-bottom:2px;}
+.boks-adim-det{font-size:11px;color:var(--muted);line-height:1.5;}
 
-/* COMPARISON TABLE */
-.cmp-table{border:1px solid var(--rim);margin:16px 0;}
-.cmp-row{display:grid;border-bottom:1px solid var(--rim);}
-.cmp-row:last-child{border-bottom:none;}
-.cmp-row.hdr{background:var(--fg);color:var(--bg);}
-.cmp-cell{padding:8px 10px;font-size:10px;font-weight:500;letter-spacing:.04em;}
-.cmp-row.hdr .cmp-cell{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
-.cmp-cell.win{font-weight:700;color:var(--fg);}
-.cmp-cell.muted{color:var(--muted);}
-
-/* PYRAMID */
-.pyramid{margin:16px 0;display:flex;flex-direction:column;gap:2px;}
-.pyr-row{display:flex;align-items:center;gap:10px;}
-.pyr-bar{height:36px;background:var(--fg);display:flex;align-items:center;padding:0 12px;flex-shrink:0;}
-.pyr-bar-label{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);}
-.pyr-text{font-size:10px;color:var(--muted);line-height:1.4;}
-
-/* TIMELINE */
-.timeline{margin:16px 0;display:flex;flex-direction:column;gap:0;}
-.tl-row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--rim);}
-.tl-row:last-child{border-bottom:none;}
-.tl-num{font-size:28px;font-weight:900;letter-spacing:-.02em;color:var(--muted);opacity:.3;width:36px;flex-shrink:0;line-height:1;}
-.tl-content{}
-.tl-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
-.tl-text{font-size:11px;color:var(--muted);line-height:1.6;}
-
-/* FREQUENCY VIZ */
-.freq-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:12px 0;}
-.freq-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--rim);}
-.freq-cell.on{background:var(--fg);color:var(--bg);border-color:var(--fg);}
-.freq-cell.rest{color:var(--muted);}
-
-/* QUOTE */
-.phil-quote{margin:24px 0;padding:20px 16px;border-left:2px solid var(--fg);background:var(--fg);color:var(--bg);}
-.pq-text{font-size:15px;font-weight:800;letter-spacing:-.01em;line-height:1.4;text-transform:uppercase;margin-bottom:6px;}
-.pq-source{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.5;}
-
-/* DIVIDER */
-.phil-divider{height:1px;background:var(--rim);margin:24px 16px 0;}
-
-/* PHILOSOPHY BAR */
-.phil-bar{
-  flex-shrink:0;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 16px;
-  border-bottom:1px solid var(--rim);
-  cursor:pointer;
-  background:var(--fg);
-  color:var(--bg);
-  transition:opacity .15s;
-}
-.phil-bar:active{opacity:.8;}
-.pb-left{display:flex;align-items:center;gap:12px;}
-.pb-tag{font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.45;border-right:1px solid rgba(128,128,128,0.3);padding-right:12px;}
-.pb-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
-.pb-right{font-size:14px;font-weight:300;opacity:.5;}
+/* WOD */
+.wod-bar{border-top:2px solid var(--fg) !important;}
+.wod-view{padding:0 16px 100px;}
+.wod-tabs{display:flex;gap:0;margin-top:16px;margin-bottom:12px;border:1px solid var(--rim);}
+.wod-tab{flex:1;padding:7px 4px;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;cursor:pointer;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;transition:all .12s;}
+.wod-tab:last-child{border-right:none;}
+.wod-tab.on{background:var(--fg);color:var(--bg);}
+.wod-random-btn{width:100%;padding:14px;background:var(--fg);color:var(--bg);border:none;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;margin-bottom:14px;transition:opacity .12s;}
+.wod-random-btn:active{opacity:.7;}
+.wod-ai-btn{width:100%;padding:12px;background:transparent;color:var(--fg);border:1px solid var(--rim);font-family:'Inter Tight',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;margin-bottom:14px;transition:all .12s;}
+.wod-ai-btn:active{opacity:.7;}
+.wod-card{border:1px solid var(--rim);margin-bottom:12px;}
+.wod-card-hdr{padding:14px 14px 10px;}
+.wod-card-type{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;background:var(--fg);color:var(--bg);display:inline-block;padding:2px 8px;margin-bottom:8px;}
+.wod-card-type.ai-badge{background:var(--muted);color:var(--bg);}
+.wod-card-name{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:6px;}
+.wod-card-kategori{font-size:8px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.wod-card-body{border-top:1px solid var(--rim);padding:14px;}
+.wod-card-format{font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);background:var(--muted);display:inline-block;padding:2px 8px;margin-bottom:10px;}
+.wod-card-content{font-size:13px;font-weight:500;color:var(--fg);line-height:1.8;margin-bottom:12px;white-space:pre-line;}
+.wod-card-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.wod-meta-item{background:var(--rim2);padding:.5rem .7rem;}
+.wod-meta-lbl{font-size:7px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.wod-meta-val{font-size:12px;font-weight:700;color:var(--fg);}
+.wod-card-hikaye{font-size:11px;color:var(--muted);line-height:1.7;border-top:1px solid var(--rim2);padding-top:10px;}
+.wod-loading{padding:40px 0;text-align:center;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.wod-liste{display:flex;flex-direction:column;gap:6px;}
+.wod-liste-item{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid var(--rim);cursor:pointer;transition:background .1s;}
+.wod-liste-item:active{background:var(--rim2);}
+.wod-liste-sol{display:flex;align-items:center;gap:10px;}
+.wod-liste-num{font-size:8px;font-weight:400;color:var(--muted);min-width:24px;}
+.wod-liste-ad{font-size:13px;font-weight:700;color:var(--fg);}
+.wod-liste-tur{font-size:8px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.wod-liste-ok{font-size:12px;color:var(--muted);}
+.wod-back{display:flex;align-items:center;gap:8px;padding:14px 0;cursor:pointer;border-bottom:1px solid var(--rim);margin-bottom:14px;}
+.wod-back-arrow{font-size:14px;font-weight:300;color:var(--muted);}
+.wod-back-lbl{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
 </style>
 </head>
 <body>
@@ -265,30 +235,49 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="header-identity">
     <div class="header-logo">
       <div class="logo-name">M. Çağrı <span>Ulu</span></div>
-      <div class="logo-sub">5 · Day · Training · 2026</div>
+      <div class="logo-sub">5 · Gün · Antrenman · 2026</div>
     </div>
     <div class="header-controls">
       <div class="header-year">MMXXVI</div>
-      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">LIGHT</button>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">AÇIK</button>
     </div>
   </div>
   <div class="header-session">
-    <div class="session-label">Active Session</div>
+    <div class="session-label">Aktif Seans</div>
     <div class="session-title" id="hdr-title">PUSH <em>A</em></div>
     <div class="session-target">
       <div class="target-dot"></div>
-      <div class="target-text" id="hdr-target">CHEST · SHOULDER · TRICEPS</div>
+      <div class="target-text" id="hdr-target">GÖĞÜS · OMUZ · TRİSEPS</div>
     </div>
   </div>
 </div>
 
-
 <div class="nav" id="nav"></div>
+<div class="recipe-bar wod-bar" id="wod-bar" onclick="setWod()">
+  <div class="rb-label" style="font-size:10px;font-weight:900;letter-spacing:.2em;">CROSSFIT WOD</div>
+  <div class="rb-count">200+ ikonik WOD · yapay zeka üretimi</div>
+</div>
+<div class="recipe-bar" id="recipe-bar" onclick="setRecipes()">
+  <div class="rb-label">TARİFLER</div>
+  <div class="rb-count" id="rb-count">35 tarif · yüksek proteinli</div>
+</div>
+<div class="recipe-bar" id="takvim-bar" onclick="setTakvim()">
+  <div class="rb-label">HAFTALIK TAKVİM</div>
+  <div class="rb-count">Paz — Paz · 5 antrenman</div>
+</div>
+<div class="recipe-bar" id="boks-bar" onclick="setBoks()">
+  <div class="rb-label">BOKS PROGRAMI</div>
+  <div class="rb-count">3 ay · 12 hafta · temel teknik</div>
+</div>
 
-<div class="scroll">
+<div class="scroll" id="main-scroll">
   <div class="day-view" id="day-view"></div>
-  </div>
-
+  <div class="recipe-view" id="recipe-view" style="display:none;"></div>
+  <div class="recipe-detail" id="recipe-detail" style="display:none;"></div>
+  <div class="takvim-view" id="takvim-view" style="display:none;"></div>
+  <div class="boks-view" id="boks-view" style="display:none;"></div>
+  <div class="wod-view" id="wod-view" style="display:none;"></div>
+</div>
 </div>
 
 <div class="mcu-logo">
@@ -298,14 +287,14 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <script>
 const DAYS=[
-  {key:'push-a',label:'PUSH A',title:'PUSH A',target:'CHEST · SHOULDER · TRICEPS',
+  {key:'push-a',label:'PUSH A',title:'PUSH A',target:'GÖĞÜS · OMUZ · TRİSEPS',
    blocks:[
-    {name:'BLOCK #1 — COMPOUND',exercises:[
-      {num:'I.',name:'Barbell Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['40% × 12','60% × 6','80% × 3']},
-      {num:'II.',name:'Barbell Incline Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['50% × 8','70% × 4','85% × 2']},
-      {num:'III.',name:'Barbell OHP (Standing)',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['40% × 10','60% × 5','80% × 3']},
+    {name:'BLOK #1 — COMPOUND',exercises:[
+      {num:'I.',name:'Barbell Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['%40 × 12','%60 × 6','%80 × 3']},
+      {num:'II.',name:'Barbell Incline Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['%50 × 8','%70 × 4','%85 × 2']},
+      {num:'III.',name:'Barbell OHP (Standing)',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['%40 × 10','%60 × 5','%80 × 3']},
     ]},
-    {name:'BLOCK #2 — ISOLATION',exercises:[
+    {name:'BLOK #2 — İZOLASYON',exercises:[
       {num:'I.',name:'Pec Deck',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
       {num:'II.',name:'Cable Lateral Raise',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'III.',name:'Overhead Cable Triceps Extension',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
@@ -313,47 +302,47 @@ const DAYS=[
       {num:'V.',name:'Dips',sets:'3',reps:'Max',notes:'Failure',warmup:[]},
     ]},
   ]},
-  {key:'pull-a',label:'PULL A',title:'PULL A',target:'BACK · BICEPS · FOREARMS',
+  {key:'pull-a',label:'PULL A',title:'PULL A',target:'SIRT · BİSEPS · ÖNKOL',
    blocks:[
-    {name:'BLOCK #1 — COMPOUND',exercises:[
-      {num:'I.',name:'Deadlift',sets:'2',reps:'4–5',notes:'RIR 1',warmup:['40% × 8','65% × 4','85% × 2']},
-      {num:'II.',name:'Lat Pulldown',sets:'2',reps:'6–8',notes:'RIR 1 / Failure',warmup:['55% × 8']},
+    {name:'BLOK #1 — COMPOUND',exercises:[
+      {num:'I.',name:'Deadlift',sets:'2',reps:'4–5',notes:'RIR 1',warmup:['%40 × 8','%65 × 4','%85 × 2']},
+      {num:'II.',name:'Lat Pulldown',sets:'2',reps:'6–8',notes:'RIR 1 / Failure',warmup:['%55 × 8']},
       {num:'III.',name:'Pull-up',sets:'1',reps:'6–8',notes:'BW',warmup:[]},
-      {num:'IV.',name:'Chest Supported T-Bar Row',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['50% × 8','75% × 4','88% × 2']},
+      {num:'IV.',name:'Chest Supported T-Bar Row',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['%50 × 8','%75 × 4','%88 × 2']},
     ]},
-    {name:'BLOCK #2 — ISOLATION',exercises:[
+    {name:'BLOK #2 — İZOLASYON',exercises:[
       {num:'I.',name:'Cable Row',sets:'1',reps:'8–10',notes:'Failure',warmup:[]},
-      {num:'II.',name:'Incline Dumbbell Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:['50% × 8']},
+      {num:'II.',name:'Incline Dumbbell Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:['%50 × 8']},
       {num:'III.',name:'Cable Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
       {num:'IV.',name:'Hammer Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'V.',name:'Reverse Barbell Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
     ]},
   ]},
-  {key:'legs',label:'LEGS',title:'LEGS',target:'QUAD · HAMSTRING · GLUTES · CORE',
+  {key:'legs',label:'LEGS',title:'LEGS',target:'QUAD · HAMSTRİNG · GLUTE · CORE',
    blocks:[
-    {name:'BLOCK #1 — STRENGTH',exercises:[
-      {num:'I.',name:'Back Squat',sets:'3',reps:'4–5',notes:'RIR 1–2',warmup:['40% × 10','60% × 5','80% × 3']},
+    {name:'BLOK #1 — GÜÇ',exercises:[
+      {num:'I.',name:'Back Squat',sets:'3',reps:'4–5',notes:'RIR 1–2',warmup:['%40 × 10','%60 × 5','%80 × 3']},
     ]},
-    {name:'BLOCK #2 — COMPOUND',exercises:[
+    {name:'BLOK #2 — COMPOUND',exercises:[
       {num:'I.',name:'Leg Press',sets:'2',reps:'6–8',notes:'RIR 1–2',warmup:[]},
     ]},
-    {name:'BLOCK #3 — ISOLATION',exercises:[
+    {name:'BLOK #3 — İZOLASYON',exercises:[
       {num:'I.',name:'Seated Leg Extension',sets:'3',reps:'6–8',notes:'Failure',warmup:[]},
       {num:'II.',name:'Lying Leg Curl',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
     ]},
-    {name:'BLOCK #4 — CORE & CALVES',exercises:[
+    {name:'BLOK #4 — CORE & CALVES',exercises:[
       {num:'I.',name:'Toes-to-Bar',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'II.',name:'Hanging Leg Raises',sets:'3',reps:'10–12',notes:'Failure',warmup:[]},
       {num:'III.',name:'Standing Calf Raise',sets:'3',reps:'12–15',notes:'Failure',warmup:[]},
     ]},
   ]},
-  {key:'push-b',label:'PUSH B',title:'PUSH B',target:'SHOULDER · CHEST · TRICEPS',
+  {key:'push-b',label:'PUSH B',title:'PUSH B',target:'OMUZ · GÖĞÜS · TRİSEPS',
    blocks:[
-    {name:'BLOCK #1 — COMPOUND',exercises:[
-      {num:'I.',name:'Barbell OHP (Standing)',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['40% × 10','60% × 5','82% × 3']},
-      {num:'II.',name:'Barbell Incline Bench Press',sets:'2',reps:'5–6',notes:'RIR 1',warmup:['50% × 6']},
+    {name:'BLOK #1 — COMPOUND',exercises:[
+      {num:'I.',name:'Barbell OHP (Standing)',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['%40 × 10','%60 × 5','%82 × 3']},
+      {num:'II.',name:'Barbell Incline Bench Press',sets:'2',reps:'5–6',notes:'RIR 1',warmup:['%50 × 6']},
     ]},
-    {name:'BLOCK #2 — ISOLATION',exercises:[
+    {name:'BLOK #2 — İZOLASYON',exercises:[
       {num:'I.',name:'Cable Lateral Raise',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'II.',name:'Pec Deck',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
       {num:'III.',name:'Cable Rear Delt Fly',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
@@ -362,14 +351,14 @@ const DAYS=[
       {num:'VI.',name:'Dips',sets:'3',reps:'Max',notes:'Failure',warmup:[]},
     ]},
   ]},
-  {key:'pull-b',label:'PULL B+LEGS',title:'PULL B+LEGS',target:'BACK · BICEPS · FOREARMS · LEGS',
+  {key:'pull-b',label:'PULL B+LEGS',title:'PULL B+LEGS',target:'SIRT · BİSEPS · ÖNKOL · LEGS',
    blocks:[
-    {name:'BLOCK #1 — COMPOUND',exercises:[
-      {num:'I.',name:'Chest Supported T-Bar Row',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['45% × 10','65% × 5','82% × 3']},
-      {num:'II.',name:'Lat Pulldown V-bar',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['55% × 8']},
+    {name:'BLOK #1 — COMPOUND',exercises:[
+      {num:'I.',name:'Chest Supported T-Bar Row',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['%45 × 10','%65 × 5','%82 × 3']},
+      {num:'II.',name:'Lat Pulldown V-bar',sets:'3',reps:'6–8',notes:'RIR 1 / Failure',warmup:['%55 × 8']},
       {num:'III.',name:'Pull-up',sets:'1',reps:'6–8',notes:'BW',warmup:[]},
     ]},
-    {name:'BLOCK #2 — ISOLATION',exercises:[
+    {name:'BLOK #2 — İZOLASYON',exercises:[
       {num:'I.',name:'Cable Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
       {num:'II.',name:'Hammer Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'III.',name:'Reverse Barbell Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
@@ -380,43 +369,280 @@ const DAYS=[
   ]},
 ];
 
+const RECIPES=[
+  {name:'Tavuklu Yulaf Kasesi',emoji:'🥣',protein:45,time:'10 dk',tool:'Tava',cat:'Sabah',
+   ing:['Yulaf 60g','Tavuk göğsü 150g (pişirilmiş)','Süzme yoğurt 2 yemek kaşığı','Tere + marul'],
+   steps:['Yulafı süt veya suyla 5 dk pişir.','Tavuğu tavada ısıt.','Kaseye yulaf, üstüne tavuk, süzme yoğurt ve yeşillikler ekle.']},
+  {name:'Airfryer Tavuk Göğsü',emoji:'🍗',protein:48,time:'20 dk',tool:'Airfryer',cat:'Öğle',
+   ing:['Tavuk göğsü 200g','Zeytinyağı 1 tatlı kaşığı','Tuz, pul biber, sarımsak tozu'],
+   steps:['Tavuğu yağ ve baharatlarla ovala.','Airfryer\'ı 200°C\'ye ısıt.','18–20 dk pişir, ortada bir kez çevir.']},
+  {name:'Hindi Kıyma Kavurma',emoji:'🥩',protein:42,time:'15 dk',tool:'Tava',cat:'Akşam',
+   ing:['Hindi kıyma 200g','Taze soğan','Marul + roka','Lavaş (küçük)'],
+   steps:['Tava kızdır, kıymayı yağsız kavur.','Taze soğan ekle, 2 dk daha çevir.','Lavaşa kıyma ve yeşilliklerle dürüm yap.']},
+  {name:'Ton Balıklı Marul Sarma',emoji:'🥗',protein:38,time:'5 dk',tool:'Yok',cat:'Atıştırma',
+   ing:['Ton balığı 1 kutu (su içinde)','Süzme yoğurt 2 yemek kaşığı','Taze soğan','Marul yaprakları'],
+   steps:['Tonu süzüp yoğurt ve soğanla karıştır.','Marul yapraklarına kaşıkla doldur.','Üstüne roka ekleyerek servis yap.']},
+  {name:'Yumurtalı Lavaş Rulo',emoji:'🌯',protein:32,time:'10 dk',tool:'Tava',cat:'Sabah',
+   ing:['3 yumurta','Lor peyniri 50g','Lavaş 1 adet','Tere + taze soğan'],
+   steps:['Yumurtaları çırp, tavada pişir.','Lor peyniri ekle, karıştır.','Lavaşa yay, tere ve soğanla sar.']},
+  {name:'Fırında Kıymalı Biber',emoji:'🫑',protein:40,time:'30 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Kıyma 200g','Kapya biber 2 adet','Yoğurt (üstüne)','Tuz, kimyon'],
+   steps:['Kıymayı baharatla kavur.','Biberleri ikiye böl, kıymayı doldur.','180°C fırında 25 dk pişir, yanında yoğurtla servis et.']},
+  {name:'Protein Smoothie',emoji:'🥤',protein:45,time:'3 dk',tool:'Yok',cat:'Sabah',
+   ing:['Whey protein 1 ölçek','Süt 250ml','Yulaf 30g','Fıstık ezmesi 1 yemek kaşığı'],
+   steps:['Tüm malzemeleri blendere koy.','30 saniye karıştır.','Antrenmandan önce veya sonra tüket.']},
+  {name:'Airfryer Ton Topu',emoji:'🐟',protein:35,time:'15 dk',tool:'Airfryer',cat:'Atıştırma',
+   ing:['Ton balığı 2 kutu','Yumurta 1 adet','Yulaf unu 2 yemek kaşığı','Tuz, karabiber'],
+   steps:['Tonu süz, yumurta ve yulaf unuyla yoğur.','Küçük toplar yap.','Airfryer\'da 180°C\'de 12 dk pişir.']},
+  {name:'Süzme Yoğurt Kasesi',emoji:'🫙',protein:30,time:'3 dk',tool:'Yok',cat:'Sabah',
+   ing:['Süzme yoğurt 200g','Badem 15g','Fıstık ezmesi 1 tatlı kaşığı','Yulaf 20g'],
+   steps:['Süzme yoğurdu kaseye al.','Üstüne badem, fıstık ezmesi ve yulaf ekle.','Karıştırarak ye.']},
+  {name:'Ninja Tavuklu Wrap',emoji:'🫔',protein:50,time:'25 dk',tool:'Ninja Crispi',cat:'Öğle',
+   ing:['Tavuk göğsü 200g','Lavaş 1 adet','Süzme yoğurt + sarımsak','Marul, taze soğan, roka'],
+   steps:['Tavuğu Ninja\'da yağsız pişir (200°C, 20 dk).','Dilimlere kes.','Lavaşa yoğurt sürüp tavuk ve yeşilliklerle sar.']},
+  {name:'Hindi Köfte',emoji:'🫕',protein:44,time:'20 dk',tool:'Tava',cat:'Akşam',
+   ing:['Hindi kıyma 250g','Taze soğan','Tuz, kimyon, pul biber','Yanında yoğurt'],
+   steps:['Kıymayı baharatla yoğur, köfte şekli ver.','Tava kızdır, her iki tarafı 4–5 dk pişir.','Yanında süzme yoğurt ve yeşilliklerle servis et.']},
+  {name:'Protein Omlet',emoji:'🍳',protein:36,time:'8 dk',tool:'Tava',cat:'Sabah',
+   ing:['3 yumurta + 1 ölçek whey','Lor peyniri 40g','Tere + taze soğan','Tuz'],
+   steps:['Yumurtayı whey ile çırp.','Tavaya dök, lor peyniri serp.','Katlayarak pişir, taze soğan ve tereyle servis et.']},
+  {name:'Fıstık Ezmeli Atıştırmalık',emoji:'🍫',protein:25,time:'5 dk',tool:'Yok',cat:'Atıştırma',
+   ing:['Protein bar 1 adet','Fıstık ezmesi 1 yemek kaşığı','Badem 10g','Bitkisel süt 200ml'],
+   steps:['Protein barı dilimlere böl.','Yanına fıstık ezmesi ve badem koy.','Bitkisel sütle birlikte tüket.']},
+  {name:'Airfryer Kıyma Patates',emoji:'🥔',protein:38,time:'25 dk',tool:'Airfryer',cat:'Akşam',
+   ing:['Kıyma 150g','Patates 1 orta boy','Tuz, pul biber','Yoğurt (yanında)'],
+   steps:['Patatesi küp kes, airfryer\'da 180°C 15 dk pişir.','Kıymayı tavada kavur.','Kıyma ve patatesi karıştır, yanında yoğurtla servis et.']},
+  {name:'Ton Balıklı Lavaş Pizza',emoji:'🍕',protein:42,time:'12 dk',tool:'Fırın',cat:'Öğle',
+   ing:['Lavaş 1 adet','Ton balığı 1 kutu','Yoğurt 2 yemek kaşığı','Taze soğan, roka'],
+   steps:['Lavaşa yoğurt sür.','Ton balığı ve soğan dağıt.','200°C fırında 8–10 dk pişir, üstüne roka ekle.']},
+  {name:'Gece Yulaf Kasesi',emoji:'🌙',protein:35,time:'2 dk + bekleme',tool:'Yok',cat:'Sabah',
+   ing:['Yulaf 60g','Bitkisel süt 200ml','Whey protein yarım ölçek','Badem 10g'],
+   steps:['Yulaf ve sütü kaba koy, karıştır.','Whey ekleyip tekrar karıştır.','Buzdolabında gece beklet, sabah badem ile ye.']},
+  {name:'Ninja Kıymalı Pide',emoji:'🫓',protein:46,time:'20 dk',tool:'Ninja Crispi',cat:'Akşam',
+   ing:['Kıyma 200g','Lavaş 1 adet','Taze soğan, pul biber','Yoğurt (yanında)'],
+   steps:['Kıymayı baharat ve soğanla kavur.','Lavaşa yay.','Ninja\'da 180°C 8 dk kızart, yanında yoğurtla servis et.']},
+  {name:'Badem Sütlü Protein Shake',emoji:'🥛',protein:40,time:'3 dk',tool:'Yok',cat:'Atıştırma',
+   ing:['Whey protein 1.5 ölçek','Badem sütü 300ml','Fıstık ezmesi 1 yemek kaşığı','Yulaf 20g'],
+   steps:['Hepsini blendere koy veya shaker\'da çalkala.','Antrenman öncesi 30–60 dk içmen ideal.','Kıvamını sevmiyorsan su ile açabilirsin.']},
+  {name:'Tavuklu Lor Kasesi',emoji:'🫙',protein:52,time:'15 dk',tool:'Tava',cat:'Öğle',
+   ing:['Tavuk göğsü 180g','Lor peyniri 80g','Marul + roka + tere','Taze soğan'],
+   steps:['Tavuğu tavada pişir, ince dilimlere kes.','Lor peynirini tabağa yay.','Üstüne tavuk ve yeşillikleri ekle.']},
+  {name:'Haşlanmış Yumurta Tabağı',emoji:'🥚',protein:28,time:'12 dk',tool:'Ocak',cat:'Sabah',
+   ing:['4 yumurta','Süzme yoğurt 100g','Tere + taze soğan','Tuz, pul biber'],
+   steps:['Yumurtaları 10 dk haşla, soğut ve soy.','Tabağa süzme yoğurt koy.','Yumurtaları ikiye bölerek üstüne diz, yeşillik ve baharat ekle.']},
+  {name:'Somon Izgara',emoji:'🐠',protein:46,time:'15 dk',tool:'Tava',cat:'Akşam',
+   ing:['Somon fileto 200g','Zeytinyağı','Limon suyu','Tuz, dereotu'],
+   steps:['Somonu limon ve zeytinyağıyla marine et, 5 dk beklet.','Tava kızdır, her iki tarafı 4–5 dk pişir.','Yanında yeşillikle servis et.']},
+  {name:'Karides Sote',emoji:'🍤',protein:38,time:'10 dk',tool:'Tava',cat:'Akşam',
+   ing:['Karides 250g (soyulmuş)','Sarımsak 3 diş','Zeytinyağı','Tuz, pul biber, limon'],
+   steps:['Karidesler çözülmüş olmalı, kurulat.','Sarımsağı zeytinyağında 1 dk kavur.','Karides ekle, 2–3 dk her taraf, limonla tatlandır.']},
+  {name:'Protein Pancake',emoji:'🥞',protein:40,time:'15 dk',tool:'Tava',cat:'Sabah',
+   ing:['Whey protein 1 ölçek','Yumurta 2 adet','Yulaf unu 40g','Bitkisel süt 100ml'],
+   steps:['Tüm malzemeleri karıştır, kıvam koyuca olmalı.','Tava kızdır, yağsız pişir.','Her iki taraf 2–3 dk, yanında yoğurtla servis et.']},
+  {name:'Fırında Somon Paket',emoji:'🐟',protein:50,time:'25 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Somon fileto 220g','Limon dilimleri','Sarımsak','Zeytinyağı, tuz, dereotu'],
+   steps:['Somonu alüminyum folyo üzerine koy.','Üstüne sarımsak, limon, zeytinyağı ekle, paketi kapat.','190°C fırında 20–22 dk pişir.']},
+  {name:'Airfryer Tavuk Kanat',emoji:'🍗',protein:44,time:'25 dk',tool:'Airfryer',cat:'Akşam',
+   ing:['Tavuk kanadı 300g','Tuz, pul biber, sarımsak tozu','Zeytinyağı 1 tatlı kaşığı'],
+   steps:['Kanatları baharatla ovala, 10 dk beklet.','Airfryer\'ı 200°C\'ye ısıt.','20–22 dk pişir, 10. dakikada çevir.']},
+  {name:'Dana Biftek',emoji:'🥩',protein:52,time:'15 dk',tool:'Tava',cat:'Akşam',
+   ing:['Dana bonfile 200g','Tereyağı 1 tatlı kaşığı','Sarımsak 2 diş','Tuz, karabiber, kekik'],
+   steps:['Eti oda sıcaklığına getir, tuz ve karabiber ov.','Tava çok sıcak olmalı, her taraf 3–4 dk.','Son 1 dk tereyağı ve sarımsak ekle, üstüne dökerek pişir.']},
+  {name:'Mercimek Çorbası',emoji:'🍲',protein:22,time:'25 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Kırmızı mercimek 150g','Soğan 1 adet','Havuç 1 adet','Tuz, kimyon, pul biber'],
+   steps:['Soğan ve havucu sotele, mercimek ve su ekle.','20 dk kaynat, blenderdan geçir.','Üstüne tereyağında kızdırılmış pul biber dök.']},
+  {name:'Ninja Crispi Somon',emoji:'🐟',protein:48,time:'18 dk',tool:'Ninja Crispi',cat:'Öğle',
+   ing:['Somon fileto 200g','Zeytinyağı, limon suyu','Tuz, sarımsak tozu, dereotu'],
+   steps:['Somonu baharatla, 5 dk beklet.','Ninja\'yı 200°C\'ye ısıt.','Cilt tarafı aşağı, 12–14 dk pişir.']},
+  {name:'Yüksek Proteinli Çorba',emoji:'🫕',protein:42,time:'20 dk',tool:'Ocak',cat:'Akşam',
+   ing:['Tavuk göğsü 200g (küp)','Yumurta 2 adet','Tavuk suyu 500ml','Tuz, karabiber, limon'],
+   steps:['Tavuk suyunu kaynat, küp tavuğu ekle, 10 dk pişir.','Yumurtaları çırp, ince akış halinde çorbaya dökerek karıştır.','Limon sıkıp servis et.']},
+  {name:'Dana Kıymalı Yumurta',emoji:'🍳',protein:48,time:'15 dk',tool:'Tava',cat:'Sabah',
+   ing:['Dana kıyma 150g','Yumurta 2 adet','Soğan yarım adet','Tuz, kimyon, pul biber'],
+   steps:['Kıymayı soğanla kavur, baharatla.','Ortasını aç, yumurtaları kır.','Kısık ateşte istediğin kıvama gelince servis et.']},
+  {name:'Karides Salata',emoji:'🥗',protein:35,time:'10 dk',tool:'Tava',cat:'Öğle',
+   ing:['Karides 200g','Marul, roka','Avokado yarım','Zeytinyağı + limon sos'],
+   steps:['Karidesler 2–3 dk tavada pişir, soğut.','Yeşillikler ve avokadoyu tabağa diz.','Karides ekle, zeytinyağı ve limonla sos yap.']},
+  {name:'Protein Mug Cake',emoji:'🎂',protein:30,time:'5 dk',tool:'Ocak',cat:'Atıştırma',
+   ing:['Whey protein 1 ölçek','Yumurta 1 adet','Fıstık ezmesi 1 yemek kaşığı','Bitkisel süt 3 yemek kaşığı'],
+   steps:['Tüm malzemeleri büyük bir kupa içinde karıştır.','Bain-marie usulü 5–6 dk pişir.','Sıcak tüket.']},
+  {name:'Fırında Bütün Tavuk',emoji:'🍖',protein:55,time:'75 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Bütün tavuk 1kg','Zeytinyağı, sarımsak','Tuz, kekik, pul biber, limon'],
+   steps:['Tavuğu baharatla iyice ovala, 1 saat beklet.','190°C fırında 60–70 dk pişir.','Dinlendirip servis et — 4 öğünlük protein deposu.']},
+];
 
-let cur=0,light=false;
+const CATS=['Tümü','Sabah','Öğle','Akşam','Atıştırma'];
+let cur=0,light=false,mode='program',activeRecipe=null,recipeCat='Tümü';
 
 function toggleTheme(){
   light=!light;
   document.documentElement.setAttribute('data-theme',light?'light':'');
-  document.getElementById('theme-btn').textContent=light?'DARK':'LIGHT';
+  document.getElementById('theme-btn').textContent=light?'KOYU':'AÇIK';
 }
-
-
-
-
-
-
-
-
-
 
 function renderNav(){
   var tabs=DAYS.map(function(d,i){
-    return '<div class="nav-tab'+(i===cur?' on':'')+'" onclick="setDay('+i+')">'+
+    return '<div class="nav-tab'+(mode==='program'&&i===cur?' on':'')+'" onclick="setDay('+i+')">'+
       '<div class="nav-tab-num">0'+(i+1)+'</div>'+
       '<div class="nav-tab-lbl">'+d.label+'</div>'+
     '</div>';
   }).join('');
   document.getElementById('nav').innerHTML=tabs;
+  document.getElementById('recipe-bar').classList.toggle('on',mode==='recipes');
+  document.getElementById('takvim-bar').classList.toggle('on',mode==='takvim');
+  document.getElementById('boks-bar').classList.toggle('on',mode==='boks');
+  document.getElementById('wod-bar').classList.toggle('on',mode==='wod');
 }
 
+function hideAll(){
+  document.getElementById('day-view').style.display='none';
+  document.getElementById('recipe-view').style.display='none';
+  document.getElementById('recipe-detail').style.display='none';
+  document.getElementById('takvim-view').style.display='none';
+  document.getElementById('boks-view').style.display='none';
+  document.getElementById('wod-view').style.display='none';
+}
+
+function setTakvim(){
+  mode='takvim';
+  document.getElementById('hdr-title').textContent='TAKVİM';
+  document.getElementById('hdr-target').textContent='HAFTALIK ANTRENMAN PLANI';
+  hideAll();
+  document.getElementById('takvim-view').style.display='block';
+  renderTakvim();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderTakvim(){
+  const schedule=[
+    {
+      gun:'PAZARTESİ',num:'01',session:'Push A',rest:false,
+      kaslar:['Göğüs','Omuz','Triceps'],
+      sets:15, sure:'65–75 dk',
+      compound:['Bench Press','Incline Bench','OHP'],
+      izolasyon:['Pec Deck','Cable Lateral Raise','Overhead Triceps','Triceps Pushdown','Dips'],
+      yuk:'AĞIR',rir:'RIR 1',
+      notlar:'Haftalık en ağır üst vücut seansı. Bench ve OHP\'de max progresyon günü.',
+      dagılım:[{kas:'Göğüs',set:7},{kas:'Omuz',set:5},{kas:'Triceps',set:9}],
+    },
+    {
+      gun:'SALI',num:'02',session:'Pull A',rest:false,
+      kaslar:['Sırt','Biceps','Önkol'],
+      sets:18, sure:'65–75 dk',
+      compound:['Deadlift','Lat Pulldown','Pull-up','T-Bar Row'],
+      izolasyon:['Cable Row','Incline DB Curl','Cable Curl','Hammer Curl','Reverse Curl'],
+      yuk:'AĞIR',rir:'RIR 1',
+      notlar:'Deadlift önce gelir, taze başlanır. Sırt hacmi haftanın en yüksek günü.',
+      dagılım:[{kas:'Sırt',set:9},{kas:'Biceps',set:6},{kas:'Önkol',set:4}],
+    },
+    {
+      gun:'ÇARŞAMBA',num:'03',session:'Legs',rest:false,
+      kaslar:['Quad','Hamstring','Glute','Core'],
+      sets:17, sure:'65–75 dk',
+      compound:['Back Squat','Leg Press'],
+      izolasyon:['Leg Extension','Lying Leg Curl','Toes-to-Bar','Hanging Leg Raises','Calf Raise'],
+      yuk:'AĞIR',rir:'RIR 1–2',
+      notlar:'Haftanın en yorucu seansı. Perşembe dinlenmesi burada kritik.',
+      dagılım:[{kas:'Quad',set:8},{kas:'Hamstring',set:6},{kas:'Glute',set:4},{kas:'Core',set:6}],
+    },
+    {
+      gun:'PERŞEMBE',num:'04',rest:true,
+      notlar:'Zorunlu dinlenme. Çarşamba Legs + Cuma Push B arasında tampon gün. Kas protein sentezi burada gerçekleşiyor.',
+    },
+    {
+      gun:'CUMA',num:'05',session:'Push B',rest:false,
+      kaslar:['Omuz','Göğüs','Triceps'],
+      sets:16, sure:'60–70 dk',
+      compound:['OHP','Incline Bench'],
+      izolasyon:['Cable Lateral Raise','Pec Deck','Cable Rear Delt Fly','Overhead Rope','Triceps Pushdown','Dips'],
+      yuk:'ORTA–AĞIR',rir:'RIR 1',
+      notlar:'OHP primer, göğüs yardımcı. Push A\'ya göre omuz dominant. Rear delt burada.',
+      dagılım:[{kas:'Omuz',set:9},{kas:'Göğüs',set:6},{kas:'Triceps',set:9}],
+    },
+    {
+      gun:'CUMARTESİ',num:'06',session:'Pull B + Legs',rest:false,
+      kaslar:['Sırt','Biceps','Quad','Hamstring'],
+      sets:16, sure:'65–75 dk',
+      compound:['T-Bar Row','Lat Pulldown V-bar','Pull-up'],
+      izolasyon:['Cable Curl','Hammer Curl','Reverse Curl','Leg Extension','Lying Leg Curl','Calf Raise'],
+      yuk:'ORTA',rir:'RIR 1 / Failure',
+      notlar:'Haftayı kapatır. Sırt 2. frekansı + quad/hamstring ek hacim. Calf 2. seans.',
+      dagılım:[{kas:'Sırt',set:7},{kas:'Biceps',set:6},{kas:'Quad',set:5},{kas:'Hamstring',set:4}],
+    },
+    {
+      gun:'PAZAR',num:'07',rest:true,
+      notlar:'Tam dinlenme. Haftalık toplam 82 set işlenmiş olur. Toparlanma ve adaptasyon günü.',
+    },
+  ];
+
+  const totalSets=schedule.filter(g=>!g.rest).reduce((a,g)=>a+g.sets,0);
+  const trainDays=schedule.filter(g=>!g.rest).length;
+
+  let html='';
+
+  // Haftalık özet kartları
+  html+='<div class="tk-summary">';
+  html+='<div class="tk-sum-card"><div class="tk-sum-val">'+trainDays+'</div><div class="tk-sum-lbl">Antrenman Günü</div></div>';
+  html+='<div class="tk-sum-card"><div class="tk-sum-val">'+totalSets+'</div><div class="tk-sum-lbl">Toplam Set</div></div>';
+  html+='<div class="tk-sum-card"><div class="tk-sum-val">2×</div><div class="tk-sum-lbl">Kas Frekansı</div></div>';
+  html+='<div class="tk-sum-card"><div class="tk-sum-val">~70 dk</div><div class="tk-sum-lbl">Ort. Süre</div></div>';
+  html+='</div>';
+
+  // Gün kartları
+  schedule.forEach(g=>{
+    if(g.rest){
+      html+='<div class="tk-row tk-rest">';
+      html+='<div class="tk-left"><div class="tk-gun">'+g.gun+'</div><div class="tk-num">'+g.num+'</div></div>';
+      html+='<div class="tk-right"><div class="tk-rest-lbl">DİNLENME</div><div class="tk-rest-note">'+g.notlar+'</div></div>';
+      html+='</div>';
+    } else {
+      html+='<div class="tk-row">';
+      // Sol kolon
+      html+='<div class="tk-left"><div class="tk-gun">'+g.gun+'</div><div class="tk-num">'+g.num+'</div></div>';
+      // Sağ içerik
+      html+='<div class="tk-right">';
+      html+='<div class="tk-session-hdr">';
+      html+='<div class="tk-session-name">'+g.session+'</div>';
+      html+='<div class="tk-badges"><span class="tk-badge">'+g.sets+' set</span><span class="tk-badge">'+g.sure+'</span><span class="tk-badge tk-badge-yuk">'+g.yuk+'</span></div>';
+      html+='</div>';
+
+      // Kas yük bar'ları
+      html+='<div class="tk-bars">';
+      g.dagılım.forEach(d=>{
+        const pct=Math.round((d.set/12)*100);
+        html+='<div class="tk-bar-row"><span class="tk-bar-kas">'+d.kas+'</span><div class="tk-bar-track"><div class="tk-bar-fill" style="width:'+Math.min(pct,100)+'%"></div></div><span class="tk-bar-val">'+d.set+'</span></div>';
+      });
+      html+='</div>';
+
+      // Compound hareketler
+      html+='<div class="tk-section-lbl">COMPOUND</div>';
+      html+='<div class="tk-pills">'+g.compound.map(c=>'<span class="tk-pill tk-pill-c">'+c+'</span>').join('')+'</div>';
+
+      // İzolasyon
+      html+='<div class="tk-section-lbl">İZOLASYON</div>';
+      html+='<div class="tk-pills">'+g.izolasyon.map(c=>'<span class="tk-pill">'+c+'</span>').join('')+'</div>';
+
+      // Not
+      html+='<div class="tk-note">'+g.notlar+'</div>';
+
+      html+='</div></div>';
+    }
+  });
+
+  document.getElementById('takvim-view').innerHTML=html;
+}
 
 function renderDay(){
   const d=DAYS[cur];
-  document.getElementById('hdr-title').textContent=d.title;
+  document.getElementById('hdr-title').innerHTML=d.title;
   document.getElementById('hdr-target').textContent=d.target;
+  hideAll();
+  document.getElementById('day-view').style.display='block';
   let html='';
   d.blocks.forEach((b,bi)=>{
     if(bi>0) html+='<div class="block-sep"></div>';
-    html+='<div class="block"><div class="block-hdr"><div class="bh-title">'+b.name+'</div><div class="bh-col">SETS</div><div class="bh-col">REPS</div><div class="bh-col">NOTES</div></div>';
+    html+='<div class="block"><div class="block-hdr"><div class="bh-title">'+b.name+'</div><div class="bh-col">SET</div><div class="bh-col">REP</div><div class="bh-col">NOT</div></div>';
     b.exercises.forEach(ex=>{
       const pills=ex.warmup.length>0?'<div class="warmup-pills">'+ex.warmup.map(w=>'<div class="wp">'+w+'</div>').join('')+'</div>':'';
       html+='<div class="ex-row"><div><div class="ex-num">'+ex.num+'</div><div class="ex-name">'+ex.name+'</div>'+pills+'</div><div class="ex-val">'+ex.sets+'</div><div class="ex-val">'+ex.reps+'</div><div class="ex-val muted">'+ex.notes+'</div></div>';
@@ -424,14 +650,996 @@ function renderDay(){
     html+='</div>';
   });
   document.getElementById('day-view').innerHTML=html;
-  document.getElementById('day-view').style.display='block';
-  document.querySelector('.scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;
 }
 
 function setDay(i){
-  cur=i;renderNav();
-  document.getElementById('day-view').style.display='block';
-  renderDay();
+  cur=i;mode='program';
+  renderNav();renderDay();
+}
+
+function setRecipes(){
+  mode='recipes';activeRecipe=null;
+  document.getElementById('hdr-title').textContent='TARİFLER';
+  document.getElementById('hdr-target').textContent='YÜKSEK PROTEİNLİ · '+RECIPES.length+' TARİF';
+  hideAll();
+  document.getElementById('recipe-view').style.display='block';
+  renderRecipeGrid();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderRecipeGrid(){
+  const filtered=recipeCat==='Tümü'?RECIPES:RECIPES.filter(r=>r.cat===recipeCat);
+  let html='<div class="recipe-filter-row">';
+  CATS.forEach(c=>{
+    html+='<button class="rf-btn'+(recipeCat===c?' on':'')+'" onclick="setRecipeCat(\''+c+'\')">'+c+'</button>';
+  });
+  html+='</div>';
+  html+='<div class="recipe-grid">';
+  filtered.forEach((r,i)=>{
+    const idx=RECIPES.indexOf(r);
+    html+='<div class="r-card" onclick="showRecipe('+idx+')">'+
+      '<div class="r-card-name">'+r.name+'</div>'+
+      '<div class="r-card-pills">'+
+        '<span class="r-pill protein">'+r.protein+'g</span>'+
+        '<span class="r-pill">'+r.time+'</span>'+
+        '<span class="r-pill">'+r.tool+'</span>'+
+      '</div>'+
+    '</div>';
+  });
+  html+='</div>';
+  document.getElementById('recipe-view').innerHTML=html;
+}
+
+function setRecipeCat(cat){
+  recipeCat=cat;
+  renderRecipeGrid();
+}
+
+function showRecipe(idx){
+  activeRecipe=idx;
+  const r=RECIPES[idx];
+  document.getElementById('recipe-view').style.display='none';
+  const det=document.getElementById('recipe-detail');
+  det.style.display='block';
+  let html='<div class="rd-back" onclick="backToRecipes()">'+
+    '<span class="rd-back-arrow">←</span>'+
+    '<span class="rd-back-lbl">Tariflere Dön</span>'+
+  '</div>';
+  html+='<div class="rd-name">'+r.name+'</div>';
+  html+='<div class="rd-meta">'+
+    '<span class="rd-pill protein">'+r.protein+'g protein</span>'+
+    '<span class="rd-pill">'+r.time+'</span>'+
+    '<span class="rd-pill">'+r.tool+'</span>'+
+    '<span class="rd-pill">'+r.cat+'</span>'+
+  '</div>';
+  html+='<div class="rd-section">Malzemeler</div>';
+  html+='<ul class="rd-ing-list">'+r.ing.map(i=>'<li>'+i+'</li>').join('')+'</ul>';
+  html+='<div class="rd-section">Yapılış</div>';
+  html+='<ol class="rd-steps-list">'+r.steps.map((s,i)=>
+    '<li class="rd-step"><span class="rd-step-num">'+(i+1)+'</span><span class="rd-step-text">'+s+'</span></li>'
+  ).join('')+'</ol>';
+  det.innerHTML=html;
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function backToRecipes(){
+  document.getElementById('recipe-detail').style.display='none';
+  document.getElementById('recipe-view').style.display='block';
+  renderRecipeGrid();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+const BOKS_PLAN=[
+  {ay:'Ay 1',subtitle:'Temel & Duruş',desc:'İlk ay tamamen temele ayrılmış. Doğru duruş, ayak pozisyonu ve temel iki vuruş: jab ve cross. Hız, güç, kondisyon sonraya — şimdi sadece form.',seansSayisi:8,teknikSayisi:4,
+   haftalar:[
+    {num:'Hafta 1',baslik:'Duruş ve Hareket',ilerleme:8,yeniTeknikler:['Orthodox duruş','Footwork'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'30–40 dk',bolumler:[
+      {ad:'Isınma',adimlar:[
+        {ad:'Halat / Ritim adımı',det:'3×2 dk — ritim tut. Yoksa yerinde hafif boks adımı.'},
+        {ad:'Eklem hareketleri',det:'Boyun, omuz, bilek, kalça döndürme — her yön 10 tekrar.'},
+        {ad:'Gölge boks (tekniksiz)',det:'2 dk boyunca sadece hareket et.'},
+      ]},
+      {ad:'Teknik',adimlar:[
+        {ad:'Orthodox duruş',det:'Sol ayak önde, sağ arkada. Hafif açılı. Ağırlık ortada. Eller çene hizasında, dirsekler aşağı.'},
+        {ad:'Footwork — ileri/geri',det:'Öne adım: önce sol kayar, sağ yaklaşır. Geri: önce sağ çekilir. 3×1 dk.'},
+        {ad:'Footwork — sağ/sol',det:'Aynı mantık, yana. Yakın ayak önce açılır.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'Sadece duruş',det:'Torbaya yaklaş, duruşunu kontrol et. Vurma — sadece pozisyonu hisset. 5 dk.'}]},
+      {ad:'Soğuma',adimlar:[{ad:'Esneme',det:'Omuz, göğüs, ön kol esnemesi. Her 20 saniye.'}]},
+    ]}]},
+    {num:'Hafta 2',baslik:'Jab Girişi',ilerleme:18,yeniTeknikler:['Jab (1)'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'30–40 dk',bolumler:[
+      {ad:'Isınma',adimlar:[
+        {ad:'Ritim adımı',det:'2 dk footwork.'},
+        {ad:'Gölge boks',det:'3 dk duruş koruyarak.'},
+      ]},
+      {ad:'Teknik — Jab',adimlar:[
+        {ad:'Jab mekaniği',det:'Sol el çeneden fırlar, bileği hafif döndür. Omuz kulağı kapatır. Anında geri çekilir.'},
+        {ad:'Ayna / yavaş jab',det:'Yavaş yavaş 20 tekrar.'},
+        {ad:'Footwork + Jab',det:'Öne adım atarken jab at. 3×10 tekrar.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'Jab × Torba',det:'2×2 dk tur. 1 dk ara. Sadece form.'}]},
+    ]}]},
+    {num:'Hafta 3',baslik:'Cross Ekleme',ilerleme:30,yeniTeknikler:['Cross (2)','1-2 Kombinasyonu'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'35–40 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'3 dk — sadece jab. Footwork aktif.'}]},
+      {ad:'Teknik — Cross',adimlar:[
+        {ad:'Cross mekaniği',det:'Sağ el fırlar, sol topuk kalkar, kalça döner. Güç bacaktan gelir. Anında geri.'},
+        {ad:'Yavaş cross × 20',det:'Bel dönüşünü hisset.'},
+        {ad:'1-2 kombinasyonu',det:'Jab → Cross. Jab geri gelmeden cross çıkmaz. 3×10 tekrar.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'1-2 × Torba',det:'3×2 dk tur. 1 dk ara.'}]},
+    ]}]},
+    {num:'Hafta 4',baslik:'Konsolidasyon',ilerleme:42,yeniTeknikler:['Slip (kaçma)'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'35–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'4 dk — jab ve 1-2 serbest.'}]},
+      {ad:'Teknik — Slip',adimlar:[
+        {ad:'Slip nedir',det:'Başı hafifçe yana eğerek darbe kaçırma. Dizler hafif bükülür. Sol/sağ slip — her tarafa 15 tekrar.'},
+        {ad:'Slip + Karşılık',det:'Slip sol → hemen cross. 3×10 tekrar.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'Serbest kombinasyon',det:'4×2 dk tur. Jab, 1-2, footwork.'}]},
+      {ad:'Ay 1 Kontrol',adimlar:[{ad:'Değerlendirme',det:'Duruş doğal mı? Jab geri dönüyor mu? Cross\'ta kalça dönüyor mu? Footwork aktif mi?'}]},
+    ]}]},
+  ]},
+  {ay:'Ay 2',subtitle:'Kombinasyonlar & Savunma',desc:'Temel yerleşti. Şimdi hook, uppercut ve savunma — slip, bob & weave. Kombinasyonlar uzuyor, tempo artıyor.',seansSayisi:8,teknikSayisi:5,
+   haftalar:[
+    {num:'Hafta 5',baslik:'Hook Girişi',ilerleme:50,yeniTeknikler:['Left Hook (3)'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'35–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'4 dk — 1-2 kombinasyonu, footwork aktif.'}]},
+      {ad:'Teknik — Left Hook',adimlar:[
+        {ad:'Hook mekaniği',det:'Sol dirsek 90° kırılır, bileği düz. Kalça ve bel birlikte döner. Gövdeden güç.'},
+        {ad:'Yavaş hook × 20',det:'Dönüş hissedilmeli.'},
+        {ad:'1-2-3 kombinasyonu',det:'Jab → Cross → Left Hook. 3×10 tekrar.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'1-2-3 × Torba',det:'4×2 dk tur. 1 dk ara.'}]},
+    ]}]},
+    {num:'Hafta 6',baslik:'Bob & Weave',ilerleme:60,yeniTeknikler:['Bob & Weave','1-2-3-2'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'40–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'5 dk — 1-2 ve 1-2-3 serbest.'}]},
+      {ad:'Teknik — Bob & Weave',adimlar:[
+        {ad:'Bob & Weave mekaniği',det:'U hareketi — dizlerle aşağı in, yana kay, tekrar yüksel. Diz bükülür, bel değil.'},
+        {ad:'Yavaş bob & weave × 20',det:'Her iki yönde.'},
+        {ad:'Bob & Weave + Hook',det:'Sağa weave → sol hook. 3×10.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'1-2-3-2',det:'Jab→Cross→Hook→Cross. 4×2 dk tur.'}]},
+    ]}]},
+    {num:'Hafta 7',baslik:'Uppercut',ilerleme:72,yeniTeknikler:['Sol Uppercut (5)','Sağ Uppercut (6)'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'40–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'5 dk — tüm öğrenilmiş teknikler.'}]},
+      {ad:'Teknik — Uppercut',adimlar:[
+        {ad:'Uppercut mekaniği',det:'Diz hafif bükülür, kalça yükselir, kol içten yukarı virar. Dirsek vücuda yakın.'},
+        {ad:'Yavaş uppercut × 20',det:'Her el için ayrı ayrı.'},
+        {ad:'1-2-5-2 kombinasyonu',det:'Jab→Cross→Sol Uppercut→Cross. 3×10.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'Uppercut × Torba',det:'Torbayı alt kısımdan vur — çene yüksekliği. 4×2 dk.'}]},
+    ]}]},
+    {num:'Hafta 8',baslik:'Tempo ve Akış',ilerleme:82,yeniTeknikler:['Serbest kombinasyon akışı'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'40–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'6 dk — serbest akış.'}]},
+      {ad:'Teknik — Akış',adimlar:[
+        {ad:'Kombinasyon sıralaması',det:'1-2 / 1-2-3 / 1-2-3-2 / 1-2-5-2 / Bob+hook — her birini 5 tekrar.'},
+        {ad:'Tempo değişimi',det:'Yavaş başla, orta tempo, ani hızlanma.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'5×2 dk serbest tur',det:'Kendi kombinasyonların.'}]},
+      {ad:'Ay 2 Kontrol',adimlar:[{ad:'Değerlendirme',det:'Hook\'ta dirsek 90° mi? Uppercut\'ta dirsek içeride mi? Bob & Weave dengeli mi?'}]},
+    ]}]},
+  ]},
+  {ay:'Ay 3',subtitle:'Güç, Hız & Bütünleşme',desc:'Teknik oturdu. Şimdi güç üretimi, hız ve tüm tekniklerin akışkan birleşimi. Turlar uzuyor, tempo artıyor.',seansSayisi:8,teknikSayisi:4,
+   haftalar:[
+    {num:'Hafta 9',baslik:'Güç Üretimi',ilerleme:86,yeniTeknikler:['Pivoting','Güç transferi'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'40–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'6 dk — tüm teknikler, footwork aktif.'}]},
+      {ad:'Teknik — Güç',adimlar:[
+        {ad:'Pivot mekaniği',det:'Ön topuk etrafında dön — sağa veya sola. 20 tekrar her yön.'},
+        {ad:'Güç transferi',det:'Cross\'ta arka topuk kalkar, kalça virar, omuz iter — zincir bu.'},
+        {ad:'Ağır kombinasyon',det:'1-2-3-2 yüzde 80 güçle. Form kaybetme.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'Güç turları',det:'3×2 dk — %80 güçle. 2 dk ara.'}]},
+    ]}]},
+    {num:'Hafta 10',baslik:'Hız ve Refleks',ilerleme:90,yeniTeknikler:['Speed drill','Çift ritim'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'40–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'6 dk — yüksek tempo.'}]},
+      {ad:'Teknik — Hız',adimlar:[
+        {ad:'Speed drill — jab',det:'30 sn boyunca mümkün olduğunca hızlı jab. 5 set.'},
+        {ad:'Çift ritim',det:'1-1-2 (çift jab + cross). 20 tekrar.'},
+        {ad:'Savunma refleksi',det:'Slip + hızlı 1-2. 3×10.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'Interval turlar',det:'30 sn hızlı / 30 sn yavaş × 6 tur.'}]},
+    ]}]},
+    {num:'Hafta 11',baslik:'Uzun Kombinasyonlar',ilerleme:95,yeniTeknikler:['6+ vuruş zincirleri'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'40–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'7 dk — serbest akış.'}]},
+      {ad:'Teknik — Zincirler',adimlar:[
+        {ad:'6 vuruş zinciri',det:'1-2-3-2-5-2. Yavaş başla, her adım net.'},
+        {ad:'Footwork + Zincir',det:'Zinciri at, pivot yap, pozisyon değiştir, tekrar at.'},
+        {ad:'Serbest akış',det:'5 dk kendi kombinasyonlarını yarat.'},
+      ]},
+      {ad:'Torba',adimlar:[{ad:'5×3 dk tur',det:'En uzun turlar. 1 dk ara.'}]},
+    ]}]},
+    {num:'Hafta 12',baslik:'Final & Değerlendirme',ilerleme:100,yeniTeknikler:['Gölge boks sparring'],
+     seanslar:[{baslik:'Her Seans (2×)',sure:'40–45 dk',bolumler:[
+      {ad:'Isınma',adimlar:[{ad:'Gölge boks',det:'8 dk — tüm teknikler, tam tempo.'}]},
+      {ad:'Final Seans',adimlar:[
+        {ad:'Gölge boks sparring',det:'Hayali rakip hayal et. Slip/bob yap, karşılık ver. 4×3 dk.'},
+        {ad:'Torba — serbest',det:'5×3 dk tur. Kendi seçimlerin.'},
+      ]},
+      {ad:'3 Ay Değerlendirme',adimlar:[
+        {ad:'Kazanımlar',det:'Orthodox duruş ✓ Jab ✓ Cross ✓ Left Hook ✓ Uppercut ✓ Slip ✓ Bob & Weave ✓ Footwork ✓ Pivot ✓'},
+        {ad:'Sonraki adım',det:'Buradan ilerlemek için sparring partneri veya koç şart. Teknik zemin hazır.'},
+      ]},
+    ]}]},
+  ]},
+];
+
+let boksAktifAy=0;
+let boksAcikHaftalar={};
+
+function setBoks(){
+  mode='boks';
+  document.getElementById('hdr-title').textContent='BOKS';
+  document.getElementById('hdr-target').textContent='3 AY · 12 HAFTA · TEMEL TEKNİK';
+  hideAll();
+  document.getElementById('boks-view').style.display='block';
+  renderBoks();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderBoks(){
+  const ay=BOKS_PLAN[boksAktifAy];
+  let html='<div class="boks-ay-tabs">';
+  BOKS_PLAN.forEach((a,i)=>{
+    html+=`<button class="boks-ay-tab${i===boksAktifAy?' on':''}" onclick="setBoksAy(${i})">${a.ay}<br><span style="font-size:7px;opacity:.7">${a.subtitle}</span></button>`;
+  });
+  html+='</div>';
+  html+=`<div class="boks-ay-meta"><div class="boks-ay-baslik">${ay.ay} — ${ay.subtitle}</div><div class="boks-ay-desc">${ay.desc}</div><div class="boks-ay-stats"><div class="boks-stat"><div class="boks-stat-val">${ay.seansSayisi}</div><div class="boks-stat-lbl">Planlanan seans</div></div><div class="boks-stat"><div class="boks-stat-val">${ay.teknikSayisi}</div><div class="boks-stat-lbl">Yeni teknik</div></div></div></div>`;
+  ay.haftalar.forEach((h,hi)=>{
+    const key=boksAktifAy+'_'+hi;
+    const acik=boksAcikHaftalar[key];
+    const pillsHtml=h.yeniTeknikler.map(t=>`<span class="boks-yt-pill">${t}</span>`).join('');
+    let bodyHtml='<div class="boks-yeni-teknikler">'+pillsHtml+'</div>';
+    h.seanslar.forEach(s=>{
+      bodyHtml+=`<div class="boks-seans"><div class="boks-seans-hdr"><span class="boks-seans-lbl">${s.baslik}</span><span class="boks-seans-sure">${s.sure}</span></div>`;
+      s.bolumler.forEach(b=>{
+        bodyHtml+=`<div class="boks-bolum"><div class="boks-bolum-ad">${b.ad}</div>`;
+        b.adimlar.forEach((a,ai)=>{
+          bodyHtml+=`<div class="boks-adim"><span class="boks-adim-num">${ai+1}.</span><div><div class="boks-adim-ad">${a.ad}</div><div class="boks-adim-det">${a.det}</div></div></div>`;
+        });
+        bodyHtml+=`</div>`;
+      });
+      bodyHtml+=`</div>`;
+    });
+    html+=`<div class="boks-hafta"><div class="boks-hafta-hdr" onclick="toggleBoksHafta('${key}')"><div class="boks-hafta-sol"><span class="boks-hafta-num">${h.num}</span><span class="boks-hafta-baslik">${h.baslik}</span></div><span class="boks-hafta-arrow${acik?' open':''}">↓</span></div><div class="boks-ilerleme"><div class="boks-il-lbl"><span>3 aylık ilerleme</span><span>${h.ilerleme}%</span></div><div class="boks-il-track"><div class="boks-il-fill" style="width:${h.ilerleme}%"></div></div></div><div class="boks-hafta-body${acik?' open':''}">${bodyHtml}</div></div>`;
+  });
+  document.getElementById('boks-view').innerHTML=html;
+}
+
+function setBoksAy(i){boksAktifAy=i;renderBoks();}
+function toggleBoksHafta(key){boksAcikHaftalar[key]=!boksAcikHaftalar[key];renderBoks();}
+
+const WODS=[
+  {id:1,isim:'Fran',tur:'Benchmark Girl',format:'For Time',sure:'3–7 dk',zorluk:'Orta',
+   icerik:'21-15-9\nThruster (43kg)\nPull-up',
+   hikaye:'CrossFit\'in en ünlü WOD\'u. 1995\'te Greg Glassman tarafından yaratıldı. Elit atletler 2 dakikanın altında bitirir. Fran zamanın kişisel rekor olarak bilinir.'},
+  {id:2,isim:'Helen',tur:'Benchmark Girl',format:'3 Rounds For Time',sure:'9–15 dk',zorluk:'Orta',
+   icerik:'400m Koşu\n21 Kettlebell Swing (24kg)\n12 Pull-up',
+   hikaye:'Klasik dayanıklılık ve güç kombinasyonu. Koşu ve gym hareketi birlikte.'},
+  {id:3,isim:'Cindy',tur:'Benchmark Girl',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'5 Pull-up\n10 Push-up\n15 Air Squat',
+   hikaye:'20 dakika boyunca maksimum tur. Elite seviye 20 tur üzeri. Saf kondisyon testi.'},
+  {id:4,isim:'Grace',tur:'Benchmark Girl',format:'For Time',sure:'1–5 dk',zorluk:'Ağır',
+   icerik:'30 Clean & Jerk (61kg)',
+   hikaye:'30 tekrar Clean & Jerk — güç ve hız yarışması. Elit 60 saniyenin altında bitirir.'},
+  {id:5,isim:'Isabel',tur:'Benchmark Girl',format:'For Time',sure:'2–6 dk',zorluk:'Ağır',
+   icerik:'30 Snatch (61kg)',
+   hikaye:'Grace\'in kardeşi. Snatch tekniği ve güç birlikte test edilir.'},
+  {id:6,isim:'Diane',tur:'Benchmark Girl',format:'For Time',sure:'3–8 dk',zorluk:'Ağır',
+   icerik:'21-15-9\nDeadlift (102kg)\nHandstand Push-up',
+   hikaye:'Ağır deadlift ile tersine çevrilmiş push-up kombinasyonu. Üst vücut gücü kritik.'},
+  {id:7,isim:'Elizabeth',tur:'Benchmark Girl',format:'For Time',sure:'8–15 dk',zorluk:'Orta',
+   icerik:'21-15-9\nClean (61kg)\nRing Dip',
+   hikaye:'Olimpik kaldırış ve ring kontrolü. Güç ve stabilite testi.'},
+  {id:8,isim:'Kelly',tur:'Benchmark Girl',format:'5 Rounds For Time',sure:'20–35 dk',zorluk:'Ağır',
+   icerik:'400m Koşu\n30 Box Jump (61cm)\n30 Wall Ball (9kg)',
+   hikaye:'5 tur yüksek hacimli kondisyon. Wall ball akciğerleri yakar.'},
+  {id:9,isim:'Jackie',tur:'Benchmark Girl',format:'For Time',sure:'5–12 dk',zorluk:'Orta',
+   icerik:'1000m Rowing\n50 Thruster (20kg)\n30 Pull-up',
+   hikaye:'Kürek, thruster ve pull-up üçlemesi. Rowing makinesi gerektirir.'},
+  {id:10,isim:'Annie',tur:'Benchmark Girl',format:'For Time',sure:'5–12 dk',zorluk:'Orta',
+   icerik:'50-40-30-20-10\nDouble-Under\nSit-up',
+   hikaye:'Double-under koordinasyon ve ritim testi. Basit görünür, yakar.'},
+  {id:11,isim:'Barbara',tur:'Benchmark Girl',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'20 Pull-up\n30 Push-up\n40 Sit-up\n50 Air Squat\n3 dk dinlenme turlar arası',
+   hikaye:'Yüksek hacimli klasik. 3 dakika dinlenme ile 5 tur — toplamda çok ciddi hacim.'},
+  {id:12,isim:'Chelsea',tur:'Benchmark Girl',format:'EMOM 30 dk',sure:'30 dk',zorluk:'Orta',
+   icerik:'Her dakika:\n5 Pull-up\n10 Push-up\n15 Air Squat',
+   hikaye:'Cindy\'nin EMOM versiyonu. 30 dakika boyunca dakika başı tamamlama.'},
+  {id:13,isim:'Eva',tur:'Benchmark Girl',format:'5 Rounds For Time',sure:'40–60 dk',zorluk:'Çok Ağır',
+   icerik:'800m Koşu\n30 Kettlebell Swing (32kg)\n30 Pull-up',
+   hikaye:'CrossFit\'in en zor benchmark\'larından biri. Uzun ve acımasız.'},
+  {id:14,isim:'Lynne',tur:'Benchmark Girl',format:'5 Rounds Max',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'Bench Press Max Tekrar (vücut ağırlığı)\nPull-up Max Tekrar\nTurlar arası dinlenme serbest',
+   hikaye:'Güç dayanıklılığı testi. Her turda maksimum tekrar — ağırlık sabit, dinlenme serbest.'},
+  {id:15,isim:'Mary',tur:'Benchmark Girl',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'5 Handstand Push-up\n10 Pistol Squat (tek bacak)\n15 Pull-up',
+   hikaye:'Cindy\'nin kardeşi ama çok daha teknik. Pistol squat denge ve güç ister.'},
+  {id:16,isim:'Murph',tur:'Hero WOD',format:'For Time',sure:'35–60 dk',zorluk:'Çok Ağır',
+   icerik:'1 mil Koşu\n100 Pull-up\n200 Push-up\n300 Air Squat\n1 mil Koşu\n(20kg yelek ile)',
+   hikaye:'Lt. Michael Murphy\'e adanmış. ABD\'de Memorial Day\'de tüm CrossFit kutuları aynı anda yapar. En kutsal Hero WOD.'},
+  {id:17,isim:'DT',tur:'Hero WOD',format:'5 Rounds For Time',sure:'15–25 dk',zorluk:'Ağır',
+   icerik:'12 Deadlift (70kg)\n9 Hang Power Clean (70kg)\n6 Push Jerk (70kg)',
+   hikaye:'USAF SSgt Timothy Davis\'e adanmış. Aynı bar ağırlığıyla 3 farklı hareket.'},
+  {id:18,isim:'Jason',tur:'Hero WOD',format:'For Time',sure:'30–45 dk',zorluk:'Çok Ağır',
+   icerik:'100 Squat\n5 Muscle-up\n75 Squat\n10 Muscle-up\n50 Squat\n15 Muscle-up\n25 Squat\n20 Muscle-up',
+   hikaye:'Azalan squat ve artan muscle-up — hem güç hem dayanıklılık.'},
+  {id:19,isim:'Badger',tur:'Hero WOD',format:'3 Rounds For Time',sure:'35–50 dk',zorluk:'Çok Ağır',
+   icerik:'30 Squat Clean (43kg)\n30 Pull-up\n800m Koşu',
+   hikaye:'Navy SEAL Marc Lee\'ye adanmış. Ağır ve uzun.'},
+  {id:20,isim:'Nate',tur:'Hero WOD',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'2 Muscle-up\n4 Handstand Push-up\n8 Kettlebell Swing (32kg)',
+   hikaye:'Chief Petty Officer Nate Hardy\'e adanmış. Teknik ve güç gerektiren hareketler.'},
+  {id:21,isim:'Randy',tur:'Hero WOD',format:'For Time',sure:'5–12 dk',zorluk:'Orta',
+   icerik:'75 Power Snatch (34kg)',
+   hikaye:'Sgt. Randy Simmons\'a adanmış. Tek hareket, yüksek tekrar — form altında bozulmaz mı?'},
+  {id:22,isim:'JT',tur:'Hero WOD',format:'For Time',sure:'15–25 dk',zorluk:'Ağır',
+   icerik:'21-15-9\nHandstand Push-up\nRing Dip\nPush-up',
+   hikaye:'PO1 Jeff Taylor\'a adanmış. Tamamen üst vücut itme hareketi.'},
+  {id:23,isim:'Daniel',tur:'Hero WOD',format:'For Time',sure:'30–45 dk',zorluk:'Çok Ağır',
+   icerik:'50 Pull-up\n400m Koşu\n21 Thruster (43kg)\n800m Koşu\n21 Thruster (43kg)\n400m Koşu\n50 Pull-up',
+   hikaye:'Army Cpt. Daniel Whitten\'a adanmış. Uzun ve acımasız bir chipper.'},
+  {id:24,isim:'The Seven',tur:'Hero WOD',format:'7 Rounds For Time',sure:'45–60 dk',zorluk:'Çok Ağır',
+   icerik:'7 Handstand Push-up\n7 Thruster (43kg)\n7 Knees-to-Elbow\n7 Deadlift (102kg)\n7 Burpee\n7 Kettlebell Swing (32kg)\n7 Pull-up',
+   hikaye:'7 şehit için 7 hareket 7 tur. CrossFit\'in en anlamlı WOD\'larından biri.'},
+  {id:25,isim:'Loredo',tur:'Hero WOD',format:'6 Rounds For Time',sure:'30–45 dk',zorluk:'Ağır',
+   icerik:'24 Air Squat\n24 Push-up\n24 Walking Lunge\n400m Koşu',
+   hikaye:'Sgt. Eduardo Loredo\'ya adanmış. Koşu ağırlıklı vücut ağırlığı WOD.'},
+  {id:26,isim:'Omar',tur:'Hero WOD',format:'For Time',sure:'10–18 dk',zorluk:'Orta',
+   icerik:'21 Turkish Get-up (22.5kg)\n50 Kettlebell Swing (32kg)\n21 Overhead Squat (61kg)\n50 Pull-up\n21 Thruster (43kg)\n50 Sit-up\n21 Burpee Box Jump (61cm)',
+   hikaye:'Farklı ekipman ve hareket kombinasyonu gerektiren kapsamlı chipper.'},
+  {id:27,isim:'Filthy Fifty',tur:'Classic',format:'For Time',sure:'20–40 dk',zorluk:'Ağır',
+   icerik:'50 Box Jump (61cm)\n50 Jumping Pull-up\n50 Kettlebell Swing (16kg)\n50 Walking Lunge\n50 Knees-to-Elbow\n50 Push Press (20kg)\n50 Back Extension\n50 Wall Ball (9kg)\n50 Burpee\n50 Double-Under',
+   hikaye:'10 hareket × 50 tekrar. CrossFit\'in büyük chipper\'larından. Bitmez gibi hissettirdiği söylenir.'},
+  {id:28,isim:'Fight Gone Bad',tur:'Classic',format:'3 Rounds',sure:'15–20 dk',zorluk:'Orta',
+   icerik:'1 dk Wall Ball (9kg)\n1 dk Sumo Deadlift High Pull (35kg)\n1 dk Box Jump (51cm)\n1 dk Push Press (35kg)\n1 dk Rowing (kalori)\n1 dk dinlenme\n(Toplam tekrar sayılır)',
+   hikaye:'Braulio Estima\'nın MMA maçını taklit etmek için tasarlandı. Her harekete 1 dakika, 3 tur.'},
+  {id:29,isim:'Death by Pull-up',tur:'Classic',format:'EMOM',sure:'10–15 dk',zorluk:'Orta',
+   icerik:'Dakika 1: 1 Pull-up\nDakika 2: 2 Pull-up\nDakika 3: 3 Pull-up\n...\nArtık tamamlayamadığın dakikada bitir',
+   hikaye:'Artan EMOM formatı. Kaç dakika sürdüreceğini önceden bilemezsin.'},
+  {id:30,isim:'Bring Sally Up',tur:'Classic',format:'Şarkıya Göre',sure:'3.5 dk',zorluk:'Orta',
+   icerik:'Moby - Flower şarkısına göre\n"Bring Sally Up" → hareket yukarda\n"Bring Sally Down" → hareket aşağıda\nSquat veya Push-up seç',
+   hikaye:'3.5 dakika boyunca şarkıya göre hareket. Basit görünür, time under tension yakar.'},
+  {id:31,isim:'21-15-9',tur:'Format Klasiği',format:'For Time',sure:'5–12 dk',zorluk:'Orta',
+   icerik:'21-15-9\nDeadlift (102kg)\nBox Jump (61cm)',
+   hikaye:'CrossFit\'in ikonik rep şeması. Azalan tekrar ile artan yoğunluk.'},
+  {id:32,isim:'Kalsu',tur:'Hero WOD',format:'For Time',sure:'30–60 dk',zorluk:'Çok Ağır',
+   icerik:'100 Thruster (61kg)\nHer dakika başında 5 Burpee yap',
+   hikaye:'Bob Kalsu\'ya adanmış. Vietnam\'da hayatını kaybeden tek NFL oyuncusu. Acımasız WOD.'},
+  {id:33,isim:'Glen',tur:'Hero WOD',format:'For Time',sure:'30–45 dk',zorluk:'Çok Ağır',
+   icerik:'30 Clean & Jerk (61kg)\n1 mil Koşu\n10 dk kürek\n1 mil Koşu\n100 Burpee',
+   hikaye:'Glen Doherty\'ye adanmış. Benghazi saldırısında hayatını kaybetti.'},
+  {id:34,isim:'Luce',tur:'Hero WOD',format:'For Time',sure:'20–35 dk',zorluk:'Ağır',
+   icerik:'10 Rounds:\n10 Pull-up\n10 Push-up\n10 Sit-up\n10 Air Squat',
+   hikaye:'100 tekrar × 4 hareket. Saf vücut ağırlığı dayanıklılık testi.'},
+  {id:35,isim:'Angie',tur:'Benchmark Girl',format:'For Time',sure:'20–40 dk',zorluk:'Orta',
+   icerik:'100 Pull-up\n100 Push-up\n100 Sit-up\n100 Air Squat',
+   hikaye:'Sırayla yapılır — her hareketi bitirmeden diğerine geçilmez. 400 tekrar toplam.'},
+  {id:36,isim:'Nicole',tur:'Benchmark Girl',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'400m Koşu\nMax Pull-up\n(Her turda pull-up sayısı kaydedilir)',
+   hikaye:'Toplam pull-up sayısı skordur. Koşu sonrası yorgun kollarla kaç çekebilirsin?'},
+  {id:37,isim:'Amanda',tur:'Benchmark Girl',format:'For Time',sure:'6–12 dk',zorluk:'Çok Ağır',
+   icerik:'9-7-5\nMuscle-up\nSnatch (61kg)',
+   hikaye:'En teknik benchmark. Muscle-up ve snatch — her ikisi de mükemmel form ister.'},
+  {id:38,isim:'Nancy',tur:'Benchmark Girl',format:'5 Rounds For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'400m Koşu\n15 Overhead Squat (43kg)',
+   hikaye:'5 tur koşu ve overhead squat. Omuz stabilitesi ve kondisyon birlikte test edilir.'},
+  {id:39,isim:'Tabata Something Else',tur:'Classic',format:'Tabata',sure:'16 dk',zorluk:'Orta',
+   icerik:'Tabata Pull-up\nTabata Push-up\nTabata Sit-up\nTabata Air Squat\n(20 sn çalış / 10 sn dinlen × 8 set her hareket)',
+   hikaye:'Tabata protokolü × 4 hareket. Toplam 32 set.'},
+  {id:40,isim:'Bergeron Beep Test',tur:'Classic',format:'EMOM',sure:'Süresiz',zorluk:'Çok Ağır',
+   icerik:'Her dakika:\n7 Thruster (43kg)\n7 Pull-up\n7 Burpee\n(Artık yapamadığında bitir)',
+   hikaye:'Ben Bergeron tarafından yaratıldı. CrossFit Games hazırlık testi. 3 tur bile elit için zor.'},
+  {id:41,isim:'Griff',tur:'Hero WOD',format:'For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'800m Koşu (ileri)\n400m Yürüyüş (geri)\n800m Koşu (ileri)\n400m Yürüyüş (geri)',
+   hikaye:'Geri yürüyüş denge ve konsantrasyon ister. Basit ama etkili.'},
+  {id:42,isim:'Jack',tur:'Hero WOD',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'10 Push Press (43kg)\n10 Kettlebell Swing (32kg)\n10 Box Jump (61cm)',
+   hikaye:'Army Staff Sgt. Jack Martin\'e adanmış. Temiz ve etkili AMRAP.'},
+  {id:43,isim:'Death by Thruster',tur:'Classic',format:'EMOM',sure:'10–15 dk',zorluk:'Ağır',
+   icerik:'Dakika 1: 1 Thruster (43kg)\nDakika 2: 2 Thruster\nDakika 3: 3 Thruster\n...',
+   hikaye:'Her dakika artan thruster. Kaç dakika dayanabilirsin?'},
+  {id:44,isim:'Cindy + Mary Mashup',tur:'Classic',format:'AMRAP 30 dk',sure:'30 dk',zorluk:'Ağır',
+   icerik:'5 Pull-up\n10 Handstand Push-up\n15 Air Squat',
+   hikaye:'Cindy\'nin handstand push-up versiyonu. 30 dakika boyunca.'},
+  {id:45,isim:'Open 11.1',tur:'CrossFit Open',format:'AMRAP 10 dk',sure:'10 dk',zorluk:'Orta',
+   icerik:'30 Double-Under\n15 Power Snatch (34kg)',
+   hikaye:'CrossFit Open\'ın ilk WOD\'u. 2011\'den beri tarihi önemi var.'},
+  {id:46,isim:'Open 12.5',tur:'CrossFit Open',format:'7 dk AMRAP',sure:'7 dk',zorluk:'Çok Ağır',
+   icerik:'3-6-9-12...\nThrusters (43kg)\nChest-to-Bar Pull-up\n(Her turda 3 artar)',
+   hikaye:'2012 Open\'ın final WOD\'u. Yeterince hızlı gidersen thruster sayısı sonsuz artar.'},
+  {id:47,isim:'Open 13.5',tur:'CrossFit Open',format:'4 dk AMRAP',sure:'4 dk',zorluk:'Çok Ağır',
+   icerik:'15 Thruster (43kg)\n15 Chest-to-Bar Pull-up',
+   hikaye:'4 dakikada mümkün olduğunca çok tur. Thruster ve C2B kombinasyonu acımasız.'},
+  {id:48,isim:'Open 14.5',tur:'CrossFit Open',format:'For Time',sure:'20–40 dk',zorluk:'Çok Ağır',
+   icerik:'21-18-15-12-9-6-3\nThruster (43kg)\nBurpee Over Bar',
+   hikaye:'2014 Open finalinin en korkulan WOD\'u. Thruster + burpee kombinasyonu yorucu.'},
+  {id:49,isim:'Rope Climb + Deadlift',tur:'Classic',format:'5 Rounds For Time',sure:'15–25 dk',zorluk:'Ağır',
+   icerik:'5 Deadlift (140kg)\n3 Rope Climb (4.5m)',
+   hikaye:'Ağır deadlift sonrası ip tırmanma. Kavrama gücü kritik.'},
+  {id:50,isim:'Gwen',tur:'Benchmark Girl',format:'Climbing',sure:'15–25 dk',zorluk:'Ağır',
+   icerik:'Clean & Jerk: 15-12-9 tekrar\nAğırlık artar, setler arasında tam dinlenme\nSet başına tekrar tamamlanmalı',
+   hikaye:'Artan ağırlıkla azalan tekrar. Ne kadar ağır kaldırabilirsin?'},
+  {id:51,isim:'Sevens',tur:'Classic',format:'7 Rounds For Time',sure:'25–40 dk',zorluk:'Ağır',
+   icerik:'7 Handstand Push-up\n7 Thruster (43kg)\n7 Knees-to-Elbow\n7 Deadlift (102kg)\n7 Burpee\n7 Kettlebell Swing (32kg)\n7 Pull-up',
+   hikaye:'The Seven\'ın hafif versiyonu olarak bilinir ama hâlâ çok zorlayıcı.'},
+  {id:52,isim:'Johnny',tur:'Hero WOD',format:'For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'200 Double-Under\n50 Overhead Squat (43kg)\n200 Double-Under',
+   hikaye:'Atlama koordinasyonu ve overhead squat gücü.'},
+  {id:53,isim:'Blake',tur:'Hero WOD',format:'4 Rounds For Time',sure:'25–40 dk',zorluk:'Çok Ağır',
+   icerik:'100m Sprint\n10 Handstand Push-up\n10 Power Clean (52kg)',
+   hikaye:'Kısa sprint + teknik hareketler kombinasyonu.'},
+  {id:54,isim:'Abbate',tur:'Hero WOD',format:'For Time',sure:'30–50 dk',zorluk:'Çok Ağır',
+   icerik:'1 mil Koşu\n21 Clean (70kg)\n1 mil Koşu\n21 Clean (70kg)\n1 mil Koşu',
+   hikaye:'Ağır clean arasında uzun koşular. Dayanıklılık ve güç.'},
+  {id:55,isim:'Mini Murph',tur:'Classic',format:'For Time',sure:'20–35 dk',zorluk:'Orta',
+   icerik:'800m Koşu\n50 Pull-up\n100 Push-up\n150 Air Squat\n800m Koşu',
+   hikaye:'Murph\'ün yarısı. Yeni başlayanlar için veya deload haftası için ideal.'},
+  {id:56,isim:'Row + Pull-up',tur:'Classic',format:'AMRAP 12 dk',sure:'12 dk',zorluk:'Orta',
+   icerik:'250m Kürek\n10 Pull-up',
+   hikaye:'Sırt ve arka zincir odaklı kısa AMRAP.'},
+  {id:57,isim:'Kettlebell Swing Chipper',tur:'Classic',format:'For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'50 Kettlebell Swing (24kg)\n40 Box Jump (61cm)\n30 Burpee\n20 Pull-up\n10 Clean (61kg)',
+   hikaye:'Azalan tekrarlı chipper. Her hareket tamamen bitmeden geçilmez.'},
+  {id:58,isim:'Macho Man',tur:'Classic',format:'EMOM',sure:'20 dk',zorluk:'Ağır',
+   icerik:'Her dakika:\n3 Power Clean (102kg)\n3 Front Squat (102kg)\n3 Push Jerk (102kg)',
+   hikaye:'Aynı bar, 3 hareket, her dakika. Güç ve teknik dayanıklılık.'},
+  {id:59,isim:'Holbrook',tur:'Hero WOD',format:'For Time',sure:'30–45 dk',zorluk:'Çok Ağır',
+   icerik:'1 mil Koşu\n100 Burpee Pull-up\n1 mil Koşu',
+   hikaye:'Burpee Pull-up — hem burpee hem pull-up birleşik. Uzun koşularla çerçevelenmiş.'},
+  {id:60,isim:'McGhee',tur:'Hero WOD',format:'30 dk AMRAP',sure:'30 dk',zorluk:'Ağır',
+   icerik:'5 Deadlift (152kg)\n13 Push-up\n9 Box Jump (61cm)',
+   hikaye:'Ağır deadlift ile klasik vücut ağırlığı hareketleri. 30 dakika.'},
+  {id:61,isim:'Swenson',tur:'Hero WOD',format:'For Time',sure:'25–40 dk',zorluk:'Çok Ağır',
+   icerik:'10 Rounds:\n5 Deadlift (102kg)\n10 Burpee',
+   hikaye:'100 burpee + 50 deadlift. Basit ama yıkıcı.'},
+  {id:62,isim:'Poe',tur:'Hero WOD',format:'For Time',sure:'30–45 dk',zorluk:'Çok Ağır',
+   icerik:'5000m Kürek\n(20kg yelek ile)',
+   hikaye:'Saf kürek dayanıklılığı. 5 km — durma, devam et.'},
+  {id:63,isim:'Sprint Fartlek',tur:'Conditioning',format:'For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'400m Koşu\n30 Air Squat\n400m Koşu\n30 Push-up\n400m Koşu\n30 Pull-up\n400m Koşu',
+   hikaye:'Koşu aralarında her seferinde farklı hareket.'},
+  {id:64,isim:'Goats',tur:'Classic',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'En zayıf olduğun 2 hareketi seç\nSonsuz AMRAP yap\nFormu koru',
+   hikaye:'Zayıf noktaları geliştirmek için. Herkes için farklı WOD.'},
+  {id:65,isim:'Sandwich',tur:'Classic',format:'For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'1000m Kürek\n50 Burpee\n1000m Kürek',
+   hikaye:'Kürek ve burpee arası zıpla. Akciğerler ve omuzlar.'},
+  {id:66,isim:'Pendleton',tur:'Hero WOD',format:'3 Rounds For Time',sure:'25–40 dk',zorluk:'Çok Ağır',
+   icerik:'800m Koşu\n30 Kettlebell Swing (32kg)\n30 Pull-up',
+   hikaye:'Badger\'e benzer yapı. Koşu, swing ve pull-up klasik Hero kombinasyonu.'},
+  {id:67,isim:'Josh',tur:'Hero WOD',format:'For Time',sure:'20–35 dk',zorluk:'Ağır',
+   icerik:'21 Overhead Squat (61kg)\n42 Pull-up\n15 Overhead Squat (61kg)\n30 Pull-up\n9 Overhead Squat (61kg)\n18 Pull-up',
+   hikaye:'Azalan OHS ve pull-up. Omuz stabilitesi kritik.'},
+  {id:68,isim:'Joshie',tur:'Classic',format:'For Time',sure:'10–18 dk',zorluk:'Orta',
+   icerik:'21-15-9\nKettlebell Swing (32kg)\nHandstand Push-up',
+   hikaye:'Posterior chain ve üst vücut itme kombinasyonu.'},
+  {id:69,isim:'Lynne + Sprint',tur:'Classic',format:'5 Rounds',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'Max Pull-up\n400m Sprint\nMax Push-up\n400m Sprint\nTurlar arası 2 dk dinlenme',
+   hikaye:'Üst vücut dayanıklılığı ve sprint kombinasyonu.'},
+  {id:70,isim:'Hotshots 19',tur:'Hero WOD',format:'6 Rounds For Time',sure:'30–45 dk',zorluk:'Çok Ağır',
+   icerik:'30 Air Squat\n19 Power Clean (61kg)\n7 Strict Pull-up\n400m Koşu',
+   hikaye:'2013 Arizona yangınında hayatını kaybeden 19 itfaiyeciye adanmış. En duygusal WOD\'lardan biri.'},
+  {id:71,isim:'Run + Row',tur:'Classic',format:'For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'5000m Koşu\nveya\n5000m Kürek',
+   hikaye:'Saf kardio dayanıklılık. Tempo korunmalı.'},
+  {id:72,isim:'Clean & Jerk Ladder',tur:'Classic',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Ağır',
+   icerik:'Dakika 1: 1 Clean & Jerk\nDakika 2: 2 Clean & Jerk\n...\nDakika 10: 10 Clean & Jerk',
+   hikaye:'55 toplam Clean & Jerk. Ağırlık sabit, tempo artar.'},
+  {id:73,isim:'Snatch Balance',tur:'Skill WOD',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Orta',
+   icerik:'Her 2 dakikada:\n3 Snatch Balance\n(Ağırlık artar)',
+   hikaye:'Teknik odaklı EMOM. Snatch\'in en zor kısmını izole eder.'},
+  {id:74,isim:'Toes to Bar Ladder',tur:'Classic',format:'AMRAP 10 dk',sure:'10 dk',zorluk:'Orta',
+   icerik:'1 Toes-to-Bar\n2 Toes-to-Bar\n3 Toes-to-Bar\n...\n(Merdiven formatı)',
+   hikaye:'Artan core hareketi. Kaç adıma kadar gidebilirsin?'},
+  {id:75,isim:'Double Grace',tur:'Classic',format:'For Time',sure:'3–8 dk',zorluk:'Çok Ağır',
+   icerik:'60 Clean & Jerk (61kg)',
+   hikaye:'Grace\'in iki katı. 60 tekrar — elit 3 dakikanın altında.'},
+  {id:76,isim:'Baseline',tur:'Classic',format:'For Time',sure:'7–12 dk',zorluk:'Orta',
+   icerik:'500m Kürek\n40 Air Squat\n30 Sit-up\n20 Push-up\n10 Pull-up',
+   hikaye:'CrossFit başlangıç testi. Yeni üyelere yapılan ilk WOD genellikle budur.'},
+  {id:77,isim:'Bear Complex',tur:'Classic',format:'5 Rounds',sure:'20–30 dk',zorluk:'Çok Ağır',
+   icerik:'7 set:\nPower Clean\nFront Squat\nPush Press\nBack Squat\nBehind-the-Neck Push Press\n(Ağırlık her turda artar, bar yere inmez)',
+   hikaye:'Bir turda 5 hareket bar yere inmeden. En ağır kaldırdığın tur skordur.'},
+  {id:78,isim:'Klepto',tur:'Classic',format:'5 Rounds For Time',sure:'20–35 dk',zorluk:'Ağır',
+   icerik:'10 Deadlift (70kg)\n20 Box Jump (61cm)\n30 Double-Under',
+   hikaye:'Posterior chain, patlayıcı güç ve koordinasyon.'},
+  {id:79,isim:'Power Hour',tur:'Classic',format:'EMOM 60 dk',sure:'60 dk',zorluk:'Çok Ağır',
+   icerik:'Her dakika:\n5 Power Clean (52kg)',
+   hikaye:'300 toplam Power Clean. Saat boyunca devam. Zihinsel ve fiziksel dayanıklılık.'},
+  {id:80,isim:'Manion',tur:'Hero WOD',format:'7 Rounds For Time',sure:'40–55 dk',zorluk:'Çok Ağır',
+   icerik:'400m Koşu\n29 Back Squat (70kg)',
+   hikaye:'1st Lt. Travis Manion\'a adanmış. Ağır squat ve uzun koşu.'},
+  {id:81,isim:'Arnie',tur:'Hero WOD',format:'AMRAP 21 dk',sure:'21 dk',zorluk:'Ağır',
+   icerik:'21 Turkish Get-up (22.5kg)\n50 Swing (32kg)\n30 Ring Dip',
+   hikaye:'Teknikalite gerektiren Hero WOD. TGU form ister.'},
+  {id:82,isim:'Hopkins',tur:'Hero WOD',format:'For Time',sure:'25–40 dk',zorluk:'Çok Ağır',
+   icerik:'800m Koşu\n50 Kettlebell Swing (32kg)\n800m Koşu\n50 Pull-up\n800m Koşu',
+   hikaye:'Koşu, swing ve pull-up üçlemesi uzun versiyonu.'},
+  {id:83,isim:'Hall',tur:'Hero WOD',format:'For Time',sure:'30–50 dk',zorluk:'Çok Ağır',
+   icerik:'21-15-9\nThruster (52kg)\nPull-up\nBox Jump (61cm)',
+   hikaye:'Fran\'ın 3 hareket versiyonu. Box jump eklenince çok daha ağırlaşır.'},
+  {id:84,isim:'Cluster',tur:'Classic',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Ağır',
+   icerik:'Her dakika:\n1 Cluster (Squat Clean + Thruster)\n(Ağırlık artar)',
+   hikaye:'Clean + Thruster birleşimi. Tüm vücut tek harekette.'},
+  {id:85,isim:'Gymnastics Primer',tur:'Classic',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'5 Strict Pull-up\n10 Strict Push-up\n15 Strict Sit-up\n20 Air Squat',
+   hikaye:'Kipping yasak — her şey strict. Gerçek vücut kontrolü.'},
+  {id:86,isim:'Grunt',tur:'Classic',format:'For Time',sure:'20–35 dk',zorluk:'Ağır',
+   icerik:'1 mil Koşu\n100 Pull-up\n200 Push-up\n300 Squat\n1 mil Koşu\n(Murph gibi ama yeleksiz)',
+   hikaye:'Murph\'ün yeleksiz versiyonu. Hâlâ çok zorlu.'},
+  {id:87,isim:'Three Bars of Death',tur:'Classic',format:'For Time',sure:'25–40 dk',zorluk:'Çok Ağır',
+   icerik:'21-15-9\nDeadlift (102kg)\nPower Clean (70kg)\nPower Snatch (52kg)',
+   hikaye:'Üç farklı bar ve ağırlık. Hızlı yükleme gerektirir.'},
+  {id:88,isim:'Kettlebell Hell',tur:'Classic',format:'For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'50 KB Swing (32kg)\n40 KB Clean (24kg)\n30 KB Press (24kg)\n20 KB Snatch (24kg)\n10 Turkish Get-up (24kg)',
+   hikaye:'Sadece kettlebell ile azalan tekrarlı chipper.'},
+  {id:89,isim:'Interval Sprints',tur:'Conditioning',format:'10 Rounds',sure:'20 dk',zorluk:'Orta',
+   icerik:'200m Sprint\n90 sn dinlenme',
+   hikaye:'Klasik interval koşu. Hız ve toparlanma ritmi.'},
+  {id:90,isim:'Pyramid',tur:'Classic',format:'For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'1-2-3-4-5-4-3-2-1\nPull-up\nDip\nPush-up',
+   hikaye:'Artan sonra azalan piramit. Üst vücut itme ve çekme dengesi.'},
+  {id:91,isim:'Power Endurance',tur:'Classic',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'10 Power Snatch (52kg)\n10 Box Jump (76cm)\n10 Pull-up',
+   hikaye:'Patlayıcı güç ve dayanıklılık birlikte.'},
+  {id:92,isim:'Pistol + Pull-up',tur:'Classic',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Ağır',
+   icerik:'5 Pistol Squat (her bacak)\n10 Pull-up',
+   hikaye:'Denge, güç ve pull-up dayanıklılığı.'},
+  {id:93,isim:'Burpee Mile',tur:'Classic',format:'For Time',sure:'40–60 dk',zorluk:'Çok Ağır',
+   icerik:'Her 25 metrede 1 burpee\n1 mil boyunca\n(Toplam ~64 burpee + 1 mil koşu)',
+   hikaye:'İlerleme burpee ile ölçülür. Zihinsel dayanıklılık testi.'},
+  {id:94,isim:'Death by Box Jump',tur:'Classic',format:'EMOM',sure:'10–15 dk',zorluk:'Orta',
+   icerik:'Dakika 1: 1 Box Jump\nDakika 2: 2 Box Jump\n...\n(Artık tamamlayamadığında bitir)',
+   hikaye:'Artan EMOM box jump. Alt vücut patlayıcı güç testi.'},
+  {id:95,isim:'Rowing Pyramid',tur:'Conditioning',format:'For Time',sure:'25–35 dk',zorluk:'Orta',
+   icerik:'500m - 400m - 300m - 200m - 100m Kürek\n60 sn dinlenme aralar',
+   hikaye:'Azalan mesafe ile artan tempo. Kürek sonu sprintle biter.'},
+  {id:96,isim:'Strict Gymnastics',tur:'Skill WOD',format:'EMOM 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'Tek sayılı dakika: 5 Strict Pull-up\nÇift sayılı dakika: 5 Strict Handstand Push-up',
+   hikaye:'Kipping yok — sadece güç. Gerçek omuz ve sırt kapasitesi testi.'},
+  {id:97,isim:'GI Jane',tur:'Classic',format:'For Time',sure:'8–15 dk',zorluk:'Orta',
+   icerik:'100 Burpee Pull-up',
+   hikaye:'100 tekrar burpee pull-up. Her burpee sonunda pull-up — dur, devam et.'},
+  {id:98,isim:'Murph Half',tur:'Classic',format:'For Time',sure:'20–35 dk',zorluk:'Orta',
+   icerik:'800m Koşu\n50 Pull-up\n100 Push-up\n150 Air Squat\n800m Koşu',
+   hikaye:'Tam Murph\'e hazırlık. Yelek olmadan ve yarı mesafe.'},
+  {id:99,isim:'Chipper Klasik',tur:'Classic',format:'For Time',sure:'25–40 dk',zorluk:'Ağır',
+   icerik:'50 Box Jump (61cm)\n50 Pull-up\n50 Kettlebell Swing (24kg)\n50 Walking Lunge\n50 Knees-to-Elbow\n50 Push Press (20kg)',
+   hikaye:'6 hareket × 50 tekrar. Sırayla, durmadan.'},
+  {id:100,isim:'Open 19.1',tur:'CrossFit Open',format:'15 dk AMRAP',sure:'15 dk',zorluk:'Orta',
+   icerik:'19 Wall Ball (9kg, 10 fit)\n19 Calorie Kürek',
+   hikaye:'2019 Open açılışı. Simetrik tekrar sayısı ve yıla özgü tasarım.'},
+  {id:101,isim:'Erin',tur:'Hero WOD',format:'5 Rounds For Time',sure:'25–40 dk',zorluk:'Ağır',
+   icerik:'15 Dumbbell Split Clean (22.5kg)\n21 Pull-up',
+   hikaye:'Dumbbell clean teknik ve çekme gücü kombinasyonu.'},
+  {id:102,isim:'Coe',tur:'Hero WOD',format:'For Time',sure:'20–35 dk',zorluk:'Ağır',
+   icerik:'10 Rounds:\n10 Pull-up\n10 Thruster (35kg)',
+   hikaye:'100 pull-up + 100 thruster. Gripi ve gücü birlikte test eder.'},
+  {id:103,isim:'Body Armor',tur:'Classic',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'10 Goblet Squat (32kg)\n10 Single Arm DB Row (32kg)\n10 DB Romanian Deadlift (32kg)\n10 Single Arm DB Press (22.5kg)',
+   hikaye:'Dumbbell ile tüm vücut çalışması. Fonksiyonel güç.'},
+  {id:104,isim:'Open 20.1',tur:'CrossFit Open',format:'10 dk AMRAP',sure:'10 dk',zorluk:'Orta',
+   icerik:'8 Ground-to-Overhead (43kg)\n10 Bar-Facing Burpee\n14 Calorie Kürek',
+   hikaye:'2020 Open açılışı. Kürek, burpee ve barbell kombinasyonu.'},
+  {id:105,isim:'Rope Climb Chipper',tur:'Classic',format:'For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'10 Rope Climb\n50 Deadlift (70kg)\n100 Double-Under\n50 Deadlift (70kg)\n10 Rope Climb',
+   hikaye:'İp tırmanma, deadlift ve çift atlama üçlemesi.'},
+  {id:106,isim:'Assault Bike Killer',tur:'Conditioning',format:'For Time',sure:'12–18 dk',zorluk:'Ağır',
+   icerik:'40 Kalori Assault Bike\n30 Burpee\n20 Pull-up\n10 Clean (70kg)',
+   hikaye:'Assault bike sonrası bacaklar titrerken devam etmek.'},
+  {id:107,isim:'Pyramid of Pain',tur:'Classic',format:'For Time',sure:'20–35 dk',zorluk:'Ağır',
+   icerik:'10-20-30-40-50-40-30-20-10 Air Squat\n10-20-30-40-50... Double-Under',
+   hikaye:'Piramit hacmi. Tepe noktasında bacaklar yanmaya başlar.'},
+  {id:108,isim:'Strict Press Ladder',tur:'Skill WOD',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Orta',
+   icerik:'Dakika 1: 1 Strict Press\nDakika 2: 2 Strict Press\n...\n(Ağırlık her zaman sabit)',
+   hikaye:'55 toplam strict press. Form bozulduğunda biter.'},
+  {id:109,isim:'Gable',tur:'Hero WOD',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'10 Power Clean (52kg)\n10 Pull-up',
+   hikaye:'Temiz ve etkili AMRAP. Güç ve çekme dayanıklılığı.'},
+  {id:110,isim:'Ghost',tur:'Classic',format:'6 Rounds',sure:'25–35 dk',zorluk:'Çok Ağır',
+   icerik:'Her tur 6 dk:\nDakika 1: 10 Power Snatch (52kg)\nDakika 2: 15 Box Jump (61cm)\nDakika 3: 15 Thruster (35kg)\nDakika 4-6: Dinlenme',
+   hikaye:'Yüksek yoğunluklu iş, dinlenme garantili. Tur başlarken hazır ol.'},
+  {id:111,isim:'Grim Reaper',tur:'Classic',format:'For Time',sure:'25–40 dk',zorluk:'Çok Ağır',
+   icerik:'50 Deadlift (70kg)\n50 Box Jump (61cm)\n50 Kettlebell Swing (32kg)\n50 Burpee',
+   hikaye:'4 hareket × 50 tekrar. Monoton ama yıkıcı.'},
+  {id:112,isim:'Open 21.1',tur:'CrossFit Open',format:'15 dk AMRAP',sure:'15 dk',zorluk:'Orta',
+   icerik:'1 Wall Walk\n10 Double-Under\n2 Wall Walk\n20 Double-Under\n3 Wall Walk\n30 Double-Under\n...',
+   hikaye:'2021 Open açılışı. Wall walk ve double-under artan merdiven.'},
+  {id:113,isim:'Deuce',tur:'Classic',format:'2 Rounds For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'500m Kürek\n21 Burpee Box Jump (61cm)\n21 Thruster (43kg)\n500m Kürek',
+   hikaye:'İki tur, yoğun hareketler. Kürek ile çerçevelenmiş.'},
+  {id:114,isim:'2K Row',tur:'Conditioning',format:'For Time',sure:'7–9 dk',zorluk:'Orta',
+   icerik:'2000m Kürek\n(Tek seferde)',
+   hikaye:'Kürekçilerin klasik test mesafesi. CrossFit\'te de yaygın benchmark.'},
+  {id:115,isim:'Bar Muscle-up Ladder',tur:'Skill WOD',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Ağır',
+   icerik:'Dakika 1: 1 Bar Muscle-up\nDakika 2: 2 Bar Muscle-up\n...',
+   hikaye:'Bar muscle-up teknik ve güç testi. Kaç dakika devam edebilirsin?'},
+  {id:116,isim:'Deck of Cards',tur:'Classic',format:'For Time',sure:'20–45 dk',zorluk:'Orta',
+   icerik:'Bir kart destesi çek:\nMaça = Burpee\nKupa = Squat\nKaro = Push-up\nSinekler = Sit-up\nJ/Q/K = 10 tekrar\nAs = 15 tekrar',
+   hikaye:'Kart çekerek WOD belirle. Her seferinde farklı. Şans faktörü var.'},
+  {id:117,isim:'Rowing Chipper',tur:'Classic',format:'For Time',sure:'25–35 dk',zorluk:'Ağır',
+   icerik:'1000m Kürek\n50 Thruster (35kg)\n30 Pull-up\n20 Burpee\n1000m Kürek',
+   hikaye:'Kürek aralarında üst vücut yıkımı.'},
+  {id:118,isim:'Ring Row + Push-up',tur:'Classic',format:'AMRAP 12 dk',sure:'12 dk',zorluk:'Orta',
+   icerik:'10 Ring Row\n15 Push-up\n20 Air Squat',
+   hikaye:'Pull-up alternatifi ile. Halka ve zemin.'},
+  {id:119,isim:'Sandbag Carry',tur:'Functional',format:'For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'5 Rounds:\n100m Sandbag Carry (40kg)\n15 Burpee',
+   hikaye:'Kum torbası taşıma ve burpee. İşlevsel güç.'},
+  {id:120,isim:'Over Under',tur:'Classic',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'10 Over Box (61cm)\n10 Under Bar\n10 Air Squat\n10 Sit-up',
+   hikaye:'Koordinasyon ve ritim gerektiren hareket geçişleri.'},
+  {id:121,isim:'Goats Day',tur:'Classic',format:'Serbest',sure:'20–30 dk',zorluk:'Değişken',
+   icerik:'Zayıf olduğun hareket: 10 dk pratik\nİkinci zayıf hareket: 10 dk pratik\nForm önce, hız sonra',
+   hikaye:'CrossFit\'te "goat" zayıf nokta demek. Bugün onları çalış.'},
+  {id:122,isim:'Power Ladder',tur:'Classic',format:'EMOM 15 dk',sure:'15 dk',zorluk:'Ağır',
+   icerik:'Dakika 1-5: 3 Power Clean (70kg)\nDakika 6-10: 2 Power Clean (80kg)\nDakika 11-15: 1 Power Clean (90kg+)',
+   hikaye:'Artan ağırlık, azalan tekrar. Max yüke ulaşmaya çalış.'},
+  {id:123,isim:'Helen Hell',tur:'Classic',format:'5 Rounds For Time',sure:'25–40 dk',zorluk:'Çok Ağır',
+   icerik:'400m Koşu\n21 Kettlebell Swing (32kg)\n12 Pull-up',
+   hikaye:'Helen\'ın 5 tur versiyonu. 3 tur yerine 5 tur — çok daha zor.'},
+  {id:124,isim:'Overhead Squat Ladder',tur:'Skill WOD',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Orta',
+   icerik:'Her dakika: 3 Overhead Squat\n(Ağırlık her 2 dakikada artar)',
+   hikaye:'Teknik ve mobilite testi. OHS her hareketin en zorudur.'},
+  {id:125,isim:'Handstand Walk + Clean',tur:'Classic',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Çok Ağır',
+   icerik:'25m Handstand Walk\n10 Power Clean (70kg)',
+   hikaye:'Ters yürüyüş ve ağır barbell. Üst düzey WOD.'},
+  {id:126,isim:'Ruck March',tur:'Functional',format:'For Time',sure:'30–45 dk',zorluk:'Orta',
+   icerik:'5 km Yürüyüş\n(20kg çanta ile)',
+   hikaye:'Askeri kondisyon testi. Ağırlıklı yürüyüş aerobik kapasiteyi geliştirir.'},
+  {id:127,isim:'Sprint + Lift',tur:'Classic',format:'10 Rounds For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'100m Sprint\n5 Deadlift (102kg)',
+   hikaye:'Sprint sonrası ağır kaldırış. CNS şoku.'},
+  {id:128,isim:'Odd Object',tur:'Functional',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'10 Sandbag Thruster (30kg)\n10 Farmer Carry (her elde 24kg, 25m)\n10 Tire Flip',
+   hikaye:'Standart olmayan ekipman. Gerçek dünya gücü.'},
+  {id:129,isim:'Cindy + Grace',tur:'Classic',format:'For Time + AMRAP',sure:'25–35 dk',zorluk:'Çok Ağır',
+   icerik:'Grace: 30 Clean & Jerk (61kg)\nSonra 20 dk AMRAP:\n5 Pull-up\n10 Push-up\n15 Air Squat',
+   hikaye:'İki benchmark birden. Grace bitince dinlenmeden Cindy başlar.'},
+  {id:130,isim:'Wittman',tur:'Hero WOD',format:'7 Rounds For Time',sure:'35–50 dk',zorluk:'Çok Ağır',
+   icerik:'15 Kettlebell Swing (32kg)\n15 Power Clean (52kg)\n15 Box Jump (61cm)',
+   hikaye:'Ryan Wittman\'a adanmış. 7 tur yüksek hacim.'},
+  {id:131,isim:'Open 22.2',tur:'CrossFit Open',format:'20 dk AMRAP',sure:'20 dk',zorluk:'Ağır',
+   icerik:'10 Deadlift (102kg)\n10 Burpee Box Jump Over (61cm)\n10 Deadlift (102kg)\n10 Burpee Box Jump Over\n10 Squat Clean & Jerk (61kg)\n10 Burpee Box Jump Over',
+   hikaye:'2022 Open\'dan. Artan ağırlık ve süregelen burpee box jump.'},
+  {id:132,isim:'Kettlebell Complex',tur:'Classic',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'10 KB Clean & Press (24kg)\n10 KB Front Squat (24kg)\n10 KB Swing (32kg)\n200m Koşu',
+   hikaye:'Kettlebell akışı ve koşu. Bar olmadan güçlü WOD.'},
+  {id:133,isim:'Thruster Ladder',tur:'Classic',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Ağır',
+   icerik:'Dakika 1: 10 Thruster (35kg)\nDakika 2: 8 Thruster (43kg)\nDakika 3: 6 Thruster (52kg)\nDakika 4: 4 Thruster (61kg)\nDakika 5: 2 Thruster (70kg)\nSonra tekrar başa dön',
+   hikaye:'Azalan tekrar, artan ağırlık EMOM. 10 dakikada 2 tam tur.'},
+  {id:134,isim:'Armor Building',tur:'Classic',format:'EMOM 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'Dakika 1: 2 DB Clean & Press (22.5kg)\nDakika 2: 10 DB Lateral Raise (10kg)',
+   hikaye:'Omuz hacmi ve güç birlikte. Dan John\'ın klasiği.'},
+  {id:135,isim:'Bar Hop',tur:'Classic',format:'AMRAP 10 dk',sure:'10 dk',zorluk:'Orta',
+   icerik:'10 Bar-Facing Burpee\n10 Hang Power Clean (52kg)\n10 Front Squat (52kg)',
+   hikaye:'Temiz geçişler gerektiren 10 dakika AMRAP.'},
+  {id:136,isim:'Swim WOD',tur:'Conditioning',format:'For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'10x100m Yüzme\n30 sn dinlenme aralar',
+   hikaye:'CrossFit interval yüzme. Erişim varsa kullan.'},
+  {id:137,isim:'Strongman Complex',tur:'Functional',format:'5 Rounds For Time',sure:'25–35 dk',zorluk:'Çok Ağır',
+   icerik:'5 Atlas Stone Lift\n10 Farmer Walk (her elde 40kg, 50m)\n15 Sled Push (50m)',
+   hikaye:'Kuvvet sporu hareketleri. Gym\'de yoksa benzerleriyle yap.'},
+  {id:138,isim:'Deadlift + Box Jump',tur:'Classic',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'10 Deadlift (70kg)\n10 Box Jump (61cm)',
+   hikaye:'Posterior chain ve patlayıcı güç. Basit ama etkili.'},
+  {id:139,isim:'Wall Ball + Row',tur:'Classic',format:'AMRAP 12 dk',sure:'12 dk',zorluk:'Orta',
+   icerik:'15 Wall Ball (9kg)\n200m Kürek',
+   hikaye:'Tam vücut kondisyon. Wall ball ve kürek döngüsü.'},
+  {id:140,isim:'Run + Deadlift',tur:'Classic',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'400m Koşu\n10 Deadlift (120kg)',
+   hikaye:'Koşu sonrası ağır kaldırış. Her tur daha zor.'},
+  {id:141,isim:'Turkish Complex',tur:'Skill WOD',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Orta',
+   icerik:'Her iki dakikada bir:\n1 Turkish Get-up (her taraf)\n3 Single Leg RDL (her taraf)',
+   hikaye:'Unilateral güç ve stabilite. Çekirdek kontrolü şart.'},
+  {id:142,isim:'Metcon Classic',tur:'Classic',format:'3 Rounds For Time',sure:'12–18 dk',zorluk:'Orta',
+   icerik:'400m Koşu\n15 Pull-up\n30 Push-up\n45 Air Squat',
+   hikaye:'Klasik CrossFit metcon formatı. Tur başında koşu, sonra gym.'},
+  {id:143,isim:'10 Rounds',tur:'Classic',format:'10 Rounds For Time',sure:'20–35 dk',zorluk:'Ağır',
+   icerik:'10 Power Clean (52kg)\n10 Box Jump (61cm)\n10 Burpee',
+   hikaye:'10 tur × 30 tekrar = 300 toplam tekrar.'},
+  {id:144,isim:'Jumping Chipper',tur:'Classic',format:'For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'100 Double-Under\n80 Sit-up\n60 Air Squat\n40 Push-up\n20 Pull-up',
+   hikaye:'Azalan tekrar, farklı hareket. Double-under başlangıcı solu söküm.'},
+  {id:145,isim:'Strict Series',tur:'Skill WOD',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'5 Strict Pull-up\n10 Strict Dip\n15 Strict Push-up\n20 Air Squat',
+   hikaye:'Kipping yasak. Tüm güç saf kastan.'},
+  {id:146,isim:'Bike + Barbell',tur:'Classic',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'20 Kalori Bike\n15 Power Clean (52kg)\n10 Push Jerk (52kg)',
+   hikaye:'Kardio ve barbell döngüsü. Assault bike gerektirir.'},
+  {id:147,isim:'Pendlay Row + Sprint',tur:'Classic',format:'5 Rounds For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'10 Pendlay Row (70kg)\n200m Sprint',
+   hikaye:'Çekme gücü ve hız. Sırt ve bacak birlikte.'},
+  {id:148,isim:'Open 23.3',tur:'CrossFit Open',format:'For Time',sure:'10–20 dk',zorluk:'Çok Ağır',
+   icerik:'200m Farmers Carry (her elde 32kg)\n50 Pull-up\n200m Farmers Carry\n50 Clean & Jerk (61kg)\n200m Farmers Carry\n50 Pull-up\n200m Farmers Carry',
+   hikaye:'2023 Open\'dan. Farmer\'s carry ile geçiş gerektiren karmaşık WOD.'},
+  {id:149,isim:'Ladder of Death',tur:'Classic',format:'For Time',sure:'20–35 dk',zorluk:'Çok Ağır',
+   icerik:'1-2-3-4-5-6-7-8-9-10\nDeadlift (102kg)\nBurpee Over Bar',
+   hikaye:'Artan merdiven. 55 deadlift + 55 burpee. Sona yaklaştıkça ağırlaşır.'},
+  {id:150,isim:'Goat Killer',tur:'Classic',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Değişken',
+   icerik:'En zayıf hareketini seç\nHer turda: 5 tekrar o hareket + 10 Air Squat + 200m Koşu',
+   hikaye:'Zayıf noktayı kondisyon çerçevesinde geliştir.'},
+  {id:151,isim:'Weighted Vest Cindy',tur:'Classic',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Ağır',
+   icerik:'(14kg yelek ile)\n5 Pull-up\n10 Push-up\n15 Air Squat',
+   hikaye:'Cindy\'nin yelek versiyonu. Yelek olmadan başlamak önerilir.'},
+  {id:152,isim:'CrossFit Total',tur:'Strength',format:'1RM Test',sure:'40–60 dk',zorluk:'Ağır',
+   icerik:'Back Squat 1RM\nPress 1RM\nDeadlift 1RM\n(Toplam kg skor)',
+   hikaye:'Mark Rippetoe\'nun CrossFit için uyarladığı güç testi. Yıllık benchmark.'},
+  {id:153,isim:'Pendleton V2',tur:'Hero WOD',format:'5 Rounds For Time',sure:'30–45 dk',zorluk:'Çok Ağır',
+   icerik:'800m Koşu\n25 Kettlebell Swing (32kg)\n25 Box Jump (61cm)',
+   hikaye:'Uzun koşu ve yüksek tekrarlı gym hareketleri.'},
+  {id:154,isim:'GHD + Row',tur:'Classic',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'20 GHD Sit-up\n250m Kürek',
+   hikaye:'GHD makine ve kürek kombinasyonu.'},
+  {id:155,isim:'Barbell Cycling',tur:'Classic',format:'EMOM 12 dk',sure:'12 dk',zorluk:'Ağır',
+   icerik:'Dakika 1: 5 Power Clean (70kg)\nDakika 2: 5 Push Jerk (70kg)\nDakika 3: 5 Squat Clean (70kg)\nDakika 4: Dinlenme\n(3 tur)',
+   hikaye:'Barbell hareketleri döngüsü. Teknik altında bozulmamalı.'},
+  {id:156,isim:'Hips + Shoulders',tur:'Classic',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'10 Hip Extension\n10 Shoulder Press (43kg)\n10 Glute Bridge\n10 Lateral Raise (10kg)',
+   hikaye:'Posterior chain ve omuz dengesi çalışması.'},
+  {id:157,isim:'Pull-up Pyramid',tur:'Classic',format:'For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'1-2-3-4-5-4-3-2-1\nPull-up\nDip',
+   hikaye:'Piramit çekme ve itme. Toplam 50 pull-up + 50 dip.'},
+  {id:158,isim:'Monster Mash',tur:'Classic',format:'For Time',sure:'30–45 dk',zorluk:'Çok Ağır',
+   icerik:'10 Muscle-up\n20 Snatch (61kg)\n30 Handstand Push-up\n40 Pull-up\n50 Clean (52kg)\n60 Box Jump (61cm)',
+   hikaye:'Azalan tekrar chipper. Her hareket farklı enerji sistemi.'},
+  {id:159,isim:'FGB V2',tur:'Classic',format:'3 Rounds',sure:'20–25 dk',zorluk:'Orta',
+   icerik:'1 dk Rowing (kalori)\n1 dk Box Jump (61cm)\n1 dk Power Snatch (35kg)\n1 dk Wall Ball (9kg)\n1 dk Burpee\n1 dk Dinlenme',
+   hikaye:'Fight Gone Bad\'ın varyasyonu. Kürek başlangıçla.'},
+  {id:160,isim:'Overhead Everything',tur:'Classic',format:'For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'50 Overhead Squat (43kg)\n50 Push Press (52kg)\n50 Push Jerk (52kg)\n50 Split Jerk (52kg)',
+   hikaye:'200 toplam overhead hareket. Omuz dayanıklılığı tükenir.'},
+  {id:161,isim:'Kettlebell Swing Tabata',tur:'Classic',format:'Tabata',sure:'4 dk',zorluk:'Orta',
+   icerik:'20 sn KB Swing (32kg)\n10 sn Dinlenme\n× 8 set',
+   hikaye:'Tabata protokolü ile kettlebell swing. Basit ama yanıcı.'},
+  {id:162,isim:'Box Jump Chipper',tur:'Classic',format:'For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'100 Box Jump (61cm)\n50 Burpee\n25 Thruster (43kg)',
+   hikaye:'Azalan tekrar. Box jump başlangıcı bacakları yorar, thruster bitirmek zor.'},
+  {id:163,isim:'Danny',tur:'Hero WOD',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Ağır',
+   icerik:'30 Box Jump (61cm)\n20 Push Press (52kg)\n30 Pull-up',
+   hikaye:'Danny Dietz\'e adanmış. Yüksek tekrarlı AMRAP.'},
+  {id:164,isim:'Strongman WOD',tur:'Functional',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Ağır',
+   icerik:'5 Log Press (50kg)\n10 Yoke Carry (50m, 100kg)\n15 Sandbag Squat (40kg)',
+   hikaye:'Fonksiyonel kuvvet sporu hareketi. Standart olmayan ekipman.'},
+  {id:165,isim:'Overhead Walk',tur:'Functional',format:'For Time',sure:'15–25 dk',zorluk:'Orta',
+   icerik:'5 Rounds:\n50m Overhead Carry (43kg)\n15 Air Squat\n10 Push-up',
+   hikaye:'Overhead pozisyonda taşıma — omuz stabilitesi ve kardio.'},
+  {id:166,isim:'Pull + Push Chipper',tur:'Classic',format:'For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'50 Pull-up\n50 Dip\n40 Chest-to-Bar Pull-up\n40 Push-up\n30 Ring Pull-up\n30 Ring Dip',
+   hikaye:'Çekme ve itme simetrik chipper. Üst vücut tamamen tükenir.'},
+  {id:167,isim:'Sumo + Swing',tur:'Classic',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'10 Sumo Deadlift High Pull (35kg)\n15 Kettlebell Swing (32kg)\n20 Air Squat',
+   hikaye:'Posterior chain ve kalça odaklı AMRAP.'},
+  {id:168,isim:'Muscle-up Madness',tur:'Classic',format:'AMRAP 10 dk',sure:'10 dk',zorluk:'Çok Ağır',
+   icerik:'3 Muscle-up\n6 Handstand Push-up\n9 Squat Clean (70kg)',
+   hikaye:'Her hareket en zor versiyonu. Üst düzey skill gerektiriyor.'},
+  {id:169,isim:'Half Murph',tur:'Classic',format:'For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'800m Koşu\n50 Pull-up\n100 Push-up\n150 Squat\n800m Koşu',
+   hikaye:'Murph hazırlık versiyonu.'},
+  {id:170,isim:'Gymnastics Flow',tur:'Skill WOD',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'3 Muscle-up (veya 9 Pull-up)\n6 Handstand Push-up\n12 Air Squat',
+   hikaye:'Teknik hareket akışı. Gym skill geliştirme.'},
+  {id:171,isim:'Back Attack',tur:'Classic',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'10 Deadlift (120kg)\n10 Bent Over Row (70kg)\n10 Pull-up\n200m Koşu',
+   hikaye:'Sırt odaklı WOD. Her tur koşu ile biter.'},
+  {id:172,isim:'Leg Day CrossFit',tur:'Classic',format:'For Time',sure:'25–35 dk',zorluk:'Ağır',
+   icerik:'50 Back Squat (70kg)\n50 Box Jump (61cm)\n50 Walking Lunge\n50 Kettlebell Swing (32kg)',
+   hikaye:'Tamamen alt vücut odaklı. Bacaklar günler sonra yanar.'},
+  {id:173,isim:'Press Complex',tur:'Classic',format:'EMOM 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'Dakika 1: 5 Strict Press (50kg)\nDakika 2: 5 Push Press (60kg)\nDakika 3: 5 Push Jerk (70kg)',
+   hikaye:'Üç omuz presini sırayla. Ağırlık artar, teknik değişir.'},
+  {id:174,isim:'Couplet Classic',tur:'Classic',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'10 Deadlift (102kg)\n10 Burpee',
+   hikaye:'En sade couplet. Ağır kaldırış ve vücut ağırlığı.'},
+  {id:175,isim:'Short Sprint WOD',tur:'Conditioning',format:'10 Rounds',sure:'15–20 dk',zorluk:'Orta',
+   icerik:'100m Sprint\n2 dk dinlenme',
+   hikaye:'Maksimum hız intervalleri. Her sprint tam güçle.'},
+  {id:176,isim:'Rope + Rings',tur:'Gymnastics',format:'AMRAP 12 dk',sure:'12 dk',zorluk:'Ağır',
+   icerik:'3 Rope Climb (4.5m)\n10 Ring Dip\n15 Air Squat',
+   hikaye:'Gym skill ve vücut ağırlığı kombinasyonu.'},
+  {id:177,isim:'Power Building',tur:'Classic',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'5 Back Squat (102kg)\n5 Bench Press (84kg)\n5 Deadlift (120kg)',
+   hikaye:'CrossFit güç formatında. Squat, bench, deadlift — powerlifting şeması.'},
+  {id:178,isim:'Triplet Classic',tur:'Classic',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'5 Pull-up\n10 Push-up\n15 Squat\n200m Koşu',
+   hikaye:'4 hareket döngüsü. Koşu ritim kırar.'},
+  {id:179,isim:'Snatching Cindy',tur:'Classic',format:'AMRAP 20 dk',sure:'20 dk',zorluk:'Ağır',
+   icerik:'3 Power Snatch (52kg)\n6 Toes-to-Bar\n9 Box Jump (61cm)',
+   hikaye:'Cindy formatında ama teknik ve ağır hareketlerle.'},
+  {id:180,isim:'Hip Complex',tur:'Functional',format:'4 Rounds For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'20 Hip Thrust (80kg)\n15 Romanian Deadlift (70kg)\n10 Kettlebell Swing (32kg)\n400m Koşu',
+   hikaye:'Glute ve posterior chain odaklı fonksiyonel WOD.'},
+  {id:181,isim:'Double Trouble',tur:'Classic',format:'For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'50 Double-Under\n10 Deadlift (102kg)\n40 Double-Under\n10 Deadlift\n30 Double-Under\n10 Deadlift\n20 Double-Under\n10 Deadlift\n10 Double-Under\n10 Deadlift',
+   hikaye:'Azalan double-under, sabit deadlift. Ritim kırılınca çok zor.'},
+  {id:182,isim:'Twisted Annie',tur:'Classic',format:'For Time',sure:'10–18 dk',zorluk:'Orta',
+   icerik:'50-40-30-20-10\nDouble-Under\nOverhead Squat (35kg)',
+   hikaye:'Annie\'nin OHS versiyonu. Squat koordinasyon gerektirir.'},
+  {id:183,isim:'Bear Row',tur:'Classic',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Ağır',
+   icerik:'5 Pendlay Row (70kg)\n10 Pull-up\n15 Air Squat\n200m Koşu',
+   hikaye:'Çekme odaklı AMRAP. Sırt pumpu garantili.'},
+  {id:184,isim:'Quarterfinal WOD',tur:'CrossFit Open',format:'For Time',sure:'15–25 dk',zorluk:'Ağır',
+   icerik:'21 Chest-to-Bar Pull-up\n15 Squat Clean (83kg)\n9 Ring Muscle-up',
+   hikaye:'CrossFit Games quarterfinal seviyesi WOD. Elite için.'},
+  {id:185,isim:'Strict Barbell',tur:'Strength',format:'EMOM 20 dk',sure:'20 dk',zorluk:'Orta',
+   icerik:'Dakika 1: 3 Strict Press (60kg)\nDakika 2: 5 Pendlay Row (80kg)\nDakika 3: 3 Romanian DL (100kg)\nDakika 4: Dinlenme',
+   hikaye:'Güç odaklı EMOM. 5 tur, hep strict.'},
+  {id:186,isim:'Metcon Flow',tur:'Classic',format:'21-15-9',sure:'10–18 dk',zorluk:'Orta',
+   icerik:'21-15-9\nKettlebell Clean & Press (24kg)\nToes-to-Bar\nGoblet Squat (32kg)',
+   hikaye:'CrossFit rep şeması ile kettlebell. Güzel akış.'},
+  {id:187,isim:'CrossFit Games 2019 Event 1',tur:'CrossFit Games',format:'For Time',sure:'15–25 dk',zorluk:'Çok Ağır',
+   icerik:'1000m Kürek\n50 Burpee Box Jump Over (61cm)\n1000m Kürek',
+   hikaye:'2019 CrossFit Games açılış WOD\'u. Kürek ve burpee box jump.'},
+  {id:188,isim:'CrossFit Games 2021',tur:'CrossFit Games',format:'For Time',sure:'10–18 dk',zorluk:'Çok Ağır',
+   icerik:'10 Muscle-up\n50 Wall Ball (9kg)\n10 Bar Muscle-up\n50 Calorie Bike',
+   hikaye:'2021 Games\'den. Gym skill ve kondisyon zorlu kombinasyonu.'},
+  {id:189,isim:'Sprint Chipper',tur:'Classic',format:'For Time',sure:'15–20 dk',zorluk:'Orta',
+   icerik:'800m Koşu\n50 Air Squat\n400m Koşu\n30 Push-up\n200m Koşu\n20 Pull-up\n100m Sprint',
+   hikaye:'Her bölüm kısalır, hız artar. Final sprint tam güçle.'},
+  {id:190,isim:'Naughty Nancy',tur:'Classic',format:'5 Rounds For Time',sure:'20–30 dk',zorluk:'Ağır',
+   icerik:'400m Koşu\n15 Snatch (52kg)',
+   hikaye:'Nancy\'nin daha ağır versiyonu. Snatch tekniği yorgunlukta korunmalı.'},
+  {id:191,isim:'Open 24.1',tur:'CrossFit Open',format:'15 dk AMRAP',sure:'15 dk',zorluk:'Orta',
+   icerik:'4 Dumbbell Deadlift (50kg toplam)\n6 Dumbbell Hang Clean (50kg toplam)\n6 Dumbbell Front Squat (50kg toplam)',
+   hikaye:'2024 Open açılışı. Dumbbell odaklı, teknik WOD.'},
+  {id:192,isim:'Heavy Fran',tur:'Classic',format:'For Time',sure:'5–12 dk',zorluk:'Çok Ağır',
+   icerik:'21-15-9\nThruster (52kg)\nWeighted Pull-up (10kg)',
+   hikaye:'Fran\'ın daha ağır versiyonu. Standart Fran zaten hızsa, bunu bitir.'},
+  {id:193,isim:'Clean Ladder',tur:'Classic',format:'EMOM 10 dk',sure:'10 dk',zorluk:'Ağır',
+   icerik:'Dakika 1: 1 Squat Clean (80% 1RM)\nDakika 2: 2 Squat Clean\n...\n(Tamamlayamadığında bitir)',
+   hikaye:'Her dakika bir tekrar artar. Ağırlık sabit, hacim artar.'},
+  {id:194,isim:'Grunt 2.0',tur:'Classic',format:'For Time',sure:'30–50 dk',zorluk:'Çok Ağır',
+   icerik:'1 mil Koşu\n50 Pull-up\n100 Push-up\n150 Squat\n200 Sit-up\n1 mil Koşu',
+   hikaye:'Murph\'ün genişletilmiş versiyonu. Sit-up eklendi.'},
+  {id:195,isim:'Leg + Pull',tur:'Classic',format:'AMRAP 15 dk',sure:'15 dk',zorluk:'Orta',
+   icerik:'10 Romanian Deadlift (70kg)\n10 Pull-up\n10 Box Jump (61cm)\n10 Toes-to-Bar',
+   hikaye:'Sırt zinciri ve çekme hareketleri dominant AMRAP.'},
+  {id:196,isim:'Push + Pull Couplet',tur:'Classic',format:'10 Rounds For Time',sure:'20–30 dk',zorluk:'Orta',
+   icerik:'10 Push Press (52kg)\n10 Pull-up',
+   hikaye:'200 toplam hareket. Simetrik push-pull döngüsü.'},
+  {id:197,isim:'Open 15.5',tur:'CrossFit Open',format:'For Time',sure:'8–20 dk',zorluk:'Çok Ağır',
+   icerik:'27-21-15-9\nCalorie Kürek\nThruster (43kg)',
+   hikaye:'2015 Open finalinin en nefret edilen WOD\'u. Kürek + thruster kombinasyonu acımasız.'},
+  {id:198,isim:'The Chief',tur:'Classic',format:'5 Rounds × 3 dk AMRAP',sure:'25 dk',zorluk:'Orta',
+   icerik:'Her 3 dk AMRAP:\n3 Power Clean (61kg)\n6 Push-up\n9 Air Squat\n1 dk dinlenme aralar',
+   hikaye:'5 kısa AMRAP, 1 dk dinlenme arası. Ritim ve tutarlılık.'},
+  {id:199,isim:'Rankel',tur:'Hero WOD',format:'6 Rounds For Time',sure:'25–40 dk',zorluk:'Ağır',
+   icerik:'24 Air Squat\n24 Push-up\n24 Walking Lunge\n400m Koşu',
+   hikaye:'Loredo\'ya benzer yapı. Vücut ağırlığı ve koşu dominantı.'},
+  {id:200,isim:'Final Beast',tur:'Classic',format:'For Time',sure:'35–55 dk',zorluk:'Çok Ağır',
+   icerik:'21 Deadlift (102kg)\n21 Box Jump (61cm)\n21 Kettlebell Swing (32kg)\n21 Pull-up\n21 Burpee\n21 Thruster (43kg)\n21 Sit-up\n21 Clean (61kg)\n21 Handstand Push-up\n21 Double-Under',
+   hikaye:'10 hareket × 21 tekrar. CrossFit\'in tüm enerji sistemlerini bir WOD\'da test eder.'},
+];
+
+let wodMode='ana',wodAktif=null;
+
+function setWod(){
+  mode='wod';
+  document.getElementById('hdr-title').textContent='CROSSFIT WOD';
+  document.getElementById('hdr-target').textContent='200+ İKONİK WOD · YAPAY ZEKA ÜRETİMİ';
+  hideAll();
+  document.getElementById('wod-view').style.display='block';
+  wodMode='ana';wodAktif=null;
+  renderWodAna();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderWodAna(){
+  const kategoriler=['Tümü','Benchmark Girl','Hero WOD','Classic','CrossFit Open','CrossFit Games','Conditioning','Skill WOD','Functional','Strength','Gymnastics'];
+  let html='<div class="wod-tabs" id="wod-kat-tabs">';
+  kategoriler.forEach((k,i)=>{
+    html+=`<button class="wod-tab${i===0?' on':''}" onclick="filterWod('${k}',this)">${k==='Tümü'?'TÜMÜ':k.toUpperCase()}</button>`;
+  });
+  html+='</div>';
+  html+=`<button class="wod-random-btn" onclick="randomWod()">⚡ RANDOM WOD</button>`;
+  html+=`<button class="wod-ai-btn" onclick="aiWod()">✦ YAPAY ZEKA WOD ÜRET</button>`;
+  html+='<div class="wod-liste" id="wod-liste">';
+  WODS.forEach(w=>{
+    html+=`<div class="wod-liste-item" onclick="showWod(${w.id})"><div class="wod-liste-sol"><span class="wod-liste-num">#${String(w.id).padStart(3,'0')}</span><div><div class="wod-liste-ad">${w.isim}</div><div class="wod-liste-tur">${w.tur} · ${w.format} · ${w.zorluk}</div></div></div><span class="wod-liste-ok">→</span></div>`;
+  });
+  html+='</div>';
+  document.getElementById('wod-view').innerHTML=html;
+}
+
+function filterWod(kat,btn){
+  document.querySelectorAll('.wod-tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  const filtered=kat==='Tümü'?WODS:WODS.filter(w=>w.tur===kat);
+  const liste=document.getElementById('wod-liste');
+  liste.innerHTML=filtered.map(w=>
+    `<div class="wod-liste-item" onclick="showWod(${w.id})"><div class="wod-liste-sol"><span class="wod-liste-num">#${String(w.id).padStart(3,'0')}</span><div><div class="wod-liste-ad">${w.isim}</div><div class="wod-liste-tur">${w.tur} · ${w.format} · ${w.zorluk}</div></div></div><span class="wod-liste-ok">→</span></div>`
+  ).join('');
+}
+
+function randomWod(){
+  const w=WODS[Math.floor(Math.random()*WODS.length)];
+  showWod(w.id);
+}
+
+function showWod(id){
+  wodAktif=id;
+  const w=WODS.find(x=>x.id===id);
+  document.getElementById('wod-view').innerHTML=
+    `<div class="wod-back" onclick="setWod()"><span class="wod-back-arrow">←</span><span class="wod-back-lbl">WOD Listesine Dön</span></div>`+
+    `<div class="wod-card">`+
+    `<div class="wod-card-hdr"><div class="wod-card-type">${w.tur}</div><div class="wod-card-name">${w.isim}</div><div class="wod-card-kategori">#${String(w.id).padStart(3,'0')} · ${w.zorluk}</div></div>`+
+    `<div class="wod-card-body">`+
+    `<div class="wod-card-format">${w.format}</div>`+
+    `<div class="wod-card-content">${w.icerik}</div>`+
+    `<div class="wod-card-meta"><div class="wod-meta-item"><div class="wod-meta-lbl">Tahmini Süre</div><div class="wod-meta-val">${w.sure}</div></div><div class="wod-meta-item"><div class="wod-meta-lbl">Zorluk</div><div class="wod-meta-val">${w.zorluk}</div></div></div>`+
+    `<div class="wod-card-hikaye">${w.hikaye}</div>`+
+    `</div></div>`+
+    `<button class="wod-random-btn" style="margin-top:14px;" onclick="randomWod()">⚡ BAŞKA RANDOM WOD</button>`+
+    `<button class="wod-ai-btn" onclick="aiWod()">✦ YAPAY ZEKA WOD ÜRET</button>`;
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+async function aiWod(){
+  document.getElementById('wod-view').innerHTML=
+    `<div class="wod-back" onclick="setWod()"><span class="wod-back-arrow">←</span><span class="wod-back-lbl">WOD Listesine Dön</span></div>`+
+    `<div class="wod-loading">⚡ WOD üretiliyor...</div>`;
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:`Sen deneyimli bir CrossFit programcısısın. M. Çağrı Ulu için kişiselleştirilmiş bir CrossFit WOD üret.
+
+Profil: 28-35 yaş erkek, ~75kg, 1-2 yıl kuvvet antrenmanı deneyimi, Deadlift ~135kg, Squat ~110kg, Bench ~90kg. Ekipman: barbell, kum torbası (torba odası), pull-up bar, dips bar. Süre: 30-45 dk.
+
+KURALLAR:
+- Gerçek CrossFit metodolojisi: AMRAP, EMOM, For Time, Chipper, Rounds formatlarından biri
+- Fizyolojik olarak mantıklı iş/dinlenme oranları
+- Jumping jack, machine, rope, kürek, bisiklet gibi ekipman yok
+- Aynı hareketi iki kez koyma
+- Ağırlıklar profiline uygun
+- Kum torbası hareketleri ekleyebilirsin
+
+SADECE JSON döndür, başka hiçbir şey yazma:
+{
+  "isim": "WOD ismi",
+  "format": "AMRAP 20 dk",
+  "icerik": "Hareketler ve tekrarlar (\\n ile ayır)",
+  "sure": "Tahmini süre",
+  "zorluk": "Orta/Ağır/Çok Ağır",
+  "hikaye": "Bu WOD hakkında 1-2 cümle açıklama"
+}`}]
+      })
+    });
+    const data=await resp.json();
+    const text=data.content[0].text.replace(/```json|```/g,'').trim();
+    const w=JSON.parse(text);
+    document.getElementById('wod-view').innerHTML=
+      `<div class="wod-back" onclick="setWod()"><span class="wod-back-arrow">←</span><span class="wod-back-lbl">WOD Listesine Dön</span></div>`+
+      `<div class="wod-card">`+
+      `<div class="wod-card-hdr"><div class="wod-card-type ai-badge">✦ YAPAY ZEKA WOD</div><div class="wod-card-name">${w.isim}</div><div class="wod-card-kategori">Kişiselleştirilmiş · ${w.zorluk}</div></div>`+
+      `<div class="wod-card-body">`+
+      `<div class="wod-card-format">${w.format}</div>`+
+      `<div class="wod-card-content">${w.icerik}</div>`+
+      `<div class="wod-card-meta"><div class="wod-meta-item"><div class="wod-meta-lbl">Tahmini Süre</div><div class="wod-meta-val">${w.sure}</div></div><div class="wod-meta-item"><div class="wod-meta-lbl">Zorluk</div><div class="wod-meta-val">${w.zorluk}</div></div></div>`+
+      `<div class="wod-card-hikaye">${w.hikaye}</div>`+
+      `</div></div>`+
+      `<button class="wod-random-btn" style="margin-top:14px;" onclick="randomWod()">⚡ RANDOM WOD</button>`+
+      `<button class="wod-ai-btn" onclick="aiWod()">✦ YENİ WOD ÜRET</button>`;
+  }catch(e){
+    document.getElementById('wod-view').innerHTML+=`<div style="padding:16px;font-size:12px;color:var(--muted);">WOD üretilemedi. Tekrar dene.</div>`+
+      `<button class="wod-ai-btn" onclick="aiWod()">↺ Tekrar Dene</button>`;
+  }
+  document.getElementById('main-scroll').scrollTop=0;
 }
 
 renderNav();renderDay();
