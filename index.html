@@ -137,9 +137,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* BLOCK */
 .block{margin-top:20px;}
-.block-hdr{display:grid;grid-template-columns:1fr auto auto auto;border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);}
-.bh-title{padding:7px 0;font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;}
-.bh-col{padding:7px 0 7px 12px;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:right;min-width:42px;}
+.block-hdr{display:grid;grid-template-columns:1fr auto auto auto;background:var(--fg);padding:0 8px;}
+.bh-title{padding:7px 0;font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);}
+.bh-col{padding:7px 0 7px 12px;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);opacity:.5;text-align:right;min-width:42px;}
 
 /* EX ROW */
 .ex-row{display:grid;grid-template-columns:1fr auto auto auto;padding:10px 0;border-bottom:1px solid var(--rim2);align-items:start;}
@@ -150,7 +150,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .wp{font-size:7.5px;font-weight:500;letter-spacing:.08em;padding:2px 7px;border:1px solid var(--rim);color:var(--muted2);text-transform:uppercase;}
 .ex-val{font-size:12px;font-weight:700;text-align:right;padding-left:12px;min-width:42px;padding-top:14px;}
 .ex-val.muted{color:var(--muted);font-weight:400;}
-.block-sep{height:1px;background:var(--rim2);margin:24px 0 0;}
+.block-sep{display:none;}
 
 /* MCU LOGO */
 .mcu-logo{
@@ -373,8 +373,9 @@ const DAYS=[
       {num:'I.',name:'Cable Curl',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
       {num:'II.',name:'Hammer Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
       {num:'III.',name:'Reverse Barbell Curl',sets:'2',reps:'8–10',notes:'Failure',warmup:[]},
-      {num:'IV.',name:'Leg Extension',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
+      {num:'IV.',name:'Leg Extension',sets:'3',reps:'6–8',notes:'Failure',warmup:[]},
       {num:'V.',name:'Lying Leg Curl',sets:'1',reps:'8–10',notes:'Failure',warmup:[]},
+      {num:'VI.',name:'Standing Calf Raise',sets:'3',reps:'12–15',notes:'Failure',warmup:[]},
     ]},
   ]},
 ];
