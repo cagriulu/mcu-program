@@ -188,8 +188,26 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .boks-adim-ad{font-size:12px;font-weight:700;color:var(--fg);margin-bottom:2px;}
 .boks-adim-det{font-size:11px;color:var(--muted);line-height:1.5;}
 
-/* WOD */
-.wod-bar{border-top:2px solid var(--fg) !important;}
+/* ANA NAVİGASYON */
+.main-nav{flex-shrink:0;display:flex;border-bottom:1px solid var(--rim);background:var(--bg);}
+.main-nav-btn{flex:1;padding:11px 0;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;transition:all .12s;}
+.main-nav-btn:last-child{border-right:none;}
+.main-nav-btn.on{background:var(--fg);color:var(--bg);}
+
+/* ARAÇLAR MENÜSÜ */
+.araclar-menu{flex-shrink:0;border-bottom:1px solid var(--rim);}
+.araclar-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.araclar-card{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-right:1px solid var(--rim);border-bottom:1px solid var(--rim);cursor:pointer;transition:background .12s;background:var(--bg);}
+.araclar-card:nth-child(even){border-right:none;}
+.araclar-card:nth-last-child(-n+2){border-bottom:none;}
+.araclar-card:active,.araclar-card:hover{background:var(--rim2);}
+.araclar-card.active-card{background:var(--fg);}
+.araclar-card.active-card .ac-label{color:var(--bg);}
+.araclar-card.active-card .ac-desc{color:var(--bg);opacity:.5;}
+.ac-label{font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--fg);line-height:1;}
+.ac-desc{font-size:9px;color:var(--muted);line-height:1.4;margin-top:1px;}
+
+.wod-bar,.recipe-bar,.organize-bar{display:none;}/* eski bar'ları gizle */
 
 /* ORGANİZATÖR BAR */
 .organize-bar{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--rim);cursor:pointer;transition:background .12s;background:var(--fg);}
@@ -316,6 +334,110 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .oly-check-desc{font-size:10px;color:var(--muted);line-height:1.5;}
 .oly-section-title{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--fg);padding:5px 8px;margin-bottom:10px;margin-top:16px;}
 .oly-phase-desc{font-size:11px;color:var(--muted);line-height:1.7;padding:10px 0;border-bottom:1px solid var(--rim2);margin-bottom:12px;}
+
+/* PROGRAM ANALİZİ */
+.analiz-view{padding:0 0 100px;}
+.analiz-tabs{display:flex;border-bottom:1px solid var(--rim);overflow-x:auto;scrollbar-width:none;}
+.analiz-tabs::-webkit-scrollbar{display:none;}
+.analiz-tab{flex-shrink:0;padding:10px 16px;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;transition:all .12s;white-space:nowrap;}
+.analiz-tab.on{background:var(--fg);color:var(--bg);}
+.analiz-section{padding:16px 16px 0;}
+.analiz-title{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:4px 10px;margin-bottom:12px;}
+.analiz-desc{font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+.skor-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+.skor-card{border:1px solid var(--rim);padding:12px;}
+.skor-card.winner{border-color:var(--fg);background:var(--rim2);}
+.skor-program{font-size:7px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.skor-label{font-size:10px;font-weight:700;color:var(--fg);margin-bottom:6px;}
+.skor-val{font-size:30px;font-weight:900;letter-spacing:-.03em;color:var(--fg);line-height:1;}
+.skor-max{font-size:10px;color:var(--muted);font-weight:400;}
+.skor-bar-wrap{margin-top:6px;height:3px;background:var(--rim2);}
+.skor-bar-fill{height:100%;background:var(--fg);}
+.skor-winner-badge{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:1px 6px;margin-top:5px;}
+.bar-chart{display:flex;flex-direction:column;gap:5px;margin-bottom:16px;}
+.bar-row{display:grid;grid-template-columns:80px 1fr 28px;align-items:center;gap:8px;}
+.bar-label{font-size:9px;font-weight:600;color:var(--fg);text-align:right;line-height:1.3;}
+.bar-track{height:12px;background:var(--rim2);position:relative;overflow:hidden;}
+.bar-fill{height:100%;position:absolute;left:0;top:0;}
+.bar-fill.ppl{background:var(--muted);opacity:.5;}
+.bar-fill.hibrit{background:var(--fg);}
+.bar-val{font-size:10px;font-weight:700;color:var(--fg);}
+.bar-group{margin-bottom:14px;}
+.bar-group-title{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--rim2);}
+.bar-legend{display:flex;gap:14px;margin-bottom:10px;}
+.bar-legend-item{display:flex;align-items:center;gap:5px;font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.bar-legend-dot{width:10px;height:10px;flex-shrink:0;}
+.bar-legend-dot.ppl{background:var(--muted);opacity:.5;}
+.bar-legend-dot.hibrit{background:var(--fg);}
+.radar-wrap{display:flex;justify-content:center;padding:8px 0 4px;}
+.optimal-tablo{border:1px solid var(--rim);margin-bottom:16px;overflow:hidden;}
+.optimal-hdr{display:grid;grid-template-columns:1fr 50px 55px 65px;background:var(--fg);padding:6px 10px;}
+.optimal-hdr-cell{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);text-align:center;}
+.optimal-hdr-cell:first-child{text-align:left;}
+.optimal-row{display:grid;grid-template-columns:1fr 50px 55px 65px;padding:8px 10px;border-bottom:1px solid var(--rim2);align-items:center;}
+.optimal-row:last-child{border-bottom:none;}
+.optimal-kas{font-size:11px;font-weight:700;color:var(--fg);}
+.optimal-cell{font-size:10px;font-weight:600;color:var(--muted);text-align:center;}
+.optimal-badge{font-size:7px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;text-align:center;display:inline-block;}
+.badge-optimal{background:var(--fg);color:var(--bg);}
+.badge-dusuk{background:var(--rim2);color:var(--muted);}
+.badge-yuksek{border:1px solid var(--fg);color:var(--fg);}
+.sonuc-box{border:1px solid var(--fg);padding:14px;margin-bottom:12px;}
+.sonuc-box-title{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--fg);margin-bottom:8px;}
+.sonuc-item{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--rim2);}
+.sonuc-item:last-child{border-bottom:none;}
+.sonuc-icon{font-size:11px;flex-shrink:0;margin-top:1px;}
+.sonuc-text{font-size:11px;color:var(--muted);line-height:1.5;}
+.sonuc-text strong{color:var(--fg);font-weight:700;}
+.dual-bar-row{display:grid;grid-template-columns:80px 1fr 1fr;gap:4px;align-items:center;margin-bottom:4px;}
+.dual-bar-label{font-size:9px;font-weight:600;color:var(--fg);text-align:right;}
+.dual-bar-track{height:12px;background:var(--rim2);position:relative;overflow:hidden;}
+.dual-bar-fill{height:100%;position:absolute;left:0;top:0;}
+
+/* HİBRİT PPL-X */
+.hibrit-view{padding:0 16px 100px;}
+.hibrit-day-tabs{display:flex;gap:0;margin-top:16px;margin-bottom:14px;border:1px solid var(--rim);overflow-x:auto;scrollbar-width:none;}
+.hibrit-day-tabs::-webkit-scrollbar{display:none;}
+.hibrit-day-tab{flex:1;padding:9px 4px;font-size:7px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;cursor:pointer;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;transition:all .12s;white-space:nowrap;line-height:1.4;}
+.hibrit-day-tab:last-child{border-right:none;}
+.hibrit-day-tab.on{background:var(--fg);color:var(--bg);}
+.hibrit-hero{background:var(--rim2);padding:.8rem 1rem;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;}
+.hibrit-hero-left{}
+.hibrit-hero-title{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:4px;}
+.hibrit-hero-sub{font-size:8px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.hibrit-hero-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px;}
+.hibrit-hero-tag{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--rim);color:var(--muted);}
+.hibrit-hero-tag.hl{border-color:var(--fg);color:var(--fg);}
+.hibrit-block{border:1px solid var(--rim);margin-bottom:8px;}
+.hibrit-block-hdr{background:var(--fg);padding:7px 12px;display:flex;align-items:center;justify-content:space-between;}
+.hibrit-block-lbl{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);}
+.hibrit-block-sub{font-size:7px;color:var(--bg);opacity:.4;letter-spacing:.08em;}
+.hibrit-ex-row{display:grid;grid-template-columns:1fr auto auto auto;padding:10px 12px;border-bottom:1px solid var(--rim2);align-items:start;}
+.hibrit-ex-row:last-child{border-bottom:none;}
+.hibrit-ex-num{font-size:8px;font-weight:400;color:var(--muted);letter-spacing:.1em;margin-bottom:3px;opacity:.5;}
+.hibrit-ex-name{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.2;color:var(--fg);}
+.hibrit-ex-note{font-size:9px;color:var(--muted);margin-top:3px;}
+.hibrit-ex-val{font-size:12px;font-weight:700;text-align:right;padding-left:12px;min-width:42px;padding-top:14px;color:var(--fg);}
+.hibrit-ex-val.muted{color:var(--muted);font-weight:400;}
+.hibrit-wod-block{border:1px solid var(--rim);margin-bottom:8px;overflow:hidden;}
+.hibrit-wod-hdr{background:var(--fg);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;}
+.hibrit-wod-hdr-left{display:flex;flex-direction:column;gap:2px;}
+.hibrit-wod-hdr-lbl{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);}
+.hibrit-wod-hdr-sub{font-size:7px;color:var(--bg);opacity:.4;letter-spacing:.08em;}
+.hibrit-wod-btn{background:var(--bg);border:none;padding:7px 10px;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fg);transition:all .15s;flex-shrink:0;}
+.hibrit-wod-btn:active{opacity:.6;}
+.hibrit-wod-btn-icon{font-size:14px;transition:transform .3s;}
+.hibrit-wod-btn.spinning .hibrit-wod-btn-icon{animation:spin .4s linear;}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.hibrit-wod-body{padding:14px;}
+.hibrit-wod-name{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--fg);margin-bottom:6px;line-height:1.1;}
+.hibrit-wod-type{font-size:7.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--muted);display:inline-block;padding:2px 8px;margin-bottom:10px;}
+.hibrit-wod-content{font-size:13px;font-weight:500;color:var(--fg);line-height:1.9;white-space:pre-line;margin-bottom:10px;}
+.hibrit-wod-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+.hibrit-wod-meta-item{background:var(--rim2);padding:.5rem .7rem;}
+.hibrit-wod-meta-lbl{font-size:7px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.hibrit-wod-meta-val{font-size:12px;font-weight:700;color:var(--fg);}
+.hibrit-wod-note{font-size:10px;color:var(--muted);line-height:1.6;border-top:1px solid var(--rim2);padding-top:8px;}
 .wod-tabs{display:flex;gap:0;margin-top:16px;margin-bottom:12px;border:1px solid var(--rim);}
 .wod-tab{flex:1;padding:7px 4px;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;cursor:pointer;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;transition:all .12s;}
 .wod-tab:last-child{border-right:none;}
@@ -359,7 +481,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="header-identity">
     <div class="header-logo">
       <div class="logo-name">M. Çağrı <span>Ulu</span></div>
-      <div class="logo-sub">5 · Gün · Antrenman · 2026</div>
+      <div class="logo-sub">HİBRİT PPL-X · 2026</div>
     </div>
     <div class="header-controls">
       <div class="header-year">MMXXVI</div>
@@ -368,42 +490,23 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
   <div class="header-session">
     <div class="session-label">Aktif Seans</div>
-    <div class="session-title" id="hdr-title">PUSH <em>A</em></div>
+    <div class="session-title" id="hdr-title">UPPER <em>PUSH</em></div>
     <div class="session-target">
       <div class="target-dot"></div>
-      <div class="target-text" id="hdr-target">GÖĞÜS · OMUZ · TRİSEPS</div>
+      <div class="target-text" id="hdr-target">HİBRİT PPL-X · GÜN 1 · PAZARTESİ</div>
     </div>
   </div>
 </div>
 
+<!-- ANA NAV: PROGRAM / ARAÇLAR -->
+<div class="main-nav" id="main-nav">
+  <button class="main-nav-btn on" id="mnav-program" onclick="mainNavSwitch('program')">PROGRAM</button>
+  <button class="main-nav-btn" id="mnav-araclar" onclick="mainNavSwitch('araclar')">ARAÇLAR</button>
+</div>
+<!-- PROGRAM ALTI: GÜN SEKMELERİ -->
 <div class="nav" id="nav"></div>
-<div class="recipe-bar wod-bar" id="wod-bar" onclick="setWod()">
-  <div class="rb-label" style="font-size:10px;font-weight:900;letter-spacing:.2em;">CROSSFIT WOD</div>
-  <div class="rb-count">200+ ikonik WOD · yapay zeka üretimi</div>
-</div>
-<div class="recipe-bar" id="recipe-bar" onclick="setRecipes()">
-  <div class="rb-label">TARİFLER</div>
-  <div class="rb-count" id="rb-count">35 tarif · yüksek proteinli</div>
-</div>
-<div class="recipe-bar" id="takvim-bar" onclick="setTakvim()">
-  <div class="rb-label">HAFTALIK TAKVİM</div>
-  <div class="rb-count">Paz — Paz · 5 antrenman</div>
-</div>
-<div class="recipe-bar" id="boks-bar" onclick="setBoks()">
-  <div class="rb-label">BOKS PROGRAMI</div>
-  <div class="rb-count">3 ay · 12 hafta · temel teknik</div>
-</div>
-<div class="organize-bar" id="organize-bar" onclick="setOrganize()">
-  <div class="org-bar-inner">
-    <div class="org-bar-label">ATLETİK PROGRAM ORGANİZATÖR</div>
-    <div class="org-bar-sub">Her gün farklı · Crossfit tarzı · 5 gün</div>
-  </div>
-  <div class="org-bar-arrow">→</div>
-</div>
-<div class="recipe-bar" id="oly-bar" onclick="setOly()">
-  <div class="rb-label" style="font-size:10px;font-weight:900;letter-spacing:.2em;">OLİMPİK KALDIRIŞ</div>
-  <div class="rb-count">Sıfırdan · Clean · Snatch · Jerk · 12 Haftalık Yol Haritası</div>
-</div>
+<!-- ARAÇLAR MENÜSÜ -->
+<div class="araclar-menu" id="araclar-menu" style="display:none;"></div>
 
 <div class="scroll" id="main-scroll">
   <div class="day-view" id="day-view"></div>
@@ -414,6 +517,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="organize-view" id="organize-view" style="display:none;"></div>
   <div class="wod-view" id="wod-view" style="display:none;"></div>
   <div class="oly-view" id="oly-view" style="display:none;"></div>
+  <div class="hibrit-view" id="hibrit-view" style="display:none;"></div>
+  <div class="analiz-view" id="analiz-view" style="display:none;"></div>
 </div>
 </div>
 
@@ -609,7 +714,7 @@ const RECIPES=[
 ];
 
 const CATS=['Tümü','Sabah','Öğle','Akşam','Atıştırma'];
-let cur=0,light=false,mode='program',activeRecipe=null,recipeCat='Tümü';
+let cur=0,light=false,mode='hibrit',activeRecipe=null,recipeCat='Tümü';
 
 function toggleTheme(){
   light=!light;
@@ -617,20 +722,105 @@ function toggleTheme(){
   document.getElementById('theme-btn').textContent=light?'KOYU':'AÇIK';
 }
 
+const ARACLAR_ITEMS=[
+  {id:'hibrit',label:'HİBRİT PPL-X',desc:'Ana program · 5 gün · Random WOD',fn:'setHibrit'},
+  {id:'ppl',label:'PPL ARŞİV',desc:'Eski program · Push/Pull/Legs',fn:'setPPL'},
+  {id:'analiz',label:'PROGRAM ANALİZİ',desc:'PPL vs Hibrit · Grafikli karşılaştırma',fn:'setAnaliz'},
+  {id:'wod',label:'CROSSFIT WOD',desc:'200+ ikonik WOD · AI üretimi',fn:'setWod'},
+  {id:'organize',label:'ATLETİK ORGANİZATÖR',desc:'Crossfit tarzı · 5 günlük',fn:'setOrganize'},
+  {id:'oly',label:'OLİMPİK KALDIRIŞ',desc:'Rehber · Clean · Snatch · Jerk',fn:'setOly'},
+  {id:'takvim',label:'HAFTALIK TAKVİM',desc:'Paz–Paz · 5 antrenman',fn:'setTakvim'},
+  {id:'recipes',label:'TARİFLER',desc:'35 tarif · yüksek proteinli',fn:'setRecipes'},
+  {id:'boks',label:'BOKS PROGRAMI',desc:'3 ay · 12 hafta · temel teknik',fn:'setBoks'},
+];
+
+const PROGRAM_MODES=['hibrit','ppl'];
+const ARACLAR_MODES=['wod','organize','oly','takvim','recipes','boks'];
+
+function renderAraclarMenu(){
+  const menu=document.getElementById('araclar-menu');
+  let html='<div class="araclar-grid">';
+  ARACLAR_ITEMS.forEach(item=>{
+    const isActive=mode===item.id;
+    html+=`<div class="araclar-card${isActive?' active-card':''}" onclick="${item.fn}()">
+      <div class="ac-label">${item.label}</div>
+      <div class="ac-desc">${item.desc}</div>
+    </div>`;
+  });
+  html+='</div>';
+  menu.innerHTML=html;
+}
+
+function mainNavSwitch(tab){
+  const isProgram=tab==='program';
+  document.getElementById('mnav-program').classList.toggle('on',isProgram);
+  document.getElementById('mnav-araclar').classList.toggle('on',!isProgram);
+  document.getElementById('nav').style.display=isProgram?'flex':'none';
+  document.getElementById('araclar-menu').style.display=isProgram?'none':'block';
+  if(isProgram){
+    if(!PROGRAM_MODES.includes(mode)) setHibrit();
+    else renderNav();
+  } else {
+    renderAraclarMenu();
+    if(!ARACLAR_MODES.includes(mode)){
+      // araçlar açıldığında sadece menüyü göster, içeriği boşalt
+    }
+  }
+}
+
 function renderNav(){
-  var tabs=DAYS.map(function(d,i){
-    return '<div class="nav-tab'+(mode==='program'&&i===cur?' on':'')+'" onclick="setDay('+i+')">'+
-      '<div class="nav-tab-num">0'+(i+1)+'</div>'+
-      '<div class="nav-tab-lbl">'+d.label+'</div>'+
-    '</div>';
-  }).join('');
+  const isHibrit=mode==='hibrit';
+  const isPPL=mode==='ppl'||mode==='program';
+  let tabs='';
+  if(isHibrit){
+    HIBRIT_DAYS.forEach((d,i)=>{
+      tabs+=`<div class="nav-tab${i===hibritActiveDay?' on':''}" onclick="hibritSetDay(${i})">
+        <div class="nav-tab-num">0${i+1}</div>
+        <div class="nav-tab-lbl">${d.label.replace('GÜN ','G')}</div>
+      </div>`;
+    });
+  } else if(isPPL){
+    DAYS.forEach((d,i)=>{
+      tabs+=`<div class="nav-tab${i===cur?' on':''}" onclick="setDay(${i})">
+        <div class="nav-tab-num">0${i+1}</div>
+        <div class="nav-tab-lbl">${d.label}</div>
+      </div>`;
+    });
+  }
   document.getElementById('nav').innerHTML=tabs;
-  document.getElementById('recipe-bar').classList.toggle('on',mode==='recipes');
-  document.getElementById('takvim-bar').classList.toggle('on',mode==='takvim');
-  document.getElementById('boks-bar').classList.toggle('on',mode==='boks');
-  document.getElementById('wod-bar').classList.toggle('on',mode==='wod');
-  document.getElementById('organize-bar').style.opacity=mode==='organize'?'0.7':'1';
-  document.getElementById('oly-bar').classList.toggle('on',mode==='oly');
+  document.getElementById('nav').style.display=(isHibrit||isPPL)?'flex':'none';
+  document.getElementById('araclar-menu').style.display=(!isHibrit&&!isPPL)?'block':'none';
+  // ana nav aktiflik
+  document.getElementById('mnav-program').classList.toggle('on',isHibrit||isPPL);
+  document.getElementById('mnav-araclar').classList.toggle('on',!isHibrit&&!isPPL);
+  if(!isHibrit&&!isPPL) renderAraclarMenu();
+}
+
+function setPPL(){
+  mode='ppl';
+  const d=DAYS[cur];
+  document.getElementById('hdr-title').innerHTML=d.title;
+  document.getElementById('hdr-target').textContent=d.target;
+  hideAll();
+  document.getElementById('day-view').style.display='block';
+  renderDay2();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderDay2(){
+  const d=DAYS[cur];
+  let html='';
+  d.blocks.forEach((b,bi)=>{
+    if(bi>0) html+='<div class="block-sep"></div>';
+    html+='<div class="block"><div class="block-hdr"><div class="bh-title">'+b.name+'</div><div class="bh-col">SET</div><div class="bh-col">REP</div><div class="bh-col">NOT</div></div>';
+    b.exercises.forEach(ex=>{
+      const pills=ex.warmup&&ex.warmup.length>0?'<div class="warmup-pills">'+ex.warmup.map(w=>'<div class="wp">'+w+'</div>').join('')+'</div>':'';
+      html+='<div class="ex-row"><div><div class="ex-num">'+ex.num+'</div><div class="ex-name">'+ex.name+'</div>'+pills+'</div><div class="ex-val">'+ex.sets+'</div><div class="ex-val">'+ex.reps+'</div><div class="ex-val muted">'+ex.notes+'</div></div>';
+    });
+    html+='</div>';
+  });
+  document.getElementById('day-view').innerHTML=html;
 }
 
 function hideAll(){
@@ -642,6 +832,8 @@ function hideAll(){
   document.getElementById('organize-view').style.display='none';
   document.getElementById('wod-view').style.display='none';
   document.getElementById('oly-view').style.display='none';
+  document.getElementById('hibrit-view').style.display='none';
+  document.getElementById('analiz-view').style.display='none';
 }
 
 function setTakvim(){
@@ -795,8 +987,10 @@ function renderDay(){
 }
 
 function setDay(i){
-  cur=i;mode='program';
-  renderNav();renderDay();
+  cur=i;mode='ppl';
+  renderNav();renderDay2();
+  document.getElementById('hdr-title').innerHTML=DAYS[i].title;
+  document.getElementById('hdr-target').textContent=DAYS[i].target;
 }
 
 function setRecipes(){
@@ -3109,7 +3303,390 @@ function setOly(){
   document.getElementById('main-scroll').scrollTop=0;
 }
 
-renderNav();renderDay();
+/* ─── HİBRİT PPL-X PROGRAMI ─── */
+const HIBRIT_DAYS=[
+  {label:'GÜN 1',gun:'PAZARTESİ',title:'UPPER PUSH',target:'GÖĞÜS · OMUZ · TRİSEPS + MetCon',tags:['Hipertrofi Günü','Upper Push','~65 dk'],
+   blocks:[
+    {name:'BLOK A — STRENGTH',sub:'Compound primer hareketler',exs:[
+      {num:'I.',name:'Barbell Bench Press',sets:'4',reps:'4–6',note:'RIR 1',warmup:['%40×12','%60×6','%80×3']},
+      {num:'II.',name:'Barbell OHP (Standing)',sets:'3',reps:'5–7',note:'RIR 1',warmup:['%40×10','%60×5','%80×3']},
+      {num:'III.',name:'Incline DB Press',sets:'3',reps:'8–10',note:'RIR 2',warmup:[]},
+    ]},
+    {name:'BLOK B — HYPERTROPHY',sub:'İzolasyon & hacim',exs:[
+      {num:'I.',name:'Cable Lateral Raise',sets:'3',reps:'10–12',note:'Failure',warmup:[]},
+      {num:'II.',name:'Overhead Cable Triceps Ext.',sets:'3',reps:'10–12',note:'Failure',warmup:[]},
+      {num:'III.',name:'Weighted Dips',sets:'2',reps:'Max',note:'Failure',warmup:[]},
+    ]},
+   ],
+   wodPool:[
+    {name:'DB THRUSTER HELL',type:'AMRAP · 10 DK',content:'8 × DB Thruster (2×15 kg)\n10 × Burpee\n12 × KB Swing (24 kg)',sure:'10 dk',yogunluk:'Yüksek',note:'Her roundu kaydet. Göğüs-omuz-triseps koordinasyonu.'},
+    {name:'PUSH LADDER',type:'EMOM · 12 DK',content:'Tek dk → 10 × Push-up\nÇift dk → 8 × DB Push Press\nÜçüncü dk → 6 × Weighted Dip',sure:'12 dk',yogunluk:'Orta-Yüksek',note:'Ağırlık seç ve o ağırlıkta kal. Form bozulursa dur.'},
+    {name:'SHOULDER BURNER',type:'3 ROUND FOR TIME',content:'12 × DB Arnold Press\n15 × Lateral Raise (hafif)\n10 × Triceps Pushdown\n200m koşu',sure:'~15 dk',yogunluk:'Orta',note:'Roundlar arası 90 sn dinlenme.'},
+    {name:'PUSH CINDY',type:'AMRAP · 15 DK',content:'5 × Push-up (yavaş & kontrollü)\n8 × DB Shoulder Press\n12 × Triceps Kickback',sure:'15 dk',yogunluk:'Orta',note:'Kondisyon değil hacim odaklı. Yavaş tempo.'},
+    {name:'CHIPPER — UPPER',type:'FOR TIME',content:'30 × Push-up\n20 × DB Thruster\n15 × Dip\n10 × DB Shoulder Press\n5 × Weighted Push-up',sure:'~12 dk',yogunluk:'Yüksek',note:'Mola verebilirsin ama süre devam eder. Kaydet.'},
+    {name:'TABATA PUSH',type:'TABATA + İZOLASYON',content:'8 round: 20 sn DB Push Press / 10 sn dinlen\nArdından: 3×15 Cable Fly',sure:'~10 dk',yogunluk:'Yüksek',note:'Tabata bittikten sonra göğüs izolasyonu ekle.'},
+    {name:'21-15-9 PUSH',type:'FOR TIME',content:'21-15-9:\nDB Thruster (2×12.5 kg)\nBurpee',sure:'~8 dk',yogunluk:'Çok Yüksek',note:'Mola vermeden bitirmeyi hedefle. Süreyi kaydet.'},
+    {name:'PRESS KOMPLEKS',type:'4 ROUND · 3 DK ARA',content:'5 × Strict Press\n5 × Push Press\n10 × Lateral Raise\n10 × Triceps Pushdown',sure:'~20 dk',yogunluk:'Orta',note:'Omuz stabilite ve güç dayanıklılığı için.'},
+   ]},
+  {label:'GÜN 2',gun:'SALI',title:'UPPER PULL',target:'SIRT · BİSEPS · ÖNKOL + Gymnastic',tags:['Hipertrofi Günü','Upper Pull','~65 dk'],
+   blocks:[
+    {name:'BLOK A — STRENGTH',sub:'Compound primer hareketler',exs:[
+      {num:'I.',name:'Weighted Pull-up',sets:'4',reps:'4–6',note:'RIR 1',warmup:['BW×5']},
+      {num:'II.',name:'Barbell Pendlay Row',sets:'3',reps:'6–8',note:'RIR 1',warmup:['%50×8','%75×4']},
+      {num:'III.',name:'Chest Supported DB Row',sets:'3',reps:'8–10',note:'RIR 2',warmup:[]},
+    ]},
+    {name:'BLOK B — HYPERTROPHY',sub:'İzolasyon & hacim',exs:[
+      {num:'I.',name:'Incline DB Curl',sets:'3',reps:'8–10',note:'Failure',warmup:[]},
+      {num:'II.',name:'Hammer Curl',sets:'2',reps:'10–12',note:'Failure',warmup:[]},
+      {num:'III.',name:'Face Pull',sets:'2',reps:'12–15',note:'Failure',warmup:[]},
+    ]},
+   ],
+   wodPool:[
+    {name:'GYMNASTIC GRIND',type:'3 ROUND FOR TIME',content:'10 × Strict Pull-up\n15 × Toes-to-Bar\n20 × Hollow Body Rock\n30 sn L-Sit Hold',sure:'~18 dk',yogunluk:'Orta',note:'Pull-up sayısını tamamlayamıyorsan bölünebilirsin.'},
+    {name:'PULL AMRAP',type:'AMRAP · 12 DK',content:'5 × Pull-up\n10 × KB Row (her kol)\n15 × Band Pull-Apart',sure:'12 dk',yogunluk:'Orta',note:'Her roundu kaydet. Sırt pompası hedefliyoruz.'},
+    {name:'BACK EMOM',type:'EMOM · 10 DK',content:'Tek dk → 6 × Barbell Row (%70 1RM)\nÇift dk → 10 × Cable Row',sure:'10 dk',yogunluk:'Orta-Yüksek',note:'EMOM temposu sırt kalınlığı için idealdir.'},
+    {name:'BİCEP BURNER',type:'4 ROUND',content:'10 × Chin-up (supinated grip)\n12 × DB Curl\n10 × Hammer Curl\n8 × Reverse Curl',sure:'~16 dk',yogunluk:'Orta',note:'Biseps hacmi için. Ağır değil, tam kasılma.'},
+    {name:'HOLLOW HELL',type:'FOR TIME',content:'50 × Pull-up (bölünebilir)\n100 × Hollow Rock\n50 × Toes-to-Bar',sure:'~20 dk',yogunluk:'Yüksek',note:'Core + gymnastics kombinasyonu. Süreyi kaydet.'},
+    {name:'ROW & PULL CHIPPER',type:'FOR TIME',content:'30 × Barbell Row (60 kg)\n25 × Pull-up\n20 × KB Upright Row\n15 × Face Pull\n10 × Barbell Curl',sure:'~15 dk',yogunluk:'Yüksek',note:'Sırt & biseps tam yakma sırası.'},
+    {name:'SKILL + KONDİSYON',type:'EMOM · 15 DK',content:'Dk 1 → Kipping pull-up teknik: 5 tekrar\nDk 2 → Toes-to-bar: 8 tekrar\nDk 3 → Hollow body hold: 30 sn',sure:'15 dk',yogunluk:'Düşük-Orta',note:'Gymnastic skill günü. Teknik öncelikli.'},
+    {name:'21-15-9 PULL',type:'FOR TIME',content:'21-15-9:\nPull-up\nDB Row (tek kol, her taraf)',sure:'~10 dk',yogunluk:'Yüksek',note:'Çekiş egzersizleri için yorucu format.'},
+   ]},
+  {label:'GÜN 3',gun:'ÇARŞAMBA',title:'FULLBODY WOD',target:'TAM VÜCUT · BARBELL COMPLEX · Kondisyon',tags:['CrossFit Günü','Fullbody','~60 dk'],
+   blocks:[
+    {name:'BLOK A — STRENGTH PRIMER',sub:'EMOM 10 dk — ağırlıklı çalışma',exs:[
+      {num:'I.',name:'Back Squat (EMOM tek dk)',sets:'5',reps:'3 tekrar',note:'%75 1RM',warmup:['%40×10','%60×5','%75×2']},
+      {num:'II.',name:'Push Press (EMOM çift dk)',sets:'5',reps:'5 tekrar',note:'%65 1RM',warmup:[]},
+    ]},
+    {name:'BLOK B — BARBELL COMPLEX',sub:'4 round · Bar yere bırakılmaz',exs:[
+      {num:'I.',name:'Deadlift',sets:'4',reps:'6',note:'50–60 kg',warmup:[]},
+      {num:'II.',name:'Barbell Row',sets:'4',reps:'6',note:'Aynı bar',warmup:[]},
+      {num:'III.',name:'Hang High Pull',sets:'4',reps:'6',note:'Aynı bar',warmup:[]},
+      {num:'IV.',name:'Front Squat',sets:'4',reps:'6',note:'Aynı bar',warmup:[]},
+      {num:'V.',name:'Push Press',sets:'4',reps:'6',note:'Aynı bar',warmup:[]},
+    ]},
+   ],
+   wodPool:[
+    {name:'DEATH BY BARBELL',type:'4 ROUND FOR TIME · 3 DK ARA',content:'6 × Deadlift\n6 × Barbell Row\n6 × Hang High Pull\n6 × Front Squat\n6 × Push Press\n— Bar yere bırakılmaz —\nAğırlık: 50–60 kg',sure:'~20 dk',yogunluk:'Çok Yüksek',note:'Her round süresini kaydet. İdeal: 60–90 sn/round.'},
+    {name:'KB KOMPLEKS',type:'3 ROUND FOR TIME',content:'10 × KB Swing (32 kg)\n10 × KB Goblet Squat\n10 × KB Push Press (her kol)\n10 × KB Romanian DL\n400m koşu',sure:'~22 dk',yogunluk:'Yüksek',note:'Barbell alternatifi. Farklı uyaran için.'},
+    {name:'TOTAL BODY EMOM',type:'EMOM · 20 DK',content:'Dk 1 → 5 × Deadlift (%70)\nDk 2 → 8 × Push-up\nDk 3 → 6 × Barbell Row\nDk 4 → 10 × KB Swing\nDk 5 → 200m koşu',sure:'20 dk',yogunluk:'Orta-Yüksek',note:'5 hareket dönüşümlü. Kondisyon + güç karışımı.'},
+    {name:'TRİPLET KİLLER',type:'5 ROUND FOR TIME',content:'7 × Deadlift (100 kg)\n7 × Push Press (60 kg)\n7 × Barbell Row (60 kg)',sure:'~18 dk',yogunluk:'Çok Yüksek',note:'Yüksek ağırlık, düşük rep. Güç kondisyon formatı.'},
+    {name:'BEAR COMPLEX',type:'5 SET × 7 TEKRAR',content:'Her tekrar için:\nPower Clean + Front Squat + Push Press + Back Squat + Push Press\n× 7 tekrar = 1 set\nSet arası 2 dk dinlen\nHer set ağırlık artır',sure:'~20 dk',yogunluk:'Yüksek',note:'Bar hiç yere bırakılmaz. En zor barbell kompleksi.'},
+    {name:'CINDY BARBELL',type:'AMRAP · 20 DK',content:'5 × Pull-up\n10 × Push-up\n15 × Air Squat\n— Her 5 roundda bir:\n3 × Deadlift (120 kg)',sure:'20 dk',yogunluk:'Yüksek',note:'Klasik Cindy + ağır deadlift kombinasyonu.'},
+    {name:'GRUNT WORK',type:'FOR TIME',content:'21 × Deadlift (100 kg)\n400m koşu\n15 × Deadlift (100 kg)\n400m koşu\n9 × Deadlift (100 kg)\n400m koşu',sure:'~20 dk',yogunluk:'Çok Yüksek',note:'Deadlift odaklı kondisyon. Spinal yorgunluk — dikkatli form.'},
+    {name:'DENSITY BLOCK',type:'4 × 4 DK · 90 SN ARA',content:'Her 4 dk blokta max round:\n4 × Barbell Hang High Pull\n6 × Barbell Row\n8 × KB Swing',sure:'~22 dk',yogunluk:'Yüksek',note:'Her blokta kaç round yaptığını kaydet.'},
+   ]},
+  {label:'GÜN 4',gun:'PERŞEMBE',title:'LOWER BODY',target:'DEADLIFT · SQUAT · HAMSTRİNG + Core',tags:['Hipertrofi Günü','Lower Body','~65 dk'],
+   blocks:[
+    {name:'BLOK A — STRENGTH',sub:'Compound primer hareketler',exs:[
+      {num:'I.',name:'Conventional Deadlift',sets:'4',reps:'3–5',note:'RIR 1',warmup:['%40×8','%65×4','%85×2']},
+      {num:'II.',name:'Back Squat',sets:'3',reps:'5–7',note:'RIR 2',warmup:['%50×8','%75×4']},
+      {num:'III.',name:'Romanian Deadlift',sets:'3',reps:'8–10',note:'RIR 2',warmup:[]},
+    ]},
+    {name:'BLOK B — HYPERTROPHY',sub:'İzolasyon & hacim',exs:[
+      {num:'I.',name:'Leg Extension',sets:'3',reps:'10–12',note:'Failure',warmup:[]},
+      {num:'II.',name:'Lying Leg Curl',sets:'3',reps:'10–12',note:'Failure',warmup:[]},
+      {num:'III.',name:'Standing Calf Raise',sets:'3',reps:'12–15',note:'Failure',warmup:[]},
+    ]},
+   ],
+   wodPool:[
+    {name:'CORE İNFERNO',type:'3 ROUND FOR TIME',content:'15 × Hanging Leg Raise\n12 × Ab Wheel Rollout\n10 × V-Up\n45 sn Plank',sure:'~15 dk',yogunluk:'Orta',note:'Core bütünlüğü için. Ağır deadlift sonrası yapılır.'},
+    {name:'LEG BURNER',type:'AMRAP · 12 DK',content:'10 × KB Goblet Squat (32 kg)\n10 × Walking Lunge (her bacak)\n10 × Glute Bridge (DB ile)',sure:'12 dk',yogunluk:'Orta',note:'Quadriceps & glute pompa odaklı.'},
+    {name:'POSTERİOR CHAİN',type:'4 ROUND',content:'8 × KB Swing (32 kg)\n8 × Romanian DL (DB)\n30 sn Glute Bridge hold\n200m yürüyüş (aktif dinlenme)',sure:'~18 dk',yogunluk:'Orta',note:'Arka zincir: hamstring & glute aktivasyonu.'},
+    {name:'DEATH BY SQUAT',type:'EMOM LADDER',content:'Dk 1 → 2 × Air Squat\nDk 2 → 4 × Air Squat\nHer dk +2 tekrar\nBitene kadar devam et',sure:'~12 dk',yogunluk:'Orta→Yüksek',note:'Ne kadar gidebilirsin? Dakikayı kaydet.'},
+    {name:'CORE KOMPLEKS',type:'3 ROUND',content:'12 × Toes-to-Bar\n10 × Ab Wheel\n20 sn L-Sit hold\n10 × Dragon Flag (bölünebilir)',sure:'~12 dk',yogunluk:'Orta-Yüksek',note:'Core güç & gymnastics kombinasyonu.'},
+    {name:'LOWER CHİPPER',type:'FOR TIME',content:'50 × Air Squat\n40 × Walking Lunge\n30 × KB Swing\n20 × Goblet Squat (24 kg)\n10 × Jump Squat',sure:'~15 dk',yogunluk:'Yüksek',note:'Bacak kondisyonu. Süre devam eder, mola verebilirsin.'},
+    {name:'21-15-9 LOWER',type:'FOR TIME',content:'21-15-9:\nKB Swing (24 kg)\nGoblet Squat (24 kg)',sure:'~8 dk',yogunluk:'Yüksek',note:'Hızlı, şiddetli. Metabolik kondisyon.'},
+    {name:'PLANK PARTY',type:'TABATA × 3',content:'Tabata 1 → Plank (20/10 × 8)\nTabata 2 → Hollow Body Hold\nTabata 3 → L-Sit Hold (paralelde)',sure:'~12 dk',yogunluk:'Orta',note:'İzometrik core dayanıklılığı.'},
+   ]},
+  {label:'GÜN 5',gun:'CUMA',title:'ATHLETIC WOD',target:'GYMNASTICS · KONDİSYON · SKILL',tags:['CrossFit Günü','Atletizm','~55 dk'],
+   blocks:[
+    {name:'BLOK A — SKILL WORK',sub:'15 dk · Teknik & mobilite',exs:[
+      {num:'I.',name:'Pike Push-up → HSPU Prog.',sets:'4',reps:'5–8',note:'Teknik odak',warmup:[]},
+      {num:'II.',name:'L-Sit Hold (paralelde)',sets:'3',reps:'20 sn',note:'Core aktif',warmup:[]},
+      {num:'III.',name:'Kipping Pull-up Tekniği',sets:'3',reps:'5',note:'Swing & kip',warmup:[]},
+    ]},
+    {name:'BLOK B — BENCHMARK',sub:'Sabit benchmark · Skorunu her hafta kaydet',exs:[
+      {num:'★',name:'CINDY — 20 dk AMRAP',sets:'—',reps:'—',note:'↓ aşağıda detay'},
+      {num:'I.',name:'5 × Pull-up',sets:'',reps:'',note:''},
+      {num:'II.',name:'10 × Push-up',sets:'',reps:'',note:''},
+      {num:'III.',name:'15 × Air Squat',sets:'',reps:'',note:'Hedef: 15+ round'},
+    ]},
+   ],
+   wodPool:[
+    {name:'CINDY',type:'AMRAP · 20 DK',content:'5 × Pull-up\n10 × Push-up\n15 × Air Squat',sure:'20 dk',yogunluk:'Orta-Yüksek',note:'CrossFit benchmark. Skorunu kaydet ve haftalık karşılaştır. Hedef: 15+ round.'},
+    {name:'MARY',type:'AMRAP · 20 DK',content:'5 × Handstand Push-up (veya Pike Push-up)\n10 × Pistol Squat (veya Bulgarian Split Squat)\n15 × Pull-up',sure:'20 dk',yogunluk:'Yüksek',note:'Cindy\'nin daha zor versiyonu. Gymnastics ağırlıklı.'},
+    {name:'BARBARA',type:'5 ROUND FOR TIME',content:'20 × Pull-up\n30 × Push-up\n40 × Sit-up\n50 × Air Squat\n— 3 dk dinlenme roundlar arası —',sure:'~35 dk',yogunluk:'Çok Yüksek',note:'CrossFit Girls benchmark. Uzun ve yorucu. Süreyi kaydet.'},
+    {name:'SKILL & SPRİNT',type:'EMOM + SPRİNT',content:'EMOM 15 dk:\nDk 1 → 5 × Strict Pull-up\nDk 2 → 8 × Push-up (yavaş)\nDk 3 → 10 sn L-Sit hold\nArdından: 3 × 400m koşu (90 sn ara)',sure:'~25 dk',yogunluk:'Orta-Yüksek',note:'Skill + kardiyo kombinasyonu.'},
+    {name:'GYMNASTICS GRİND',type:'4 ROUND',content:'8 × Strict Pull-up\n10 × Dip\n12 × Toes-to-Bar\n15 × Push-up\n20 sn L-Sit',sure:'~20 dk',yogunluk:'Yüksek',note:'Vücut ağırlığı gücü. Sadece kontrol ve bağlantı.'},
+    {name:'SPRİNT İNTERVALS',type:'8 × 200m',content:'200m sprint\n90 sn dinlenme\n× 8 tekrar\nArdından: 3 × 10 strict pull-up',sure:'~25 dk',yogunluk:'Yüksek',note:'Kondisyon & hız. Her sprinti kaydet.'},
+    {name:'FRAN',type:'21-15-9 FOR TIME',content:'21-15-9:\nThruster (DB ile 2×15 kg)\nPull-up',sure:'~8 dk',yogunluk:'Çok Yüksek',note:'CrossFit\'in en ikonik WOD\'u. Süreyi kaydet.'},
+    {name:'ANNİE',type:'FOR TIME',content:'50-40-30-20-10:\nDouble Under (veya ×2 Single)\nSit-up',sure:'~12 dk',yogunluk:'Orta-Yüksek',note:'Koordinasyon & kondisyon. Double under yoksa 2× single under.'},
+   ]},
+];
+
+let hibritActiveDay=0;
+let hibritWodIndices=[null,null,null,null,null];
+let hibritWodHistory=[[],[],[],[],[]];
+
+function hibritGetNextWod(dayIdx){
+  const pool=HIBRIT_DAYS[dayIdx].wodPool;
+  const history=hibritWodHistory[dayIdx];
+  let available=pool.map((_,i)=>i).filter(i=>!history.includes(i));
+  if(available.length===0){hibritWodHistory[dayIdx]=[];available=pool.map((_,i)=>i);}
+  const pick=available[Math.floor(Math.random()*available.length)];
+  hibritWodHistory[dayIdx].push(pick);
+  return pick;
+}
+
+function hibritRollWod(dayIdx){
+  const btn=document.getElementById('hibrit-wod-btn-'+dayIdx);
+  if(btn){btn.classList.add('spinning');setTimeout(()=>btn&&btn.classList.remove('spinning'),400);}
+  hibritWodIndices[dayIdx]=hibritGetNextWod(dayIdx);
+  renderHibritWod(dayIdx);
+}
+
+function renderHibritWod(dayIdx){
+  const day=HIBRIT_DAYS[dayIdx];
+  const wod=day.wodPool[hibritWodIndices[dayIdx]];
+  const cont=document.getElementById('hibrit-wod-content-'+dayIdx);
+  if(!cont||!wod)return;
+  cont.innerHTML=
+    '<div class="hibrit-wod-name">'+wod.name+'</div>'+
+    '<div class="hibrit-wod-type">'+wod.type+'</div>'+
+    '<div class="hibrit-wod-content">'+wod.content+'</div>'+
+    '<div class="hibrit-wod-meta">'+
+      '<div class="hibrit-wod-meta-item"><div class="hibrit-wod-meta-lbl">Süre</div><div class="hibrit-wod-meta-val">'+wod.sure+'</div></div>'+
+      '<div class="hibrit-wod-meta-item"><div class="hibrit-wod-meta-lbl">Yoğunluk</div><div class="hibrit-wod-meta-val">'+wod.yogunluk+'</div></div>'+
+    '</div>'+
+    '<div class="hibrit-wod-note">'+wod.note+'</div>';
+}
+
+function hibritSetDay(i){
+  hibritActiveDay=i;
+  document.querySelectorAll('.hibrit-day-tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+  const d=HIBRIT_DAYS[i];
+  document.getElementById('hdr-title').textContent=d.title;
+  document.getElementById('hdr-target').textContent='HİBRİT PPL-X · '+d.gun+' · '+d.tags[0].toUpperCase();
+  renderNav();
+  renderHibritDay();
+}
+
+function renderHibritDay(){
+  const day=HIBRIT_DAYS[hibritActiveDay];
+  const di=hibritActiveDay;
+  const cont=document.getElementById('hibrit-day-content');
+  if(!cont)return;
+  let html='<div class="hibrit-hero"><div class="hibrit-hero-left">'+
+    '<div class="hibrit-hero-title">'+day.title+'</div>'+
+    '<div class="hibrit-hero-sub">'+day.gun+'</div>'+
+    '<div class="hibrit-hero-tags">'+day.tags.map((t,i)=>'<span class="hibrit-hero-tag'+(i===0?' hl':'')+'">'+t+'</span>').join('')+'</div>'+
+    '</div></div>';
+
+  day.blocks.forEach(b=>{
+    html+='<div class="hibrit-block"><div class="hibrit-block-hdr"><div class="hibrit-block-lbl">'+b.name+'</div><div class="hibrit-block-sub">'+b.sub+'</div></div>';
+    b.exs.forEach(ex=>{
+      if(ex.sets&&ex.sets!==''){
+        html+='<div class="hibrit-ex-row"><div><div class="hibrit-ex-num">'+ex.num+'</div><div class="hibrit-ex-name">'+ex.name+'</div>'+(ex.note?'<div class="hibrit-ex-note">'+ex.note+'</div>':'')+'</div><div class="hibrit-ex-val">'+ex.sets+'</div><div class="hibrit-ex-val">'+ex.reps+'</div><div class="hibrit-ex-val muted">'+ex.note+'</div></div>';
+      } else {
+        html+='<div style="padding:5px 12px 5px 24px;border-bottom:1px solid var(--rim2);"><div class="hibrit-ex-name" style="font-size:12px;opacity:.55;">'+ex.num+' '+ex.name+'</div></div>';
+      }
+    });
+    html+='</div>';
+  });
+
+  html+='<div class="hibrit-wod-block">'+
+    '<div class="hibrit-wod-hdr">'+
+      '<div class="hibrit-wod-hdr-left">'+
+        '<div class="hibrit-wod-hdr-lbl">BLOK C — RANDOM WOD</div>'+
+        '<div class="hibrit-wod-hdr-sub">Bugünün kaslarına uygun · '+day.wodPool.length+' farklı WOD</div>'+
+      '</div>'+
+      '<button class="hibrit-wod-btn" id="hibrit-wod-btn-'+di+'" onclick="hibritRollWod('+di+')">'+
+        '<span class="hibrit-wod-btn-icon">⟳</span> YENİLE'+
+      '</button>'+
+    '</div>'+
+    '<div class="hibrit-wod-body" id="hibrit-wod-content-'+di+'"></div>'+
+  '</div>';
+
+  cont.innerHTML=html;
+  if(hibritWodIndices[di]===null){
+    hibritWodIndices[di]=hibritGetNextWod(di);
+  }
+  renderHibritWod(di);
+}
+
+function renderHibritView(){
+  const v=document.getElementById('hibrit-view');
+  v.innerHTML='<div id="hibrit-day-content"></div>';
+  renderHibritDay();
+}
+
+function setHibrit(){
+  mode='hibrit';
+  const d=HIBRIT_DAYS[hibritActiveDay];
+  document.getElementById('hdr-title').textContent=d.title;
+  document.getElementById('hdr-target').textContent='HİBRİT PPL-X · '+d.gun+' · '+d.tags[0].toUpperCase();
+  hideAll();
+  document.getElementById('hibrit-view').style.display='block';
+  renderHibritView();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+// BAŞLANGIC: Hibrit program
+setHibrit();
+</script>
+<script>
+/* ─── PROGRAM ANALİZİ ─── */
+var analizTab=0;
+var PPL_ANALIZ={
+  kasHacmi:{
+    'Göğüs':{ppl:9,hibrit:10},'Omuz':{ppl:8,hibrit:9},'Triseps':{ppl:9,hibrit:7},
+    'Sırt':{ppl:10,hibrit:10},'Biseps':{ppl:9,hibrit:7},'Bacak (Quad)':{ppl:8,hibrit:10},
+    'Hamstring':{ppl:6,hibrit:9},'Core':{ppl:9,hibrit:9},'Kondisyon':{ppl:0,hibrit:8}
+  },
+  genel:{
+    ppl:{toplamSet:53,compoundSet:20,izoSet:33,ortSure:70,hipertrofi:85,guc:65,atletizm:5,kondisyon:5},
+    hibrit:{toplamSet:52,compoundSet:30,izoSet:22,ortSure:65,hipertrofi:78,guc:72,atletizm:60,kondisyon:70}
+  },
+  optimal:{
+    'Göğüs':{mev:10,mrv:22,ppl:9,hibrit:10},'Omuz':{mev:8,mrv:20,ppl:8,hibrit:9},
+    'Triseps':{mev:8,mrv:18,ppl:9,hibrit:7},'Sırt':{mev:10,mrv:25,ppl:10,hibrit:10},
+    'Biseps':{mev:8,mrv:18,ppl:9,hibrit:7},'Bacak':{mev:12,mrv:26,ppl:8,hibrit:10},
+    'Hamstring':{mev:6,mrv:16,ppl:6,hibrit:9},'Core':{mev:8,mrv:20,ppl:9,hibrit:9}
+  }
+};
+
+function analizBadge(v,mev,mrv){
+  if(v<mev)return '<span class="optimal-badge badge-dusuk">DÜŞÜK</span>';
+  if(v>mrv)return '<span class="optimal-badge badge-yuksek">FAZLA</span>';
+  return '<span class="optimal-badge badge-optimal">OPTİMAL</span>';
+}
+
+function renderAnalizContent(){
+  var cont=document.getElementById('analiz-content');
+  if(!cont)return;
+  var g=PPL_ANALIZ.genel;
+  var html='';
+
+  if(analizTab===0){
+    html+='<div class="analiz-section"><div class="analiz-title">GENEL KARŞILAŞTIRMA</div><div class="analiz-desc">İki programın yapısal analizi — toplam hacim, yoğunluk ve zaman verimliliği.</div>';
+    var metrics=[
+      {label:'Toplam Set',ppl:g.ppl.toplamSet,hibrit:g.hibrit.toplamSet,max:60,birim:''},
+      {label:'Compound Set',ppl:g.ppl.compoundSet,hibrit:g.hibrit.compoundSet,max:35,birim:''},
+      {label:'İzolasyon Set',ppl:g.ppl.izoSet,hibrit:g.hibrit.izoSet,max:40,birim:''},
+      {label:'Ort. Süre',ppl:g.ppl.ortSure,hibrit:g.hibrit.ortSure,max:90,birim:' dk'}
+    ];
+    html+='<div class="bar-legend"><div class="bar-legend-item"><div class="bar-legend-dot ppl"></div>PPL</div><div class="bar-legend-item"><div class="bar-legend-dot hibrit"></div>HİBRİT</div></div><div class="bar-chart">';
+    metrics.forEach(function(m){
+      html+='<div class="bar-group-title">'+m.label+'</div>';
+      html+='<div class="bar-row"><div class="bar-label">PPL</div><div class="bar-track"><div class="bar-fill ppl" style="width:'+Math.round(m.ppl/m.max*100)+'%"></div></div><div class="bar-val">'+m.ppl+m.birim+'</div></div>';
+      html+='<div class="bar-row" style="margin-bottom:10px;"><div class="bar-label">HİBRİT</div><div class="bar-track"><div class="bar-fill hibrit" style="width:'+Math.round(m.hibrit/m.max*100)+'%"></div></div><div class="bar-val">'+m.hibrit+m.birim+'</div></div>';
+    });
+    html+='</div>';
+    var skors=[
+      {label:'Hipertrofi',ppl:g.ppl.hipertrofi,hibrit:g.hibrit.hipertrofi},
+      {label:'Güç',ppl:g.ppl.guc,hibrit:g.hibrit.guc},
+      {label:'Atletizm',ppl:g.ppl.atletizm,hibrit:g.hibrit.atletizm},
+      {label:'Kondisyon',ppl:g.ppl.kondisyon,hibrit:g.hibrit.kondisyon}
+    ];
+    html+='<div class="analiz-title" style="margin-top:4px;">PROGRAM SKORLARI</div>';
+    skors.forEach(function(s){
+      var pw=s.ppl>=s.hibrit;
+      html+='<div class="skor-grid">';
+      html+='<div class="skor-card'+(pw?' winner':'')+'"><div class="skor-program">PPL</div><div class="skor-label">'+s.label+'</div><div class="skor-val">'+s.ppl+'<span class="skor-max">/100</span></div><div class="skor-bar-wrap"><div class="skor-bar-fill" style="width:'+s.ppl+'%"></div></div>'+(pw?'<div class="skor-winner-badge">ÜSTÜN</div>':'')+'</div>';
+      html+='<div class="skor-card'+(!pw?' winner':'')+'"><div class="skor-program">HİBRİT PPL-X</div><div class="skor-label">'+s.label+'</div><div class="skor-val">'+s.hibrit+'<span class="skor-max">/100</span></div><div class="skor-bar-wrap"><div class="skor-bar-fill" style="width:'+s.hibrit+'%"></div></div>'+(!pw?'<div class="skor-winner-badge">ÜSTÜN</div>':'')+'</div>';
+      html+='</div>';
+    });
+    html+='</div>';
+
+  } else if(analizTab===1){
+    html+='<div class="analiz-section"><div class="analiz-title">HAFTALIK KAS GRUBU HACMİ</div><div class="analiz-desc">Her kas grubunun haftada aldığı toplam çalışma seti. MEV–MRV arası optimum bölgedir.</div>';
+    html+='<div class="bar-legend"><div class="bar-legend-item"><div class="bar-legend-dot ppl"></div>PPL</div><div class="bar-legend-item"><div class="bar-legend-dot hibrit"></div>HİBRİT</div></div><div class="bar-chart">';
+    Object.keys(PPL_ANALIZ.kasHacmi).forEach(function(kas){
+      var v=PPL_ANALIZ.kasHacmi[kas];
+      var max=Math.max(v.ppl,v.hibrit,10);
+      html+='<div class="bar-group-title">'+kas+'</div>';
+      html+='<div class="bar-row"><div class="bar-label">PPL</div><div class="bar-track"><div class="bar-fill ppl" style="width:'+Math.round(v.ppl/max*100)+'%"></div></div><div class="bar-val">'+v.ppl+'</div></div>';
+      html+='<div class="bar-row" style="margin-bottom:10px;"><div class="bar-label">HİBRİT</div><div class="bar-track"><div class="bar-fill hibrit" style="width:'+Math.round(v.hibrit/max*100)+'%"></div></div><div class="bar-val">'+v.hibrit+'</div></div>';
+    });
+    html+='</div></div>';
+
+  } else if(analizTab===2){
+    html+='<div class="analiz-section"><div class="analiz-title">SPORCU PROFİL RADARLAR</div><div class="analiz-desc">Her programın 5 boyutlu sporcu profili. Dış çember = 100 puan.</div>';
+    var axes=['Hipertrofi','Güç','Atletizm','Kondisyon','Toparlanma'];
+    var pVals=[85,65,5,5,60];
+    var hVals=[78,72,60,70,55];
+    var cx=150,cy=145,r=100,n=5;
+    function rad(i){return 2*Math.PI*i/n-Math.PI/2;}
+    function pt(i,val){return {x:cx+r*(val/100)*Math.cos(rad(i)),y:cy+r*(val/100)*Math.sin(rad(i))};}
+    function ptFull(i,frac){return {x:cx+r*frac*Math.cos(rad(i)),y:cy+r*frac*Math.sin(rad(i))};}
+    var gridSvg='';
+    [0.25,0.5,0.75,1].forEach(function(f){
+      var pts=axes.map(function(_,i){var p=ptFull(i,f);return p.x+','+p.y;}).join(' ');
+      gridSvg+='<polygon points="'+pts+'" fill="none" stroke="var(--rim)" stroke-width="1"/>';
+    });
+    var axSvg=axes.map(function(_,i){var p=ptFull(i,1);return '<line x1="'+cx+'" y1="'+cy+'" x2="'+p.x+'" y2="'+p.y+'" stroke="var(--rim)" stroke-width="1"/>';}).join('');
+    var lblSvg=axes.map(function(a,i){var p=ptFull(i,1.22);return '<text x="'+p.x+'" y="'+p.y+'" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-family="Inter Tight,sans-serif" font-weight="700" letter-spacing="0.1em" fill="var(--muted)">'+a.toUpperCase()+'</text>';}).join('');
+    var pPts=pVals.map(function(v,i){var p=pt(i,v);return p.x+','+p.y;}).join(' ');
+    var hPts=hVals.map(function(v,i){var p=pt(i,v);return p.x+','+p.y;}).join(' ');
+    html+='<div class="radar-wrap"><svg width="300" height="295" viewBox="0 0 300 295" style="overflow:visible">'+gridSvg+axSvg+lblSvg+'<polygon points="'+pPts+'" fill="var(--muted)" fill-opacity=".15" stroke="var(--muted)" stroke-width="1.5" stroke-opacity=".6"/><polygon points="'+hPts+'" fill="var(--fg)" fill-opacity=".12" stroke="var(--fg)" stroke-width="2"/></svg></div>';
+    html+='<div class="bar-legend" style="justify-content:center;margin-bottom:14px;"><div class="bar-legend-item"><div class="bar-legend-dot ppl"></div>PPL</div><div class="bar-legend-item"><div class="bar-legend-dot hibrit"></div>HİBRİT PPL-X</div></div>';
+    var radar=[{l:'Hipertrofi',p:85,h:78},{l:'Güç',p:65,h:72},{l:'Atletizm',p:5,h:60},{l:'Kondisyon',p:5,h:70},{l:'Toparlanma',p:60,h:55}];
+    html+='<div class="bar-chart">';
+    radar.forEach(function(d){
+      html+='<div class="bar-group-title">'+d.l+'</div>';
+      html+='<div class="bar-row"><div class="bar-label">PPL</div><div class="bar-track"><div class="bar-fill ppl" style="width:'+d.p+'%"></div></div><div class="bar-val">'+d.p+'</div></div>';
+      html+='<div class="bar-row" style="margin-bottom:10px;"><div class="bar-label">HİBRİT</div><div class="bar-track"><div class="bar-fill hibrit" style="width:'+d.h+'%"></div></div><div class="bar-val">'+d.h+'</div></div>';
+    });
+    html+='</div></div>';
+
+  } else if(analizTab===3){
+    html+='<div class="analiz-section"><div class="analiz-title">OPTİMAL HACİM ANALİZİ</div><div class="analiz-desc">MEV = minimum etkili hacim. MRV = maksimum toparlanabilir hacim. Her iki eşik arasında kalmak hipertrofi için idealdir (Israetel, 2019).</div>';
+    html+='<div class="optimal-tablo"><div class="optimal-hdr"><div class="optimal-hdr-cell">Kas Grubu</div><div class="optimal-hdr-cell">PPL</div><div class="optimal-hdr-cell">HİBRİT</div><div class="optimal-hdr-cell">DURUM</div></div>';
+    Object.keys(PPL_ANALIZ.optimal).forEach(function(kas){
+      var d=PPL_ANALIZ.optimal[kas];
+      var hb=analizBadge(d.hibrit,d.mev,d.mrv);
+      html+='<div class="optimal-row"><div><div class="optimal-kas">'+kas+'</div><div style="font-size:8px;color:var(--muted);margin-top:2px;">MEV '+d.mev+' · MRV '+d.mrv+'</div></div><div class="optimal-cell">'+d.ppl+' set</div><div class="optimal-cell">'+d.hibrit+' set</div><div style="text-align:center;">'+hb+'</div></div>';
+    });
+    html+='</div>';
+    html+='<div class="sonuc-box"><div class="sonuc-box-title">ANALİZ SONUCU</div><div class="sonuc-item"><div class="sonuc-icon">✓</div><div class="sonuc-text"><strong>Bacak & hamstring MEV\'in üzerine çıktı</strong> — PPL\'de her ikisi de minimum eşikte kalıyordu.</div></div><div class="sonuc-item"><div class="sonuc-icon">✓</div><div class="sonuc-text"><strong>Her iki program da MRV altında</strong> — overtraining riski yok.</div></div><div class="sonuc-item"><div class="sonuc-icon">!</div><div class="sonuc-text"><strong>Triseps & biseps hibrit\'te MEV sınırına yakın</strong> — gerekirse BLOK B\'ye 1 izolasyon seti eklenebilir.</div></div></div></div>';
+
+  } else {
+    html+='<div class="analiz-section"><div class="analiz-title">NE YAPMALIYIM?</div><div class="analiz-desc">Verilerden çıkan sonuçlar ve senin profiline özel değerlendirme.</div>';
+    html+='<div class="sonuc-box"><div class="sonuc-box-title">HİPERTROFİ KAYBI RİSKİ</div><div class="sonuc-item"><div class="sonuc-icon">✓</div><div class="sonuc-text"><strong>Net hipertrofi kaybı beklenmez.</strong> Toplam set sayısı neredeyse aynı (53 → 52).</div></div><div class="sonuc-item"><div class="sonuc-icon">✓</div><div class="sonuc-text"><strong>Compound oranı %38\'den %58\'e yükseldi</strong> — compound hem hipertrofi hem güç üretir.</div></div><div class="sonuc-item"><div class="sonuc-icon">!</div><div class="sonuc-text"><strong>Biseps & triseps izolasyonu azaldı.</strong> Fark edersen BLOK B\'ye 1 set ekle.</div></div></div>';
+    html+='<div class="sonuc-box"><div class="sonuc-box-title">GÜÇLÜ YÖNLER</div><div class="sonuc-item"><div class="sonuc-icon">★</div><div class="sonuc-text"><strong>Conventional Deadlift primer konuma geldi</strong> — 4×3-5, RIR 1.</div></div><div class="sonuc-item"><div class="sonuc-icon">★</div><div class="sonuc-text"><strong>Atletizm skoru 5\'ten 60\'a çıktı</strong> — Mat Fraser hedefine en kritik adım.</div></div><div class="sonuc-item"><div class="sonuc-icon">★</div><div class="sonuc-text"><strong>Kondisyon 0\'dan 70\'e çıktı</strong> — kalp-akciğer kapasitesi ve yağ yakımı artacak.</div></div></div>';
+    html+='<div class="sonuc-box"><div class="sonuc-box-title">12 HAFTA SONRA BEKLENTİLER</div><div class="sonuc-item"><div class="sonuc-icon">→</div><div class="sonuc-text"><strong>Kas kütlesi:</strong> Korunur, büyük ihtimalle artar.</div></div><div class="sonuc-item"><div class="sonuc-icon">→</div><div class="sonuc-text"><strong>Deadlift / Squat 1RM:</strong> Artış beklenir.</div></div><div class="sonuc-item"><div class="sonuc-icon">→</div><div class="sonuc-text"><strong>Cindy skoru:</strong> 8-10 rounddan 15+ rounda çıkabilir.</div></div><div class="sonuc-item"><div class="sonuc-icon">→</div><div class="sonuc-text"><strong>Görünüm:</strong> Daha sıkı, daha atletik — Mat Fraser estetiğine yaklaşma başlar.</div></div></div></div>';
+  }
+  cont.innerHTML=html;
+}
+
+function analizSetTab(i){
+  analizTab=i;
+  document.querySelectorAll('.analiz-tab').forEach(function(t,j){t.classList.toggle('on',j===i);});
+  renderAnalizContent();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderAnalizView(){
+  var v=document.getElementById('analiz-view');
+  var tabs=['GENEL','KAS HACMİ','PROFIL RADAR','OPTİMAL HACİM','SONUÇ'];
+  var html='<div class="analiz-tabs">';
+  tabs.forEach(function(t,i){html+='<button class="analiz-tab'+(i===analizTab?' on':'')+'" onclick="analizSetTab('+i+')">'+t+'</button>';});
+  html+='</div><div id="analiz-content"></div>';
+  v.innerHTML=html;
+  renderAnalizContent();
+}
+
+function setAnaliz(){
+  mode='analiz';
+  document.getElementById('hdr-title').textContent='ANALİZ';
+  document.getElementById('hdr-target').textContent='PPL vs HİBRİT PPL-X · GRAFİKLİ KARŞILAŞTIRMA';
+  hideAll();
+  document.getElementById('analiz-view').style.display='block';
+  renderAnalizView();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
+}
 </script>
 </body>
 </html>
