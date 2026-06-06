@@ -394,6 +394,31 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .dual-bar-track{height:12px;background:var(--rim2);position:relative;overflow:hidden;}
 .dual-bar-fill{height:100%;position:absolute;left:0;top:0;}
 
+/* GÜNLÜK WOD SİSTEMİ */
+.day-wod-section{margin:0;border-top:1px solid var(--rim);}
+.day-wod-header{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;background:var(--rim2);}
+.day-wod-title{font-size:8px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.wod-intensity-btns{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border-top:1px solid var(--rim);}
+.wod-int-btn{padding:9px 4px;font-size:7.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;transition:all .12s;text-align:center;line-height:1.3;}
+.wod-int-btn:last-child{border-right:none;}
+.wod-int-btn.on{background:var(--fg);color:var(--bg);}
+.wod-int-btn:active{opacity:.6;}
+.wod-result{padding:14px;}
+.wod-result-name{font-size:20px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:5px;}
+.wod-result-type{font-size:7px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--muted);display:inline-block;padding:2px 8px;margin-bottom:10px;}
+.wod-result-content{font-size:13px;font-weight:500;color:var(--fg);line-height:1.9;white-space:pre-line;margin-bottom:10px;}
+.wod-result-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+.wod-meta-item{background:var(--rim2);padding:.5rem .7rem;}
+.wod-meta-lbl{font-size:7px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.wod-meta-val{font-size:12px;font-weight:700;color:var(--fg);}
+.wod-result-note{font-size:10px;color:var(--muted);line-height:1.6;border-top:1px solid var(--rim2);padding-top:8px;}
+.wod-roll-btn{display:flex;align-items:center;gap:6px;background:var(--fg);border:none;padding:9px 14px;font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);cursor:pointer;transition:opacity .15s;width:100%;border-top:1px solid var(--rim);}
+.wod-roll-btn:active{opacity:.6;}
+.wod-roll-icon{font-size:14px;}
+.wod-roll-icon.spin{animation:wspin .35s linear;}
+@keyframes wspin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.wod-empty{padding:20px 14px;text-align:center;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+
 /* HİBRİT PPL-X */
 .hibrit-view{padding:0 16px 100px;}
 .hibrit-day-tabs{display:flex;gap:0;margin-top:16px;margin-bottom:14px;border:1px solid var(--rim);overflow-x:auto;scrollbar-width:none;}
@@ -481,7 +506,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="header-identity">
     <div class="header-logo">
       <div class="logo-name">M. Çağrı <span>Ulu</span></div>
-      <div class="logo-sub">HİBRİT PPL-X · 2026</div>
+      <div class="logo-sub">PPL · 2026</div>
     </div>
     <div class="header-controls">
       <div class="header-year">MMXXVI</div>
@@ -490,10 +515,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
   <div class="header-session">
     <div class="session-label">Aktif Seans</div>
-    <div class="session-title" id="hdr-title">UPPER <em>PUSH</em></div>
+    <div class="session-title" id="hdr-title">PUSH <em>A</em></div>
     <div class="session-target">
       <div class="target-dot"></div>
-      <div class="target-text" id="hdr-target">HİBRİT PPL-X · GÜN 1 · PAZARTESİ</div>
+      <div class="target-text" id="hdr-target">GÖĞÜS · OMUZ · TRİSEPS</div>
     </div>
   </div>
 </div>
@@ -714,7 +739,7 @@ const RECIPES=[
 ];
 
 const CATS=['Tümü','Sabah','Öğle','Akşam','Atıştırma'];
-let cur=0,light=false,mode='hibrit',activeRecipe=null,recipeCat='Tümü';
+let cur=0,light=false,mode='ppl',activeRecipe=null,recipeCat='Tümü';
 
 function toggleTheme(){
   light=!light;
@@ -723,12 +748,11 @@ function toggleTheme(){
 }
 
 const ARACLAR_ITEMS=[
-  {id:'hibrit',label:'HİBRİT PPL-X',desc:'Ana program · 5 gün · Random WOD',fn:'setHibrit'},
-  {id:'ppl',label:'PPL ARŞİV',desc:'Eski program · Push/Pull/Legs',fn:'setPPL'},
-  {id:'analiz',label:'PROGRAM ANALİZİ',desc:'PPL vs Hibrit · Grafikli karşılaştırma',fn:'setAnaliz'},
   {id:'wod',label:'CROSSFIT WOD',desc:'200+ ikonik WOD · AI üretimi',fn:'setWod'},
   {id:'organize',label:'ATLETİK ORGANİZATÖR',desc:'Crossfit tarzı · 5 günlük',fn:'setOrganize'},
+  {id:'hibrit',label:'HİBRİT PPL-X ARŞİV',desc:'Hibrit program · 5 gün · Random WOD',fn:'setHibrit'},
   {id:'oly',label:'OLİMPİK KALDIRIŞ',desc:'Rehber · Clean · Snatch · Jerk',fn:'setOly'},
+  {id:'analiz',label:'PROGRAM ANALİZİ',desc:'PPL vs Hibrit · Grafikli karşılaştırma',fn:'setAnaliz'},
   {id:'takvim',label:'HAFTALIK TAKVİM',desc:'Paz–Paz · 5 antrenman',fn:'setTakvim'},
   {id:'recipes',label:'TARİFLER',desc:'35 tarif · yüksek proteinli',fn:'setRecipes'},
   {id:'boks',label:'BOKS PROGRAMI',desc:'3 ay · 12 hafta · temel teknik',fn:'setBoks'},
@@ -758,7 +782,7 @@ function mainNavSwitch(tab){
   document.getElementById('nav').style.display=isProgram?'flex':'none';
   document.getElementById('araclar-menu').style.display=isProgram?'none':'block';
   if(isProgram){
-    if(!PROGRAM_MODES.includes(mode)) setHibrit();
+    if(!PROGRAM_MODES.includes(mode)) setPPL();
     else renderNav();
   } else {
     renderAraclarMenu();
@@ -820,6 +844,7 @@ function renderDay2(){
     });
     html+='</div>';
   });
+  if(DAY_WODS[d.key]) html+=buildDayWodHTML(d.key);
   document.getElementById('day-view').innerHTML=html;
 }
 
@@ -3532,10 +3557,7 @@ function setHibrit(){
   document.getElementById('main-scroll').scrollTop=0;
 }
 
-// BAŞLANGIC: Hibrit program
-setHibrit();
-</script>
-<script>
+// BAŞLANGIC: PPL Ana Program — script bloğu birleştirildi
 /* ─── PROGRAM ANALİZİ ─── */
 var analizTab=0;
 var PPL_ANALIZ={
@@ -3677,6 +3699,216 @@ function renderAnalizView(){
   renderAnalizContent();
 }
 
+/* ─── GÜNLÜK WOD SİSTEMİ ─── */
+const DAY_WODS={
+  'push-a':{
+    basit:[
+      {name:'PUSH FINISHER',type:'3 ROUND',content:'10 × Push-up\n10 × DB Lateral Raise\n10 × Triceps Pushdown',sure:'~8 dk',yogunluk:'Basit',note:'Düşük ağırlık, yavaş tempo. Göğüs & omuz pompası.'},
+      {name:'SHOULDER FLUSH',type:'2 ROUND',content:'15 × Cable Lateral Raise\n15 × Front Raise\n15 × Rear Delt Fly',sure:'~6 dk',yogunluk:'Basit',note:'Sadece kablo makinesi. Omuz kapasitesini bitir.'},
+      {name:'TRİSEPS PUMP',type:'3 ROUND',content:'15 × Triceps Pushdown\n10 × Overhead Extension\n10 × Diamond Push-up',sure:'~7 dk',yogunluk:'Basit',note:'Triseps izolasyon finisher. Çok hafif ağırlık.'},
+      {name:'PUSH-UP LADDER',type:'FOR TIME',content:'1-2-3-4-5-4-3-2-1\nPush-up (her sayıda)',sure:'~5 dk',yogunluk:'Basit',note:'Mola yok, sürekli devam. Göğüs & triseps.'},
+    ],
+    orta:[
+      {name:'PUSH AMRAP',type:'AMRAP · 10 DK',content:'8 × DB Thruster (hafif)\n10 × Push-up\n12 × Lateral Raise',sure:'10 dk',yogunluk:'Orta',note:'Her roundu kaydet. Omuz & göğüs kondisyonu.'},
+      {name:'PRESS COMPLEX',type:'3 ROUND · 90 SN ARA',content:'8 × DB Arnold Press\n8 × Lateral Raise\n8 × Triceps Kickback\n8 × Push-up',sure:'~12 dk',yogunluk:'Orta',note:'Göğüs-omuz-triseps tam yakma turu.'},
+      {name:'TABATA PUSH',type:'TABATA · 8×20/10',content:'Hareket: Push Press (DB)\n8 round: 20 sn çalış / 10 sn dinlen',sure:'~10 dk',yogunluk:'Orta',note:'Son tur zorlaştıkça ağırlığı düşür, formu koru.'},
+      {name:'21-15-9 UPPER',type:'FOR TIME',content:'21-15-9:\nPush-up\nDB Shoulder Press',sure:'~8 dk',yogunluk:'Orta',note:'Mola vermeden bitirmeyi hedefle. Süreyi kaydet.'},
+    ],
+    agir:[
+      {name:'CHIPPER PUSH',type:'FOR TIME',content:'30 × Push-up\n20 × DB Thruster (2×15kg)\n15 × Weighted Dip\n10 × DB Shoulder Press (ağır)',sure:'~15 dk',yogunluk:'Ağır',note:'Mola verebilirsin ama süre devam eder. Kaydet.'},
+      {name:'PUSH EMOM',type:'EMOM · 12 DK',content:'Tek dk → 8 × DB Push Press (ağır)\nÇift dk → 10 × Weighted Dip\nÜçüncü dk → 12 × Lateral Raise',sure:'12 dk',yogunluk:'Ağır',note:'EMOM temposu yüksek tutar. Ağırlık sabit kalsın.'},
+      {name:'DENSITY PUSH',type:'4×3 DK · 90 SN ARA',content:'Her 3 dk blokta max round:\n5 × DB Thruster\n8 × Push-up\n10 × Lateral Raise',sure:'~18 dk',yogunluk:'Ağır',note:'Her blokta kaç round yaptığını kaydet.'},
+      {name:'PUSH TRIPLET',type:'5 ROUND FOR TIME',content:'6 × Weighted Dip\n8 × DB Arnold Press\n10 × Triceps Pushdown',sure:'~15 dk',yogunluk:'Ağır',note:'Round arası 60 sn. Ağırlık sabit tut.'},
+    ],
+    cokAgir:[
+      {name:'DEATH BY PUSH',type:'FOR TIME',content:'50 × Push-up\n40 × DB Thruster (2×17.5kg)\n30 × Weighted Dip\n20 × DB Push Press (ağır)\n10 × Handstand Push-up / Pike PU',sure:'~20 dk',yogunluk:'Çok Ağır',note:'Tamamlanması güç. Bölünebilirsin ama süre akar.'},
+      {name:'PUSH HELL',type:'AMRAP · 20 DK',content:'5 × Weighted Dip\n10 × DB Thruster (2×15kg)\n15 × Push-up\n20 × Lateral Raise',sure:'20 dk',yogunluk:'Çok Ağır',note:'Maksimum round hedefle. Göğüs-omuz-triseps yangını.'},
+      {name:'BARBARA PUSH',type:'3 ROUND FOR TIME · 2 DK ARA',content:'15 × Weighted Push-up\n15 × DB Shoulder Press\n15 × Triceps Pushdown\n15 × Lateral Raise\n15 × Dip',sure:'~20 dk',yogunluk:'Çok Ağır',note:'Her seti kaydet. Ağırlık düşürme yok.'},
+    ],
+  },
+  'pull-a':{
+    basit:[
+      {name:'BICEP FLUSH',type:'3 ROUND',content:'12 × DB Curl\n12 × Hammer Curl\n12 × Face Pull',sure:'~8 dk',yogunluk:'Basit',note:'Biseps ve arka omuz kapasitesini bitir.'},
+      {name:'LAT PUMP',type:'2 ROUND',content:'15 × Cable Row (hafif)\n15 × Straight Arm Pulldown\n15 × Face Pull',sure:'~6 dk',yogunluk:'Basit',note:'Sadece kablo. Lat pompası odaklı.'},
+      {name:'PULL FINISHER',type:'3 ROUND',content:'10 × Reverse Curl\n10 × Hammer Curl\n10 × Band Pull-Apart',sure:'~7 dk',yogunluk:'Basit',note:'Biseps & önkol izolasyon finisher.'},
+      {name:'CHIN-UP LADDER',type:'FOR TIME',content:'1-2-3-4-5-4-3-2-1\nChin-up (supinated grip)',sure:'~8 dk',yogunluk:'Basit',note:'Mola yok. Yapamıyorsan assisted ya da ring row.'},
+    ],
+    orta:[
+      {name:'PULL AMRAP',type:'AMRAP · 10 DK',content:'5 × Pull-up\n10 × DB Row (her kol)\n15 × Face Pull',sure:'10 dk',yogunluk:'Orta',note:'Her roundu kaydet. Sırt pompası hedefle.'},
+      {name:'BACK EMOM',type:'EMOM · 10 DK',content:'Tek dk → 6 × Barbell Row (%70 1RM)\nÇift dk → 10 × Cable Curl',sure:'10 dk',yogunluk:'Orta',note:'EMOM temposu sırt kalınlığı için ideal.'},
+      {name:'BICEP BURNER',type:'4 ROUND',content:'8 × Chin-up\n10 × Incline DB Curl\n10 × Hammer Curl\n8 × Reverse Curl',sure:'~14 dk',yogunluk:'Orta',note:'Biseps hacmi için. Ağır değil, tam kasılma.'},
+      {name:'21-15-9 PULL',type:'FOR TIME',content:'21-15-9:\nPull-up\nDB Row (tek kol, her taraf)',sure:'~10 dk',yogunluk:'Orta',note:'Sırt & biseps beraber. Süreyi kaydet.'},
+    ],
+    agir:[
+      {name:'PULL CHIPPER',type:'FOR TIME',content:'30 × Pull-up\n25 × Barbell Row (ağır)\n20 × Cable Row\n15 × Face Pull\n10 × Barbell Curl',sure:'~18 dk',yogunluk:'Ağır',note:'Sırt & biseps tam yakma. Mola verebilirsin.'},
+      {name:'HOLLOW HELL',type:'FOR TIME',content:'40 × Pull-up (bölünebilir)\n80 × Hollow Rock\n40 × Toes-to-Bar',sure:'~18 dk',yogunluk:'Ağır',note:'Core + gymnastics + sırt kombinasyonu.'},
+      {name:'DENSITY PULL',type:'4×3 DK · 90 SN ARA',content:'Her 3 dk blokta max round:\n4 × Pull-up\n6 × DB Row\n8 × Face Pull',sure:'~18 dk',yogunluk:'Ağır',note:'Her blokta round sayını kaydet.'},
+      {name:'BACK TRIPLET',type:'5 ROUND FOR TIME',content:'6 × Weighted Pull-up\n8 × Pendlay Row\n10 × Cable Curl',sure:'~15 dk',yogunluk:'Ağır',note:'Round arası 60 sn. Sırt + biseps güç dayanıklılığı.'},
+    ],
+    cokAgir:[
+      {name:'PULL DEATH',type:'FOR TIME',content:'50 × Pull-up (bölünebilir)\n40 × Barbell Row (60kg)\n30 × Toes-to-Bar\n20 × Weighted Pull-up\n10 × Muscle-up / Jumping',sure:'~20 dk',yogunluk:'Çok Ağır',note:'CrossFit tarzı çekiş maratonu. Süreyi kaydet.'},
+      {name:'BARBARA PULL',type:'3 ROUND FOR TIME · 2 DK ARA',content:'15 × Pull-up\n15 × DB Row\n15 × Face Pull\n15 × Bicep Curl\n15 × Toes-to-Bar',sure:'~20 dk',yogunluk:'Çok Ağır',note:'Her seti kaydet. Ağırlık düşürme yok.'},
+      {name:'PULL HELL AMRAP',type:'AMRAP · 20 DK',content:'5 × Weighted Pull-up\n10 × Barbell Row\n15 × Cable Row\n20 × Face Pull',sure:'20 dk',yogunluk:'Çok Ağır',note:'Maksimum round hedefle.'},
+    ],
+  },
+  'legs':{
+    basit:[
+      {name:'LEG FLUSH',type:'3 ROUND',content:'15 × Leg Extension\n15 × Leg Curl\n15 × Calf Raise',sure:'~8 dk',yogunluk:'Basit',note:'Bacak izolasyon finisher. Düşük ağırlık.'},
+      {name:'CORE LIGHT',type:'3 ROUND',content:'15 × Hanging Leg Raise\n10 × Ab Wheel\n30 sn Plank',sure:'~8 dk',yogunluk:'Basit',note:'Core kapasitesini bitir. Ağırlık yok.'},
+      {name:'GLUTE PUMP',type:'2 ROUND',content:'15 × Glute Bridge (DB)\n15 × Romanian DL (hafif DB)\n15 × Walking Lunge',sure:'~7 dk',yogunluk:'Basit',note:'Glute & hamstring aktivasyonu.'},
+      {name:'CALF & CORE',type:'3 ROUND',content:'20 × Standing Calf Raise\n12 × Hanging Leg Raise\n20 sn L-Sit hold',sure:'~7 dk',yogunluk:'Basit',note:'Baldır ve core tamamlayıcı.'},
+    ],
+    orta:[
+      {name:'LEG AMRAP',type:'AMRAP · 10 DK',content:'10 × KB Goblet Squat (24kg)\n10 × Walking Lunge (her bacak)\n10 × Glute Bridge',sure:'10 dk',yogunluk:'Orta',note:'Quad & glute pompa odaklı.'},
+      {name:'POSTERIOR CHAIN',type:'4 ROUND',content:'8 × KB Swing (24kg)\n8 × Romanian DL (DB)\n30 sn Glute Bridge hold',sure:'~14 dk',yogunluk:'Orta',note:'Arka zincir: hamstring & glute.'},
+      {name:'CORE COMPLEX',type:'3 ROUND',content:'12 × Toes-to-Bar\n10 × Ab Wheel\n20 sn L-Sit hold\n10 × Dragon Flag',sure:'~12 dk',yogunluk:'Orta',note:'Core güç kombinasyonu.'},
+      {name:'21-15-9 LOWER',type:'FOR TIME',content:'21-15-9:\nKB Swing (24kg)\nGoblet Squat (24kg)',sure:'~8 dk',yogunluk:'Orta',note:'Hızlı metabolik kondisyon. Süreyi kaydet.'},
+    ],
+    agir:[
+      {name:'LEG CHIPPER',type:'FOR TIME',content:'50 × Air Squat\n40 × Walking Lunge\n30 × KB Swing (32kg)\n20 × Goblet Squat (32kg)\n10 × Jump Squat',sure:'~15 dk',yogunluk:'Ağır',note:'Bacak kondisyonu. Süre akar, mola verebilirsin.'},
+      {name:'DEATH BY SQUAT',type:'EMOM LADDER',content:'Dk 1 → 2 × Goblet Squat\nHer dk +2 tekrar\nBitene kadar devam et',sure:'~12 dk',yogunluk:'Ağır',note:'Kaç dakika gidebilirsin? Kaydet.'},
+      {name:'DENSITY LEGS',type:'4×3 DK · 90 SN ARA',content:'Her 3 dk blokta max round:\n6 × KB Swing\n8 × Goblet Squat\n10 × Glute Bridge',sure:'~18 dk',yogunluk:'Ağır',note:'Her blokta round sayısını kaydet.'},
+      {name:'HAMSTRING HELL',type:'3 ROUND FOR TIME',content:'10 × Romanian DL (ağır)\n10 × Lying Leg Curl\n10 × KB Swing (32kg)\n20 sn Wall Sit',sure:'~15 dk',yogunluk:'Ağır',note:'Hamstring & posterior chain odaklı.'},
+    ],
+    cokAgir:[
+      {name:'LEG DEATH',type:'FOR TIME',content:'100 × Air Squat\n80 × Walking Lunge\n60 × KB Swing (24kg)\n40 × Goblet Squat (32kg)\n20 × Jump Squat',sure:'~20 dk',yogunluk:'Çok Ağır',note:'Bacak yanıyor mu? Devam et. Süreyi kaydet.'},
+      {name:'BARBARA LEGS',type:'3 ROUND FOR TIME · 2 DK ARA',content:'15 × Leg Extension\n15 × Leg Curl\n15 × KB Swing\n15 × Goblet Squat\n15 × Calf Raise',sure:'~20 dk',yogunluk:'Çok Ağır',note:'Bacak tam izolasyon + kondisyon.'},
+      {name:'LEGS HELL AMRAP',type:'AMRAP · 20 DK',content:'10 × KB Goblet Squat (32kg)\n10 × KB Swing (32kg)\n10 × Walking Lunge\n10 × Glute Bridge',sure:'20 dk',yogunluk:'Çok Ağır',note:'Maksimum round hedefle.'},
+    ],
+  },
+  'push-b':{
+    basit:[
+      {name:'SHOULDER PUMP',type:'3 ROUND',content:'12 × Lateral Raise\n12 × Front Raise\n12 × Rear Delt Fly',sure:'~7 dk',yogunluk:'Basit',note:'Omuz tam izolasyon finisher.'},
+      {name:'TRIS FINISHER',type:'3 ROUND',content:'15 × Overhead Extension\n15 × Pushdown\n10 × Diamond Push-up',sure:'~7 dk',yogunluk:'Basit',note:'Triseps kapasitesini bitir.'},
+      {name:'PRESS PUMP',type:'2 ROUND',content:'15 × DB Lateral Raise\n12 × DB Front Raise\n12 × Cable Rear Delt\n10 × Overhead Extension',sure:'~8 dk',yogunluk:'Basit',note:'Omuz 360° izolasyon turu.'},
+      {name:'PUSH-UP TABATA',type:'TABATA · 4×20/10',content:'Push-up: 20 sn çalış / 10 sn dinlen × 4',sure:'~4 dk',yogunluk:'Basit',note:'Göğüs & triseps kısa finisher.'},
+    ],
+    orta:[
+      {name:'SHOULDER AMRAP',type:'AMRAP · 10 DK',content:'8 × DB Arnold Press\n10 × Lateral Raise\n12 × Rear Delt Fly',sure:'10 dk',yogunluk:'Orta',note:'Omuz kondisyonu ve hacim.'},
+      {name:'PUSH B COMPLEX',type:'3 ROUND · 90 SN ARA',content:'8 × DB Push Press\n10 × Lateral Raise\n10 × Triceps Pushdown\n8 × Dip',sure:'~14 dk',yogunluk:'Orta',note:'Omuz & triseps kombine.'},
+      {name:'TABATA SHOULDER',type:'TABATA · 8×20/10',content:'Hareket: DB Lateral Raise\n8 round: 20 sn / 10 sn',sure:'~5 dk',yogunluk:'Orta',note:'Omuz yakıcı. Hafif ağırlıkla bile berbat.'},
+      {name:'21-15-9 PRESS',type:'FOR TIME',content:'21-15-9:\nDB Shoulder Press\nLateral Raise',sure:'~8 dk',yogunluk:'Orta',note:'Omuz yorgunluk finisher.'},
+    ],
+    agir:[
+      {name:'PRESS CHIPPER',type:'FOR TIME',content:'30 × DB Shoulder Press\n25 × Lateral Raise\n20 × Rear Delt Fly\n15 × Triceps Pushdown\n10 × Weighted Dip',sure:'~15 dk',yogunluk:'Ağır',note:'Omuz & triseps tam yakma.'},
+      {name:'SHOULDER HELL',type:'EMOM · 15 DK',content:'Dk 1 → 8 × DB Push Press\nDk 2 → 10 × Lateral Raise\nDk 3 → 10 × Rear Delt Fly',sure:'15 dk',yogunluk:'Ağır',note:'Omuz 360° EMOM yakma.'},
+      {name:'DENSITY PRESS',type:'4×3 DK · 90 SN ARA',content:'Her 3 dk blokta max round:\n5 × DB Push Press\n8 × Lateral Raise\n8 × Overhead Extension',sure:'~18 dk',yogunluk:'Ağır',note:'Her blokta round kaydet.'},
+      {name:'PUSH B TRIPLET',type:'5 ROUND FOR TIME',content:'6 × Weighted Dip\n8 × DB Arnold Press\n10 × Cable Lateral Raise',sure:'~15 dk',yogunluk:'Ağır',note:'Round arası 60 sn.'},
+    ],
+    cokAgir:[
+      {name:'PUSH B DEATH',type:'FOR TIME',content:'40 × DB Shoulder Press\n40 × Lateral Raise\n30 × Rear Delt Fly\n30 × Overhead Extension\n20 × Weighted Dip\n20 × Push-up',sure:'~20 dk',yogunluk:'Çok Ağır',note:'Omuz & triseps tam kapasiteye kadar.'},
+      {name:'PRESS HELL AMRAP',type:'AMRAP · 20 DK',content:'6 × DB Push Press (ağır)\n10 × Lateral Raise\n12 × Triceps Pushdown\n8 × Weighted Dip',sure:'20 dk',yogunluk:'Çok Ağır',note:'Maksimum round hedefle. Tüm Push B kasları.'},
+      {name:'BARBARA PRESS',type:'3 ROUND FOR TIME · 2 DK ARA',content:'15 × DB Arnold Press\n15 × Lateral Raise\n15 × Rear Delt Fly\n15 × Overhead Extension\n15 × Dip',sure:'~20 dk',yogunluk:'Çok Ağır',note:'Her seti kaydet.'},
+    ],
+  },
+  'pull-b':{
+    basit:[
+      {name:'BACK FLUSH',type:'3 ROUND',content:'12 × Cable Row (hafif)\n12 × Face Pull\n12 × Reverse Curl',sure:'~7 dk',yogunluk:'Basit',note:'Sırt & biseps izolasyon finisher.'},
+      {name:'LEG ISOLASYON',type:'3 ROUND',content:'15 × Leg Extension\n15 × Leg Curl\n15 × Calf Raise',sure:'~7 dk',yogunluk:'Basit',note:'Bacak izolasyon kapasitesini bitir.'},
+      {name:'CURL PUMP',type:'3 ROUND',content:'12 × Hammer Curl\n12 × Reverse Curl\n12 × Incline Curl',sure:'~7 dk',yogunluk:'Basit',note:'Biseps & önkol tam izolasyon.'},
+      {name:'MIXED FINISHER',type:'2 ROUND',content:'10 × Pull-up\n12 × Hammer Curl\n15 × Leg Curl\n15 × Calf Raise',sure:'~8 dk',yogunluk:'Basit',note:'Pull B kaslarına hafif finisher.'},
+    ],
+    orta:[
+      {name:'PULL B AMRAP',type:'AMRAP · 10 DK',content:'5 × Pull-up\n10 × Cable Row\n10 × Leg Extension\n15 × Face Pull',sure:'10 dk',yogunluk:'Orta',note:'Pull B kasları kondisyon turu.'},
+      {name:'SUPERSET PULL',type:'4 ROUND · 60 SN ARA',content:'8 × Pull-up\n10 × Hammer Curl\n12 × Leg Curl\n15 × Calf Raise',sure:'~14 dk',yogunluk:'Orta',note:'Sırt + biseps + bacak beraber.'},
+      {name:'21-15-9 MIXED',type:'FOR TIME',content:'21-15-9:\nPull-up\nLeg Extension',sure:'~10 dk',yogunluk:'Orta',note:'Sırt & quad beraber. Süreyi kaydet.'},
+      {name:'BACK & LEG EMOM',type:'EMOM · 12 DK',content:'Dk 1 → 6 × Lat Pulldown\nDk 2 → 10 × Leg Curl\nDk 3 → 10 × Hammer Curl',sure:'12 dk',yogunluk:'Orta',note:'Pull B kasları EMOM formatı.'},
+    ],
+    agir:[
+      {name:'PULL B CHIPPER',type:'FOR TIME',content:'25 × Pull-up\n25 × Leg Extension\n20 × Barbell Row\n20 × Leg Curl\n15 × Barbell Curl\n15 × Calf Raise',sure:'~18 dk',yogunluk:'Ağır',note:'Pull B kaslarının tamamı chipper formatı.'},
+      {name:'DENSITY PULL B',type:'4×3 DK · 90 SN ARA',content:'Her 3 dk blokta max round:\n4 × Pull-up\n8 × Leg Curl\n8 × Hammer Curl',sure:'~18 dk',yogunluk:'Ağır',note:'Her blokta round kaydet.'},
+      {name:'TRIPLET MIXED',type:'5 ROUND FOR TIME',content:'6 × Weighted Pull-up\n8 × Leg Extension\n10 × Hammer Curl',sure:'~15 dk',yogunluk:'Ağır',note:'Round arası 60 sn.'},
+      {name:'PULL B EMOM',type:'EMOM · 15 DK',content:'Dk 1 → 6 × Pull-up (ağır)\nDk 2 → 10 × Leg Curl\nDk 3 → 8 × Barbell Curl',sure:'15 dk',yogunluk:'Ağır',note:'Pull B kasları tam kapasite.'},
+    ],
+    cokAgir:[
+      {name:'PULL B DEATH',type:'FOR TIME',content:'40 × Pull-up\n40 × Leg Extension\n30 × Barbell Row\n30 × Leg Curl\n20 × Barbell Curl\n20 × Calf Raise',sure:'~20 dk',yogunluk:'Çok Ağır',note:'Pull B kaslarının tamamı. Süreyi kaydet.'},
+      {name:'BARBARA PULL B',type:'3 ROUND FOR TIME · 2 DK ARA',content:'15 × Pull-up\n15 × Leg Extension\n15 × Hammer Curl\n15 × Leg Curl\n15 × Calf Raise',sure:'~20 dk',yogunluk:'Çok Ağır',note:'5 hareket, 3 round. Ağırlık düşürme yok.'},
+      {name:'PULL B HELL',type:'AMRAP · 20 DK',content:'5 × Weighted Pull-up\n10 × Leg Curl\n10 × Hammer Curl\n15 × Leg Extension',sure:'20 dk',yogunluk:'Çok Ağır',note:'Maksimum round. Pull B kasları yanıyor.'},
+    ],
+  },
+};
+
+const INT_LABELS=['BASİT','ORTA','AĞIR','ÇOK AĞIR'];
+const INT_KEYS=['basit','orta','agir','cokAgir'];
+var dayWodState={};
+
+function dayWodInit(dayKey){
+  if(!dayWodState[dayKey]) dayWodState[dayKey]={int:1,idx:null,history:[[],[],[],[]]};
+}
+
+function dayWodRoll(dayKey){
+  dayWodInit(dayKey);
+  var st=dayWodState[dayKey];
+  var pool=DAY_WODS[dayKey][INT_KEYS[st.int]];
+  if(!pool||!pool.length) return;
+  var hist=st.history[st.int];
+  var avail=pool.map(function(_,i){return i;}).filter(function(i){return !hist.includes(i);});
+  if(!avail.length){st.history[st.int]=[];avail=pool.map(function(_,i){return i;}); }
+  var pick=avail[Math.floor(Math.random()*avail.length)];
+  st.history[st.int].push(pick);
+  st.idx=pick;
+  renderDayWodResult(dayKey);
+  var icon=document.getElementById('wod-roll-icon-'+dayKey);
+  if(icon){icon.classList.add('spin');setTimeout(function(){icon.classList.remove('spin');},350);}
+}
+
+function dayWodSetInt(dayKey,intIdx){
+  dayWodInit(dayKey);
+  dayWodState[dayKey].int=intIdx;
+  dayWodState[dayKey].idx=null;
+  document.querySelectorAll('.wod-int-btn[data-day="'+dayKey+'"]').forEach(function(b,j){b.classList.toggle('on',j===intIdx);});
+  renderDayWodResult(dayKey);
+}
+
+function renderDayWodResult(dayKey){
+  var cont=document.getElementById('wod-result-'+dayKey);
+  if(!cont) return;
+  var st=dayWodState[dayKey];
+  var pool=DAY_WODS[dayKey][INT_KEYS[st.int]];
+  if(st.idx===null||!pool||!pool[st.idx]){
+    cont.innerHTML='<div class="wod-empty">⟳ YENİLE\'ye bas</div>';
+    return;
+  }
+  var w=pool[st.idx];
+  cont.innerHTML=
+    '<div class="wod-result-name">'+w.name+'</div>'+
+    '<div class="wod-result-type">'+w.type+'</div>'+
+    '<div class="wod-result-content">'+w.content+'</div>'+
+    '<div class="wod-result-meta">'+
+      '<div class="wod-meta-item"><div class="wod-meta-lbl">Süre</div><div class="wod-meta-val">'+w.sure+'</div></div>'+
+      '<div class="wod-meta-item"><div class="wod-meta-lbl">Yoğunluk</div><div class="wod-meta-val">'+w.yogunluk+'</div></div>'+
+    '</div>'+
+    '<div class="wod-result-note">'+w.note+'</div>';
+}
+
+function buildDayWodHTML(dayKey){
+  dayWodInit(dayKey);
+  var st=dayWodState[dayKey];
+  var html='<div class="day-wod-section">'+
+    '<div class="day-wod-header"><div class="day-wod-title">BLOK C — RANDOM WOD</div></div>'+
+    '<div class="wod-intensity-btns">';
+  INT_LABELS.forEach(function(lbl,i){
+    html+='<button class="wod-int-btn'+(i===st.int?' on':'')+'" data-day="'+dayKey+'" onclick="dayWodSetInt(\''+dayKey+'\','+i+')">'+lbl+'</button>';
+  });
+  html+='</div>';
+  html+='<div id="wod-result-'+dayKey+'">';
+  var pool=DAY_WODS[dayKey]&&DAY_WODS[dayKey][INT_KEYS[st.int]];
+  if(st.idx!==null&&pool&&pool[st.idx]){
+    var w=pool[st.idx];
+    html+='<div class="wod-result"><div class="wod-result-name">'+w.name+'</div>'+
+      '<div class="wod-result-type">'+w.type+'</div>'+
+      '<div class="wod-result-content">'+w.content+'</div>'+
+      '<div class="wod-result-meta"><div class="wod-meta-item"><div class="wod-meta-lbl">Süre</div><div class="wod-meta-val">'+w.sure+'</div></div><div class="wod-meta-item"><div class="wod-meta-lbl">Yoğunluk</div><div class="wod-meta-val">'+w.yogunluk+'</div></div></div>'+
+      '<div class="wod-result-note">'+w.note+'</div></div>';
+  } else {
+    html+='<div class="wod-empty">⟳ YENİLE\'ye bas</div>';
+  }
+  html+='</div>';
+  html+='<button class="wod-roll-btn" onclick="dayWodRoll(\''+dayKey+'\')"><span class="wod-roll-icon" id="wod-roll-icon-'+dayKey+'">⟳</span> YENİLE</button>';
+  html+='</div>';
+  return html;
+}
+
 function setAnaliz(){
   mode='analiz';
   document.getElementById('hdr-title').textContent='ANALİZ';
@@ -3687,6 +3919,9 @@ function setAnaliz(){
   renderNav();
   document.getElementById('main-scroll').scrollTop=0;
 }
+
+// BAŞLANGIC
+setPPL();
 </script>
 </body>
 </html>
