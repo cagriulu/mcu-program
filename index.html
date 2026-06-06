@@ -394,6 +394,38 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .dual-bar-track{height:12px;background:var(--rim2);position:relative;overflow:hidden;}
 .dual-bar-fill{height:100%;position:absolute;left:0;top:0;}
 
+/* WOD 100 LİSTESİ */
+.wod100-view{padding:0 0 100px;}
+.wod100-cat-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--rim);flex-shrink:0;}
+.wod100-cat-tabs::-webkit-scrollbar{display:none;}
+.wod100-cat-tab{flex-shrink:0;padding:10px 14px;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;white-space:nowrap;transition:all .12s;}
+.wod100-cat-tab.on{background:var(--fg);color:var(--bg);}
+.wod100-list{display:flex;flex-direction:column;}
+.wod100-item{border-bottom:1px solid var(--rim2);cursor:pointer;transition:background .1s;}
+.wod100-item:active{background:var(--rim2);}
+.wod100-item-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;}
+.wod100-item-left{display:flex;align-items:center;gap:12px;}
+.wod100-item-num{font-size:9px;font-weight:400;color:var(--muted);min-width:22px;letter-spacing:.05em;}
+.wod100-item-name{font-size:14px;font-weight:700;color:var(--fg);letter-spacing:-.01em;}
+.wod100-item-right{display:flex;align-items:center;gap:8px;}
+.wod100-item-type{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.wod100-item-arrow{font-size:12px;color:var(--muted);transition:transform .2s;}
+.wod100-item-arrow.open{transform:rotate(180deg);}
+.wod100-detail{display:none;border-top:1px solid var(--rim2);background:var(--rim2);}
+.wod100-detail.open{display:block;}
+.wod100-detail-inner{padding:14px 16px;}
+.wod100-detail-format{font-size:7.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--muted);display:inline-block;padding:2px 8px;margin-bottom:10px;}
+.wod100-detail-content{font-size:13px;font-weight:500;color:var(--fg);line-height:1.9;white-space:pre-line;margin-bottom:10px;}
+.wod100-detail-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+.wod100-meta-item{background:var(--bg);padding:.5rem .7rem;border:1px solid var(--rim);}
+.wod100-meta-lbl{font-size:7px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.wod100-meta-val{font-size:11px;font-weight:700;color:var(--fg);}
+.wod100-detail-note{font-size:10px;color:var(--muted);line-height:1.6;border-top:1px solid var(--rim);padding-top:8px;}
+.wod100-cat-hero{padding:14px 16px;border-bottom:1px solid var(--rim);background:var(--rim2);}
+.wod100-cat-hero-title{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--fg);margin-bottom:3px;}
+.wod100-cat-hero-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+.wod100-cat-hero-count{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:2px 8px;margin-top:6px;}
+
 /* GÜNLÜK WOD SİSTEMİ */
 .day-wod-section{margin:0;border-top:1px solid var(--rim);}
 .day-wod-header{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;background:var(--rim2);}
@@ -527,6 +559,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <div class="main-nav" id="main-nav">
   <button class="main-nav-btn on" id="mnav-program" onclick="mainNavSwitch('program')">PROGRAM</button>
   <button class="main-nav-btn" id="mnav-araclar" onclick="mainNavSwitch('araclar')">ARAÇLAR</button>
+  <button class="main-nav-btn" id="mnav-wod100" onclick="mainNavSwitch('wod100')">WOD'LAR</button>
 </div>
 <!-- PROGRAM ALTI: GÜN SEKMELERİ -->
 <div class="nav" id="nav"></div>
@@ -544,6 +577,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="oly-view" id="oly-view" style="display:none;"></div>
   <div class="hibrit-view" id="hibrit-view" style="display:none;"></div>
   <div class="analiz-view" id="analiz-view" style="display:none;"></div>
+  <div class="wod100-view" id="wod100-view" style="display:none;"></div>
 </div>
 </div>
 
@@ -777,18 +811,20 @@ function renderAraclarMenu(){
 
 function mainNavSwitch(tab){
   const isProgram=tab==='program';
+  const isWod100=tab==='wod100';
+  const isAraclar=tab==='araclar';
   document.getElementById('mnav-program').classList.toggle('on',isProgram);
-  document.getElementById('mnav-araclar').classList.toggle('on',!isProgram);
+  document.getElementById('mnav-araclar').classList.toggle('on',isAraclar);
+  document.getElementById('mnav-wod100').classList.toggle('on',isWod100);
   document.getElementById('nav').style.display=isProgram?'flex':'none';
-  document.getElementById('araclar-menu').style.display=isProgram?'none':'block';
+  document.getElementById('araclar-menu').style.display=isAraclar?'block':'none';
   if(isProgram){
     if(!PROGRAM_MODES.includes(mode)) setPPL();
     else renderNav();
+  } else if(isWod100){
+    setWod100();
   } else {
     renderAraclarMenu();
-    if(!ARACLAR_MODES.includes(mode)){
-      // araçlar açıldığında sadece menüyü göster, içeriği boşalt
-    }
   }
 }
 
@@ -816,8 +852,9 @@ function renderNav(){
   document.getElementById('araclar-menu').style.display=(!isHibrit&&!isPPL)?'block':'none';
   // ana nav aktiflik
   document.getElementById('mnav-program').classList.toggle('on',isHibrit||isPPL);
-  document.getElementById('mnav-araclar').classList.toggle('on',!isHibrit&&!isPPL);
-  if(!isHibrit&&!isPPL) renderAraclarMenu();
+  document.getElementById('mnav-araclar').classList.toggle('on',!isHibrit&&!isPPL&&mode!=='wod100');
+  document.getElementById('mnav-wod100').classList.toggle('on',mode==='wod100');
+  if(!isHibrit&&!isPPL&&mode!=='wod100') renderAraclarMenu();
 }
 
 function setPPL(){
@@ -859,6 +896,7 @@ function hideAll(){
   document.getElementById('oly-view').style.display='none';
   document.getElementById('hibrit-view').style.display='none';
   document.getElementById('analiz-view').style.display='none';
+  document.getElementById('wod100-view').style.display='none';
 }
 
 function setTakvim(){
@@ -3919,6 +3957,218 @@ function setAnaliz(){
   renderNav();
   document.getElementById('main-scroll').scrollTop=0;
 }
+
+function setWod100(){
+  mode='wod100';
+  document.getElementById('hdr-title').textContent='WOD\'LAR';
+  document.getElementById('hdr-target').textContent='EN İYİ 100 WOD · KATEGORİLERE GÖRE';
+  hideAll();
+  document.getElementById('wod100-view').style.display='block';
+  document.getElementById('nav').style.display='none';
+  document.getElementById('araclar-menu').style.display='none';
+  document.getElementById('mnav-program').classList.remove('on');
+  document.getElementById('mnav-araclar').classList.remove('on');
+  document.getElementById('mnav-wod100').classList.add('on');
+  renderWod100View();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+/* ─── 100 WOD LİSTESİ ─── */
+var wod100ActiveCat=0;
+var wod100OpenItems={};
+
+const WOD100_CATS=[
+  {id:'girls',label:'THE GIRLS',desc:'CrossFit\'in 2003\'ten beri kullandığı standart benchmark WOD\'ları. Skoru global olarak karşılaştırabilirsin.',wods:[
+    {n:1,name:'FRAN',format:'21-15-9 · For Time',content:'Thruster (42.5 kg)\nPull-up',sure:'2–6 dk',zorluk:'Orta-Ağır',note:'CrossFit\'in DNA\'sı. Dünyada en çok yapılan WOD. Elite hedef: <2 dk.'},
+    {n:2,name:'CINDY',format:'AMRAP · 20 dk',content:'5 × Pull-up\n10 × Push-up\n15 × Air Squat',sure:'20 dk',zorluk:'Orta',note:'Saf kondisyon testi. Ekipman gerektirmez. Hedef: 20+ round.'},
+    {n:3,name:'DIANE',format:'21-15-9 · For Time',content:'Deadlift (102 kg)\nHandstand Push-up',sure:'3–8 dk',zorluk:'Ağır',note:'Güç + gymnastics kombinasyonu. Elite hedef: <3 dk.'},
+    {n:4,name:'HELEN',format:'3 Round For Time',content:'400m Koşu\n21 × KB Swing (24 kg)\n12 × Pull-up',sure:'8–15 dk',zorluk:'Orta',note:'Kondisyon + güç dengesi. Elite hedef: <8 dk.'},
+    {n:5,name:'GRACE',format:'For Time',content:'30 × Clean & Jerk (60 kg)',sure:'1–5 dk',zorluk:'Ağır',note:'Tek hareket, maksimum şiddet. Elite hedef: <2 dk.'},
+    {n:6,name:'ISABEL',format:'For Time',content:'30 × Snatch (60 kg)',sure:'1–5 dk',zorluk:'Ağır',note:'Grace\'in snatch versiyonu. Teknik dayanıklılık.'},
+    {n:7,name:'ELIZABETH',format:'21-15-9 · For Time',content:'Power Clean (60 kg)\nRing Dip',sure:'7–12 dk',zorluk:'Orta-Ağır',note:'Barbell + gymnastics klasiği.'},
+    {n:8,name:'KELLY',format:'5 Round For Time',content:'400m Koşu\n30 × Box Jump (60 cm)\n30 × Wall Ball (9 kg)',sure:'35–45 dk',zorluk:'Ağır',note:'Bacak ve kondisyon katili.'},
+    {n:9,name:'ANNIE',format:'For Time',content:'50-40-30-20-10:\nDouble Under\nSit-up',sure:'7–15 dk',zorluk:'Orta',note:'Koordinasyon + core dayanıklılığı. Elite hedef: <7 dk.'},
+    {n:10,name:'BARBARA',format:'5 Round For Time · 3 dk ara',content:'20 × Pull-up\n30 × Push-up\n40 × Sit-up\n50 × Air Squat',sure:'35–45 dk',zorluk:'Ağır',note:'Vücut ağırlığı hacim maratonu.'},
+    {n:11,name:'AMANDA',format:'9-7-5 · For Time',content:'Muscle-up\nSquat Snatch (60 kg)',sure:'5–12 dk',zorluk:'Elit',note:'Gymnastics + olimpik kaldırış zirvesi.'},
+    {n:12,name:'LINDA',format:'10-9-8...1 · For Time',content:'Deadlift (1.5×BW)\nBench Press (BW)\nClean (0.75×BW)',sure:'20–35 dk',zorluk:'Ağır',note:'Three Bars of Death. Üç barbell, azalan rep.'},
+    {n:13,name:'MARY',format:'AMRAP · 20 dk',content:'5 × HSPU\n10 × Pistol Squat\n15 × Pull-up',sure:'20 dk',zorluk:'Ağır',note:'Cindy\'nin zor kardeşi. Hedef: 15+ round.'},
+    {n:14,name:'NANCY',format:'5 Round For Time',content:'400m Koşu\n15 × OHS (42.5 kg)',sure:'15–25 dk',zorluk:'Orta-Ağır',note:'Overhead squat mobilite + kondisyon.'},
+    {n:15,name:'EVA',format:'5 Round For Time',content:'800m Koşu\n30 × KB Swing (32 kg)\n30 × Pull-up',sure:'45–70 dk',zorluk:'Çok Ağır',note:'Uzun ve ağır. Elit seviye için.'},
+    {n:16,name:'JACKIE',format:'For Time',content:'1000m Kürek\n50 × Thruster (20 kg)\n30 × Pull-up',sure:'7–15 dk',zorluk:'Orta',note:'Kürek + barbell + gymnastics. Elite: <7 dk.'},
+    {n:17,name:'KAREN',format:'For Time',content:'150 × Wall Ball (9 kg)',sure:'7–15 dk',zorluk:'Orta',note:'Tek hareket, saf dayanıklılık. Elite: <7 dk.'},
+    {n:18,name:'CHELSEA',format:'EMOM · 30 dk',content:'5 × Pull-up\n10 × Push-up\n15 × Air Squat',sure:'30 dk',zorluk:'Orta-Ağır',note:'Cindy\'nin EMOM versiyonu. Dakikayı tutamayınca çıkarsın.'},
+  ]},
+  {id:'heroes',label:'THE HEROES',desc:'Görevde hayatını kaybeden askeri & polis personeli anısına. Ağır, uzun, anlamlı.',wods:[
+    {n:19,name:'MURPH',format:'For Time',content:'1 mil Koşu\n100 × Pull-up\n200 × Push-up\n300 × Air Squat\n1 mil Koşu\n(20 kg yelek opsiyonel)',sure:'40–70 dk',zorluk:'Çok Ağır',note:'CrossFit\'in en ikonik hero WOD\'u. Memorial Day geleneği.'},
+    {n:20,name:'DT',format:'5 Round For Time',content:'12 × Deadlift (70 kg)\n9 × Hang Power Clean\n6 × Push Jerk',sure:'20–30 dk',zorluk:'Ağır',note:'Tek bar, üç hareket. Omuz yakıcı.'},
+    {n:21,name:'JASON',format:'5 Round For Time',content:'20 × Muscle-up\n100 × Pistol Squat',sure:'60+ dk',zorluk:'Elit',note:'Gymnastics katili. Çok az kişi tamamlayabilir.'},
+    {n:22,name:'DANNY',format:'AMRAP · 20 dk',content:'30 × Box Jump (60 cm)\n20 × Push Press (52.5 kg)\n30 × Pull-up',sure:'20 dk',zorluk:'Çok Ağır',note:'Yüksek yoğunluk, sürekli hareket. Hedef: 4+ round.'},
+    {n:23,name:'NATE',format:'AMRAP · 20 dk',content:'2 × Muscle-up\n4 × HSPU\n8 × KB Swing (32 kg)',sure:'20 dk',zorluk:'Ağır',note:'Gymnastics + güç dengesi. Hedef: 8+ round.'},
+    {n:24,name:'MICHAEL',format:'3 Round For Time',content:'800m Koşu\n50 × Back Extension\n50 × Sit-up',sure:'35–50 dk',zorluk:'Orta-Ağır',note:'Core ve kondisyon odaklı hero.'},
+    {n:25,name:'RYAN',format:'5 Round For Time',content:'7 × Muscle-up\n21 × Burpee',sure:'25–40 dk',zorluk:'Çok Ağır',note:'Gymnastics + metabolik yakma.'},
+    {n:26,name:'LOREDO',format:'6 Round For Time',content:'24 × Air Squat\n24 × Push-up\n24 × Walking Lunge\n400m Koşu',sure:'40–55 dk',zorluk:'Ağır',note:'Vücut ağırlığı + kondisyon maratonu.'},
+    {n:27,name:'CHAD',format:'For Time',content:'1000 × Box Step-up\n(60 cm, 20 kg yelek)',sure:'60–100 dk',zorluk:'Çok Ağır',note:'Saf dayanıklılık ve zihinsel güç testi.'},
+    {n:28,name:'HOTSHOTS 19',format:'6 Round For Time',content:'30 × Air Squat\n19 × Power Clean (60 kg)\n7 × Strict HSPU\n400m Koşu',sure:'50–70 dk',zorluk:'Çok Ağır',note:'19 itfaiyeci anısına. Ağır ve anlamlı.'},
+    {n:29,name:'THE SEVEN',format:'7 Round For Time',content:'7 × HSPU\n7 × Thruster (60 kg)\n7 × Knees-to-Elbow\n7 × Deadlift (115 kg)\n7 × Burpee\n7 × KB Swing (32 kg)\n7 × Pull-up',sure:'45–70 dk',zorluk:'Elit',note:'CrossFit\'in en ağır hero\'larından biri.'},
+    {n:30,name:'BURKE',format:'For Time',content:'1 mil Koşu\n50 × Pull-up + 50 × Push-up\n50 × Sit-up + 50 × Air Squat\n1 mil Koşu',sure:'40–60 dk',zorluk:'Ağır',note:'Murph\'ün hafif versiyonu.'},
+  ]},
+  {id:'benchmarks',label:'BENCHMARKS',desc:'Evrensel test WOD\'ları. Skoru zaman içinde takip ederek gelişimini ölç.',wods:[
+    {n:31,name:'FILTHY FIFTY',format:'For Time',content:'50 × Box Jump\n50 × Jumping Pull-up\n50 × KB Swing (24 kg)\n50 × Walking Lunge\n50 × Knees-to-Elbow\n50 × Push Press (20 kg)\n50 × Back Extension\n50 × Wall Ball\n50 × Burpee\n50 × Double Under',sure:'25–45 dk',zorluk:'Çok Ağır',note:'CrossFit\'in en kapsamlı chipper\'ı. 500 toplam tekrar.'},
+    {n:32,name:'FIGHT GONE BAD',format:'3 Round · 5×1 dk istasyon',content:'Wall Ball (9 kg)\nSDHP (35 kg)\nBox Jump (60 cm)\nPush Press (35 kg)\nRow (kalori)\n— 1 dk dinlenme —',sure:'~20 dk',zorluk:'Ağır',note:'Her istasyonda max tekrar. Hedef: 300+ puan.'},
+    {n:33,name:'THE CHIEF',format:'AMRAP 3 dk × 5 tur · 1 dk ara',content:'3 × Power Clean (60 kg)\n6 × Push-up\n9 × Air Squat',sure:'~20 dk',zorluk:'Orta-Ağır',note:'5 interval. Toplam round puandır. Hedef: 20+ round.'},
+    {n:34,name:'ANGIE',format:'For Time',content:'100 × Pull-up\n100 × Push-up\n100 × Sit-up\n100 × Air Squat',sure:'20–40 dk',zorluk:'Ağır',note:'Vücut ağırlığı hacim testi. Hedef: <30 dk.'},
+    {n:35,name:'TABATA THIS',format:'Tabata × 5 hareket',content:'Kürek · Squat · Pull-up\nSit-up · Push-up\nHer: 8×20sn/10sn\nEn düşük round skoru toplanır',sure:'~30 dk',zorluk:'Orta',note:'Hedef: 250+ toplam rep.'},
+    {n:36,name:'5K ROW',format:'For Time',content:'5000m Kürek',sure:'17–25 dk',zorluk:'Orta-Ağır',note:'Saf aerobik kapasite testi. Elite hedef: <17 dk.'},
+    {n:37,name:'BASELINE',format:'For Time',content:'500m Kürek\n40 × Air Squat\n30 × Sit-up\n20 × Push-up\n10 × Pull-up',sure:'5–10 dk',zorluk:'Orta',note:'CrossFit başlangıç benchmark\'ı. Hedef: <8 dk.'},
+    {n:38,name:'DEATH BY PULL-UP',format:'EMOM Ladder',content:'Dk 1 → 1 Pull-up\nHer dk +1\nBitene kadar devam',sure:'10–20 dk',zorluk:'Orta-Ağır',note:'Elite hedef: 20+ dk.'},
+    {n:39,name:'CROSSFIT TOTAL',format:'1RM Test',content:'1RM Back Squat\n1RM Shoulder Press\n1RM Deadlift',sure:'60+ dk',zorluk:'Ağır',note:'3 kaldırışın toplamı puandır. Güç standardı.'},
+    {n:40,name:'JACKIE SPRINT',format:'For Time',content:'500m Kürek\n25 × Thruster (20 kg)\n15 × Pull-up',sure:'4–8 dk',zorluk:'Orta',note:'Jackie\'nin yarısı ama tam şiddeti.'},
+  ]},
+  {id:'olympic',label:'OLİMPİK',desc:'Olimpik kaldırış ağırlıklı WOD\'lar. Teknik + güç dayanıklılığı.',wods:[
+    {n:41,name:'BEAR COMPLEX',format:'5 Set × 7 Tekrar',content:'Power Clean → Front Squat\n→ Push Press → Back Squat\n→ Push Press\n× 7 = 1 set · Bar yere bırakılmaz',sure:'~20 dk',zorluk:'Ağır',note:'Her set ağırlık artır. Maksimum ağırlık testi.'},
+    {n:42,name:'KING KONG',format:'3 Round For Time',content:'1 × Deadlift (180 kg)\n2 × Muscle-up\n3 × Squat Clean (102 kg)\n4 × HSPU',sure:'10–20 dk',zorluk:'Elit',note:'Çok az sporcu RX yapabilir.'},
+    {n:43,name:'MACHO MAN',format:'EMOM · Ağırlık artar',content:'Her dk:\n3 × Power Clean\n3 × Front Squat\n3 × Push Jerk\nAğırlık her 2 dk artar',sure:'~15 dk',zorluk:'Ağır',note:'Olimpik güç dayanıklılık testi.'},
+    {n:44,name:'THE GHOST',format:'AMRAP 6 dk × 6 tur · 3 dk ara',content:'6 × Power Snatch (42.5 kg)\n6 × Bar-over Burpee\n6 × OHS',sure:'~50 dk',zorluk:'Çok Ağır',note:'Snatch teknik baskısı altında kondisyon.'},
+    {n:45,name:'BADGER',format:'3 Round For Time',content:'30 × Squat Clean (42.5 kg)\n30 × Pull-up\n800m Koşu',sure:'50–70 dk',zorluk:'Çok Ağır',note:'Teknik + dayanıklılık maratonu.'},
+    {n:46,name:'LIBERTY',format:'For Time',content:'20 × Power Snatch (42.5 kg)\n20 × OHS\n20 × Snatch Balance',sure:'~15 dk',zorluk:'Orta-Ağır',note:'Snatch teknikleri kombine WOD.'},
+    {n:47,name:'SWOLE COMPLEX',format:'For Time · Bar yere bırakılmaz',content:'30 × Muscle Clean\n30 × Front Squat\n30 × Push Press\n30 × Back Squat\n(50 kg)',sure:'~15 dk',zorluk:'Ağır',note:'Barbell kompleks. Bar hiç yere bırakılmaz.'},
+    {n:48,name:'CLEAN LADDER',format:'EMOM Ladder',content:'Her 2 dk ağırlık artar\n1 × Squat Clean her sette\nBitene kadar devam',sure:'~15 dk',zorluk:'Ağır',note:'1RM\'ine ne kadar yaklaşabilirsin?'},
+  ]},
+  {id:'gymnastics',label:'GYMNASTİCS',desc:'Vücut ağırlığı egzersizleri ve gymnastics hareketleri ağırlıklı WOD\'lar.',wods:[
+    {n:49,name:'GYMNASTICS CHIPPER',format:'For Time',content:'50 × Pull-up\n40 × Push-up\n30 × Dip\n20 × HSPU\n10 × Muscle-up',sure:'15–30 dk',zorluk:'Çok Ağır',note:'Gymnastics hacim testi. Üst vücut yakıcı.'},
+    {n:50,name:'IRON MARY',format:'AMRAP · 20 dk',content:'5 × Ring Muscle-up\n10 × Pistol Squat\n15 × Ring Push-up',sure:'20 dk',zorluk:'Elit',note:'Mary\'nin ring versiyonu. Gymnastics elit seviyesi.'},
+    {n:51,name:'BAR MUSCLE-UP LADDER',format:'EMOM Ladder',content:'Dk 1 → 1 BMU\nHer dk +1\nBitene kadar devam',sure:'~10 dk',zorluk:'Elit',note:'Elite gymnastics. Hedef: 10+ dk.'},
+    {n:52,name:'STRICT NICOLE',format:'AMRAP · 20 dk',content:'400m Koşu\nMax Strict Pull-up',sure:'20 dk',zorluk:'Orta-Ağır',note:'Her turda pull-up sayısı skordur.'},
+    {n:53,name:'DEATH BY HSPU',format:'EMOM Ladder',content:'Dk 1 → 1 HSPU\nHer dk +1\nBitene kadar devam',sure:'~8 dk',zorluk:'Ağır',note:'Omuz dayanıklılık testi. Hedef: 10+ dk.'},
+    {n:54,name:'NASTY GIRLS',format:'3 Round For Time',content:'50 × Air Squat\n7 × Muscle-up\n10 × Hang Power Clean (60 kg)',sure:'10–20 dk',zorluk:'Ağır',note:'CrossFit\'in en eski video WOD\'larından biri.'},
+  ]},
+  {id:'conditioning',label:'KONDİSYON',desc:'Kardiyovasküler kapasite ve dayanıklılık odaklı WOD\'lar.',wods:[
+    {n:55,name:'SPRINT INTERVALS',format:'10 × 100m',content:'100m sprint\n30 sn dinlenme\n× 10 tekrar',sure:'~15 dk',zorluk:'Orta-Ağır',note:'Saf hız ve laktik kapasite testi.'},
+    {n:56,name:'GRIFF',format:'For Time',content:'800m Koşu\n400m Geri Koşu\n800m Koşu\n400m Geri Koşu',sure:'15–25 dk',zorluk:'Orta-Ağır',note:'Geri koşu bambaşka bir şey. Koordinasyon + kondisyon.'},
+    {n:57,name:'2K ROW',format:'For Time',content:'2000m Kürek',sure:'6:30–9 dk',zorluk:'Ağır',note:'Güç-dayanıklılık testi. Elite hedef: <6:30.'},
+    {n:58,name:'RUNNING CLOCK',format:'EMOM · 10 dk',content:'Tek dk → 10 × Deadlift (%70 1RM)\nÇift dk → 10 × Box Jump',sure:'10 dk',zorluk:'Orta',note:'Güç + patlayıcılık EMOM klasiği.'},
+    {n:59,name:'RYAN\'S RUN',format:'5 Round For Time',content:'800m Koşu\n20 × Pull-up\n20 × Push-up',sure:'35–50 dk',zorluk:'Ağır',note:'Koşu + gymnastics kondisyon testi.'},
+    {n:60,name:'SIX MINUTES OF HELL',format:'AMRAP · 6 dk',content:'6 × Thruster (42.5 kg)\n6 × Pull-up',sure:'6 dk',zorluk:'Yüksek Yoğunluk',note:'Kısa ama yakıcı. Mini-Fran formatı.'},
+    {n:61,name:'DEATH BY BOX JUMP',format:'EMOM Ladder',content:'Dk 1 → 1 × Box Jump\nHer dk +1\nBitene kadar devam',sure:'~12 dk',zorluk:'Orta-Ağır',note:'Patlayıcılık ve bacak dayanıklılığı.'},
+    {n:62,name:'RUN CHELSEA RUN',format:'3 Round For Time',content:'800m Koşu\n30 × Wall Ball (9 kg)\n20 × Pull-up\n10 × Thruster (60 kg)',sure:'25–40 dk',zorluk:'Çok Ağır',note:'Koşu + kaldırış kondisyon testi.'},
+  ]},
+  {id:'open',label:'OPEN & GAMES',desc:'CrossFit Open ve Games\'in tarihe geçen WOD\'ları.',wods:[
+    {n:63,name:'11.1 (Open 2011)',format:'AMRAP · 10 dk',content:'30 × Double Under\n15 × Power Snatch (35 kg)',sure:'10 dk',zorluk:'Orta-Ağır',note:'İlk CrossFit Open WOD\'u. Tarihi önemi var.'},
+    {n:64,name:'14.5 / 16.5',format:'For Time',content:'21-18-15-12-9-6-3:\nThruster (42.5 kg)\nBurpee',sure:'20–40 dk',zorluk:'Çok Ağır',note:'Open tarihinin en çok nefret edilen WOD\'u.'},
+    {n:65,name:'17.5',format:'10 Round For Time',content:'9 × Thruster (42.5 kg)\n35 × Double Under',sure:'20–35 dk',zorluk:'Ağır',note:'Jump rope koordinasyonu + barbell.'},
+    {n:66,name:'19.1',format:'AMRAP · 15 dk',content:'19 × Wall Walk\n19 × Cal Row',sure:'15 dk',zorluk:'Ağır',note:'Wall walk dayanıklılık testi.'},
+    {n:67,name:'20.1',format:'AMRAP · 10 dk',content:'8 × Ground-to-Overhead (42.5 kg)\n10 × Bar-Facing Burpee',sure:'10 dk',zorluk:'Ağır',note:'Patlayıcı güç + kondisyon.'},
+    {n:68,name:'GAMES 2019 — ATALANTA',format:'For Time (yelekle)',content:'50 Cal Bike\n50 × Wall Walk\n50 Cal Row',sure:'30–50 dk',zorluk:'Elit',note:'Games tarihinin en zorlu dayanıklılık WOD\'larından.'},
+    {n:69,name:'GAMES 2021 — DAMN DIANE',format:'For Time',content:'21 × Deadlift (147 kg)\n21 × HSPU\n15 × Deadlift\n15 × HSPU\n9 × Deadlift\n9 × HSPU',sure:'5–12 dk',zorluk:'Elit',note:'Diane\'in Games versiyonu.'},
+    {n:70,name:'GAMES 2023 — SPRINT COURSE',format:'5 Round For Time',content:'800m Koşu\n20 × Box Jump Over\n10 × Squat Snatch (70 kg)',sure:'30–45 dk',zorluk:'Elit',note:'Modern Games standartı.'},
+  ]},
+  {id:'short',label:'KISA & ŞİDDETLİ',desc:'5–12 dakika süren ama maksimum yoğunlukta WOD\'lar. Az zaman, çok acı.',wods:[
+    {n:71,name:'MINI-FRAN',format:'For Time',content:'15-12-9:\nThruster (42.5 kg)\nPull-up',sure:'2–5 dk',zorluk:'Yüksek Yoğunluk',note:'Fran\'ın daha erişilebilir versiyonu. Hedef: <3 dk.'},
+    {n:72,name:'QUARTER GONE BAD',format:'3 Round',content:'15 sn Thruster max\n15 sn rest\n15 sn SDHP max\n15 sn rest\n15 sn Burpee max\n15 sn rest',sure:'~5 dk',zorluk:'Yüksek Yoğunluk',note:'Fight Gone Bad\'in kısa versiyonu.'},
+    {n:73,name:'DEATH BY THRUSTER',format:'EMOM Ladder',content:'Dk 1 → 1 × Thruster\nHer dk +1\nBitene kadar devam',sure:'~8 dk',zorluk:'Ağır',note:'Kaç dakika gidebilirsin?'},
+    {n:74,name:'THE 300',format:'For Time',content:'25 × Pull-up\n50 × Deadlift (60 kg)\n50 × Push-up\n50 × Box Jump (60 cm)\n50 × Floor Wiper\n50 × KB Swing (24 kg)\n25 × Pull-up',sure:'~30 dk',zorluk:'Çok Ağır',note:'Film 300\'den esinlenen. 300 toplam tekrar.'},
+    {n:75,name:'JACKIE vs ANNIE',format:'For Time',content:'1000m Kürek\n50-40-30-20-10:\nDouble Under\nSit-up',sure:'15–25 dk',zorluk:'Orta-Ağır',note:'İki klasik benchmark birleştirildi.'},
+    {n:76,name:'ANGIE LITE',format:'For Time',content:'50 × Pull-up\n50 × Push-up\n50 × Sit-up\n50 × Air Squat',sure:'10–20 dk',zorluk:'Orta',note:'Angie\'nin yarısı. Başlangıç benchmark\'ı.'},
+    {n:77,name:'BASELINE PLUS',format:'For Time',content:'1000m Kürek\n50 × Air Squat\n40 × Sit-up\n30 × Push-up\n20 × Pull-up',sure:'10–18 dk',zorluk:'Orta-Ağır',note:'Baseline\'ın ağırlaştırılmış versiyonu.'},
+  ]},
+  {id:'long',label:'UZUN & DAYANIKLILIK',desc:'30 dakika ve üzeri süren dayanıklılık ve mental güç WOD\'ları.',wods:[
+    {n:78,name:'NUTTS',format:'For Time',content:'10 × HSPU\n15 × Deadlift (145 kg)\n25 × Box Jump\n50 × Pull-up\n100 × Wall Ball\n200 × Double Under\n400m Koşu (yelekle)',sure:'45–90 dk',zorluk:'Elit',note:'Hayatının en uzun WOD\'u olabilir.'},
+    {n:79,name:'LUMBERJACK 20',format:'20 Round For Time',content:'20 × Air Squat + KB Swing\n20 × OHS + Pull-up\n20 × Box Jump + DB Thruster\n20 × Burpee + 400m Koşu',sure:'90+ dk',zorluk:'Elit',note:'Neredeyse imkansız. Zihinsel güç testi.'},
+    {n:80,name:'THE SEVENS',format:'7 Round For Time',content:'7 × Muscle-up\n7 × Squat Clean (70 kg)\n7 × HSPU\n7 × KB Swing (32 kg)\n7 × KTE\n7 × Deadlift (115 kg)\n7 × Burpee',sure:'45–70 dk',zorluk:'Elit',note:'Her türlü hareketi birleştiren ultra WOD.'},
+    {n:81,name:'HALF MARATHON ROW',format:'For Time',content:'21.097m Kürek',sure:'80–120 dk',zorluk:'Çok Ağır',note:'Mental dayanıklılık testi.'},
+    {n:82,name:'WOLVERINE',format:'AMRAP · 30 dk',content:'6 × Power Clean (70 kg)\n12 × Pull-up\n24 × Air Squat',sure:'30 dk',zorluk:'Çok Ağır',note:'Güç + gymnastics + metabolik uzun format.'},
+    {n:83,name:'EVA PLUS',format:'7 Round For Time',content:'800m Koşu\n30 × KB Swing (32 kg)\n30 × Pull-up',sure:'60–90 dk',zorluk:'Elit',note:'Eva\'nın 7 roundluk versiyonu.'},
+  ]},
+  {id:'barbell',label:'BARBELL',desc:'Barbell odaklı güç ve kondisyon WOD\'ları.',wods:[
+    {n:84,name:'HEAVY DT',format:'5 Round For Time',content:'12 × Deadlift (85 kg)\n9 × Hang Power Clean\n6 × Push Jerk',sure:'20–30 dk',zorluk:'Çok Ağır',note:'DT\'nin daha ağır hali.'},
+    {n:85,name:'DEATH BY BARBELL',format:'4 Round For Time · 3 dk ara',content:'6 × Deadlift\n6 × Barbell Row\n6 × Hang High Pull\n6 × Front Squat\n6 × Push Press\n(60 kg — Bar yere bırakılmaz)',sure:'~20 dk',zorluk:'Çok Ağır',note:'Her round süresini kaydet. İdeal: 60–90 sn/round.'},
+    {n:86,name:'TRIPLET KILLER',format:'5 Round For Time',content:'7 × Deadlift (100 kg)\n7 × Push Press (60 kg)\n7 × Barbell Row (60 kg)',sure:'15–25 dk',zorluk:'Ağır',note:'Yüksek ağırlık, düşük rep. Güç kondisyon.'},
+    {n:87,name:'DIANE PLUS',format:'For Time',content:'21-15-9: Deadlift (102 kg) + HSPU\nArdından 9-7-5:\nDeadlift (140 kg) + HSPU',sure:'8–15 dk',zorluk:'Çok Ağır',note:'Diane\'in ağırlaştırılmış versiyonu.'},
+    {n:88,name:'BARBELL CYCLING',format:'EMOM · 10 dk',content:'3 × Power Clean (%80 1RM)\nHer dakika başında',sure:'10 dk',zorluk:'Ağır',note:'Teknik dayanıklılık ve dinlenme yönetimi.'},
+    {n:89,name:'GRUNT WORK',format:'For Time',content:'21 × Deadlift (100 kg)\n400m Koşu\n15 × Deadlift (100 kg)\n400m Koşu\n9 × Deadlift (100 kg)\n400m Koşu',sure:'15–25 dk',zorluk:'Çok Ağır',note:'Deadlift odaklı kondisyon. Form çok kritik.'},
+    {n:90,name:'HOLLYWOOD',format:'AMRAP · 20 dk',content:'5 × Power Clean (60 kg)\n10 × Front Squat\n15 × Push-up',sure:'20 dk',zorluk:'Orta-Ağır',note:'Barbell + vücut ağırlığı klasik kombinasyonu.'},
+  ]},
+  {id:'modern',label:'MODERN',desc:'Son yıllarda toplulukta öne çıkan yeni nesil WOD\'lar.',wods:[
+    {n:91,name:'SIMPLE & SINISTER',format:'EMOM · 20 dk',content:'Tek dk → 10 × KB Swing (32 kg)\nÇift dk → 1 × Turkish Get-up (24 kg)',sure:'20 dk',zorluk:'Orta',note:'Pavel Tsatsouline klasiği. Güç + mobilite.'},
+    {n:92,name:'BIKE MANIA',format:'For Time',content:'4 km Assault Bike\n80 × Wall Ball (9 kg)\n2 km Assault Bike\n40 × Wall Ball\n1 km Assault Bike\n20 × Wall Ball',sure:'25–40 dk',zorluk:'Çok Ağır',note:'Games 2022 tarzı dayanıklılık testi.'},
+    {n:93,name:'SANDBAG TRIPLET',format:'4 Round For Time',content:'10 × Sandbag Yükle (60 kg)\n20 × Pull-up\n400m Koşu',sure:'25–40 dk',zorluk:'Ağır',note:'Fonksiyonel taşıma + gymnastics + koşu.'},
+    {n:94,name:'WALL WALK HELL',format:'For Time',content:'50 × Wall Walk',sure:'15–30 dk',zorluk:'Ağır',note:'Görünce basit, yapınca ölümcül.'},
+    {n:95,name:'DENSITY COMPLEX',format:'4×4 dk · 90 sn ara',content:'Her 4 dk blokta max round:\n4 × Hang Power Clean\n6 × Barbell Row\n8 × KB Swing',sure:'~22 dk',zorluk:'Ağır',note:'Her blokta round sayısını kaydet.'},
+    {n:96,name:'DIABLO',format:'3 Round For Time',content:'400m Koşu\n21 × SDHP (42.5 kg)\n12 × Power Snatch (42.5 kg)',sure:'20–30 dk',zorluk:'Ağır',note:'Kondisyon + teknik kombinasyonu.'},
+    {n:97,name:'MURPH LITE',format:'For Time',content:'800m Koşu\n50 × Pull-up\n100 × Push-up\n150 × Air Squat\n800m Koşu',sure:'25–40 dk',zorluk:'Ağır',note:'Murph\'ün yarısı. İlk Murph denemesi için ideal.'},
+    {n:98,name:'THE UNKNOWN',format:'Açıklanmaz',content:'Format: bilinmiyor\nAğırlık: bilinmiyor\nSüre: bilinmiyor',sure:'?',zorluk:'Her zaman hazır ol',note:'CrossFit Games\'in ruhu. Her zaman hazır olmak.'},
+    {n:99,name:'GREASE THE GROOVE',format:'Gün boyu',content:'Her saat → 5 × Pull-up\n(Uyandığından yatana kadar)\nHedef: 50–100 tekrar/gün',sure:'Tüm gün',zorluk:'Düşük yoğunluk',note:'Pavel\'in yöntemi. Nöromüsküler adaptasyon için.'},
+    {n:100,name:'THE OPEN',format:'5 Haftalık Sezon',content:'Her hafta 1 WOD\nDünyayla aynı anda yap\nSkoru CrossFit\'e bildir',sure:'Sezon boyunca',zorluk:'Değişken',note:'CrossFit\'in en büyük buluşması. Nerede olursan ol, aynı WOD.'},
+  ]},
+];
+
+function wod100Toggle(catIdx,wodIdx){
+  var key=catIdx+'-'+wodIdx;
+  wod100OpenItems[key]=!wod100OpenItems[key];
+  var detail=document.getElementById('wod100-detail-'+key);
+  var arrow=document.getElementById('wod100-arrow-'+key);
+  if(detail) detail.classList.toggle('open',!!wod100OpenItems[key]);
+  if(arrow) arrow.classList.toggle('open',!!wod100OpenItems[key]);
+}
+
+function wod100SetCat(i){
+  wod100ActiveCat=i;
+  document.querySelectorAll('.wod100-cat-tab').forEach(function(t,j){t.classList.toggle('on',j===i);});
+  renderWod100Content();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderWod100Content(){
+  var cont=document.getElementById('wod100-content');
+  if(!cont) return;
+  var cat=WOD100_CATS[wod100ActiveCat];
+  var html='<div class="wod100-cat-hero">'+
+    '<div class="wod100-cat-hero-title">'+cat.label+'</div>'+
+    '<div class="wod100-cat-hero-desc">'+cat.desc+'</div>'+
+    '<div class="wod100-cat-hero-count">'+cat.wods.length+' WOD</div>'+
+  '</div><div class="wod100-list">';
+  cat.wods.forEach(function(w,wi){
+    var key=wod100ActiveCat+'-'+wi;
+    var open=!!wod100OpenItems[key];
+    html+='<div class="wod100-item">'+
+      '<div class="wod100-item-hdr" onclick="wod100Toggle('+wod100ActiveCat+','+wi+')">'+
+        '<div class="wod100-item-left">'+
+          '<div class="wod100-item-num">#'+w.n+'</div>'+
+          '<div>'+
+            '<div class="wod100-item-name">'+w.name+'</div>'+
+            '<div class="wod100-item-type">'+w.format+'</div>'+
+          '</div>'+
+        '</div>'+
+        '<div class="wod100-item-arrow'+(open?' open':'')+'" id="wod100-arrow-'+key+'">↓</div>'+
+      '</div>'+
+      '<div class="wod100-detail'+(open?' open':'')+'" id="wod100-detail-'+key+'">'+
+        '<div class="wod100-detail-inner">'+
+          '<div class="wod100-detail-format">'+w.format+'</div>'+
+          '<div class="wod100-detail-content">'+w.content+'</div>'+
+          '<div class="wod100-detail-meta">'+
+            '<div class="wod100-meta-item"><div class="wod100-meta-lbl">Süre</div><div class="wod100-meta-val">'+w.sure+'</div></div>'+
+            '<div class="wod100-meta-item"><div class="wod100-meta-lbl">Zorluk</div><div class="wod100-meta-val">'+w.zorluk+'</div></div>'+
+          '</div>'+
+          '<div class="wod100-detail-note">'+w.note+'</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  });
+  html+='</div>';
+  cont.innerHTML=html;
+}
+
+function renderWod100View(){
+  var v=document.getElementById('wod100-view');
+  var html='<div class="wod100-cat-tabs">';
+  WOD100_CATS.forEach(function(c,i){
+    html+='<button class="wod100-cat-tab'+(i===wod100ActiveCat?' on':'')+'" onclick="wod100SetCat('+i+')">'+c.label+'</button>';
+  });
+  html+='</div><div id="wod100-content"></div>';
+  v.innerHTML=html;
+  renderWod100Content();
+}
+
 
 // BAŞLANGIC
 setPPL();
