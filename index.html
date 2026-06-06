@@ -197,8 +197,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .wod-tab.on{background:var(--fg);color:var(--bg);}
 .wod-random-btn{width:100%;padding:14px;background:var(--fg);color:var(--bg);border:none;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;margin-bottom:14px;transition:opacity .12s;}
 .wod-random-btn:active{opacity:.7;}
-.wod-ai-btn{width:100%;padding:12px;background:transparent;color:var(--fg);border:1px solid var(--rim);font-family:'Inter Tight',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;margin-bottom:14px;transition:all .12s;}
-.wod-ai-btn:active{opacity:.7;}
+
 .wod-card{border:1px solid var(--rim);margin-bottom:12px;}
 .wod-card-hdr{padding:14px 14px 10px;}
 .wod-card-type{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;background:var(--fg);color:var(--bg);display:inline-block;padding:2px 8px;margin-bottom:8px;}
@@ -2445,7 +2444,6 @@ function renderWodAna(){
   });
   html+='</div>';
   html+=`<button class="wod-random-btn" onclick="randomWod()">⚡ RANDOM WOD</button>`;
-  html+=`<button class="wod-ai-btn" onclick="aiWod()">✦ YAPAY ZEKA WOD ÜRET</button>`;
   html+='<div class="wod-liste" id="wod-liste">';
   WODS.forEach(w=>{
     html+=`<div class="wod-liste-item" onclick="showWod(${w.id})"><div class="wod-liste-sol"><span class="wod-liste-num">#${String(w.id).padStart(3,'0')}</span><div><div class="wod-liste-ad">${w.isim}</div><div class="wod-liste-tur">${w.tur} · ${w.format} · ${w.zorluk}</div></div></div><span class="wod-liste-ok">→</span></div>`;
@@ -2482,64 +2480,7 @@ function showWod(id){
     `<div class="wod-card-meta"><div class="wod-meta-item"><div class="wod-meta-lbl">Tahmini Süre</div><div class="wod-meta-val">${w.sure}</div></div><div class="wod-meta-item"><div class="wod-meta-lbl">Zorluk</div><div class="wod-meta-val">${w.zorluk}</div></div></div>`+
     `<div class="wod-card-hikaye">${w.hikaye}</div>`+
     `</div></div>`+
-    `<button class="wod-random-btn" style="margin-top:14px;" onclick="randomWod()">⚡ BAŞKA RANDOM WOD</button>`+
-    `<button class="wod-ai-btn" onclick="aiWod()">✦ YAPAY ZEKA WOD ÜRET</button>`;
-  document.getElementById('main-scroll').scrollTop=0;
-}
-
-async function aiWod(){
-  document.getElementById('wod-view').innerHTML=
-    `<div class="wod-back" onclick="setWod()"><span class="wod-back-arrow">←</span><span class="wod-back-lbl">WOD Listesine Dön</span></div>`+
-    `<div class="wod-loading">⚡ WOD üretiliyor...</div>`;
-  try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
-        messages:[{role:'user',content:`Sen deneyimli bir CrossFit programcısısın. M. Çağrı Ulu için kişiselleştirilmiş bir CrossFit WOD üret.
-
-Profil: 28-35 yaş erkek, ~75kg, 1-2 yıl kuvvet antrenmanı deneyimi, Deadlift ~135kg, Squat ~110kg, Bench ~90kg. Ekipman: barbell, kum torbası (torba odası), pull-up bar, dips bar. Süre: 30-45 dk.
-
-KURALLAR:
-- Gerçek CrossFit metodolojisi: AMRAP, EMOM, For Time, Chipper, Rounds formatlarından biri
-- Fizyolojik olarak mantıklı iş/dinlenme oranları
-- Jumping jack, machine, rope, kürek, bisiklet gibi ekipman yok
-- Aynı hareketi iki kez koyma
-- Ağırlıklar profiline uygun
-- Kum torbası hareketleri ekleyebilirsin
-
-SADECE JSON döndür, başka hiçbir şey yazma:
-{
-  "isim": "WOD ismi",
-  "format": "AMRAP 20 dk",
-  "icerik": "Hareketler ve tekrarlar (\\n ile ayır)",
-  "sure": "Tahmini süre",
-  "zorluk": "Orta/Ağır/Çok Ağır",
-  "hikaye": "Bu WOD hakkında 1-2 cümle açıklama"
-}`}]
-      })
-    });
-    const data=await resp.json();
-    const text=data.content[0].text.replace(/```json|```/g,'').trim();
-    const w=JSON.parse(text);
-    document.getElementById('wod-view').innerHTML=
-      `<div class="wod-back" onclick="setWod()"><span class="wod-back-arrow">←</span><span class="wod-back-lbl">WOD Listesine Dön</span></div>`+
-      `<div class="wod-card">`+
-      `<div class="wod-card-hdr"><div class="wod-card-type ai-badge">✦ YAPAY ZEKA WOD</div><div class="wod-card-name">${w.isim}</div><div class="wod-card-kategori">Kişiselleştirilmiş · ${w.zorluk}</div></div>`+
-      `<div class="wod-card-body">`+
-      `<div class="wod-card-format">${w.format}</div>`+
-      `<div class="wod-card-content">${w.icerik}</div>`+
-      `<div class="wod-card-meta"><div class="wod-meta-item"><div class="wod-meta-lbl">Tahmini Süre</div><div class="wod-meta-val">${w.sure}</div></div><div class="wod-meta-item"><div class="wod-meta-lbl">Zorluk</div><div class="wod-meta-val">${w.zorluk}</div></div></div>`+
-      `<div class="wod-card-hikaye">${w.hikaye}</div>`+
-      `</div></div>`+
-      `<button class="wod-random-btn" style="margin-top:14px;" onclick="randomWod()">⚡ RANDOM WOD</button>`+
-      `<button class="wod-ai-btn" onclick="aiWod()">✦ YENİ WOD ÜRET</button>`;
-  }catch(e){
-    document.getElementById('wod-view').innerHTML+=`<div style="padding:16px;font-size:12px;color:var(--muted);">WOD üretilemedi. Tekrar dene.</div>`+
-      `<button class="wod-ai-btn" onclick="aiWod()">↺ Tekrar Dene</button>`;
-  }
+    `<button class="wod-random-btn" style="margin-top:14px;" onclick="randomWod()">⚡ BAŞKA RANDOM WOD</button>`;
   document.getElementById('main-scroll').scrollTop=0;
 }
 
