@@ -241,6 +241,81 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .org-swap-btn:active{opacity:.6;}
 .org-swap-btn:disabled{opacity:.15;cursor:not-allowed;pointer-events:none;}
 .wod-view{padding:0 16px 100px;}
+
+/* OLİMPİK KALDIRIŞ REHBERİ */
+.oly-view{padding:0 16px 100px;}
+.oly-phase-tabs{display:flex;gap:0;margin-top:16px;margin-bottom:14px;border:1px solid var(--rim);overflow-x:auto;scrollbar-width:none;}
+.oly-phase-tabs::-webkit-scrollbar{display:none;}
+.oly-phase-tab{flex:1;padding:8px 6px;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;cursor:pointer;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;transition:all .12s;white-space:nowrap;}
+.oly-phase-tab:last-child{border-right:none;}
+.oly-phase-tab.on{background:var(--fg);color:var(--bg);}
+.oly-hero{background:var(--rim2);padding:1rem;margin-bottom:12px;}
+.oly-hero-title{font-size:28px;font-weight:900;letter-spacing:-.02em;line-height:1;color:var(--fg);margin-bottom:6px;}
+.oly-hero-sub{font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.oly-hero-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px;}
+.oly-hero-tag{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rim);color:var(--muted);}
+.oly-hero-tag.highlight{border-color:var(--fg);color:var(--fg);}
+.oly-warning{border:1px solid var(--fg);padding:.8rem 1rem;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start;}
+.oly-warn-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+.oly-warn-text{font-size:11px;color:var(--muted);line-height:1.6;}
+.oly-warn-text strong{color:var(--fg);font-weight:700;}
+.oly-lift-card{border:1px solid var(--rim);margin-bottom:10px;overflow:hidden;}
+.oly-lift-hdr{background:var(--fg);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.oly-lift-hdr-left{display:flex;flex-direction:column;gap:3px;}
+.oly-lift-name{font-size:14px;font-weight:900;letter-spacing:-.01em;color:var(--bg);line-height:1;}
+.oly-lift-sub{font-size:7px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);opacity:.5;}
+.oly-lift-arrow{font-size:14px;color:var(--bg);opacity:.5;transition:transform .2s;}
+.oly-lift-arrow.open{transform:rotate(180deg);}
+.oly-lift-body{display:none;border-top:1px solid var(--rim);}
+.oly-lift-body.open{display:block;}
+.oly-progression{padding:12px 14px;border-bottom:1px solid var(--rim2);}
+.oly-prog-lbl{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:2px 7px;margin-bottom:10px;}
+.oly-step{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--rim2);}
+.oly-step:last-child{border-bottom:none;}
+.oly-step-num{font-size:9px;font-weight:800;color:var(--bg);background:var(--fg);width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;opacity:.7;}
+.oly-step-content{}
+.oly-step-name{font-size:13px;font-weight:700;color:var(--fg);margin-bottom:3px;letter-spacing:-.01em;}
+.oly-step-desc{font-size:11px;color:var(--muted);line-height:1.6;}
+.oly-step-tip{font-size:10px;color:var(--muted);margin-top:4px;padding:4px 8px;border-left:2px solid var(--rim);line-height:1.5;opacity:.8;}
+.oly-cues{padding:12px 14px;border-bottom:1px solid var(--rim2);}
+.oly-cues-lbl{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:2px 7px;margin-bottom:10px;}
+.oly-cue-list{display:flex;flex-direction:column;gap:6px;}
+.oly-cue{display:flex;gap:8px;align-items:flex-start;}
+.oly-cue-dot{width:5px;height:5px;border-radius:50%;background:var(--fg);flex-shrink:0;margin-top:5px;opacity:.4;}
+.oly-cue-text{font-size:12px;color:var(--muted);line-height:1.5;}
+.oly-cue-text strong{color:var(--fg);font-weight:700;}
+.oly-errors{padding:12px 14px;}
+.oly-errors-lbl{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:2px 7px;margin-bottom:10px;}
+.oly-error-item{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--rim2);}
+.oly-error-item:last-child{border-bottom:none;}
+.oly-error-icon{font-size:10px;flex-shrink:0;margin-top:2px;}
+.oly-error-text{font-size:11px;color:var(--muted);line-height:1.5;}
+.oly-error-text strong{color:var(--fg);font-weight:700;}
+.oly-week-grid{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+.oly-week-card{border:1px solid var(--rim);overflow:hidden;}
+.oly-week-hdr{background:var(--rim2);padding:8px 12px;display:flex;align-items:center;justify-content:space-between;}
+.oly-week-lbl{font-size:8px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.oly-week-focus{font-size:12px;font-weight:700;color:var(--fg);}
+.oly-week-body{padding:10px 12px;}
+.oly-day-row{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid var(--rim2);}
+.oly-day-row:last-child{border-bottom:none;}
+.oly-day-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);min-width:28px;margin-top:2px;}
+.oly-day-content{}
+.oly-day-name{font-size:12px;font-weight:700;color:var(--fg);margin-bottom:2px;}
+.oly-day-detail{font-size:10px;color:var(--muted);line-height:1.5;}
+.oly-metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px;}
+.oly-metric{background:var(--rim2);padding:.7rem .8rem;}
+.oly-metric-val{font-size:20px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;}
+.oly-metric-lbl{font-size:7px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.oly-checklist{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.oly-check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--rim2);}
+.oly-check:last-child{border-bottom:none;}
+.oly-check-box{width:16px;height:16px;border:1px solid var(--rim);flex-shrink:0;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .15s;}
+.oly-check-box.done{background:var(--fg);color:var(--bg);}
+.oly-check-label{font-size:12px;font-weight:600;color:var(--fg);margin-bottom:2px;}
+.oly-check-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+.oly-section-title{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--fg);padding:5px 8px;margin-bottom:10px;margin-top:16px;}
+.oly-phase-desc{font-size:11px;color:var(--muted);line-height:1.7;padding:10px 0;border-bottom:1px solid var(--rim2);margin-bottom:12px;}
 .wod-tabs{display:flex;gap:0;margin-top:16px;margin-bottom:12px;border:1px solid var(--rim);}
 .wod-tab{flex:1;padding:7px 4px;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;cursor:pointer;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;transition:all .12s;}
 .wod-tab:last-child{border-right:none;}
@@ -325,6 +400,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
   <div class="org-bar-arrow">→</div>
 </div>
+<div class="recipe-bar" id="oly-bar" onclick="setOly()">
+  <div class="rb-label" style="font-size:10px;font-weight:900;letter-spacing:.2em;">OLİMPİK KALDIRIŞ</div>
+  <div class="rb-count">Sıfırdan · Clean · Snatch · Jerk · 12 Haftalık Yol Haritası</div>
+</div>
 
 <div class="scroll" id="main-scroll">
   <div class="day-view" id="day-view"></div>
@@ -334,6 +413,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="boks-view" id="boks-view" style="display:none;"></div>
   <div class="organize-view" id="organize-view" style="display:none;"></div>
   <div class="wod-view" id="wod-view" style="display:none;"></div>
+  <div class="oly-view" id="oly-view" style="display:none;"></div>
 </div>
 </div>
 
@@ -550,6 +630,7 @@ function renderNav(){
   document.getElementById('boks-bar').classList.toggle('on',mode==='boks');
   document.getElementById('wod-bar').classList.toggle('on',mode==='wod');
   document.getElementById('organize-bar').style.opacity=mode==='organize'?'0.7':'1';
+  document.getElementById('oly-bar').classList.toggle('on',mode==='oly');
 }
 
 function hideAll(){
@@ -560,6 +641,7 @@ function hideAll(){
   document.getElementById('boks-view').style.display='none';
   document.getElementById('organize-view').style.display='none';
   document.getElementById('wod-view').style.display='none';
+  document.getElementById('oly-view').style.display='none';
 }
 
 function setTakvim(){
@@ -2814,6 +2896,217 @@ function renderOrganizeView(){
     tabs.appendChild(btn);
   });
   orgSetDay(0);
+}
+
+/* ─── OLİMPİK KALDIRIŞ REHBERİ ─── */
+const OLY_PHASES=[
+  {label:'TEMEL',tag:'1-4. Hafta'},
+  {label:'GELİŞİM',tag:'5-8. Hafta'},
+  {label:'PROGRAM',tag:'9-12. Hafta'},
+  {label:'ÖN KOŞULLAR',tag:'Hazırlık'},
+];
+
+let olyPhase=0;
+let olyOpenLifts={};
+let olyChecks={};
+
+const OLY_PREREQS=[
+  {label:'Overhead Squat Mobilitesi',desc:'Kollar dik, bar başın üzerinde — squat pozisyonuna inebiliyor musun?'},
+  {label:'Ankle Dorsifleksiyonu',desc:'Topuklar yerde, derin squat pozisyonu. Kısıtlıysa clean/snatch riskli.'},
+  {label:'Wrist / El Bileği Esnekliği',desc:'Front rack: dirsekler yüksek, bar omuzda durabilmeli.'},
+  {label:'Hip Hinge Mekaniği',desc:'Romanian Deadlift — bar bacak boyunca kayar, sırt nötr.'},
+  {label:'Overhead Press Stabilitesi',desc:'Barbell OHP yapabiliyorsun — jerk için temel güç.'},
+  {label:'Core Bracing',desc:'Valsalva manevrasını biliyor musun? Ağır kaldırış öncesi nefes & karın kasma.'},
+  {label:'Pull-up / Lat Gücü',desc:'10+ pull-up yapabiliyorsun ✓ — high pull için kritik kas gücü.'},
+];
+
+const OLY_LIFTS=[
+  {
+    key:'clean',
+    name:'POWER CLEAN',
+    sub:'En önce öğrenilmesi gereken kaldırış',
+    phase:[0,1,2],
+    steps:[
+      {name:'Hang Power Clean',desc:'Barbell uyluğun ortasında başlıyor. Diz hafif bükük, hips drive ile bar göğse fırlatılıyor. Front rack pozisyonuna yakalanıyor.',tip:'Başlangıç için en güvenli nokta. Zemine dokunmak yok, teknik hatalar minimize.'},
+      {name:'High Hang Power Clean',desc:'Bar kalçada başlıyor. Yalnızca hips extension ve shrug ile üretilen güce odaklan. Barı aktif olarak çekme — sadece hips drive.',tip:'Eğer bar göğse ulaşmıyorsa, yeterince hips drive yapmıyorsun.'},
+      {name:'Hang Clean (Below Knee)',desc:'Bar dizin altında başlıyor. Sırt pozisyonu ve sweep mekaniği devreye giriyor. Daha uzun yerden çekme mesafesi.',tip:'Sırtın düz kalması için hafif ağırlıkla çalış — bu aşamada form > ağırlık.'},
+      {name:'Full Clean',desc:'Bar yerden kalkıyor. Tüm faz: 1. Pull, 2. Power Position, 3. Catch & Squat. Front rack pozisyonunda tam squat derinliği.',tip:'Acele etme. Full clean 2-3 ay düzgün çalışmadan heavy full clean tehlikelidir.'},
+    ],
+    cues:[
+      {text:'<strong>Bar bacağına yapışık kalsın</strong> — yerden kaldırırken bar shinlere sürtünür gibi çıkmalı.'},
+      {text:'<strong>Omuzlar barın önünde</strong> — pozisyon 1\'de skapulalar barın üzerinde olmalı.'},
+      {text:'<strong>Dirsekler yüksek & çabuk</strong> — catch\'te dirsekler anında öne fırlar.'},
+      {text:'<strong>"Jump & shrug"</strong> — tepede ani dikey sıçrama ve omuz silkme hissi.'},
+      {text:'<strong>Aktif catch</strong> — bar seni bastırmasın, sen barı kap.'},
+    ],
+    errors:[
+      {icon:'⚠',text:'<strong>Bar vücuttan uzaklaşıyor:</strong> Lat kasını aktif tut, bar shinlere yakın.'},
+      {icon:'⚠',text:'<strong>Early arm bend:</strong> Kollar erkenden bükülüyor. Pull aşamasında kollar uzun kalmalı.'},
+      {icon:'⚠',text:'<strong>Hip shoot:</strong> Kalçalar önce yukarı çıkıyor. Omuz & kalça eş zamanlı kalkmalı.'},
+      {icon:'⚠',text:'<strong>No hip extension:</strong> Topuklara basarak tam hip & knee extension şart.'},
+    ],
+  },
+  {
+    key:'jerk',
+    name:'PUSH JERK',
+    sub:'Clean\'den sonra ikinci öncelik',
+    phase:[0,1,2],
+    steps:[
+      {name:'Push Press',desc:'Barbell omuzda, dip & drive ile bar overhead\'e itilir. Kollar tam uzanır, kulakların yanında. Kontrollü iniş.',tip:'OHP yapabiliyorsan push press için güç var. Sadece dip & drive mekaniği ekle.'},
+      {name:'Push Jerk (Feet Together)',desc:'Aynı dip & drive, ama bar tepede iken ayaklar yere vurur — catch pozisyonunda küçük adım.',tip:'Önce yavaş çalış: dip → drive → catch ayrı ayrı pratik yap.'},
+      {name:'Split Jerk',desc:'Bar tepede iken bir ayak öne, bir ayak arkaya atılır. Daha geniş base = daha ağır kaldırma kapasitesi. Mat Fraser\'ın kullandığı versiyon.',tip:'Öndeki ayak 90° bükük, arkadaki düz. Her iki ayak aynı hizada.'},
+    ],
+    cues:[
+      {text:'<strong>Dirsekler hafif önde</strong> — front rack\'ten dip\'e geçerken dirsekler aşağı düşmesin.'},
+      {text:'<strong>Dip dikey</strong> — öne ya da arkaya eğilme, torso dik kalır.'},
+      {text:'<strong>Agresif drive</strong> — bacak itişi ne kadar güçlüyse bar o kadar yükseğe çıkar.'},
+      {text:'<strong>Overhead lockout</strong> — bar kulakların hizasında ya da hafif arkasında.'},
+    ],
+    errors:[
+      {icon:'⚠',text:'<strong>Bar öne düşüyor:</strong> Catch\'te bar başın önünde. Göğsü aç, bar biraz arkaya.'},
+      {icon:'⚠',text:'<strong>Dip çok derin:</strong> Güç kaybı. Dip squat değil — küçük, patlayıcı bir dip.'},
+      {icon:'⚠',text:'<strong>Kollar katlanıyor:</strong> Catch\'te dirsekler bükülüyor. Tam lockout şart.'},
+    ],
+  },
+  {
+    key:'snatch',
+    name:'POWER SNATCH',
+    sub:'En teknik kaldırış — son aşama',
+    phase:[1,2],
+    steps:[
+      {name:'Snatch Grip High Pull',desc:'Geniş tutuş, bar bele kadar hips drive ile çekilir. Snatch için gereken güç & koordinasyonu inşa eder.',tip:'Snatch grip: bilekler kalça kemiklerinin hizasında olacak şekilde geniş tutuş.'},
+      {name:'Hang Power Snatch',desc:'Hang pozisyonundan bar tek hamlede overhead\'e çıkarılır. Geniş tutuş, catch wide & overhead.',tip:'Clean\'den farklı: catch çok daha geniş tutuşla overhead\'de. Önce çok hafif ağırlıkla.'},
+      {name:'Overhead Squat (OHS)',desc:'Barbell overhead\'de kilitli, geniş tutuşla full squat. Mobilitenin en zorlu testi.',tip:'OHS yapamazsan mobilite hazır değil. Önce OHS çalış, sonra full snatch\'e geç.'},
+      {name:'Full Snatch',desc:'Yerden tek hamlede overhead squat pozisyonuna. En teknik olimpik kaldırış.',tip:'Acele etme. Full snatch\'e geçmek için minimum 8 hafta hang & partial çalışma.'},
+    ],
+    cues:[
+      {text:'<strong>Skapulalar aktif</strong> — overhead\'de omuzlar kulağa doğru değil, aşağı & dışa.'},
+      {text:'<strong>"Kendi altına düş"</strong> — bar yukarı değil, sen aşağı gidiyorsun.'},
+      {text:'<strong>Geniş ama rahat tutuş</strong> — bilekler gergin kalmamalı.'},
+      {text:'<strong>Bar yola yakın</strong> — snatch\'te de bar vücuda yakın süpürülmeli.'},
+    ],
+    errors:[
+      {icon:'⚠',text:'<strong>Bar önde sallantı:</strong> Lat aktif tut, bar vücuda yakın süpür.'},
+      {icon:'⚠',text:'<strong>Erken kol bükülmesi:</strong> Güç bacaklardan üretilmeli, kollardan değil.'},
+      {icon:'⚠',text:'<strong>Dar tutuş:</strong> Snatch grip yeterince geniş değil — overhead tutmak zorlaşır.'},
+    ],
+  },
+];
+
+const OLY_PROGRAM=[
+  {hafta:'1-2. HAFTA',focus:'Mobilite + İlk temas',gunler:[
+    {gun:'SAL',name:'Mobility + Hang Clean',detail:'10 dk overhead squat mobilitesi · Hang power clean: 5×3 (çok hafif) · Push press: 4×5'},
+    {gun:'PER',name:'Mobility + Push Jerk',detail:'10 dk wrist & ankle mob · Push press: 5×5 · Push jerk (yüksüz baton): 5×3 · OHS: 3×5'},
+    {gun:'NOT',name:'PPL değişmez',detail:'Salı & Perşembe ekstra gün — PPL programın korunur.'},
+  ]},
+  {hafta:'3-4. HAFTA',focus:'Hang Clean iyileştirme',gunler:[
+    {gun:'SAL',name:'Hang Power Clean + Jerk',detail:'Hang power clean: 5×3 (ağırlık artmaya başlar) · Push jerk: 4×3 · Front squat: 3×5'},
+    {gun:'PER',name:'Kompleks',detail:'High hang clean: 3×3 · Hang clean: 3×3 · Push jerk: 4×3'},
+    {gun:'HEDEF',name:'4. hafta sonu',detail:'Hang power clean: vücut ağırlığının %40-50\'si ile form mükemmel.'},
+  ]},
+  {hafta:'5-8. HAFTA',focus:'Below knee + Snatch girişi',gunler:[
+    {gun:'SAL',name:'Hang Clean (below knee)',detail:'Below knee hang clean: 5×3 · Split jerk: 4×3 · Snatch grip high pull: 3×5'},
+    {gun:'PER',name:'Snatch başlangıcı',detail:'Hang power snatch: 5×3 (çok hafif) · OHS: 4×3 · Push jerk kompleks'},
+    {gun:'HEDEF',name:'8. hafta sonu',detail:'Power clean: vücut ağırlığı civarı. Hang power snatch: %60-65 BW stable overhead.'},
+  ]},
+  {hafta:'9-12. HAFTA',focus:'Full clean + Snatch geliştirme',gunler:[
+    {gun:'SAL',name:'Full Clean & Jerk',detail:'Full clean: 5×2 · Split jerk: 4×2 · Front squat: 3×3 (ağır)'},
+    {gun:'PER',name:'Snatch geliştirme',detail:'Hang power snatch: 5×2 · Full snatch (opsiyonel): 3×2 · OHS: 4×3'},
+    {gun:'HEDEF',name:'12. hafta sonu',detail:'Full clean: %80-90 BW · Split jerk: BW üzeri · Power snatch: %60-70 BW'},
+  ]},
+];
+
+function olyToggleLift(key){
+  olyOpenLifts[key]=!olyOpenLifts[key];
+  const body=document.getElementById('oly-lift-body-'+key);
+  const arrow=document.getElementById('oly-lift-arrow-'+key);
+  if(body)body.classList.toggle('open',!!olyOpenLifts[key]);
+  if(arrow)arrow.classList.toggle('open',!!olyOpenLifts[key]);
+}
+
+function olyToggleCheck(i){
+  olyChecks[i]=!olyChecks[i];
+  const box=document.getElementById('oly-check-'+i);
+  if(box){box.classList.toggle('done',!!olyChecks[i]);box.textContent=olyChecks[i]?'✓':'';}
+}
+
+function olySetPhase(i){
+  olyPhase=i;
+  document.querySelectorAll('.oly-phase-tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+  renderOlyContent();
+}
+
+function renderOlyContent(){
+  const cont=document.getElementById('oly-content');
+  if(!cont)return;
+  let html='';
+  if(olyPhase===3){
+    html+=`<div class="oly-section-title">BAŞLAMADAN ÖNCE — 7 ÖN KOŞUL</div>`;
+    html+=`<div class="oly-phase-desc">Olimpik kaldırışlar teknik açıdan en karmaşık spor hareketleridir. Aşağıdaki 7 maddenin tamamını rahatlıkla yapabilmen, sıfır sakatlıkla öğrenim için kritik öneme sahip.</div>`;
+    html+=`<div class="oly-checklist">`;
+    OLY_PREREQS.forEach((c,i)=>{
+      const done=!!olyChecks[i];
+      html+=`<div class="oly-check"><div class="oly-check-box${done?' done':''}" id="oly-check-${i}" onclick="olyToggleCheck(${i})">${done?'✓':''}</div><div><div class="oly-check-label">${c.label}</div><div class="oly-check-desc">${c.desc}</div></div></div>`;
+    });
+    html+=`</div>`;
+    html+=`<div class="oly-warning"><div class="oly-warn-icon">💡</div><div class="oly-warn-text"><strong>Senin durumun:</strong> Pull-up ✓ · Deadlift 120kg+ ✓ · OHP var ✓ — güç tabanın iyi. Ankle & wrist mobilitesi ve hip hinge kalitesini kontrol et. Bunlar olmadan clean/snatch öğrenmek yaralanma riski taşır.</div></div>`;
+  } else if(olyPhase===2){
+    html+=`<div class="oly-section-title">12 HAFTALIK YOL HARİTASI</div>`;
+    html+=`<div class="oly-phase-desc">PPL programın değişmez. Salı & Perşembe günleri 30-45 dakikalık olimpik teknik seansları eklenir. Her seans PPL öncesinde, taze iken yapılır.</div>`;
+    html+=`<div class="oly-metric-grid"><div class="oly-metric"><div class="oly-metric-val">2×</div><div class="oly-metric-lbl">Haftalık Seans</div></div><div class="oly-metric"><div class="oly-metric-val">45 dk</div><div class="oly-metric-lbl">Seans Süresi</div></div><div class="oly-metric"><div class="oly-metric-val">12</div><div class="oly-metric-lbl">Toplam Hafta</div></div><div class="oly-metric"><div class="oly-metric-val">%0</div><div class="oly-metric-lbl">Hipertrofi Kaybı</div></div></div>`;
+    html+=`<div class="oly-week-grid">`;
+    OLY_PROGRAM.forEach(w=>{
+      html+=`<div class="oly-week-card"><div class="oly-week-hdr"><div class="oly-week-lbl">${w.hafta}</div><div class="oly-week-focus">${w.focus}</div></div><div class="oly-week-body">`;
+      w.gunler.forEach(g=>{
+        html+=`<div class="oly-day-row"><div class="oly-day-lbl">${g.gun}</div><div class="oly-day-content"><div class="oly-day-name">${g.name}</div><div class="oly-day-detail">${g.detail}</div></div></div>`;
+      });
+      html+=`</div></div>`;
+    });
+    html+=`</div>`;
+  } else {
+    const lifts=OLY_LIFTS.filter(l=>l.phase.includes(olyPhase));
+    const phaseDesc=olyPhase===0?'Olimpik kaldırışa giriş aşaması. Yerden kaldırış yok, hafif ağırlık, mükemmel form. Bu aşamada ağırlık değil teknik önceliklidir.':'Temel hareketler oturdu. Ağırlık artmaya başlar, snatch devreye girer. Form hâlâ öncelikli ama intensite yükseliyor.';
+    html+=`<div class="oly-phase-desc">${phaseDesc}</div>`;
+    html+=`<div class="oly-warning"><div class="oly-warn-icon">⚠</div><div class="oly-warn-text"><strong>Altın kural:</strong> Olimpik kaldırışlarda ağırlık artırma hızı kassal gücünden değil, <strong>teknik güvenilirliğinden</strong> belirlenir. Hatalı formda ağır kaldırış = sakatlık garantisi.</div></div>`;
+    lifts.forEach(lift=>{
+      const open=!!olyOpenLifts[lift.key];
+      html+=`<div class="oly-lift-card"><div class="oly-lift-hdr" onclick="olyToggleLift('${lift.key}')"><div class="oly-lift-hdr-left"><div class="oly-lift-name">${lift.name}</div><div class="oly-lift-sub">${lift.sub}</div></div><div class="oly-lift-arrow${open?' open':''}" id="oly-lift-arrow-${lift.key}">↓</div></div><div class="oly-lift-body${open?' open':''}" id="oly-lift-body-${lift.key}">`;
+      html+=`<div class="oly-progression"><div class="oly-prog-lbl">ÖĞRENME AŞAMALARI</div>`;
+      lift.steps.forEach((s,si)=>{
+        html+=`<div class="oly-step"><div class="oly-step-num">${si+1}</div><div class="oly-step-content"><div class="oly-step-name">${s.name}</div><div class="oly-step-desc">${s.desc}</div><div class="oly-step-tip">💡 ${s.tip}</div></div></div>`;
+      });
+      html+=`</div><div class="oly-cues"><div class="oly-prog-lbl">FORM CUES</div><div class="oly-cue-list">`;
+      lift.cues.forEach(c=>{html+=`<div class="oly-cue"><div class="oly-cue-dot"></div><div class="oly-cue-text">${c.text}</div></div>`;});
+      html+=`</div></div><div class="oly-errors"><div class="oly-prog-lbl">YAYGIN HATALAR</div>`;
+      lift.errors.forEach(e=>{html+=`<div class="oly-error-item"><div class="oly-error-icon">${e.icon}</div><div class="oly-error-text">${e.text}</div></div>`;});
+      html+=`</div></div></div>`;
+    });
+  }
+  cont.innerHTML=html;
+}
+
+function renderOlyView(){
+  const v=document.getElementById('oly-view');
+  let html=`<div class="oly-phase-tabs" id="oly-phase-tabs">`;
+  OLY_PHASES.forEach((p,i)=>{
+    html+=`<button class="oly-phase-tab${i===olyPhase?' on':''}" onclick="olySetPhase(${i})">${p.label}<br><span style="font-size:6.5px;opacity:.5;font-weight:400;">${p.tag}</span></button>`;
+  });
+  html+=`</div>`;
+  html+=`<div class="oly-hero"><div class="oly-hero-title">OLİMPİK KALDIRIŞ</div><div class="oly-hero-sub">Sıfırdan · Aşamalı · PPL Korunuyor</div><div class="oly-hero-tags"><span class="oly-hero-tag highlight">PPL Korunuyor</span><span class="oly-hero-tag">Clean & Jerk</span><span class="oly-hero-tag">Power Snatch</span><span class="oly-hero-tag">12 Hafta</span></div></div>`;
+  html+=`<div id="oly-content"></div>`;
+  v.innerHTML=html;
+  renderOlyContent();
+}
+
+function setOly(){
+  mode='oly';
+  document.getElementById('hdr-title').textContent='OLİMPİK';
+  document.getElementById('hdr-target').textContent='KALDIRIŞ REHBERİ · SIFIRDAN · HİBRİT MODEL';
+  hideAll();
+  document.getElementById('oly-view').style.display='block';
+  renderOlyView();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
 }
 
 renderNav();renderDay();
