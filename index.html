@@ -190,6 +190,56 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* WOD */
 .wod-bar{border-top:2px solid var(--fg) !important;}
+
+/* ORGANİZATÖR BAR */
+.organize-bar{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--rim);cursor:pointer;transition:background .12s;background:var(--fg);}
+.organize-bar:hover{opacity:.9;}
+.organize-bar.on{background:var(--fg);}
+.org-bar-inner{display:flex;flex-direction:column;gap:2px;}
+.org-bar-label{font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);}
+.org-bar-sub{font-size:8px;font-weight:400;letter-spacing:.1em;color:var(--bg);opacity:.5;}
+.org-bar-arrow{font-size:14px;color:var(--bg);opacity:.5;}
+
+/* ORGANİZATÖR VIEW */
+.organize-view{padding:0 16px 100px;}
+.org-day-tabs{display:flex;gap:0;border:1px solid var(--rim);margin-top:16px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;}
+.org-day-tabs::-webkit-scrollbar{display:none;}
+.org-day-tab{flex:1;padding:8px 4px;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;cursor:pointer;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;transition:all .12s;white-space:nowrap;}
+.org-day-tab:last-child{border-right:none;}
+.org-day-tab.on{background:var(--fg);color:var(--bg);}
+.org-day-focus{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;opacity:.6;}
+.org-sum-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;}
+.org-sum-card{background:var(--rim2);padding:.6rem .8rem;}
+.org-sum-val{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--fg);}
+.org-sum-lbl{font-size:8px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+.org-sure-card{background:var(--fg);padding:.7rem 1rem;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;}
+.org-sure-lbl{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);opacity:.6;}
+.org-sure-val{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--bg);}
+.org-muscle-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
+.org-muscle-pill{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rim);color:var(--muted);}
+.org-btn{width:100%;padding:12px;background:transparent;color:var(--fg);border:1px solid var(--rim);font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;margin-bottom:12px;transition:all .12s;}
+.org-btn:active{background:var(--fg);color:var(--bg);}
+.org-block{border:1px solid var(--rim);margin-bottom:8px;}
+.org-block-hdr{background:var(--fg);padding:7px 12px;display:flex;align-items:center;justify-content:space-between;}
+.org-block-lbl{font-size:8px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);}
+.org-block-sub{font-size:7px;color:var(--bg);opacity:.4;letter-spacing:.08em;}
+.org-ex-row{display:grid;grid-template-columns:auto 1fr auto auto;padding:9px 12px;border-bottom:1px solid var(--rim2);align-items:center;gap:8px;}
+.org-ex-row:last-child{border-bottom:none;}
+.org-ex-num{font-size:9px;color:var(--muted);min-width:14px;font-weight:500;}
+.org-ex-info{min-width:0;}
+.org-ex-name{font-size:13px;font-weight:700;letter-spacing:-.01em;color:var(--fg);line-height:1.2;}
+.org-ex-note{font-size:9px;color:var(--muted);margin-top:1px;}
+.org-ex-badge{font-size:7px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;margin-top:3px;display:inline-block;}
+.badge-sabit{background:var(--rim2);color:var(--muted);border:1px solid var(--rim);}
+.badge-atletik{background:var(--fg);color:var(--bg);}
+.org-ex-meta{text-align:right;white-space:nowrap;}
+.org-ex-sets{font-size:11px;font-weight:700;color:var(--fg);}
+.org-ex-reps{font-size:10px;color:var(--muted);}
+.org-ex-rir{font-size:9px;color:var(--muted);}
+.org-swap-btn{background:transparent;border:1px solid var(--rim);padding:6px 7px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .12s;font-family:'Inter Tight',sans-serif;font-size:12px;}
+.org-swap-btn:hover{background:var(--fg);color:var(--bg);border-color:var(--fg);}
+.org-swap-btn:active{opacity:.6;}
+.org-swap-btn:disabled{opacity:.15;cursor:not-allowed;pointer-events:none;}
 .wod-view{padding:0 16px 100px;}
 .wod-tabs{display:flex;gap:0;margin-top:16px;margin-bottom:12px;border:1px solid var(--rim);}
 .wod-tab{flex:1;padding:7px 4px;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;cursor:pointer;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;transition:all .12s;}
@@ -268,6 +318,13 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="rb-label">BOKS PROGRAMI</div>
   <div class="rb-count">3 ay · 12 hafta · temel teknik</div>
 </div>
+<div class="organize-bar" id="organize-bar" onclick="setOrganize()">
+  <div class="org-bar-inner">
+    <div class="org-bar-label">ATLETİK PROGRAM ORGANİZATÖR</div>
+    <div class="org-bar-sub">Her gün farklı · Crossfit tarzı · 5 gün</div>
+  </div>
+  <div class="org-bar-arrow">→</div>
+</div>
 
 <div class="scroll" id="main-scroll">
   <div class="day-view" id="day-view"></div>
@@ -275,6 +332,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="recipe-detail" id="recipe-detail" style="display:none;"></div>
   <div class="takvim-view" id="takvim-view" style="display:none;"></div>
   <div class="boks-view" id="boks-view" style="display:none;"></div>
+  <div class="organize-view" id="organize-view" style="display:none;"></div>
   <div class="wod-view" id="wod-view" style="display:none;"></div>
 </div>
 </div>
@@ -491,6 +549,7 @@ function renderNav(){
   document.getElementById('takvim-bar').classList.toggle('on',mode==='takvim');
   document.getElementById('boks-bar').classList.toggle('on',mode==='boks');
   document.getElementById('wod-bar').classList.toggle('on',mode==='wod');
+  document.getElementById('organize-bar').style.opacity=mode==='organize'?'0.7':'1';
 }
 
 function hideAll(){
@@ -499,6 +558,7 @@ function hideAll(){
   document.getElementById('recipe-detail').style.display='none';
   document.getElementById('takvim-view').style.display='none';
   document.getElementById('boks-view').style.display='none';
+  document.getElementById('organize-view').style.display='none';
   document.getElementById('wod-view').style.display='none';
 }
 
@@ -2482,6 +2542,279 @@ function showWod(id){
     `</div></div>`+
     `<button class="wod-random-btn" style="margin-top:14px;" onclick="randomWod()">⚡ BAŞKA RANDOM WOD</button>`;
   document.getElementById('main-scroll').scrollTop=0;
+}
+
+
+const ORG_DAYS=[
+  {label:'Gun 1',focus:'GOGUS + BACAK',tag:'Push + Quad agirlikli',sureMin:65,sureMax:75},
+  {label:'Gun 2',focus:'SIRT + OMUZ',tag:'Pull + Press agirlikli',sureMin:65,sureMax:75},
+  {label:'Gun 3',focus:'BACAK + CORE',tag:'Hinge + Squat agirlikli',sureMin:60,sureMax:70},
+  {label:'Gun 4',focus:'UST VUCUT',tag:'Push + Pull dengeli',sureMin:65,sureMax:75},
+  {label:'Gun 5',focus:'TAM VUCUT',tag:'Atletik + Kondisyon',sureMin:55,sureMax:65},
+];
+
+const OFIXED={
+  bench:   {name:'Barbell Bench Press',    sets:2,reps:'4-6', rir:'RIR 1',   note:'Progresyon - degismez', muscles:['Gogus','Triceps']},
+  squat:   {name:'Back Squat',             sets:3,reps:'4-5', rir:'RIR 1-2', note:'Progresyon - degismez', muscles:['Quad','Glute']},
+  deadlift:{name:'Deadlift',               sets:2,reps:'4-5', rir:'RIR 1',   note:'Progresyon - degismez', muscles:['Sirt','Hamstring','Glute']},
+  ohp:     {name:'Barbell OHP (Standing)', sets:2,reps:'5-7', rir:'RIR 1',   note:'Progresyon - degismez', muscles:['Omuz','Triceps']},
+  pullup:  {name:'Pull-up',                sets:2,reps:'5-8', rir:'RIR 1-2', note:'Progresyon - degismez', muscles:['Sirt','Biceps']},
+};
+
+const OATH={
+  push:[
+    {name:'Dumbbell Push Press',        sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Omuz','Triceps']},
+    {name:'Thruster (Barbell)',          sets:3,reps:'5-7', rir:'RIR 1',   muscles:['Omuz','Quad','Triceps']},
+    {name:'Dumbbell Thruster',          sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Omuz','Quad','Triceps']},
+    {name:'Push Press',                 sets:3,reps:'5-7', rir:'RIR 1',   muscles:['Omuz','Triceps']},
+    {name:'Landmine Press',             sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Omuz','Gogus']},
+    {name:'Close Grip Bench Press',     sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Triceps','Gogus']},
+    {name:'Barbell Incline Bench',      sets:2,reps:'5-7', rir:'RIR 1',   muscles:['Gogus','Triceps']},
+    {name:'Ring Dip',                   sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Triceps','Gogus']},
+    {name:'Weighted Dip',               sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Triceps','Gogus']},
+    {name:'DB Floor Press',             sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Gogus','Triceps']},
+    {name:'Z-Press',                    sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Omuz','Triceps']},
+    {name:'Arnold Press',               sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Omuz']},
+  ],
+  pull:[
+    {name:'Chest Supported T-Bar Row',  sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Sirt']},
+    {name:'Pendlay Row',                sets:3,reps:'5-7', rir:'RIR 1',   muscles:['Sirt']},
+    {name:'Lat Pulldown',               sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Sirt','Biceps']},
+    {name:'Neutral Grip Lat Pulldown',  sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Sirt','Biceps']},
+    {name:'Cable Row',                  sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Sirt']},
+    {name:'Single Arm DB Row',          sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Sirt']},
+    {name:'Ring Row',                   sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Sirt','Biceps']},
+    {name:'Incline DB Row',             sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Sirt']},
+    {name:'Barbell Row',                sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Sirt']},
+    {name:'Seal Row',                   sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Sirt']},
+    {name:'Face Pull',                  sets:3,reps:'12-15',rir:'RIR 1',  muscles:['Omuz','Sirt']},
+  ],
+  squat:[
+    {name:'Front Squat',                sets:3,reps:'4-6', rir:'RIR 1-2', muscles:['Quad']},
+    {name:'Hack Squat',                 sets:3,reps:'6-8', rir:'RIR 1-2', muscles:['Quad']},
+    {name:'Bulgarian Split Squat',      sets:3,reps:'8-10',rir:'RIR 1-2', muscles:['Quad','Glute']},
+    {name:'Goblet Squat (KB)',          sets:3,reps:'10-12',rir:'RIR 1-2',muscles:['Quad','Glute']},
+    {name:'Leg Press',                  sets:3,reps:'8-10',rir:'RIR 1-2', muscles:['Quad','Glute']},
+    {name:'Box Squat',                  sets:3,reps:'5-7', rir:'RIR 1-2', muscles:['Quad','Glute']},
+    {name:'Zercher Squat',              sets:3,reps:'5-7', rir:'RIR 1-2', muscles:['Quad','Core']},
+    {name:'Pistol Squat (progression)', sets:3,reps:'5-8', rir:'RIR 1-2', muscles:['Quad','Glute']},
+  ],
+  hinge:[
+    {name:'Romanian Deadlift',          sets:3,reps:'6-8', rir:'RIR 1-2', muscles:['Hamstring','Glute']},
+    {name:'KB Deadlift',                sets:3,reps:'8-10',rir:'RIR 1-2', muscles:['Hamstring','Glute']},
+    {name:'Good Morning',               sets:3,reps:'8-10',rir:'RIR 1-2', muscles:['Hamstring','Sirt']},
+    {name:'Single Leg RDL',             sets:3,reps:'8-10',rir:'RIR 1-2', muscles:['Hamstring','Glute']},
+    {name:'Hip Thrust',                 sets:3,reps:'8-10',rir:'RIR 1-2', muscles:['Glute']},
+    {name:'Glute Ham Raise',            sets:3,reps:'6-8', rir:'RIR 1-2', muscles:['Hamstring','Glute']},
+    {name:'Nordic Hamstring Curl',      sets:3,reps:'5-7', rir:'RIR 1-2', muscles:['Hamstring']},
+  ],
+  athletic:[
+    {name:'Thruster (Barbell)',          sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Omuz','Quad','Triceps']},
+    {name:'Dumbbell Thruster',          sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Omuz','Quad','Triceps']},
+    {name:'KB Swing (Heavy)',           sets:3,reps:'12-15',rir:'RIR 1',  muscles:['Hamstring','Glute','Sirt']},
+    {name:'KB Clean & Press',           sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Omuz','Glute']},
+    {name:'Dumbbell Snatch',            sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Omuz','Hamstring','Glute']},
+    {name:'Devil Press',                sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Omuz','Gogus','Glute']},
+    {name:'DB Clean & Press',           sets:3,reps:'6-8', rir:'RIR 1',   muscles:['Omuz','Hamstring']},
+    {name:"Farmer Carry",               sets:3,reps:'40m', rir:'RIR 1',   muscles:['Sirt','Core']},
+    {name:'Walking Lunge (DB)',         sets:3,reps:'12-16',rir:'RIR 1',  muscles:['Quad','Glute']},
+    {name:'Overhead Walking Lunge',     sets:3,reps:'10-12',rir:'RIR 1',  muscles:['Quad','Omuz','Core']},
+    {name:'Front Rack Lunge (BB)',      sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Quad','Glute']},
+    {name:'Box Jump',                   sets:3,reps:'5-8', rir:'Explosive',muscles:['Quad','Glute']},
+    {name:'Broad Jump',                 sets:3,reps:'5',   rir:'Explosive',muscles:['Quad','Glute']},
+    {name:'KB Turkish Get-up',          sets:2,reps:'3+3', rir:'Kontrollu',muscles:['Omuz','Core']},
+    {name:'Rowing (Kalori)',            sets:3,reps:'15 kal',rir:'Yuksek tempo',muscles:['Sirt','Bacak']},
+    {name:'Toes-to-Bar',                sets:3,reps:'8-12',rir:'RIR 1',   muscles:['Core']},
+    {name:'Hanging Leg Raise',          sets:3,reps:'10-12',rir:'RIR 1',  muscles:['Core']},
+    {name:'Ab Wheel Rollout',           sets:3,reps:'8-10',rir:'RIR 1',   muscles:['Core']},
+    {name:'GHD Sit-up',                 sets:3,reps:'12-15',rir:'RIR 1',  muscles:['Core']},
+    {name:'Bar Muscle-up (prog.)',      sets:3,reps:'3-5', rir:'RIR 1',   muscles:['Sirt','Triceps']},
+  ],
+  conditioning:[
+    {name:'Rowing (500m)',              sets:3,reps:'500m',rir:'90% max',  muscles:['Sirt','Bacak']},
+    {name:'KB Swing (Tabata)',          sets:8,reps:'20sn',rir:'Max',      muscles:['Hamstring','Glute']},
+    {name:'Burpee',                     sets:3,reps:'10',  rir:'Max hiz',  muscles:['Gogus','Quad']},
+    {name:'Box Jump',                   sets:4,reps:'8',   rir:'Explosive',muscles:['Quad','Glute']},
+    {name:'Rowing (250m sprint)',       sets:5,reps:'250m',rir:'Max',      muscles:['Sirt','Bacak']},
+    {name:'Devil Press AMRAP',          sets:1,reps:'5 dk',rir:'Max',      muscles:['Omuz','Gogus']},
+    {name:'Dumbbell Snatch AMRAP',      sets:1,reps:'3 dk',rir:'Max',      muscles:['Omuz','Hamstring']},
+  ],
+};
+
+function orgRand(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function orgPick(pool,n){const p=[...pool],r=[];for(let i=0;i<n&&p.length;i++){const x=Math.floor(Math.random()*p.length);r.push({...p.splice(x,1)[0]});}return r;}
+
+const ORG_PROGRAMS=[
+  ()=>[
+    {name:'BLOK #1 — GUC & HAREKET',sub:'Sabit compound + atletik yardimci',exs:[
+      {...OFIXED.bench,fixed:true,pool:null},
+      {...orgRand(OATH.push),fixed:false,pool:'push'},
+      {...OFIXED.squat,fixed:true,pool:null},
+      {...orgRand(OATH.squat),fixed:false,pool:'squat'},
+    ]},
+    {name:'BLOK #2 — ATLETIK & SIRT',sub:'Patlayici + cekme hareketleri',exs:[
+      {...orgRand(OATH.pull),fixed:false,pool:'pull'},
+      {...orgRand(OATH.hinge),fixed:false,pool:'hinge'},
+      ...orgPick(OATH.athletic,2).map(e=>({...e,fixed:false,pool:'athletic'})),
+    ]},
+  ],
+  ()=>[
+    {name:'BLOK #1 — GUC & PRESS',sub:'OHP + Deadlift primer',exs:[
+      {...OFIXED.ohp,fixed:true,pool:null},
+      {...orgRand(OATH.push),fixed:false,pool:'push'},
+      {...OFIXED.deadlift,fixed:true,pool:null},
+      {...orgRand(OATH.pull),fixed:false,pool:'pull'},
+    ]},
+    {name:'BLOK #2 — ATLETIK & CEKME',sub:'Pull-up + patlayici hareketler',exs:[
+      {...OFIXED.pullup,fixed:true,pool:null},
+      {...orgRand(OATH.pull),fixed:false,pool:'pull'},
+      ...orgPick(OATH.athletic,2).map(e=>({...e,fixed:false,pool:'athletic'})),
+    ]},
+  ],
+  ()=>[
+    {name:'BLOK #1 — GUC & BACAK',sub:'Squat + hinge dominant',exs:[
+      {...OFIXED.squat,fixed:true,pool:null},
+      {...orgRand(OATH.squat),fixed:false,pool:'squat'},
+      {...orgRand(OATH.hinge),fixed:false,pool:'hinge'},
+      {...orgRand(OATH.hinge),fixed:false,pool:'hinge'},
+    ]},
+    {name:'BLOK #2 — ATLETIK & KONDISYON',sub:'Patlayici + kondisyon bitirici',exs:[
+      ...orgPick(OATH.athletic,2).map(e=>({...e,fixed:false,pool:'athletic'})),
+      ...orgPick(OATH.conditioning,1).map(e=>({...e,fixed:false,pool:'conditioning'})),
+    ]},
+  ],
+  ()=>[
+    {name:'BLOK #1 — GUC & UST VUCUT',sub:'Push + pull dengeli primer',exs:[
+      {...OFIXED.bench,fixed:true,pool:null},
+      {...OFIXED.ohp,fixed:true,pool:null},
+      {...orgRand(OATH.push),fixed:false,pool:'push'},
+      {...orgRand(OATH.pull),fixed:false,pool:'pull'},
+    ]},
+    {name:'BLOK #2 — ATLETIK & SIRT',sub:'Pull-up + atletik hareketler',exs:[
+      {...OFIXED.pullup,fixed:true,pool:null},
+      {...orgRand(OATH.pull),fixed:false,pool:'pull'},
+      ...orgPick(OATH.athletic,2).map(e=>({...e,fixed:false,pool:'athletic'})),
+    ]},
+  ],
+  ()=>[
+    {name:'BLOK #1 — TAM VUCUT GUC',sub:'Atletik opener + Deadlift primer',exs:[
+      {...orgRand(OATH.athletic),fixed:false,pool:'athletic'},
+      {...OFIXED.deadlift,fixed:true,pool:null},
+      {...orgRand(OATH.squat),fixed:false,pool:'squat'},
+      {...orgRand(OATH.push),fixed:false,pool:'push'},
+    ]},
+    {name:'BLOK #2 — ATLETIK & KONDISYON',sub:'Yuksek tempo bitirici',exs:[
+      ...orgPick(OATH.athletic,2).map(e=>({...e,fixed:false,pool:'athletic'})),
+      ...orgPick(OATH.conditioning,2).map(e=>({...e,fixed:false,pool:'conditioning'})),
+    ]},
+  ],
+];
+
+let orgActiveDay=0;
+let orgCurrentBlocks=[];
+
+function orgToRoman(n){return['I','II','III','IV','V','VI','VII','VIII'][n-1]||n;}
+
+function orgGetMuscles(blocks){
+  const c={};
+  blocks.forEach(b=>b.exs.forEach(e=>{(e.muscles||[]).forEach(m=>{c[m]=(c[m]||0)+1;});}));
+  return c;
+}
+
+function orgRenderBlocks(){
+  const blocks=orgCurrentBlocks;
+  let totalSets=0,totalEx=0;
+  blocks.forEach(b=>b.exs.forEach(e=>{totalEx++;totalSets+=parseInt(e.sets)||0;}));
+  const mc=orgGetMuscles(blocks);
+  const d=ORG_DAYS[orgActiveDay];
+  document.getElementById('org-sum-row').innerHTML=
+    '<div class="org-sum-card"><div class="org-sum-val">'+totalEx+'</div><div class="org-sum-lbl">Hareket</div></div>'+
+    '<div class="org-sum-card"><div class="org-sum-val">'+totalSets+'</div><div class="org-sum-lbl">Toplam set</div></div>';
+  document.getElementById('org-sure-card').innerHTML=
+    '<span class="org-sure-lbl">Tahmini Sure</span><span class="org-sure-val">'+d.sureMin+'-'+d.sureMax+' dk</span>';
+  document.getElementById('org-muscle-row').innerHTML=
+    Object.entries(mc).sort((a,b)=>b[1]-a[1]).map(([m,c])=>'<span class="org-muscle-pill">'+c+' '+m+'</span>').join('');
+  const cont=document.getElementById('org-blocks');
+  cont.innerHTML='';
+  blocks.forEach((block,bi)=>{
+    const card=document.createElement('div');
+    card.className='org-block';
+    card.innerHTML='<div class="org-block-hdr"><span class="org-block-lbl">'+block.name+'</span><span class="org-block-sub">'+block.sub+'</span></div>';
+    block.exs.forEach((ex,ei)=>{
+      const row=document.createElement('div');
+      row.className='org-ex-row';
+      row.innerHTML=
+        '<div class="org-ex-num">'+orgToRoman(ei+1)+'</div>'+
+        '<div class="org-ex-info">'+
+          '<div class="org-ex-name">'+ex.name+'</div>'+
+          (ex.note?'<div class="org-ex-note">'+ex.note+'</div>':'')+
+          '<span class="org-ex-badge '+(ex.fixed?'badge-sabit':'badge-atletik')+'">'+(ex.fixed?'Sabit':'Atletik')+'</span>'+
+        '</div>'+
+        '<div class="org-ex-meta">'+
+          '<div class="org-ex-sets">'+ex.sets+' set</div>'+
+          '<div class="org-ex-reps">'+ex.reps+'</div>'+
+          '<div class="org-ex-rir">'+ex.rir+'</div>'+
+        '</div>'+
+        '<button class="org-swap-btn" onclick="orgSwap('+bi+','+ei+')" title="Hareketi degistir"'+(ex.fixed?' disabled':'')+'>&#8635;</button>';
+      card.appendChild(row);
+    });
+    cont.appendChild(card);
+  });
+}
+
+function orgSwap(bi,ei){
+  const ex=orgCurrentBlocks[bi].exs[ei];
+  if(ex.fixed||!ex.pool) return;
+  const pool=OATH[ex.pool];
+  if(!pool) return;
+  const others=pool.filter(e=>e.name!==ex.name);
+  if(!others.length) return;
+  orgCurrentBlocks[bi].exs[ei]={...orgRand(others),fixed:false,pool:ex.pool};
+  orgRenderBlocks();
+}
+
+function orgOrganize(){
+  orgCurrentBlocks=ORG_PROGRAMS[orgActiveDay]();
+  orgRenderBlocks();
+}
+
+function orgSetDay(i){
+  orgActiveDay=i;
+  document.querySelectorAll('.org-day-tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+  document.getElementById('org-day-focus').textContent=ORG_DAYS[i].focus+' - '+ORG_DAYS[i].tag;
+  orgOrganize();
+}
+
+function setOrganize(){
+  mode='organize';
+  document.getElementById('hdr-title').textContent='ATLETIK';
+  document.getElementById('hdr-target').textContent='PROGRAM ORGANIZATOR - HER GUN FARKLI';
+  hideAll();
+  document.getElementById('organize-view').style.display='block';
+  renderOrganizeView();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderOrganizeView(){
+  const v=document.getElementById('organize-view');
+  v.innerHTML=
+    '<div class="org-day-tabs" id="org-day-tabs"></div>'+
+    '<div class="org-day-focus" id="org-day-focus"></div>'+
+    '<div class="org-sum-row" id="org-sum-row"></div>'+
+    '<div class="org-sure-card" id="org-sure-card"></div>'+
+    '<div class="org-muscle-row" id="org-muscle-row"></div>'+
+    '<button class="org-btn" onclick="orgOrganize()">&#8635; BU GUNU ORGANIZE ET</button>'+
+    '<div id="org-blocks"></div>';
+  const tabs=document.getElementById('org-day-tabs');
+  ORG_DAYS.forEach((d,i)=>{
+    const btn=document.createElement('button');
+    btn.className='org-day-tab'+(i===0?' on':'');
+    btn.textContent=d.label;
+    btn.onclick=()=>orgSetDay(i);
+    tabs.appendChild(btn);
+  });
+  orgSetDay(0);
 }
 
 renderNav();renderDay();
