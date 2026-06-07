@@ -39,13 +39,20 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .header-year{padding:0 14px;font-size:9px;font-weight:400;letter-spacing:.1em;color:var(--muted);border-right:1px solid var(--rim);}
 .theme-toggle{cursor:pointer;padding:0 14px;height:100%;display:flex;align-items:center;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:none;background:none;font-family:'Inter Tight',sans-serif;transition:color .15s;}
 .theme-toggle:hover{color:var(--fg);}
-.header-session{padding:20px 16px 0;display:flex;flex-direction:column;gap:0;}
-.session-label{font-size:7.5px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;opacity:.5;}
-.session-title{font-size:58px;font-weight:800;letter-spacing:-.03em;line-height:.88;text-transform:uppercase;color:var(--fg);margin-bottom:14px;}
+.header-session{padding:20px 16px 0;display:flex;flex-direction:column;gap:0;transition:padding .25s ease,opacity .25s ease;}
+.session-label{font-size:7.5px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;opacity:.5;transition:all .25s ease;}
+.session-title{font-size:58px;font-weight:800;letter-spacing:-.03em;line-height:.88;text-transform:uppercase;color:var(--fg);margin-bottom:14px;transition:font-size .25s ease,margin .25s ease,line-height .25s ease;}
 .session-title em{font-style:normal;font-weight:400;letter-spacing:.0em;color:var(--fg);opacity:.35;}
-.session-target{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--rim);}
+.session-target{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--rim);transition:all .25s ease;overflow:hidden;}
 .target-dot{width:3px;height:3px;border-radius:50%;background:var(--fg);opacity:.25;flex-shrink:0;}
 .target-text{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);opacity:.45;}
+
+/* COLLAPSED HEADER STATE */
+.header.collapsed .header-session{padding:6px 16px 0;}
+.header.collapsed .session-label{display:none;}
+.header.collapsed .session-title{font-size:18px;margin-bottom:4px;line-height:1;}
+.header.collapsed .session-target{padding:4px 0;max-height:20px;}
+.header.collapsed .target-text{font-size:7px;}
 .nav{flex-shrink:0;display:flex;overflow-x:auto;border-bottom:1px solid var(--rim);scrollbar-width:none;background:var(--bg);}
 .nav::-webkit-scrollbar{display:none;}
 .nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 6px;gap:3px;cursor:pointer;position:relative;border-right:1px solid var(--rim);transition:background .12s;}
@@ -74,6 +81,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .mcu-logo{position:fixed;bottom:calc(var(--safe-bot) + 16px);left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;z-index:100;}
 .mcu-main{font-size:20px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);line-height:1;opacity:.12;}
 .mcu-year{font-size:8px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--fg);opacity:.08;margin-top:2px;}
+.arsiv-btn{display:block;margin-top:5px;font-size:7px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);opacity:.15;background:transparent;border:none;cursor:pointer;font-family:'Inter Tight',sans-serif;pointer-events:all;transition:opacity .15s;}
+.arsiv-btn:active{opacity:.5;}
 
 /* TARİF BARI */
 .recipe-bar{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--rim);cursor:pointer;transition:background .12s;}
@@ -195,8 +204,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .main-nav-btn.on{background:var(--fg);color:var(--bg);}
 
 /* ARAÇLAR MENÜSÜ */
-.araclar-menu{flex-shrink:0;border-bottom:1px solid var(--rim);}
-.araclar-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.araclar-menu{width:100%;}
+.araclar-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--rim);}
 .araclar-card{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-right:1px solid var(--rim);border-bottom:1px solid var(--rim);cursor:pointer;transition:background .12s;background:var(--bg);}
 .araclar-card:nth-child(even){border-right:none;}
 .araclar-card:nth-last-child(-n+2){border-bottom:none;}
@@ -394,6 +403,83 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .dual-bar-track{height:12px;background:var(--rim2);position:relative;overflow:hidden;}
 .dual-bar-fill{height:100%;position:absolute;left:0;top:0;}
 
+/* MURPH HAZIRLIK PROGRAMI */
+.murph-view{padding:0 0 100px;}
+.murph-hero{padding:20px 16px;border-bottom:1px solid var(--rim);background:var(--rim2);}
+.murph-hero-eyebrow{font-size:7px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.murph-hero-title{font-size:32px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:4px;}
+.murph-hero-sub{font-size:10px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.murph-hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--rim);}
+.murph-stat{padding:10px 8px;text-align:center;border-right:1px solid var(--rim);}
+.murph-stat:last-child{border-right:none;}
+.murph-stat-val{font-size:18px;font-weight:900;color:var(--fg);line-height:1;}
+.murph-stat-lbl{font-size:7px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.murph-week-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--rim);}
+.murph-week-tabs::-webkit-scrollbar{display:none;}
+.murph-week-tab{flex-shrink:0;padding:10px 14px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;white-space:nowrap;transition:all .12s;}
+.murph-week-tab.on{background:var(--fg);color:var(--bg);}
+.murph-content{padding:16px;}
+.murph-week-hdr{margin-bottom:14px;}
+.murph-week-title{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--fg);margin-bottom:4px;}
+.murph-week-focus{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);background:var(--muted);display:inline-block;padding:2px 8px;margin-bottom:8px;}
+.murph-week-desc{font-size:11px;color:var(--muted);line-height:1.7;}
+.murph-day{border:1px solid var(--rim);margin-bottom:8px;overflow:hidden;}
+.murph-day-hdr{display:grid;grid-template-columns:60px 1fr auto;align-items:center;padding:10px 14px;background:var(--rim2);border-bottom:1px solid var(--rim);}
+.murph-day-lbl{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.murph-day-name{font-size:13px;font-weight:700;color:var(--fg);}
+.murph-day-badge{font-size:7px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:0;}
+.badge-run{background:var(--fg);color:var(--bg);}
+.badge-pull{background:var(--rim2);color:var(--fg);border:1px solid var(--rim);}
+.badge-push{background:var(--rim2);color:var(--fg);border:1px solid var(--rim);}
+.badge-rest{background:transparent;color:var(--muted);border:1px solid var(--rim);}
+.murph-day-body{padding:12px 14px;}
+.murph-ex-list{display:flex;flex-direction:column;gap:6px;}
+.murph-ex{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--rim2);}
+.murph-ex:last-child{border-bottom:none;}
+.murph-ex-name{font-size:12px;font-weight:600;color:var(--fg);}
+.murph-ex-val{font-size:13px;font-weight:700;color:var(--fg);}
+.murph-ex-note{font-size:9px;color:var(--muted);margin-top:2px;}
+.murph-tip{background:var(--rim2);padding:10px 12px;margin-top:10px;border-left:2px solid var(--fg);}
+.murph-tip-text{font-size:11px;color:var(--muted);line-height:1.6;}
+.murph-tip-text strong{color:var(--fg);font-weight:700;}
+.murph-final{background:var(--fg);color:var(--bg);padding:16px;margin-bottom:8px;}
+.murph-final-title{font-size:20px;font-weight:900;letter-spacing:-.02em;margin-bottom:8px;}
+.murph-final-content{font-size:12px;line-height:1.8;opacity:.7;}
+
+/* EMOM KÜTÜPHANESİ */
+.emom-view{padding:0 0 100px;}
+.emom-cat-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--rim);}
+.emom-cat-tabs::-webkit-scrollbar{display:none;}
+.emom-cat-tab{flex-shrink:0;padding:10px 14px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;white-space:nowrap;transition:all .12s;}
+.emom-cat-tab.on{background:var(--fg);color:var(--bg);}
+.emom-hero{padding:14px 16px;border-bottom:1px solid var(--rim);background:var(--rim2);}
+.emom-hero-title{font-size:20px;font-weight:900;letter-spacing:-.02em;color:var(--fg);margin-bottom:3px;}
+.emom-hero-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+.emom-hero-tag{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:2px 8px;margin-top:6px;}
+.emom-list{display:flex;flex-direction:column;}
+.emom-item{border-bottom:1px solid var(--rim2);cursor:pointer;}
+.emom-item-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;}
+.emom-item-left{display:flex;align-items:center;gap:12px;}
+.emom-item-dur{font-size:18px;font-weight:900;color:var(--fg);min-width:40px;line-height:1;}
+.emom-item-dur-lbl{font-size:7px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.emom-item-name{font-size:13px;font-weight:700;color:var(--fg);}
+.emom-item-type{font-size:8px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:1px;}
+.emom-item-arrow{font-size:12px;color:var(--muted);transition:transform .2s;}
+.emom-item-arrow.open{transform:rotate(180deg);}
+.emom-detail{display:none;background:var(--rim2);border-top:1px solid var(--rim2);}
+.emom-detail.open{display:block;}
+.emom-detail-inner{padding:14px 16px;}
+.emom-minute-list{display:flex;flex-direction:column;gap:0;margin-bottom:10px;border:1px solid var(--rim);overflow:hidden;}
+.emom-minute{display:grid;grid-template-columns:44px 1fr;border-bottom:1px solid var(--rim2);}
+.emom-minute:last-child{border-bottom:none;}
+.emom-minute-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--fg);padding:8px 6px;text-align:center;display:flex;align-items:center;justify-content:center;}
+.emom-minute-content{font-size:12px;font-weight:600;color:var(--fg);padding:8px 10px;line-height:1.4;}
+.emom-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px;}
+.emom-meta-item{background:var(--bg);padding:8px 10px;border:1px solid var(--rim);}
+.emom-meta-lbl{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.emom-meta-val{font-size:12px;font-weight:700;color:var(--fg);}
+.emom-note{font-size:10px;color:var(--muted);line-height:1.6;border-top:1px solid var(--rim2);padding-top:8px;}
+
 /* WOD 100 LİSTESİ */
 .wod100-view{padding:0 0 100px;}
 .wod100-cat-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--rim);flex-shrink:0;}
@@ -534,7 +620,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <div class="app" id="app">
 <div class="sb"></div>
 
-<div class="header">
+<div class="header" id="header">
   <div class="header-identity">
     <div class="header-logo">
       <div class="logo-name">M. Çağrı <span>Ulu</span></div>
@@ -555,18 +641,19 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
 </div>
 
-<!-- ANA NAV: PROGRAM / ARAÇLAR -->
+<!-- ANA NAV: PROGRAM / WOD'LAR / EMOM / TARİFLER -->
 <div class="main-nav" id="main-nav">
   <button class="main-nav-btn on" id="mnav-program" onclick="mainNavSwitch('program')">PROGRAM</button>
-  <button class="main-nav-btn" id="mnav-araclar" onclick="mainNavSwitch('araclar')">ARAÇLAR</button>
   <button class="main-nav-btn" id="mnav-wod100" onclick="mainNavSwitch('wod100')">WOD'LAR</button>
+  <button class="main-nav-btn" id="mnav-emom" onclick="mainNavSwitch('emom')">EMOM</button>
+  <button class="main-nav-btn" id="mnav-recipes" onclick="mainNavSwitch('recipes')">TARİFLER</button>
 </div>
 <!-- PROGRAM ALTI: GÜN SEKMELERİ -->
 <div class="nav" id="nav"></div>
-<!-- ARAÇLAR MENÜSÜ -->
-<div class="araclar-menu" id="araclar-menu" style="display:none;"></div>
 
 <div class="scroll" id="main-scroll">
+  <!-- ARAÇLAR MENÜSÜ — scroll içinde olmalı -->
+  <div class="araclar-menu" id="araclar-menu" style="display:none;"></div>
   <div class="day-view" id="day-view"></div>
   <div class="recipe-view" id="recipe-view" style="display:none;"></div>
   <div class="recipe-detail" id="recipe-detail" style="display:none;"></div>
@@ -578,12 +665,15 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="hibrit-view" id="hibrit-view" style="display:none;"></div>
   <div class="analiz-view" id="analiz-view" style="display:none;"></div>
   <div class="wod100-view" id="wod100-view" style="display:none;"></div>
+  <div class="murph-view" id="murph-view" style="display:none;"></div>
+  <div class="emom-view" id="emom-view" style="display:none;"></div>
 </div>
 </div>
 
 <div class="mcu-logo">
   <div class="mcu-main">MCU</div>
   <div class="mcu-year">2026</div>
+  <button class="arsiv-btn" onclick="mainNavSwitch('araclar')">ARŞİV</button>
 </div>
 
 <script>
@@ -770,7 +860,194 @@ const RECIPES=[
   {name:'Fırında Bütün Tavuk',emoji:'🍖',protein:55,time:'75 dk',tool:'Fırın',cat:'Akşam',
    ing:['Bütün tavuk 1kg','Zeytinyağı, sarımsak','Tuz, kekik, pul biber, limon'],
    steps:['Tavuğu baharatla iyice ovala, 1 saat beklet.','190°C fırında 60–70 dk pişir.','Dinlendirip servis et — 4 öğünlük protein deposu.']},
+  {name:'Tavuk Şiş',emoji:'🍢',protein:46,time:'25 dk',tool:'Izgara',cat:'Akşam',
+   ing:['Tavuk göğsü 250g (küp)','Zeytinyağı, limon, sarımsak','Tuz, kekik, pul biber','Biber, domates (şişe)'],
+   steps:['Tavuğu marinatla 30 dk beklet.','Şişe geçir, arasına biber ve domates ekle.','Izgarada 15–18 dk pişir, döndür.']},
+  {name:'Tavuk Sote',emoji:'🍲',protein:44,time:'20 dk',tool:'Tava',cat:'Öğle',
+   ing:['Tavuk göğsü 200g (şerit)','Biber, soğan, domates','Zeytinyağı, tuz, pul biber'],
+   steps:['Zeytinyağında soğan kavur.','Tavuğu ekle, 5 dk çevir.','Biber ve domates ekle, 10 dk kısık ateşte pişir.']},
+  {name:'Fırında Sebzeli Tavuk',emoji:'🥘',protein:48,time:'40 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Tavuk but 2 adet','Kabak, patlıcan, biber','Zeytinyağı, sarımsak','Kekik, tuz, karabiber'],
+   steps:['Sebzeleri ve tavuğu fırın tepsisine diz.','Zeytinyağı ve baharatla karıştır.','200°C\'de 35 dk pişir.']},
+  {name:'Mercimek Köfte',emoji:'🟤',protein:18,time:'30 dk',tool:'Ocak',cat:'Atıştırma',
+   ing:['Kırmızı mercimek 200g','Bulgur ince 100g','Soğan, salça, tuz, kimyon, pul biber'],
+   steps:['Mercimekleri haşla.','Bulgurla karıştır, 10 dk beklet.','Soğan ve baharatlarla yoğur, şekil ver.']},
+  {name:'Yumurta Salatası',emoji:'🥚',protein:26,time:'15 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Yumurta 4 adet (haşlanmış)','Süzme yoğurt 50g','Taze soğan, dereotu','Tuz, karabiber'],
+   steps:['Yumurtaları doğra.','Yoğurt, soğan ve dereotla karıştır.','Baharatla tatlandır.']},
+  {name:'Ton Balıklı Makarna',emoji:'🍝',protein:40,time:'20 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Tam buğday makarna 80g','Ton balığı 1 kutu','Domates sosu 3 yemek kaşığı','Tuz, fesleğen'],
+   steps:['Makarnayı haşla.','Ton balığı ve domates sosunu karıştır.','Makarna üzerine dök.']},
+  {name:'Çılbır (Yumurta)',emoji:'🍳',protein:22,time:'10 dk',tool:'Tava',cat:'Sabah',
+   ing:['Yumurta 2 adet','Süzme yoğurt 100g','Sarımsak 1 diş','Tereyağı, pul biber'],
+   steps:['Yoğurdu sarımsak ile karıştır.','Yumurtaları sirkeli suda haşla (poşe).','Yoğurt üstüne yumurta koy, tereyağı ve pul biberle servis et.']},
+  {name:'Hindi Göğsü Rulo',emoji:'🌀',protein:42,time:'35 dk',tool:'Fırın',cat:'Öğle',
+   ing:['Hindi göğsü 200g (ince)','Ispanak, lor peyniri','Tuz, karabiber, sarımsak'],
+   steps:['Hindi göğsünü açık döv.','İçine ıspanak ve lor koy, sar.','180°C\'de 30 dk pişir.']},
+  {name:'Fasulye Salatası',emoji:'🫘',protein:20,time:'10 dk',tool:'Yok',cat:'Öğle',
+   ing:['Haşlanmış fasulye 200g','Domates, salatalık','Zeytinyağı, limon, tuz'],
+   steps:['Fasulyeyi süz.','Domates ve salatalıkla karıştır.','Zeytinyağı ve limonla tatlandır.']},
+  {name:'Izgara Ton Balığı',emoji:'🐟',protein:50,time:'15 dk',tool:'Izgara',cat:'Akşam',
+   ing:['Taze ton fileto 200g','Zeytinyağı, limon','Tuz, karabiber, kekik'],
+   steps:['Balığı marine et, 10 dk beklet.','Izgarayı kızdır, 3–4 dk her yüz.','Limonla servis et.']},
+  {name:'Avokadolu Yumurta',emoji:'🥑',protein:20,time:'5 dk',tool:'Yok',cat:'Sabah',
+   ing:['Avokado 1 adet','Yumurta 2 adet (haşlanmış)','Limon suyu, tuz, pul biber'],
+   steps:['Avokadoyu ezip limon ve tuzla karıştır.','Yumurtaları dilimle.','Avokado üstüne yumurta diz, pul biber serp.']},
+  {name:'Sebzeli Omlet',emoji:'🍳',protein:24,time:'10 dk',tool:'Tava',cat:'Sabah',
+   ing:['Yumurta 3 adet','Biber, mantar, ıspanak','Zeytinyağı, tuz'],
+   steps:['Sebzeleri sotele.','Yumurtaları çırp, üstüne dök.','Katlayarak pişir.']},
+  {name:'Kaju Soslu Tavuk',emoji:'🍗',protein:50,time:'25 dk',tool:'Tava',cat:'Akşam',
+   ing:['Tavuk göğsü 200g','Kaju ezmesi 1 yemek kaşığı','Sarımsak, soğan, zeytinyağı','Tuz, karabiber'],
+   steps:['Tavuğu küp kes, tavada pişir.','Kaju ezmesi ve baharatları ekle.','Karıştır, 5 dk daha kavur.']},
+  {name:'Brokoli Çorbası',emoji:'🥦',protein:15,time:'20 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Brokoli 300g','Soğan, sarımsak','Tavuk suyu 500ml','Tuz, karabiber'],
+   steps:['Soğan ve sarımsağı sotele.','Brokoli ve tavuk suyunu ekle, 15 dk pişir.','Blenderdan geçir.']},
+  {name:'Ispanaklı Yumurta',emoji:'🌿',protein:22,time:'10 dk',tool:'Tava',cat:'Sabah',
+   ing:['Ispanak 100g','Yumurta 2 adet','Sarımsak 1 diş','Zeytinyağı, tuz'],
+   steps:['Sarımsağı zeytinyağında sotele.','Ispanağı ekle, 2 dk çevir.','Yumurtaları kır, istediğin kıvama getir.']},
+  {name:'Protein Chia Puding',emoji:'🫙',protein:28,time:'5 dk + bekleme',tool:'Yok',cat:'Sabah',
+   ing:['Chia tohumu 3 yemek kaşığı','Badem sütü 200ml','Protein tozu yarım ölçek','Tarçın'],
+   steps:['Tüm malzemeleri karıştır.','Gece buzdolabında beklet.','Sabah tüket.']},
+  {name:'Tavuk Çorbası',emoji:'🍵',protein:38,time:'30 dk',tool:'Ocak',cat:'Akşam',
+   ing:['Tavuk göğsü 200g','Havuç, kereviz, soğan','Tavuk suyu 1L','Tuz, karabiber'],
+   steps:['Tüm malzemeleri kaynat, 25 dk pişir.','Tavuğu çıkar, didikle, geri koy.','Limon sıkarak servis et.']},
+  {name:'Kıymalı Biber Dolma',emoji:'🫑',protein:36,time:'45 dk',tool:'Ocak',cat:'Akşam',
+   ing:['Dolmalık biber 4 adet','Dana kıyma 200g','Pirinç 50g, soğan, salça','Tuz, nane, pul biber'],
+   steps:['Kıyma, pirinç ve baharatları karıştır.','Biberleri doldur.','Tencerede 35 dk pişir.']},
+  {name:'Fıstık Ezmeli Smoothie Bowl',emoji:'🥣',protein:35,time:'5 dk',tool:'Yok',cat:'Sabah',
+   ing:['Muz 1 adet (dondurulmuş)','Protein tozu 1 ölçek','Fıstık ezmesi 1 yemek kaşığı','Badem sütü 100ml'],
+   steps:['Blenderda karıştır.','Kaba dök.','Üstüne granola ve muz dilimi ekle.']},
+  {name:'Lor Peynirli Krep',emoji:'🥞',protein:32,time:'15 dk',tool:'Tava',cat:'Sabah',
+   ing:['Yumurta 2 adet','Lor peyniri 80g','Yulaf unu 30g','Tuz'],
+   steps:['Tüm malzemeleri karıştır.','Teflon tavada her taraf 2 dk pişir.','Yanında domates ve salatalıkla servis et.']},
+  {name:'Sebzeli Bulgur',emoji:'🌾',protein:16,time:'25 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Bulgur 100g','Domates, biber, soğan','Zeytinyağı, salça, tuz'],
+   steps:['Soğan ve biberi sotele.','Bulgur ve salça ekle.','Sıcak su ile 15 dk demle.']},
+  {name:'Ton Balıklı Avokado',emoji:'🥑',protein:36,time:'5 dk',tool:'Yok',cat:'Atıştırma',
+   ing:['Ton balığı 1 kutu','Avokado 1 adet','Limon suyu, tuz, pul biber'],
+   steps:['Ton balığını süz.','Avokadoyu kes, çekirdeği çıkar.','Ton balığını avokadoya doldur.']},
+  {name:'Izgara Tavuk Kanatları',emoji:'🍗',protein:42,time:'30 dk',tool:'Izgara',cat:'Akşam',
+   ing:['Tavuk kanadı 400g','Zeytinyağı, sarımsak','Pul biber, kekik, tuz'],
+   steps:['Kanatları marine et, 20 dk beklet.','Izgarada 20–25 dk pişir.','Her 5 dk\'da bir çevir.']},
+  {name:'Hummus & Sebze',emoji:'🫘',protein:14,time:'5 dk',tool:'Yok',cat:'Atıştırma',
+   ing:['Hazır hummus 100g','Havuç, salatalık, biber (çiğ)','Zeytinyağı, pul biber'],
+   steps:['Sebzeleri çubuk şeklinde dil.','Hummusu kaba koy.','Zeytinyağı ve pul biberle servis et.']},
+  {name:'Tavuk Biryani (Light)',emoji:'🍛',protein:48,time:'40 dk',tool:'Tencere',cat:'Akşam',
+   ing:['Tavuk göğsü 200g','Basmati pirinç 80g','Soğan, sarımsak, zencefil','Zerdeçal, kimyon, tuz'],
+   steps:['Tavuk ve baharatları kavur.','Pirinç ekle, su ile 20 dk pişir.','Dinlendirip servis et.']},
+  {name:'Yoğurtlu Semizotu',emoji:'🌿',protein:12,time:'5 dk',tool:'Yok',cat:'Atıştırma',
+   ing:['Semizotu 100g','Süzme yoğurt 150g','Sarımsak 1 diş, tuz, zeytinyağı'],
+   steps:['Semizotunu yıka, doğra.','Yoğurt ve sarımsak ile karıştır.','Zeytinyağı ile servis et.']},
+  {name:'Dana Antrikot',emoji:'🥩',protein:54,time:'20 dk',tool:'Tava',cat:'Akşam',
+   ing:['Dana antrikot 200g','Tereyağı, sarımsak, biberiye','Tuz, karabiber'],
+   steps:['Eti oda sıcaklığına getir.','Çok kızgın tavada 3–4 dk her yüz.','Tereyağı, sarımsak, biberiye ile sos yap.']},
+  {name:'Protein Granola',emoji:'🌾',protein:20,time:'25 dk',tool:'Fırın',cat:'Sabah',
+   ing:['Yulaf 100g','Protein tozu 1 ölçek','Bal 1 yemek kaşığı','Badem, fındık'],
+   steps:['Yulaf, protein ve balı karıştır.','Fırın kağıdına yay.','170°C\'de 20 dk pişir, karıştır.']},
+  {name:'Cevizli Hindi',emoji:'🦃',protein:44,time:'30 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Hindi göğsü 200g','Ceviz 30g (kırık)','Zeytinyağı, sarımsak','Tuz, adaçayı'],
+   steps:['Hindi göğsüne ceviz ve sarımsak ekle.','Zeytinyağı ve baharatla ova.','190°C\'de 25 dk pişir.']},
+  {name:'Smoothie Proteinli',emoji:'🥤',protein:38,time:'3 dk',tool:'Yok',cat:'Atıştırma',
+   ing:['Muz 1 adet','Yulaf 30g','Protein tozu 1 ölçek','Süt 250ml'],
+   steps:['Tüm malzemeleri blendere koy.','45 sn karıştır.','Hemen tüket.']},
+  {name:'Tavuk Teriyaki',emoji:'🍗',protein:46,time:'25 dk',tool:'Tava',cat:'Akşam',
+   ing:['Tavuk göğsü 200g','Soya sosu 2 yemek kaşığı','Bal 1 tatlı kaşığı','Sarımsak, zencefil'],
+   steps:['Tavuğu şerit kes.','Soya sosu, bal, sarımsak ve zencefil ile marine et.','Tavada 15 dk pişir.']},
+  {name:'Bulgurlu Köfte',emoji:'🧆',protein:30,time:'30 dk',tool:'Tava',cat:'Öğle',
+   ing:['Dana kıyma 150g','Bulgur 80g','Soğan, tuz, kimyon, pul biber'],
+   steps:['Bulguru ıslatılmış halde kıymayla karıştır.','Baharatla yoğur, köfte şekli ver.','Tavada her taraf 4 dk pişir.']},
+  {name:'Patlıcan Musakka (Light)',emoji:'🍆',protein:28,time:'45 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Patlıcan 2 adet','Dana kıyma 150g','Domates, soğan, sarımsak','Tuz, karabiber'],
+   steps:['Patlıcanı ızgarada pişir.','Kıymayı soğan ve domatesle kavur.','Kat kat diz, fırında 20 dk pişir.']},
+  {name:'Yüksek Proteinli Pancake',emoji:'🥞',protein:36,time:'15 dk',tool:'Tava',cat:'Sabah',
+   ing:['Yulaf unu 50g','Protein tozu 1 ölçek','Yumurta 2 adet','Muz yarım, kabartma tozu'],
+   steps:['Tüm malzemeleri karıştır.','Teflon tavada her yüz 2–3 dk.','Yanında yoğurt ve meyvey ile servis et.']},
+  {name:'Ton Balıklı Kinoa Kase',emoji:'🥗',protein:42,time:'15 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Kinoa 80g (pişirilmiş)','Ton balığı 1 kutu','Cherry domates, salatalık','Zeytinyağı, limon'],
+   steps:['Kinoayı pişir.','Ton balığını süz.','Tüm malzemeleri karıştır, limon sık.']},
+  {name:'Dana Rosto',emoji:'🥩',protein:52,time:'90 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Dana but 400g','Havuç, soğan, sarımsak','Zeytinyağı, biberiye, kekik','Tuz, karabiber'],
+   steps:['Eti baharatla.','Tavada her yüzünü mühürle.','Fırında 180°C\'de 75 dk pişir.']},
+  {name:'Sebzeli Mercimek Çorbası',emoji:'🍲',protein:22,time:'30 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Kırmızı mercimek 150g','Havuç, kereviz, soğan','Zeytinyağı, tuz, kimyon'],
+   steps:['Sebzeleri sotele.','Mercimek ve su ekle, 20 dk kaynat.','Blenderdan geçir.']},
+  {name:'Gurme Tost',emoji:'🥪',protein:30,time:'10 dk',tool:'Tava',cat:'Sabah',
+   ing:['Tam buğday ekmek 2 dilim','Hindi jambon 100g','Lor peyniri 50g','Domates, roka'],
+   steps:['Ekmeğe lor sür.','Hindi jambon ve domates ekle.','Tavada kızart.']},
+  {name:'Kinoa Pilav',emoji:'🌾',protein:18,time:'20 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Kinoa 100g','Tavuk suyu 200ml','Soğan, sarımsak, zeytinyağı'],
+   steps:['Soğan ve sarımsağı sotele.','Kinoa ve tavuk suyunu ekle.','15 dk kapağı kapalı pişir.']},
+  {name:'Mangolu Tavuk Salatası',emoji:'🥭',protein:38,time:'15 dk',tool:'Tava',cat:'Öğle',
+   ing:['Tavuk göğsü 150g (pişirilmiş)','Mango yarım','Roka, marul','Zeytinyağı, limon, tuz'],
+   steps:['Tavuğu dilimlere kes.','Mangoyu küp kes.','Yeşilliklerle karıştır, sos ekle.']},
+  {name:'Fırın Somon & Brokoli',emoji:'🐠',protein:52,time:'25 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Somon fileto 200g','Brokoli 200g','Zeytinyağı, sarımsak, limon','Tuz, dereotu'],
+   steps:['Somon ve brokoliyi tepsiye diz.','Zeytinyağı ve baharatla karıştır.','200°C\'de 20 dk pişir.']},
+  {name:'Tavuk Sosisli Yumurta',emoji:'🍳',protein:34,time:'15 dk',tool:'Tava',cat:'Sabah',
+   ing:['Tavuk sosis 2 adet','Yumurta 2 adet','Domates, biber','Zeytinyağı, tuz'],
+   steps:['Sosisi dilimle, tavada pişir.','Domates ve biberi ekle.','Yumurtaları kır, istediğin kıvama getir.']},
+  {name:'Peynirli Omlet',emoji:'🧀',protein:30,time:'8 dk',tool:'Tava',cat:'Sabah',
+   ing:['Yumurta 3 adet','Kaşar peyniri 30g','Tuz, karabiber'],
+   steps:['Yumurtaları çırp.','Tavada pişirirken peyniri serp.','Katlayarak servis et.']},
+  {name:'Zerdeçallı Tavuk',emoji:'🟡',protein:46,time:'25 dk',tool:'Tava',cat:'Akşam',
+   ing:['Tavuk göğsü 200g','Zerdeçal, zencefil, sarımsak','Zeytinyağı, tuz, karabiber'],
+   steps:['Tavuğu baharatla ova.','Tavada 15 dk pişir.','Yanında brokoli ile servis et.']},
+  {name:'Badem Unlu Kek',emoji:'🍰',protein:22,time:'35 dk',tool:'Fırın',cat:'Atıştırma',
+   ing:['Badem unu 100g','Yumurta 2 adet','Protein tozu 1 ölçek','Kabartma tozu, tuz'],
+   steps:['Tüm malzemeleri karıştır.','Kalıba dök.','180°C\'de 25 dk pişir.']},
+  {name:'Hamsili Mısır Salatası',emoji:'🐟',protein:32,time:'10 dk',tool:'Yok',cat:'Öğle',
+   ing:['Hamsi konservesi 1 kutu','Mısır 100g','Domates, marul','Zeytinyağı, limon'],
+   steps:['Hamsiyi süz.','Mısır ve sebzelerle karıştır.','Zeytinyağı ve limon ekle.']},
+  {name:'Biberiye Kuzu Pirzola',emoji:'🍖',protein:48,time:'20 dk',tool:'Izgara',cat:'Akşam',
+   ing:['Kuzu pirzola 2 adet','Biberiye, sarımsak','Zeytinyağı, tuz, karabiber'],
+   steps:['Pirzolayı marine et.','Izgarayı kızdır.','Her yüz 4–5 dk pişir.']},
+  {name:'Nohutlu Ispanak',emoji:'🟢',protein:18,time:'20 dk',tool:'Tava',cat:'Öğle',
+   ing:['Haşlanmış nohut 200g','Ispanak 150g','Sarımsak, zeytinyağı','Tuz, kimyon'],
+   steps:['Sarımsağı sotele.','Ispanağı ekle, 3 dk çevir.','Nohut ekle, 5 dk daha pişir.']},
+  {name:'Protein Bar (Ev Yapımı)',emoji:'🍫',protein:24,time:'15 dk + soğutma',tool:'Yok',cat:'Atıştırma',
+   ing:['Yulaf 100g','Protein tozu 2 ölçek','Fıstık ezmesi 3 yemek kaşığı','Bal 1 yemek kaşığı'],
+   steps:['Tüm malzemeleri karıştır.','Kare kalıba bastır.','Buzdolabında 1 saat beklet, dilimlere kes.']},
+  {name:'Tavuk & Nohut Köri',emoji:'🍛',protein:50,time:'35 dk',tool:'Tava',cat:'Akşam',
+   ing:['Tavuk göğsü 200g','Haşlanmış nohut 150g','Hindistancevizi sütü 100ml','Köri tozu, sarımsak, soğan'],
+   steps:['Soğan ve sarımsağı sotele.','Tavuk ekle, pişir.','Nohut, hindistancevizi sütü ve köri ekle, 15 dk kaynat.']},
+  {name:'Taze Fasulye Kavurma',emoji:'🫘',protein:12,time:'20 dk',tool:'Tava',cat:'Öğle',
+   ing:['Taze fasulye 300g','Domates, soğan','Zeytinyağı, tuz'],
+   steps:['Soğanı sotele.','Fasulye ve domates ekle.','Kısık ateşte 15 dk pişir.']},
+  {name:'Tahin Soslu Somon',emoji:'🐠',protein:50,time:'20 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Somon fileto 200g','Tahin 1 yemek kaşığı','Limon suyu, sarımsak, tuz'],
+   steps:['Tahin sosu hazırla.','Somonun üstüne sür.','190°C\'de 15 dk pişir.']},
+  {name:'Sebzeli Kinoa Bowl',emoji:'🥗',protein:20,time:'20 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Kinoa 80g','Roka, cherry domates, salatalık','Avokado yarım','Zeytinyağı, limon, tuz'],
+   steps:['Kinoayı pişir.','Sebzeleri doğra.','Kinoa üstüne diz, sos ekle.']},
+  {name:'Fırın Hindi Köfte',emoji:'🦃',protein:40,time:'30 dk',tool:'Fırın',cat:'Akşam',
+   ing:['Hindi kıyma 250g','Soğan, sarımsak, maydanoz','Tuz, kimyon, pul biber'],
+   steps:['Tüm malzemeleri yoğur.','Köfte şekli ver.','180°C\'de 25 dk pişir.']},
+  {name:'Rezene Çorbası',emoji:'🍵',protein:10,time:'25 dk',tool:'Ocak',cat:'Akşam',
+   ing:['Rezene 200g','Soğan, zeytinyağı','Tavuk suyu 500ml','Tuz'],
+   steps:['Soğan ve rezeneyi sotele.','Tavuk suyunu ekle, 15 dk kaynat.','Blenderdan geçir.']},
+  {name:'Pastırmalı Yumurta',emoji:'🥚',protein:28,time:'10 dk',tool:'Tava',cat:'Sabah',
+   ing:['Pastırma 50g','Yumurta 2 adet','Tuz, karabiber'],
+   steps:['Pastırmayı kızart.','Üstüne yumurtaları kır.','Kısık ateşte pişir.']},
+  {name:'Taboule Salatası',emoji:'🌿',protein:8,time:'15 dk',tool:'Yok',cat:'Öğle',
+   ing:['Bulgur 80g (pişirilmiş)','Maydanoz, nane (bol)','Domates, salatalık','Zeytinyağı, limon, tuz'],
+   steps:['Bulguru demle.','Sebze ve otları ince doğra.','Zeytinyağı ve limonla karıştır.']},
+  {name:'Protein Brownie',emoji:'🍫',protein:20,time:'30 dk',tool:'Fırın',cat:'Atıştırma',
+   ing:['Protein tozu 2 ölçek (çikolata)','Yumurta 2 adet','Fıstık ezmesi 2 yemek kaşığı','Kakao tozu 1 yemek kaşığı'],
+   steps:['Tüm malzemeleri karıştır.','Kare kalıba dök.','170°C\'de 20 dk pişir.']},
+  {name:'Patlıcan Kavurma',emoji:'🍆',protein:8,time:'20 dk',tool:'Tava',cat:'Akşam',
+   ing:['Patlıcan 2 adet','Zeytinyağı, sarımsak, domates','Tuz, pul biber'],
+   steps:['Patlıcanı küp kes, tuzla beklet.','Zeytinyağında sarımsak ve domates ile kavur.','Patlıcanı ekle, 15 dk pişir.']},
+  {name:'Gurme Açık Sandviç',emoji:'🥪',protein:32,time:'10 dk',tool:'Yok',cat:'Atıştırma',
+   ing:['Çavdar ekmeği 2 dilim','Avokado yarım','Ton balığı 1 kutu','Limon, karabiber'],
+   steps:['Avokadoyu ek, limon sık.','Ekmeğe sür.','Ton balığını üstüne koy, karabiber serp.']},
+  {name:'Kereviz Çorbası',emoji:'🥣',protein:10,time:'25 dk',tool:'Ocak',cat:'Öğle',
+   ing:['Kereviz 300g','Soğan, zeytinyağı','Tavuk suyu 500ml','Tuz, karabiber'],
+   steps:['Soğan ve kerevizi sotele.','Tavuk suyunu ekle, 20 dk pişir.','Blenderdan geçir.']},
+  {name:'Zerdeçallı Scrambled Eggs',emoji:'🍳',protein:24,time:'8 dk',tool:'Tava',cat:'Sabah',
+   ing:['Yumurta 3 adet','Zerdeçal yarım tatlı kaşığı','Süt 2 yemek kaşığı','Tuz, karabiber'],
+   steps:['Yumurta ve zerdeçalı çırp.','Kısık ateşte yavaş karıştırarak pişir.','Tam buğday ekmekle servis et.']},
 ];
+
 
 const CATS=['Tümü','Sabah','Öğle','Akşam','Atıştırma'];
 let cur=0,light=false,mode='ppl',activeRecipe=null,recipeCat='Tümü';
@@ -787,13 +1064,14 @@ const ARACLAR_ITEMS=[
   {id:'hibrit',label:'HİBRİT PPL-X ARŞİV',desc:'Hibrit program · 5 gün · Random WOD',fn:'setHibrit'},
   {id:'oly',label:'OLİMPİK KALDIRIŞ',desc:'Rehber · Clean · Snatch · Jerk',fn:'setOly'},
   {id:'analiz',label:'PROGRAM ANALİZİ',desc:'PPL vs Hibrit · Grafikli karşılaştırma',fn:'setAnaliz'},
+  {id:'murph',label:'MURPH HAZIRLIK',desc:'8 haftalık hazırlık programı',fn:'setMurph'},
   {id:'takvim',label:'HAFTALIK TAKVİM',desc:'Paz–Paz · 5 antrenman',fn:'setTakvim'},
   {id:'recipes',label:'TARİFLER',desc:'35 tarif · yüksek proteinli',fn:'setRecipes'},
   {id:'boks',label:'BOKS PROGRAMI',desc:'3 ay · 12 hafta · temel teknik',fn:'setBoks'},
 ];
 
 const PROGRAM_MODES=['hibrit','ppl'];
-const ARACLAR_MODES=['wod','organize','oly','takvim','recipes','boks'];
+const ARACLAR_MODES=['wod','organize','oly','takvim','boks','murph','analiz','hibrit'];
 
 function renderAraclarMenu(){
   const menu=document.getElementById('araclar-menu');
@@ -813,9 +1091,12 @@ function mainNavSwitch(tab){
   const isProgram=tab==='program';
   const isWod100=tab==='wod100';
   const isAraclar=tab==='araclar';
+  const isEmom=tab==='emom';
+  const isRecipes=tab==='recipes';
   document.getElementById('mnav-program').classList.toggle('on',isProgram);
-  document.getElementById('mnav-araclar').classList.toggle('on',isAraclar);
   document.getElementById('mnav-wod100').classList.toggle('on',isWod100);
+  document.getElementById('mnav-emom').classList.toggle('on',isEmom);
+  document.getElementById('mnav-recipes').classList.toggle('on',isRecipes);
   document.getElementById('nav').style.display=isProgram?'flex':'none';
   document.getElementById('araclar-menu').style.display=isAraclar?'block':'none';
   if(isProgram){
@@ -823,8 +1104,20 @@ function mainNavSwitch(tab){
     else renderNav();
   } else if(isWod100){
     setWod100();
+  } else if(isEmom){
+    setEmom();
+  } else if(isRecipes){
+    setRecipes();
   } else {
+    // ARŞİV
+    hideAll();
+    document.getElementById('araclar-menu').style.display='block';
     renderAraclarMenu();
+    document.getElementById('hdr-title').textContent='ARŞİV';
+    document.getElementById('hdr-target').textContent='EK ARAÇLAR & ESKİ PROGRAMLAR';
+    mode='araclar';
+    renderNav();
+    document.getElementById('main-scroll').scrollTop=0;resetHeader();
   }
 }
 
@@ -849,12 +1142,13 @@ function renderNav(){
   }
   document.getElementById('nav').innerHTML=tabs;
   document.getElementById('nav').style.display=(isHibrit||isPPL)?'flex':'none';
-  document.getElementById('araclar-menu').style.display=(!isHibrit&&!isPPL)?'block':'none';
+  document.getElementById('araclar-menu').style.display=(mode==='araclar')?'block':'none';
   // ana nav aktiflik
   document.getElementById('mnav-program').classList.toggle('on',isHibrit||isPPL);
-  document.getElementById('mnav-araclar').classList.toggle('on',!isHibrit&&!isPPL&&mode!=='wod100');
   document.getElementById('mnav-wod100').classList.toggle('on',mode==='wod100');
-  if(!isHibrit&&!isPPL&&mode!=='wod100') renderAraclarMenu();
+  document.getElementById('mnav-emom').classList.toggle('on',mode==='emom');
+  document.getElementById('mnav-recipes').classList.toggle('on',mode==='recipes');
+  if(mode==='araclar') renderAraclarMenu();
 }
 
 function setPPL(){
@@ -866,7 +1160,7 @@ function setPPL(){
   document.getElementById('day-view').style.display='block';
   renderDay2();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function renderDay2(){
@@ -897,6 +1191,8 @@ function hideAll(){
   document.getElementById('hibrit-view').style.display='none';
   document.getElementById('analiz-view').style.display='none';
   document.getElementById('wod100-view').style.display='none';
+  document.getElementById('murph-view').style.display='none';
+  document.getElementById('emom-view').style.display='none';
 }
 
 function setTakvim(){
@@ -907,7 +1203,7 @@ function setTakvim(){
   document.getElementById('takvim-view').style.display='block';
   renderTakvim();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function renderTakvim(){
@@ -1046,7 +1342,7 @@ function renderDay(){
     html+='</div>';
   });
   document.getElementById('day-view').innerHTML=html;
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function setDay(i){
@@ -1064,7 +1360,7 @@ function setRecipes(){
   document.getElementById('recipe-view').style.display='block';
   renderRecipeGrid();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function renderRecipeGrid(){
@@ -1119,14 +1415,14 @@ function showRecipe(idx){
     '<li class="rd-step"><span class="rd-step-num">'+(i+1)+'</span><span class="rd-step-text">'+s+'</span></li>'
   ).join('')+'</ol>';
   det.innerHTML=html;
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function backToRecipes(){
   document.getElementById('recipe-detail').style.display='none';
   document.getElementById('recipe-view').style.display='block';
   renderRecipeGrid();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 const BOKS_PLAN=[
@@ -1282,7 +1578,7 @@ function setBoks(){
   document.getElementById('boks-view').style.display='block';
   renderBoks();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function renderBoks(){
@@ -2831,7 +3127,7 @@ function setWod(){
   wodMode='ana';wodAktif=null;
   renderWodAna();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function renderWodAna(){
@@ -2879,7 +3175,7 @@ function showWod(id){
     `<div class="wod-card-hikaye">${w.hikaye}</div>`+
     `</div></div>`+
     `<button class="wod-random-btn" style="margin-top:14px;" onclick="randomWod()">⚡ BAŞKA RANDOM WOD</button>`;
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 
@@ -3131,7 +3427,7 @@ function setOrganize(){
   document.getElementById('organize-view').style.display='block';
   renderOrganizeView();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function renderOrganizeView(){
@@ -3363,7 +3659,7 @@ function setOly(){
   document.getElementById('oly-view').style.display='block';
   renderOlyView();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 /* ─── HİBRİT PPL-X PROGRAMI ─── */
@@ -3592,7 +3888,7 @@ function setHibrit(){
   document.getElementById('hibrit-view').style.display='block';
   renderHibritView();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 // BAŞLANGIC: PPL Ana Program — script bloğu birleştirildi
@@ -3724,7 +4020,7 @@ function analizSetTab(i){
   analizTab=i;
   document.querySelectorAll('.analiz-tab').forEach(function(t,j){t.classList.toggle('on',j===i);});
   renderAnalizContent();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function renderAnalizView(){
@@ -3955,7 +4251,7 @@ function setAnaliz(){
   document.getElementById('analiz-view').style.display='block';
   renderAnalizView();
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function setWod100(){
@@ -3966,11 +4262,9 @@ function setWod100(){
   document.getElementById('wod100-view').style.display='block';
   document.getElementById('nav').style.display='none';
   document.getElementById('araclar-menu').style.display='none';
-  document.getElementById('mnav-program').classList.remove('on');
-  document.getElementById('mnav-araclar').classList.remove('on');
-  document.getElementById('mnav-wod100').classList.add('on');
+  renderNav();
   renderWod100View();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 /* ─── 100 WOD LİSTESİ ─── */
@@ -4115,7 +4409,7 @@ function wod100SetCat(i){
   wod100ActiveCat=i;
   document.querySelectorAll('.wod100-cat-tab').forEach(function(t,j){t.classList.toggle('on',j===i);});
   renderWod100Content();
-  document.getElementById('main-scroll').scrollTop=0;
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
 function renderWod100Content(){
@@ -4170,8 +4464,518 @@ function renderWod100View(){
 }
 
 
+/* ─── MURPH HAZIRLIK PROGRAMI ─── */
+var murphActiveWeek=0;
+
+const MURPH_WEEKS=[
+  {
+    label:'HAFTA 1',title:'HAFTA 1',focus:'TEMELLERİ AT',
+    desc:'İlk hafta test haftası. Nerede olduğunu gör. Ağırlık kullanma, formunu otur. Her gün 10 dk\'dan uzun sürme.',
+    gunler:[
+      {gun:'PAZ',name:'Koşu Testi',badge:'badge-run',exs:[
+        {name:'800m Koşu',val:'× 1',note:'Saatli. Nefes düzeni nasıl?'},
+        {name:'400m Koşu',val:'× 1',note:'1 dk dinlenme sonrası. Tempo düşüyor mu?'},
+      ],tip:'Murph\'te 2 × 1 mil var. Bu test kondisyon tabanını gösterir. <strong>Süreyi kaydet.</strong>'},
+      {gun:'SAL',name:'Pull-up Testi',badge:'badge-pull',exs:[
+        {name:'Max Strict Pull-up',val:'× 1 set',note:'Kaç tane?'},
+        {name:'5 × Pull-up',val:'5 set',note:'90 sn ara. Form bozulmadan kaç tane?'},
+      ],tip:'100 pull-up yapabilmek için minimum <strong>10 unbroken pull-up</strong> gerekir.'},
+      {gun:'PER',name:'Push-up Testi',badge:'badge-push',exs:[
+        {name:'Max Push-up',val:'× 1 set',note:'Kaç tane?'},
+        {name:'10 × Push-up',val:'5 set',note:'60 sn ara.'},
+      ],tip:'200 push-up için minimum <strong>30 unbroken push-up</strong> gerekir.'},
+      {gun:'CUM',name:'Squat + Core',badge:'badge-pull',exs:[
+        {name:'20 × Air Squat',val:'5 set',note:'45 sn ara.'},
+        {name:'15 × Sit-up',val:'3 set',note:''},
+      ],tip:'300 squat görünce kolay geliyor. Ama koşu + pull-up + push-up sonrasında yapınca başka bir şey.'},
+      {gun:'DİĞER',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Mobilite & Esneme',val:'15 dk',note:'Hip flexor, omuz, lat açma.'}],tip:''},
+    ]
+  },
+  {
+    label:'HAFTA 2',title:'HAFTA 2',focus:'HACİM BAŞLIYOR',
+    desc:'Test sonuçlarına göre devam. Pull-up için grease-the-groove, push-up hacmi artıyor.',
+    gunler:[
+      {gun:'PAZ',name:'Koşu İnterval',badge:'badge-run',exs:[
+        {name:'400m Koşu',val:'× 4',note:'90 sn dinlenme aralarında.'},
+      ],tip:'4 × 400m = 1.6 km toplam. Murph\'ün yarısı. <strong>Her 400m süresini kaydet.</strong>'},
+      {gun:'SAL',name:'Pull-up Hacim',badge:'badge-pull',exs:[
+        {name:'Pull-up',val:'10 × 3',note:'EMOM 10 dk — her dk 3 tekrar.'},
+        {name:'Ring Row',val:'3 × 10',note:'Pull-up yapamıyorsan.'},
+      ],tip:'Grease the groove: az tekrar, sık çalış. Yorgunluğa değil <strong>kaliteye</strong> odaklan.'},
+      {gun:'PER',name:'Push-up Hacim',badge:'badge-push',exs:[
+        {name:'Push-up',val:'10 × 10',note:'EMOM 10 dk — her dk 10 tekrar.'},
+        {name:'Air Squat',val:'5 × 20',note:'60 sn ara.'},
+      ],tip:'100 push-up\'ı bölünmüş yapabilmek için bu hacim gerekli.'},
+      {gun:'CUM',name:'Kombine',badge:'badge-pull',exs:[
+        {name:'5 × Pull-up + 10 × Push-up + 15 × Squat',val:'5 round',note:'Cindy formatı. Kaç dakika sürdü?'},
+      ],tip:'Bu Murph\'ün partitioned versiyonunun minyatürü. <strong>Süreyi kaydet — her hafta karşılaştıracaksın.</strong>'},
+      {gun:'DİĞER',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Mobilite & Esneme',val:'15 dk',note:''}],tip:''},
+    ]
+  },
+  {
+    label:'HAFTA 3',title:'HAFTA 3',focus:'DAYANIKLILIK',
+    desc:'Koşu mesafesi artıyor, pull-up ve push-up setleri büyüyor.',
+    gunler:[
+      {gun:'PAZ',name:'Uzun Koşu',badge:'badge-run',exs:[
+        {name:'1 mil Koşu',val:'× 1',note:'Saatli. İlk test ile karşılaştır.'},
+        {name:'400m Koşu',val:'× 2',note:'2 dk ara.'},
+      ],tip:'1 mil = 1.6 km. Murph\'ün başında ve sonunda 1 mil var. <strong>Bu koşuyu rahat tamamlayabilmelisin.</strong>'},
+      {gun:'SAL',name:'Pull-up Dayanıklılık',badge:'badge-pull',exs:[
+        {name:'Pull-up',val:'EMOM 15 dk · 4 tekrar',note:'Dakikayı tutamazsan çık.'},
+        {name:'Chin-up',val:'3 × max',note:''},
+      ],tip:''},
+      {gun:'PER',name:'Push-up + Squat',badge:'badge-push',exs:[
+        {name:'Push-up',val:'EMOM 15 dk · 8 tekrar',note:''},
+        {name:'Air Squat',val:'5 × 30',note:'45 sn ara.'},
+      ],tip:'30 squat × 10 set = 300. Murph\'teki squat sayısı. <strong>Bugün o sayıyı yap.</strong>'},
+      {gun:'CUM',name:'Kombine + Koşu',badge:'badge-pull',exs:[
+        {name:'400m Koşu',val:'× 1',note:''},
+        {name:'5 × Pull-up + 10 × Push-up + 15 × Squat',val:'8 round',note:''},
+        {name:'400m Koşu',val:'× 1',note:''},
+      ],tip:'Koşu + WOD + Koşu formatı. Murph\'ün küçük versiyonu.'},
+      {gun:'DİĞER',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Mobilite & Esneme',val:'15 dk',note:''}],tip:''},
+    ]
+  },
+  {
+    label:'HAFTA 4',title:'HAFTA 4',focus:'DELOAD',
+    desc:'Toparlanma haftası. Hacim düşüyor ama kalite korunuyor. Vücut adapte oluyor.',
+    gunler:[
+      {gun:'PAZ',name:'Hafif Koşu',badge:'badge-run',exs:[
+        {name:'800m Koşu',val:'× 2',note:'Rahat tempo. 2 dk ara.'},
+      ],tip:'Deload haftasında kaslar toparlanır, <strong>adaptasyon bu sırada gerçekleşir.</strong>'},
+      {gun:'SAL',name:'Hafif Pull-up',badge:'badge-pull',exs:[
+        {name:'Pull-up',val:'EMOM 10 dk · 3 tekrar',note:'Hafif.'},
+        {name:'Ring Row',val:'2 × 10',note:''},
+      ],tip:''},
+      {gun:'PER',name:'Hafif Push-up + Squat',badge:'badge-push',exs:[
+        {name:'Push-up',val:'5 × 10',note:'60 sn ara.'},
+        {name:'Air Squat',val:'3 × 20',note:''},
+      ],tip:''},
+      {gun:'CUM',name:'Kombine (Hafif)',badge:'badge-pull',exs:[
+        {name:'5 × Pull-up + 10 × Push-up + 15 × Squat',val:'5 round',note:'Rahat tempo.'},
+      ],tip:'Hafif bir Cindy. Form odaklı.'},
+      {gun:'DİĞER',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Mobilite & Esneme',val:'20 dk',note:'Her zamankinden uzun.'}],tip:''},
+    ]
+  },
+  {
+    label:'HAFTA 5',title:'HAFTA 5',focus:'YOĞUNLUK ARTIYOR',
+    desc:'Deload sonrası güçlenmiş dönüş. Partitioned Murph formatına hazırlık.',
+    gunler:[
+      {gun:'PAZ',name:'1 mil × 2',badge:'badge-run',exs:[
+        {name:'1 mil Koşu',val:'× 2',note:'5 dk ara. Her ikisini de kaydet.'},
+      ],tip:'Murph\'te toplam 2 mil var. <strong>İkinci mili de aynı tempoda koşabilmek hedef.</strong>'},
+      {gun:'SAL',name:'Pull-up Yoğunluk',badge:'badge-pull',exs:[
+        {name:'Pull-up',val:'EMOM 20 dk · 4 tekrar',note:''},
+        {name:'Weighted Pull-up',val:'3 × 3',note:'Hafif ağırlıkla.'},
+      ],tip:''},
+      {gun:'PER',name:'Push-up + Squat Yoğunluk',badge:'badge-push',exs:[
+        {name:'Push-up',val:'EMOM 20 dk · 10 tekrar',note:''},
+        {name:'Air Squat',val:'10 × 30',note:'30 sn ara.'},
+      ],tip:'10 × 30 = 300 squat. Murph sayısı. Bugün tamamla.'},
+      {gun:'CUM',name:'Partitioned Murph (Kısa)',badge:'badge-pull',exs:[
+        {name:'800m Koşu',val:'× 1',note:''},
+        {name:'10 × (5 Pull-up + 10 Push-up + 15 Squat)',val:'',note:''},
+        {name:'800m Koşu',val:'× 1',note:''},
+      ],tip:'Bu Murph\'ün %50\'si. <strong>Süreyi kaydet — hedef 20 dk altı.</strong>'},
+      {gun:'DİĞER',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Mobilite & Esneme',val:'15 dk',note:''}],tip:''},
+    ]
+  },
+  {
+    label:'HAFTA 6',title:'HAFTA 6',focus:'FULL BÖLÜMLÜ MURPH',
+    desc:'İlk kez tam Murph mesafesi ama partitioned (bölünmüş) formatla.',
+    gunler:[
+      {gun:'PAZ',name:'Partitioned Murph',badge:'badge-run',exs:[
+        {name:'1 mil Koşu',val:'× 1',note:''},
+        {name:'20 × (5 Pull-up + 10 Push-up + 15 Squat)',val:'',note:''},
+        {name:'1 mil Koşu',val:'× 1',note:''},
+      ],tip:'20 round × 5 pull-up = 100 pull-up. × 10 push-up = 200. × 15 squat = 300. <strong>Bu tam Murph sayıları — bölünmüş format.</strong>'},
+      {gun:'SAL',name:'Toparlanma Koşusu',badge:'badge-run',exs:[
+        {name:'800m Koşu',val:'× 3',note:'Rahat tempo. 90 sn ara.'},
+      ],tip:'Murph sonrası bacak ve kondisyon toparlanması.'},
+      {gun:'PER',name:'Üst Vücut',badge:'badge-pull',exs:[
+        {name:'Pull-up',val:'5 × max',note:'90 sn ara.'},
+        {name:'Push-up',val:'5 × max',note:'60 sn ara.'},
+      ],tip:''},
+      {gun:'CUM',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Tam Dinlenme',val:'',note:'Pazar için.'}],tip:''},
+      {gun:'DİĞER',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Mobilite & Esneme',val:'15 dk',note:''}],tip:''},
+    ]
+  },
+  {
+    label:'HAFTA 7',title:'HAFTA 7',focus:'ZAMAN TESTİ',
+    desc:'Partitioned Murph\'ü bu sefer daha hızlı yap. Yelekle deneme opsiyonel.',
+    gunler:[
+      {gun:'PAZ',name:'Hızlı Partitioned Murph',badge:'badge-run',exs:[
+        {name:'1 mil Koşu',val:'× 1',note:''},
+        {name:'20 × (5 Pull-up + 10 Push-up + 15 Squat)',val:'',note:''},
+        {name:'1 mil Koşu',val:'× 1',note:''},
+      ],tip:'6. hafta ile karşılaştır. <strong>Ne kadar hızlandın?</strong> Yelek giymek isteyenler için: 10 kg ile dene.'},
+      {gun:'SAL',name:'Koşu Tempo',badge:'badge-run',exs:[
+        {name:'1 mil Koşu',val:'× 2',note:'3 dk ara. Her ikisi de aynı tempoda mı?'},
+      ],tip:''},
+      {gun:'PER',name:'Üst Vücut Max',badge:'badge-pull',exs:[
+        {name:'Max Unbroken Pull-up',val:'× 1',note:'1. hafta ile karşılaştır.'},
+        {name:'Max Unbroken Push-up',val:'× 1',note:'1. hafta ile karşılaştır.'},
+      ],tip:'<strong>1. haftadan bu yana gelişimin burda görünür.</strong>'},
+      {gun:'CUM',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Tam Dinlenme + Mobilite',val:'',note:''}],tip:''},
+      {gun:'DİĞER',name:'Dinlenme',badge:'badge-rest',exs:[{name:'Mobilite & Esneme',val:'15 dk',note:''}],tip:''},
+    ]
+  },
+  {
+    label:'HAFTA 8',title:'HAFTA 8',focus:'MURPH GÜNÜ',
+    desc:'8 haftalık hazırlık bitti. Tam Murph — yelekli veya yeleksiz.',
+    gunler:[
+      {gun:'PAZ',name:'🏆 TAM MURPH',badge:'badge-run',exs:[
+        {name:'1 mil Koşu',val:'× 1',note:''},
+        {name:'100 × Pull-up',val:'',note:'Bölünebilir.'},
+        {name:'200 × Push-up',val:'',note:'Bölünebilir.'},
+        {name:'300 × Air Squat',val:'',note:'Bölünebilir.'},
+        {name:'1 mil Koşu',val:'× 1',note:''},
+      ],tip:'<strong>Süreyi kaydet. Bu an için 8 hafta çalıştın.</strong> Yelek giymek isteyenler: 10-20 kg.'},
+      {gun:'DİĞER',name:'Dinlenme',badge:'badge-rest',exs:[{name:'3-5 gün tam dinlenme',val:'',note:'Hak ettin.'}],tip:''},
+    ]
+  },
+];
+
+var murphWeekOpen={};
+
+function murphSetWeek(i){
+  murphActiveWeek=i;
+  document.querySelectorAll('.murph-week-tab').forEach(function(t,j){t.classList.toggle('on',j===i);});
+  renderMurphContent();
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
+function renderMurphContent(){
+  var cont=document.getElementById('murph-content');
+  if(!cont) return;
+  var w=MURPH_WEEKS[murphActiveWeek];
+  var html='<div class="murph-week-hdr">'+
+    '<div class="murph-week-title">'+w.title+'</div>'+
+    '<div class="murph-week-focus">'+w.focus+'</div>'+
+    '<div class="murph-week-desc">'+w.desc+'</div>'+
+  '</div>';
+  w.gunler.forEach(function(g){
+    html+='<div class="murph-day">'+
+      '<div class="murph-day-hdr">'+
+        '<div class="murph-day-lbl">'+g.gun+'</div>'+
+        '<div class="murph-day-name">'+g.name+'</div>'+
+        '<div class="murph-day-badge '+g.badge+'">'+g.badge.replace('badge-','').toUpperCase()+'</div>'+
+      '</div>'+
+      '<div class="murph-day-body">'+
+        '<div class="murph-ex-list">';
+    g.exs.forEach(function(ex){
+      html+='<div class="murph-ex">'+
+        '<div><div class="murph-ex-name">'+ex.name+'</div>'+(ex.note?'<div class="murph-ex-note">'+ex.note+'</div>':'')+'</div>'+
+        '<div class="murph-ex-val">'+ex.val+'</div>'+
+      '</div>';
+    });
+    html+='</div>';
+    if(g.tip) html+='<div class="murph-tip"><div class="murph-tip-text">'+g.tip+'</div></div>';
+    html+='</div></div>';
+  });
+  cont.innerHTML=html;
+}
+
+function renderMurphView(){
+  var v=document.getElementById('murph-view');
+  var html='<div class="murph-hero">'+
+    '<div class="murph-hero-eyebrow">8 Haftalık Hazırlık Programı</div>'+
+    '<div class="murph-hero-title">MURPH</div>'+
+    '<div class="murph-hero-sub">1 mil koşu · 100 pull-up · 200 push-up · 300 squat · 1 mil koşu. CrossFit\'in en ikonik hero WOD\'u. Bu program seni sıfırdan o noktaya götürür.</div>'+
+    '<div class="murph-hero-stats">'+
+      '<div class="murph-stat"><div class="murph-stat-val">8</div><div class="murph-stat-lbl">Hafta</div></div>'+
+      '<div class="murph-stat"><div class="murph-stat-val">4</div><div class="murph-stat-lbl">Gün/Hafta</div></div>'+
+      '<div class="murph-stat"><div class="murph-stat-val">800+</div><div class="murph-stat-lbl">Toplam Tekrar</div></div>'+
+    '</div>'+
+  '</div>';
+  html+='<div class="murph-week-tabs">';
+  MURPH_WEEKS.forEach(function(w,i){
+    html+='<button class="murph-week-tab'+(i===murphActiveWeek?' on':'')+'" onclick="murphSetWeek('+i+')">'+w.label+'</button>';
+  });
+  html+='</div><div class="murph-content" id="murph-content"></div>';
+  v.innerHTML=html;
+  renderMurphContent();
+}
+
+function setMurph(){
+  mode='murph';
+  document.getElementById('hdr-title').textContent='MURPH';
+  document.getElementById('hdr-target').textContent='8 HAFTALIK HAZIRLIK · 100 PULL-UP · 200 PUSH-UP · 300 SQUAT';
+  hideAll();
+  document.getElementById('murph-view').style.display='block';
+  renderMurphView();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
+/* ─── EMOM KÜTÜPHANESİ ─── */
+var emomActiveCat=0;
+var emomOpenItems={};
+
+const EMOM_CATS=[
+  {
+    label:'ÜST VÜCUT',desc:'Göğüs, sırt, omuz ve kollar için EMOM şablonları.',tag:'Push & Pull',
+    emoms:[
+      {name:'UPPER PUSH EMOM',dur:'10',durLbl:'dk',type:'3 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'8 × DB Push Press'},
+        {lbl:'DK 2',content:'10 × Push-up'},
+        {lbl:'DK 3',content:'12 × Lateral Raise'},
+      ],sure:'10 dk',zorluk:'Orta',kaslar:'Omuz · Triseps · Göğüs',note:'Üst vücut push kasları için tempolu yakma.'},
+      {name:'PRESS EMOM',dur:'12',durLbl:'dk',type:'Çift Dakika',minutes:[
+        {lbl:'TEK DK',content:'6 × Barbell Push Press (%70 1RM)'},
+        {lbl:'ÇİFT DK',content:'10 × DB Lateral Raise'},
+      ],sure:'12 dk',zorluk:'Orta-Ağır',kaslar:'Omuz · Triseps',note:'Push press gücü + omuz izolasyonu.'},
+      {name:'PULL EMOM',dur:'10',durLbl:'dk',type:'Çift Dakika',minutes:[
+        {lbl:'TEK DK',content:'6 × Barbell Row (%70 1RM)'},
+        {lbl:'ÇİFT DK',content:'10 × Cable Curl'},
+      ],sure:'10 dk',zorluk:'Orta',kaslar:'Sırt · Biseps',note:'Sırt kalınlığı + biseps pompa.'},
+      {name:'PULL-UP EMOM',dur:'15',durLbl:'dk',type:'Her Dakika',minutes:[
+        {lbl:'HER DK',content:'4 × Pull-up (strict)'},
+      ],sure:'15 dk',zorluk:'Orta',kaslar:'Lat · Biseps · Core',note:'60 toplam pull-up. Grease the groove.'},
+      {name:'ÜST VÜCUT KOMPLEKS EMOM',dur:'15',durLbl:'dk',type:'3 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'5 × Weighted Pull-up'},
+        {lbl:'DK 2',content:'8 × DB Bench Press'},
+        {lbl:'DK 3',content:'10 × Face Pull'},
+      ],sure:'15 dk',zorluk:'Ağır',kaslar:'Sırt · Göğüs · Arka Omuz',note:'Üst vücut tam denge EMOM\'u.'},
+      {name:'BİSEPS & TRİSEPS EMOM',dur:'12',durLbl:'dk',type:'Çift Dakika',minutes:[
+        {lbl:'TEK DK',content:'10 × Barbell Curl'},
+        {lbl:'ÇİFT DK',content:'10 × Overhead Triceps Extension'},
+      ],sure:'12 dk',zorluk:'Orta',kaslar:'Biseps · Triseps',note:'Kol izolasyon EMOM\'u. Pompa garantili.'},
+    ]
+  },
+  {
+    label:'ALT VÜCUT',desc:'Bacak, hamstring, glute ve core için EMOM şablonları.',tag:'Legs & Core',
+    emoms:[
+      {name:'SQUAT EMOM',dur:'10',durLbl:'dk',type:'Her Dakika',minutes:[
+        {lbl:'HER DK',content:'3 × Back Squat (%75 1RM)'},
+      ],sure:'10 dk',zorluk:'Ağır',kaslar:'Quad · Glute · Hamstring',note:'30 toplam squat yüksek yoğunlukta. Güç için ideal.'},
+      {name:'LEG DAY EMOM',dur:'15',durLbl:'dk',type:'3 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'10 × KB Goblet Squat (32 kg)'},
+        {lbl:'DK 2',content:'10 × Romanian DL (DB)'},
+        {lbl:'DK 3',content:'15 × Glute Bridge'},
+      ],sure:'15 dk',zorluk:'Orta',kaslar:'Quad · Hamstring · Glute',note:'Bacak tam izolasyon EMOM\'u.'},
+      {name:'CORE EMOM',dur:'12',durLbl:'dk',type:'3 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'10 × Hanging Leg Raise'},
+        {lbl:'DK 2',content:'10 × Ab Wheel Rollout'},
+        {lbl:'DK 3',content:'20 sn L-Sit Hold'},
+      ],sure:'12 dk',zorluk:'Orta-Ağır',kaslar:'Core · Hip Flexor',note:'Core güç dayanıklılığı.'},
+      {name:'POSTERİOR CHAİN EMOM',dur:'10',durLbl:'dk',type:'Çift Dakika',minutes:[
+        {lbl:'TEK DK',content:'8 × KB Swing (32 kg)'},
+        {lbl:'ÇİFT DK',content:'8 × Romanian DL (ağır)'},
+      ],sure:'10 dk',zorluk:'Orta',kaslar:'Hamstring · Glute · Lower Back',note:'Arka zincir odaklı.'},
+      {name:'DEADLİFT EMOM',dur:'10',durLbl:'dk',type:'Her Dakika',minutes:[
+        {lbl:'HER DK',content:'2 × Conventional Deadlift (%80 1RM)'},
+      ],sure:'10 dk',zorluk:'Çok Ağır',kaslar:'Hamstring · Glute · Sırt',note:'20 toplam yüksek yoğunluk deadlift. Güç odaklı.'},
+      {name:'CALF & CORE EMOM',dur:'10',durLbl:'dk',type:'Çift Dakika',minutes:[
+        {lbl:'TEK DK',content:'20 × Standing Calf Raise'},
+        {lbl:'ÇİFT DK',content:'15 × Sit-up'},
+      ],sure:'10 dk',zorluk:'Basit',kaslar:'Baldır · Core',note:'Hafif finisher EMOM\'u.'},
+    ]
+  },
+  {
+    label:'TAM VÜCUT',desc:'Tüm vücudu hedefleyen fullbody EMOM şablonları.',tag:'Fullbody',
+    emoms:[
+      {name:'MURPH PREP EMOM',dur:'20',durLbl:'dk',type:'4 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'5 × Pull-up'},
+        {lbl:'DK 2',content:'10 × Push-up'},
+        {lbl:'DK 3',content:'15 × Air Squat'},
+        {lbl:'DK 4',content:'Dinlenme'},
+      ],sure:'20 dk',zorluk:'Orta',kaslar:'Sırt · Göğüs · Bacak',note:'Cindy\'nin EMOM versiyonu. Murph hazırlığı için.'},
+      {name:'BARBELL COMPLEX EMOM',dur:'10',durLbl:'dk',type:'Çift Dakika',minutes:[
+        {lbl:'TEK DK',content:'3 × Deadlift (%75 1RM)'},
+        {lbl:'ÇİFT DK',content:'5 × Push Press (%65 1RM)'},
+      ],sure:'10 dk',zorluk:'Ağır',kaslar:'Hamstring · Glute · Omuz',note:'Güç + üst vücut kombinasyonu.'},
+      {name:'KB FULLBODY EMOM',dur:'20',durLbl:'dk',type:'4 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'10 × KB Swing (24 kg)'},
+        {lbl:'DK 2',content:'8 × KB Clean & Press (her kol)'},
+        {lbl:'DK 3',content:'10 × KB Goblet Squat'},
+        {lbl:'DK 4',content:'Dinlenme'},
+      ],sure:'20 dk',zorluk:'Orta-Ağır',kaslar:'Tam Vücut',note:'Kettlebell tam vücut EMOM\'u.'},
+      {name:'STRENGTH EMOM',dur:'15',durLbl:'dk',type:'3 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'3 × Back Squat (%80 1RM)'},
+        {lbl:'DK 2',content:'3 × Bench Press (%80 1RM)'},
+        {lbl:'DK 3',content:'3 × Deadlift (%80 1RM)'},
+      ],sure:'15 dk',zorluk:'Çok Ağır',kaslar:'Tam Vücut · Güç',note:'3 büyük lift yüksek yoğunlukta. Güç dayanıklılığı.'},
+      {name:'KONDISYON EMOM',dur:'20',durLbl:'dk',type:'5 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'10 × Burpee'},
+        {lbl:'DK 2',content:'15 × Wall Ball (9 kg)'},
+        {lbl:'DK 3',content:'12 × KB Swing'},
+        {lbl:'DK 4',content:'10 × Box Jump'},
+        {lbl:'DK 5',content:'Dinlenme'},
+      ],sure:'20 dk',zorluk:'Yüksek Yoğunluk',kaslar:'Tam Vücut · Kondisyon',note:'5 hareket dönüşümlü. Kondisyon kapasitesi.'},
+    ]
+  },
+  {
+    label:'GYMNASTİCS',desc:'Vücut ağırlığı ve gymnastics becerisi için EMOM şablonları.',tag:'Skill',
+    emoms:[
+      {name:'PULL-UP SKILL EMOM',dur:'15',durLbl:'dk',type:'3 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'5 × Strict Pull-up'},
+        {lbl:'DK 2',content:'3 × Kipping Pull-up teknik'},
+        {lbl:'DK 3',content:'30 sn Hollow Body Hold'},
+      ],sure:'15 dk',zorluk:'Orta',kaslar:'Lat · Core · Omuz',note:'Gymnastics skill geliştirme EMOM\'u.'},
+      {name:'HSPU EMOM',dur:'10',durLbl:'dk',type:'Her Dakika',minutes:[
+        {lbl:'HER DK',content:'3 × HSPU (veya Pike Push-up)'},
+      ],sure:'10 dk',zorluk:'Ağır',kaslar:'Omuz · Triseps',note:'30 toplam HSPU. Omuz dayanıklılığı.'},
+      {name:'CORE SKILL EMOM',dur:'12',durLbl:'dk',type:'3 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'10 × Toes-to-Bar'},
+        {lbl:'DK 2',content:'20 sn L-Sit Hold'},
+        {lbl:'DK 3',content:'10 × Ab Wheel'},
+      ],sure:'12 dk',zorluk:'Orta-Ağır',kaslar:'Core · Hip Flexor',note:'Core gymnastics kombinasyonu.'},
+      {name:'RING EMOM',dur:'10',durLbl:'dk',type:'Çift Dakika',minutes:[
+        {lbl:'TEK DK',content:'5 × Ring Row'},
+        {lbl:'ÇİFT DK',content:'5 × Ring Push-up'},
+      ],sure:'10 dk',zorluk:'Orta',kaslar:'Sırt · Göğüs · Core',note:'Ring stabilizasyon EMOM\'u.'},
+    ]
+  },
+  {
+    label:'KONDİSYON',desc:'Kardiyovasküler kapasite ve metabolik kondisyon için EMOM\'lar.',tag:'Cardio',
+    emoms:[
+      {name:'SPRINT EMOM',dur:'10',durLbl:'dk',type:'Her Dakika',minutes:[
+        {lbl:'HER DK',content:'200m Koşu (veya 15 Cal Row)'},
+      ],sure:'10 dk',zorluk:'Yüksek Yoğunluk',kaslar:'Kardio · Bacak',note:'Her dakika 200m. Kalan süre dinlenme. Tempo düşmemeli.'},
+      {name:'BURPEE EMOM',dur:'10',durLbl:'dk',type:'Her Dakika',minutes:[
+        {lbl:'HER DK',content:'10 × Burpee'},
+      ],sure:'10 dk',zorluk:'Yüksek Yoğunluk',kaslar:'Tam Vücut · Kardio',note:'100 toplam burpee. Son dakikalar çok zor.'},
+      {name:'THRUSTER EMOM',dur:'10',durLbl:'dk',type:'Çift Dakika',minutes:[
+        {lbl:'TEK DK',content:'6 × Thruster (42.5 kg)'},
+        {lbl:'ÇİFT DK',content:'Dinlenme'},
+      ],sure:'10 dk',zorluk:'Ağır',kaslar:'Omuz · Quad · Kardio',note:'FRAN benzeri yoğunluk. Nefes kontrolü kritik.'},
+      {name:'KB KONDISYON EMOM',dur:'15',durLbl:'dk',type:'3 Dakika Dönüşümlü',minutes:[
+        {lbl:'DK 1',content:'15 × KB Swing (24 kg)'},
+        {lbl:'DK 2',content:'10 × Box Jump'},
+        {lbl:'DK 3',content:'Dinlenme'},
+      ],sure:'15 dk',zorluk:'Orta-Ağır',kaslar:'Hamstring · Bacak · Kardio',note:'Kondisyon + patlayıcılık kombinasyonu.'},
+      {name:'DEATH BY WALL BALL',dur:'15',durLbl:'dk',type:'EMOM Ladder',minutes:[
+        {lbl:'DK 1',content:'2 × Wall Ball'},
+        {lbl:'DK 2',content:'4 × Wall Ball'},
+        {lbl:'DK 3+',content:'Her dk +2 tekrar — bitene kadar'},
+      ],sure:'~12 dk',zorluk:'Artan Yoğunluk',kaslar:'Bacak · Omuz · Kardio',note:'Kaç dakika gidebilirsin?'},
+    ]
+  },
+  {
+    label:'KISA (5 DK)',desc:'5 dakika veya altı kısa ama yakıcı EMOM\'lar.',tag:'Quick Burn',
+    emoms:[
+      {name:'TABATA PULL',dur:'4',durLbl:'dk',type:'Tabata (8×20/10)',minutes:[
+        {lbl:'20 SN',content:'Pull-up (max)'},
+        {lbl:'10 SN',content:'Dinlenme'},
+      ],sure:'4 dk',zorluk:'Yüksek Yoğunluk',kaslar:'Lat · Biseps',note:'8 round. En düşük round skorun puandır.'},
+      {name:'TABATA PUSH',dur:'4',durLbl:'dk',type:'Tabata (8×20/10)',minutes:[
+        {lbl:'20 SN',content:'Push-up (max)'},
+        {lbl:'10 SN',content:'Dinlenme'},
+      ],sure:'4 dk',zorluk:'Yüksek Yoğunluk',kaslar:'Göğüs · Triseps',note:'8 round. Son 2 tur çok zor.'},
+      {name:'TABATA SQUAT',dur:'4',durLbl:'dk',type:'Tabata (8×20/10)',minutes:[
+        {lbl:'20 SN',content:'Air Squat (max)'},
+        {lbl:'10 SN',content:'Dinlenme'},
+      ],sure:'4 dk',zorluk:'Orta',kaslar:'Quad · Glute',note:'Görünce kolay, son 2 turda bacaklar yanıyor.'},
+      {name:'TABATA THRUSTER',dur:'4',durLbl:'dk',type:'Tabata (8×20/10)',minutes:[
+        {lbl:'20 SN',content:'DB Thruster (2×10 kg)'},
+        {lbl:'10 SN',content:'Dinlenme'},
+      ],sure:'4 dk',zorluk:'Çok Yüksek',kaslar:'Tam Vücut',note:'CrossFit\'in en yakıcı 4 dakikası.'},
+      {name:'MINI CHIPPER EMOM',dur:'5',durLbl:'dk',type:'Her Dakika',minutes:[
+        {lbl:'DK 1',content:'10 × Push-up'},
+        {lbl:'DK 2',content:'10 × Air Squat'},
+        {lbl:'DK 3',content:'5 × Pull-up'},
+        {lbl:'DK 4',content:'10 × KB Swing'},
+        {lbl:'DK 5',content:'Dinlenme'},
+      ],sure:'5 dk',zorluk:'Orta',kaslar:'Tam Vücut',note:'5 dk\'da tam vücut. Antrenman başı veya sonu.'},
+    ]
+  },
+];
+
+function emomToggle(catIdx,emomIdx){
+  var key=catIdx+'-'+emomIdx;
+  emomOpenItems[key]=!emomOpenItems[key];
+  var detail=document.getElementById('emom-detail-'+key);
+  var arrow=document.getElementById('emom-arrow-'+key);
+  if(detail) detail.classList.toggle('open',!!emomOpenItems[key]);
+  if(arrow) arrow.classList.toggle('open',!!emomOpenItems[key]);
+}
+
+function emomSetCat(i){
+  emomActiveCat=i;
+  document.querySelectorAll('.emom-cat-tab').forEach(function(t,j){t.classList.toggle('on',j===i);});
+  renderEmomContent();
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
+function renderEmomContent(){
+  var cont=document.getElementById('emom-content');
+  if(!cont) return;
+  var cat=EMOM_CATS[emomActiveCat];
+  var html='<div class="emom-hero">'+
+    '<div class="emom-hero-title">'+cat.label+'</div>'+
+    '<div class="emom-hero-desc">'+cat.desc+'</div>'+
+    '<div class="emom-hero-tag">'+cat.tag+' · '+cat.emoms.length+' EMOM</div>'+
+  '</div><div class="emom-list">';
+  cat.emoms.forEach(function(e,ei){
+    var key=emomActiveCat+'-'+ei;
+    var open=!!emomOpenItems[key];
+    html+='<div class="emom-item">'+
+      '<div class="emom-item-hdr" onclick="emomToggle('+emomActiveCat+','+ei+')">'+
+        '<div class="emom-item-left">'+
+          '<div><div class="emom-item-dur">'+e.dur+'<div class="emom-item-dur-lbl">'+e.durLbl+'</div></div></div>'+
+          '<div><div class="emom-item-name">'+e.name+'</div><div class="emom-item-type">'+e.type+'</div></div>'+
+        '</div>'+
+        '<div class="emom-item-arrow'+(open?' open':'')+'" id="emom-arrow-'+key+'">↓</div>'+
+      '</div>'+
+      '<div class="emom-detail'+(open?' open':'')+'" id="emom-detail-'+key+'">'+
+        '<div class="emom-detail-inner">'+
+          '<div class="emom-minute-list">';
+    e.minutes.forEach(function(m){
+      html+='<div class="emom-minute"><div class="emom-minute-lbl">'+m.lbl+'</div><div class="emom-minute-content">'+m.content+'</div></div>';
+    });
+    html+='</div>'+
+      '<div class="emom-meta">'+
+        '<div class="emom-meta-item"><div class="emom-meta-lbl">Süre</div><div class="emom-meta-val">'+e.sure+'</div></div>'+
+        '<div class="emom-meta-item"><div class="emom-meta-lbl">Zorluk</div><div class="emom-meta-val">'+e.zorluk+'</div></div>'+
+        '<div class="emom-meta-item"><div class="emom-meta-lbl">Kaslar</div><div class="emom-meta-val" style="font-size:9px;">'+e.kaslar+'</div></div>'+
+      '</div>'+
+      '<div class="emom-note">'+e.note+'</div>'+
+    '</div></div></div>';
+  });
+  html+='</div>';
+  cont.innerHTML=html;
+}
+
+function renderEmomView(){
+  var v=document.getElementById('emom-view');
+  var html='<div class="emom-cat-tabs">';
+  EMOM_CATS.forEach(function(c,i){
+    html+='<button class="emom-cat-tab'+(i===emomActiveCat?' on':'')+'" onclick="emomSetCat('+i+')">'+c.label+'</button>';
+  });
+  html+='</div><div id="emom-content"></div>';
+  v.innerHTML=html;
+  renderEmomContent();
+}
+
+function setEmom(){
+  mode='emom';
+  document.getElementById('hdr-title').textContent='EMOM';
+  document.getElementById('hdr-target').textContent='KÜTÜPHANESİ · 50+ ŞABLON · KAS GRUBUNA GÖRE';
+  hideAll();
+  document.getElementById('emom-view').style.display='block';
+  renderEmomView();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
 // BAŞLANGIC
 setPPL();
+
+// SCROLL-AWARE HEADER COLLAPSE
+(function(){
+  var header=document.getElementById('header');
+  var scroll=document.getElementById('main-scroll');
+  if(!scroll||!header) return;
+  scroll.addEventListener('scroll',function(){
+    header.classList.toggle('collapsed', scroll.scrollTop > 60);
+  },{passive:true});
+})();
+
+function resetHeader(){
+  var h=document.getElementById('header');
+  if(h) h.classList.remove('collapsed');
+}
 </script>
 </body>
 </html>
