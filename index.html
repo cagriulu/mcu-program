@@ -11,81 +11,140 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 :root{
   --bg:#000;--fg:#fff;
-  --rim:rgba(255,255,255,0.15);
-  --rim2:rgba(255,255,255,0.07);
-  --muted:rgba(255,255,255,0.4);
-  --muted2:rgba(255,255,255,0.25);
+  --rim:rgba(255,255,255,0.18);
+  --rim2:rgba(255,255,255,0.08);
+  --muted:rgba(255,255,255,0.42);
+  --muted2:rgba(255,255,255,0.26);
   --safe-top:env(safe-area-inset-top,44px);
   --safe-bot:env(safe-area-inset-bottom,0px);
+  /* Spacing sistemi — 4px bazlı */
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  /* Tipografi */
+  --text-xs:7.5px;--text-sm:10px;--text-md:13px;--text-lg:15px;--text-xl:22px;--text-2xl:28px;--text-hero:58px;
+  /* Geçiş */
+  --ease:.15s cubic-bezier(.4,0,.2,1);
 }
 html[data-theme="light"]{
-  --bg:#fff;--fg:#000;
-  --rim:rgba(0,0,0,0.15);
+  --bg:#fafafa;--fg:#0a0a0a;
+  --rim:rgba(0,0,0,0.14);
   --rim2:rgba(0,0,0,0.06);
-  --muted:rgba(0,0,0,0.4);
-  --muted2:rgba(0,0,0,0.2);
+  --muted:rgba(0,0,0,0.42);
+  --muted2:rgba(0,0,0,0.22);
 }
-html,body{height:100%;background:var(--bg);color:var(--fg);font-family:'Inter Tight',sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s;}
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.05;pointer-events:none;z-index:9999;}
+html,body{height:100%;background:var(--bg);color:var(--fg);font-family:'Inter Tight',sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background .2s,color .2s;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.04;pointer-events:none;z-index:9999;}
+
+/* ODAK HALKASI — accessibility */
+:focus-visible{outline:2px solid var(--fg);outline-offset:2px;}
+button:focus-visible,a:focus-visible{outline:2px solid var(--fg);outline-offset:2px;}
+
+/* AKTİF DURUM — fiziksel geri bildirim */
+button:active,
+.nav-tab:active,
+.r-card:active,
+.emom-item:active,
+.wod100-item:active,
+.rakip-wod-item:active,
+.gen-opt:active,
+.murph-day:active{
+  transform:scale(0.98);
+  transition:transform .08s cubic-bezier(.4,0,.2,1);
+}
+
 .app{display:flex;flex-direction:column;height:100dvh;max-width:430px;margin:0 auto;}
 .sb{height:var(--safe-top);flex-shrink:0;}
 .header{flex-shrink:0;border-bottom:1px solid var(--rim);}
 .header-identity{display:flex;align-items:stretch;justify-content:space-between;padding:0;border-bottom:1px solid var(--rim);}
-.header-logo{padding:14px 16px;display:flex;flex-direction:column;gap:3px;}
+.header-logo{padding:var(--sp-3) var(--sp-4);display:flex;flex-direction:column;gap:4px;}
+.athlete-icon-btn{background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity var(--ease);}
+.athlete-icon-btn:active{opacity:.5;}
+.mcu-badge{width:38px;height:38px;border:1.5px solid var(--fg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;opacity:.75;}
+.mcu-badge-text{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--fg);line-height:1;}
+.mcu-badge-sub{font-size:5px;font-weight:700;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;}
 .logo-name{font-size:20px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1;color:var(--fg);}
 .logo-name span{font-weight:400;opacity:.45;}
-.logo-sub{font-size:7px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);}
+.logo-sub{font-size:var(--text-xs);font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);}
 .header-controls{display:flex;align-items:center;gap:0;border-left:1px solid var(--rim);}
-.header-year{padding:0 14px;font-size:9px;font-weight:400;letter-spacing:.1em;color:var(--muted);border-right:1px solid var(--rim);}
-.theme-toggle{cursor:pointer;padding:0 14px;height:100%;display:flex;align-items:center;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:none;background:none;font-family:'Inter Tight',sans-serif;transition:color .15s;}
+.header-year{padding:0 var(--sp-4);font-size:9px;font-weight:400;letter-spacing:.1em;color:var(--muted);border-right:1px solid var(--rim);}
+/* Dokunma hedefi: minimum 44px */
+.theme-toggle{cursor:pointer;padding:0 var(--sp-4);height:44px;min-width:44px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:none;background:none;font-family:'Inter Tight',sans-serif;transition:color var(--ease);}
 .theme-toggle:hover{color:var(--fg);}
-.header-session{padding:20px 16px 0;display:flex;flex-direction:column;gap:0;transition:padding .25s ease,opacity .25s ease;}
-.session-label{font-size:7.5px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;opacity:.5;transition:all .25s ease;}
-.session-title{font-size:58px;font-weight:800;letter-spacing:-.03em;line-height:.88;text-transform:uppercase;color:var(--fg);margin-bottom:14px;transition:font-size .25s ease,margin .25s ease,line-height .25s ease;}
+.header-session{padding:var(--sp-5) var(--sp-4) 0;display:flex;flex-direction:column;gap:0;transition:padding .25s ease,opacity .25s ease;}
+.session-label{font-size:var(--text-xs);font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--sp-2);opacity:.5;transition:all .25s ease;}
+.session-title{font-size:var(--text-hero);font-weight:800;letter-spacing:-.03em;line-height:.88;text-transform:uppercase;color:var(--fg);margin-bottom:var(--sp-4);transition:font-size .25s ease,margin .25s ease,line-height .25s ease;}
 .session-title em{font-style:normal;font-weight:400;letter-spacing:.0em;color:var(--fg);opacity:.35;}
-.session-target{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--rim);transition:all .25s ease;overflow:hidden;}
+.session-target{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) 0;border-top:1px solid var(--rim);transition:all .25s ease;overflow:hidden;}
 .target-dot{width:3px;height:3px;border-radius:50%;background:var(--fg);opacity:.25;flex-shrink:0;}
-.target-text{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);opacity:.45;}
+.target-text{font-size:var(--text-xs);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);opacity:.45;}
 
 /* COLLAPSED HEADER STATE */
-.header.collapsed .header-session{padding:6px 16px 0;}
+.header.collapsed .header-session{padding:6px var(--sp-4) 0;}
 .header.collapsed .session-label{display:none;}
 .header.collapsed .session-title{font-size:18px;margin-bottom:4px;line-height:1;}
 .header.collapsed .session-target{padding:4px 0;max-height:20px;}
 .header.collapsed .target-text{font-size:7px;}
-.nav{flex-shrink:0;display:flex;overflow-x:auto;border-bottom:1px solid var(--rim);scrollbar-width:none;background:var(--bg);}
+
+/* NAV SEKMELER — min 44px dokunma hedefi */
+.nav{flex-shrink:0;display:flex;overflow-x:auto;border-bottom:1px solid var(--rim);scrollbar-width:none;background:var(--bg);position:relative;height:48px;}
 .nav::-webkit-scrollbar{display:none;}
-.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 6px;gap:3px;cursor:pointer;position:relative;border-right:1px solid var(--rim);transition:background .12s;}
+.nav::after{content:'';position:absolute;right:0;top:0;bottom:0;width:24px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none;}
+.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-2) var(--sp-2);height:48px;gap:2px;cursor:pointer;position:relative;border-right:1px solid var(--rim);transition:background var(--ease);}
 .nav-tab:last-child{border-right:none;}
 .nav-tab-num{font-size:7px;font-weight:400;letter-spacing:.06em;color:var(--muted);opacity:.35;line-height:1;font-family:'Inter Tight',sans-serif;}
-.nav-tab-lbl{font-size:7.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);line-height:1;white-space:nowrap;font-family:'Inter Tight',sans-serif;}
+.nav-tab-lbl{font-size:var(--text-xs);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);line-height:1;white-space:nowrap;font-family:'Inter Tight',sans-serif;}
 .nav-tab.on{background:var(--fg);}
 .nav-tab.on .nav-tab-num{color:var(--bg);opacity:.35;}
 .nav-tab.on .nav-tab-lbl{color:var(--bg);}
+
+/* ANA NAV — min 44px */
+.main-nav{flex-shrink:0;display:flex;border-bottom:1px solid var(--rim);background:var(--bg);}
+.main-nav-btn{flex:1;padding:var(--sp-3) 2px;min-height:44px;font-size:7.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;transition:all var(--ease);white-space:nowrap;line-height:1.2;}
+.main-nav-btn:last-child{border-right:none;}
+.main-nav-btn.on{background:var(--fg);color:var(--bg);}
+
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
 .scroll::-webkit-scrollbar{display:none;}
-.day-view{padding:0 16px 100px;}
-.block{margin-top:20px;}
-.block-hdr{display:grid;grid-template-columns:1fr auto auto auto;background:var(--fg);padding:0 8px;}
-.bh-title{padding:7px 0;font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);}
-.bh-col{padding:7px 0 7px 12px;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);opacity:.5;text-align:right;min-width:42px;}
-.ex-row{display:grid;grid-template-columns:1fr auto auto auto;padding:10px 0;border-bottom:1px solid var(--rim2);align-items:start;}
+
+/* PR ŞERİDİ */
+
+
+
+/* PR BÖLÜMÜ — gün sonu */
+.pr-section{margin-top:24px;margin-bottom:0;}
+.pr-section-hdr{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);margin-bottom:0;}
+.pr-section-title{font-size:8px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.pr-row-list{display:flex;flex-direction:column;}
+.pr-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--rim2);}
+.pr-row:last-child{border-bottom:none;}
+.pr-row-name{font-size:13px;font-weight:600;color:var(--fg);}
+.pr-row-right{display:flex;align-items:baseline;gap:6px;}
+.pr-row-val{font-size:20px;font-weight:900;letter-spacing:-.02em;color:var(--fg);}
+.pr-row-unit{font-size:9px;font-weight:500;color:var(--muted);letter-spacing:.06em;}
+
+/* GÜN GÖRÜNÜMü */
+.day-view{padding:0 var(--sp-4) 100px;}
+.block{margin-top:var(--sp-5);}
+.block-hdr{display:grid;grid-template-columns:1fr auto auto auto;background:var(--fg);padding:0 var(--sp-2);}
+.bh-title{padding:var(--sp-2) 0;font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);}
+.bh-col{padding:var(--sp-2) 0 var(--sp-2) var(--sp-3);font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);opacity:.5;text-align:right;min-width:42px;}
+.ex-row{display:grid;grid-template-columns:1fr auto auto auto;padding:var(--sp-3) 0;border-bottom:1px solid var(--rim2);align-items:start;}
 .ex-row:last-child{border-bottom:none;}
 .ex-num{font-size:8px;font-weight:400;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;opacity:.5;}
-.ex-name{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.2;}
+.ex-name{font-size:var(--text-lg);font-weight:700;letter-spacing:-.01em;line-height:1.2;}
 .warmup-pills{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;}
-.wp{font-size:7.5px;font-weight:500;letter-spacing:.08em;padding:2px 7px;border:1px solid var(--rim);color:var(--muted2);text-transform:uppercase;}
-.ex-val{font-size:12px;font-weight:700;text-align:right;padding-left:12px;min-width:42px;padding-top:14px;}
+.wp{font-size:var(--text-xs);font-weight:500;letter-spacing:.08em;padding:3px 8px;border:1px solid var(--rim);color:var(--muted2);text-transform:uppercase;}
+.ex-val{font-size:var(--text-md);font-weight:700;text-align:right;padding-left:var(--sp-3);min-width:42px;padding-top:14px;}
 .ex-val.muted{color:var(--muted);font-weight:400;}
 .block-sep{display:none;}
+
 .mcu-logo{position:fixed;bottom:calc(var(--safe-bot) + 16px);left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;z-index:100;}
 .mcu-main{font-size:20px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);line-height:1;opacity:.12;}
 .mcu-year{font-size:8px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--fg);opacity:.08;margin-top:2px;}
-.arsiv-btn{display:block;margin-top:6px;font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);opacity:.25;background:transparent;border:1px solid var(--rim);cursor:pointer;font-family:'Inter Tight',sans-serif;pointer-events:all;transition:opacity .15s;padding:4px 12px;}
+.arsiv-btn{display:block;margin-top:6px;font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);opacity:.25;background:transparent;border:1px solid var(--rim);cursor:pointer;font-family:'Inter Tight',sans-serif;pointer-events:all;transition:opacity var(--ease);padding:4px var(--sp-3);}
 .arsiv-btn:active{opacity:.7;}
 
 /* TARİF BARI */
-.recipe-bar{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--rim);cursor:pointer;transition:background .12s;}
+.recipe-bar{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:var(--sp-3) var(--sp-4);min-height:44px;border-bottom:1px solid var(--rim);cursor:pointer;transition:background var(--ease);}
 .recipe-bar:hover{background:var(--rim2);}
 .recipe-bar.on{background:var(--fg);}
 .recipe-bar.on .rb-label{color:var(--bg);}
@@ -94,37 +153,38 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .rb-count{font-size:8px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.5;}
 
 /* TARİFLER */
-.recipe-view{padding:0 16px 100px;}
-.recipe-filter-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:16px 0 12px;}
+.recipe-view{padding:0 var(--sp-4) 100px;}
+.recipe-filter-row{display:flex;gap:var(--sp-2);overflow-x:auto;scrollbar-width:none;padding:var(--sp-4) 0 var(--sp-3);position:relative;}
 .recipe-filter-row::-webkit-scrollbar{display:none;}
-.rf-btn{flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--rim);background:transparent;color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;transition:all .12s;}
+.recipe-filter-row::after{content:'';position:absolute;right:0;top:0;bottom:0;width:20px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none;}
+.rf-btn{flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:var(--sp-2) var(--sp-3);min-height:32px;border:1px solid var(--rim);background:transparent;color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;transition:all var(--ease);}
 .rf-btn.on{background:var(--fg);color:var(--bg);border-color:var(--fg);}
-.recipe-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.r-card{background:var(--bg);border:1px solid var(--rim);padding:12px;cursor:pointer;transition:border-color .12s;}
+.recipe-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);}
+.r-card{background:var(--bg);border:1px solid var(--rim);padding:var(--sp-3);cursor:pointer;transition:border-color var(--ease),transform var(--ease);}
 .r-card:hover{border-color:var(--muted);}
-.r-card-emoji{font-size:20px;margin-bottom:8px;}
-.r-card-name{font-size:12px;font-weight:700;letter-spacing:-.01em;line-height:1.2;margin-bottom:8px;color:var(--fg);}
+.r-card-emoji{font-size:20px;margin-bottom:var(--sp-2);}
+.r-card-name{font-size:var(--text-md);font-weight:700;letter-spacing:-.01em;line-height:1.3;margin-bottom:var(--sp-2);color:var(--fg);}
 .r-card-pills{display:flex;flex-wrap:wrap;gap:4px;}
-.r-pill{font-size:7px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--rim);color:var(--muted);}
+.r-pill{font-size:7px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 6px;border:1px solid var(--rim);color:var(--muted);}
 .r-pill.protein{border-color:var(--fg);color:var(--fg);}
-.recipe-detail{padding:0 16px 100px;}
-.rd-back{display:flex;align-items:center;gap:8px;padding:16px 0 20px;cursor:pointer;border-bottom:1px solid var(--rim);margin-bottom:20px;}
+.recipe-detail{padding:0 var(--sp-4) 100px;}
+.rd-back{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-4) 0 var(--sp-5);min-height:44px;cursor:pointer;border-bottom:1px solid var(--rim);margin-bottom:var(--sp-5);}
 .rd-back-arrow{font-size:14px;font-weight:300;color:var(--muted);}
-.rd-back-lbl{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
-.rd-emoji{font-size:40px;margin-bottom:12px;}
-.rd-name{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1;margin-bottom:12px;color:var(--fg);}
-.rd-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--rim);}
-.rd-pill{font-size:7.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rim);color:var(--muted);}
+.rd-back-lbl{font-size:var(--text-xs);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.rd-emoji{font-size:40px;margin-bottom:var(--sp-3);}
+.rd-name{font-size:var(--text-2xl);font-weight:800;letter-spacing:-.02em;line-height:1;margin-bottom:var(--sp-3);color:var(--fg);}
+.rd-meta{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin-bottom:var(--sp-5);padding-bottom:var(--sp-5);border-bottom:1px solid var(--rim);}
+.rd-pill{font-size:var(--text-xs);font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px var(--sp-3);border:1px solid var(--rim);color:var(--muted);}
 .rd-pill.protein{border-color:var(--fg);color:var(--fg);}
-.rd-section{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;background:var(--fg);color:var(--bg);padding:5px 8px;margin-bottom:12px;}
-.rd-ing-list{list-style:none;padding:0;margin:0 0 20px;}
-.rd-ing-list li{font-size:13px;font-weight:400;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--rim2);display:flex;align-items:center;gap:8px;}
+.rd-section{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;background:var(--fg);color:var(--bg);padding:5px var(--sp-2);margin-bottom:var(--sp-3);}
+.rd-ing-list{list-style:none;padding:0;margin:0 0 var(--sp-5);}
+.rd-ing-list li{font-size:var(--text-md);font-weight:400;color:var(--muted);padding:var(--sp-2) 0;border-bottom:1px solid var(--rim2);display:flex;align-items:center;gap:var(--sp-2);}
 .rd-ing-list li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--muted);flex-shrink:0;}
-.rd-steps-list{list-style:none;padding:0;margin:0 0 20px;}
-.rd-step{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--rim2);}
+.rd-steps-list{list-style:none;padding:0;margin:0 0 var(--sp-5);}
+.rd-step{display:flex;gap:var(--sp-3);padding:var(--sp-3) 0;border-bottom:1px solid var(--rim2);}
 .rd-step:last-child{border-bottom:none;}
-.rd-step-num{font-size:9px;font-weight:800;color:var(--bg);background:var(--fg);width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-.rd-step-text{font-size:13px;font-weight:400;color:var(--muted);line-height:1.6;}
+.rd-step-num{font-size:9px;font-weight:800;color:var(--bg);background:var(--fg);width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.rd-step-text{font-size:var(--text-md);font-weight:400;color:var(--muted);line-height:1.65;}
 
 /* TAKVİM */
 .takvim-view{padding:0 16px 100px;}
@@ -448,7 +508,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* EMOM FORMAT BAR */
 .emom-format-bar{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:2px solid var(--rim);}
-.emom-format-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;background:transparent;border:none;border-right:1px solid var(--rim);cursor:pointer;font-family:'Inter Tight',sans-serif;transition:all .15s;gap:3px;}
+.emom-format-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;min-height:52px;background:transparent;border:none;border-right:1px solid var(--rim);cursor:pointer;font-family:'Inter Tight',sans-serif;transition:all var(--ease);gap:3px;}
 .emom-format-btn:last-child{border-right:none;}
 .emom-format-btn.on{background:var(--fg);}
 .emom-format-lbl{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .15s;}
@@ -458,7 +518,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* EMOM KÜTÜPHANESİ */
 .emom-view{padding:0 0 100px;}
-.emom-cat-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--rim);}
+.emom-cat-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--rim);position:relative;}
+.emom-cat-tabs::-webkit-scrollbar{display:none;}
+.emom-cat-tabs::after{content:'';position:absolute;right:0;top:0;bottom:0;width:28px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none;z-index:1;}
 .emom-cat-tabs::-webkit-scrollbar{display:none;}
 .emom-cat-tab{flex-shrink:0;padding:11px 16px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;white-space:nowrap;transition:all .12s;}
 .emom-cat-tab.on{background:var(--fg);color:var(--bg);}
@@ -468,7 +530,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .emom-hero-tag{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:3px 10px;margin-top:8px;}
 .emom-list{display:flex;flex-direction:column;}
 .emom-item{border-bottom:1px solid var(--rim2);cursor:pointer;}
-.emom-item-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;}
+.emom-item-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;min-height:52px;}
 .emom-item-left{display:flex;align-items:center;gap:14px;}
 .emom-item-dur{font-size:20px;font-weight:900;color:var(--fg);min-width:40px;line-height:1;}
 .emom-item-dur-lbl{font-size:7px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
@@ -499,7 +561,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .wod100-list{display:flex;flex-direction:column;}
 .wod100-item{border-bottom:1px solid var(--rim2);cursor:pointer;transition:background .1s;}
 .wod100-item:active{background:var(--rim2);}
-.wod100-item-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;}
+.wod100-item-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;min-height:56px;}
 .wod100-item-left{display:flex;align-items:center;gap:12px;}
 .wod100-item-num{font-size:9px;font-weight:400;color:var(--muted);min-width:22px;letter-spacing:.05em;}
 .wod100-item-name{font-size:14px;font-weight:700;color:var(--fg);letter-spacing:-.01em;}
@@ -521,6 +583,146 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .wod100-cat-hero-title{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--fg);margin-bottom:3px;}
 .wod100-cat-hero-desc{font-size:11px;color:var(--muted);line-height:1.6;}
 .wod100-cat-hero-count{font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:3px 10px;margin-top:8px;}
+
+/* ATHLETe PROFİL */
+.athlete-view{padding:0 0 100px;}
+.athlete-back{display:flex;align-items:center;gap:8px;padding:14px 16px;min-height:44px;cursor:pointer;border-bottom:1px solid var(--rim);background:var(--bg);}
+.athlete-back-arrow{font-size:14px;color:var(--muted);}
+.athlete-back-lbl{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.athlete-cover{padding:28px 16px 24px;border-bottom:1px solid var(--rim);}
+.athlete-cover-eyebrow{font-size:7px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.athlete-cover-name{font-size:36px;font-weight:900;letter-spacing:-.03em;line-height:.92;color:var(--fg);margin-bottom:14px;}
+.athlete-cover-name span{display:block;font-weight:300;opacity:.4;}
+.athlete-cover-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.athlete-cover-tag{font-size:7px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border:1px solid var(--rim);color:var(--muted);}
+.athlete-cover-tag.hl{background:var(--fg);color:var(--bg);border-color:var(--fg);}
+.athlete-cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border:1px solid var(--rim);overflow:hidden;}
+.athlete-cover-stat{padding:10px 6px;text-align:center;border-right:1px solid var(--rim);}
+.athlete-cover-stat:last-child{border-right:none;}
+.athlete-cover-stat-val{font-size:17px;font-weight:900;color:var(--fg);line-height:1;}
+.athlete-cover-stat-lbl{font-size:6px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.bio-section{padding:24px 16px 0;}
+.bio-section-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--rim);}
+.bio-section-num{font-size:9px;font-weight:400;color:var(--muted);opacity:.4;letter-spacing:.1em;}
+.bio-section-title{font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);}
+.bio-metric{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--rim2);}
+.bio-metric:last-child{border-bottom:none;}
+.bio-metric-left{display:flex;flex-direction:column;gap:3px;flex:1;padding-right:12px;}
+.bio-metric-name{font-size:12px;font-weight:600;color:var(--fg);}
+.bio-metric-desc{font-size:9px;color:var(--muted);line-height:1.6;}
+.bio-metric-right{text-align:right;flex-shrink:0;}
+.bio-metric-val{font-size:18px;font-weight:900;color:var(--fg);letter-spacing:-.02em;line-height:1;}
+.bio-metric-unit{font-size:8px;font-weight:400;color:var(--muted);margin-top:2px;}
+.bio-bar-row{margin-bottom:14px;}
+.bio-bar-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+.bio-bar-name{font-size:11px;font-weight:600;color:var(--fg);}
+.bio-bar-val{font-size:13px;font-weight:900;color:var(--fg);}
+.bio-bar-track{height:2px;background:var(--rim);overflow:hidden;}
+.bio-bar-fill{height:100%;background:var(--fg);}
+.bio-pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.bio-pr-card{border:1px solid var(--rim);padding:14px 12px;}
+.bio-pr-card-lbl{font-size:7px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.bio-pr-card-main{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:2px;}
+.bio-pr-card-sub{font-size:9px;color:var(--muted);}
+.bio-pr-card-target{font-size:8px;font-weight:700;color:var(--fg);opacity:.35;margin-top:8px;padding-top:8px;border-top:1px solid var(--rim2);}
+.bio-analysis{border:1px solid var(--rim);padding:14px;margin-bottom:8px;}
+.bio-analysis-hdr{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.bio-analysis-body{font-size:12px;color:var(--fg);line-height:1.8;}
+.bio-analysis.hl{background:var(--fg);}
+.bio-analysis.hl .bio-analysis-hdr{color:var(--bg);opacity:.5;}
+.bio-analysis.hl .bio-analysis-body{color:var(--bg);}
+.bio-timeline-item{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--rim2);}
+.bio-timeline-item:last-child{border-bottom:none;}
+.bio-timeline-dot{width:8px;height:8px;border:1.5px solid var(--fg);margin-top:3px;flex-shrink:0;}
+.bio-timeline-dot.on{background:var(--fg);}
+.bio-timeline-content{flex:1;}
+.bio-timeline-title{font-size:12px;font-weight:700;color:var(--fg);margin-bottom:3px;}
+.bio-timeline-desc{font-size:10px;color:var(--muted);line-height:1.6;}
+.athlete-cover{padding:28px 16px 24px;border-bottom:1px solid var(--rim);}
+.athlete-cover-eyebrow{font-size:7px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.athlete-cover-name{font-size:36px;font-weight:900;letter-spacing:-.03em;line-height:.92;color:var(--fg);margin-bottom:14px;}
+.athlete-cover-name span{display:block;font-weight:300;opacity:.4;}
+.athlete-cover-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.athlete-cover-tag{font-size:7px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border:1px solid var(--rim);color:var(--muted);}
+.athlete-cover-tag.hl{background:var(--fg);color:var(--bg);border-color:var(--fg);}
+.athlete-cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border:1px solid var(--rim);overflow:hidden;}
+.athlete-cover-stat{padding:10px 6px;text-align:center;border-right:1px solid var(--rim);}
+.athlete-cover-stat:last-child{border-right:none;}
+.athlete-cover-stat-val{font-size:17px;font-weight:900;color:var(--fg);line-height:1;}
+.athlete-cover-stat-lbl{font-size:6px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.bio-section{padding:24px 16px 0;}
+.bio-section-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--rim);}
+.bio-section-num{font-size:9px;font-weight:400;color:var(--muted);opacity:.4;letter-spacing:.1em;}
+.bio-section-title{font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--fg);}
+.bio-metric{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--rim2);}
+.bio-metric:last-child{border-bottom:none;}
+.bio-metric-left{display:flex;flex-direction:column;gap:3px;flex:1;padding-right:12px;}
+.bio-metric-name{font-size:12px;font-weight:600;color:var(--fg);}
+.bio-metric-desc{font-size:9px;color:var(--muted);line-height:1.6;}
+.bio-metric-right{text-align:right;flex-shrink:0;}
+.bio-metric-val{font-size:18px;font-weight:900;color:var(--fg);letter-spacing:-.02em;line-height:1;}
+.bio-metric-unit{font-size:8px;font-weight:400;color:var(--muted);margin-top:2px;}
+.bio-bar-row{margin-bottom:14px;}
+.bio-bar-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+.bio-bar-name{font-size:11px;font-weight:600;color:var(--fg);}
+.bio-bar-val{font-size:13px;font-weight:900;color:var(--fg);}
+.bio-bar-track{height:2px;background:var(--rim);overflow:hidden;}
+.bio-bar-fill{height:100%;background:var(--fg);}
+.bio-pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.bio-pr-card{border:1px solid var(--rim);padding:14px 12px;}
+.bio-pr-card-lbl{font-size:7px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.bio-pr-card-main{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:2px;}
+.bio-pr-card-sub{font-size:9px;color:var(--muted);}
+.bio-pr-card-target{font-size:8px;font-weight:700;color:var(--fg);opacity:.35;margin-top:8px;padding-top:8px;border-top:1px solid var(--rim2);}
+.bio-analysis{border:1px solid var(--rim);padding:14px;margin-bottom:8px;}
+.bio-analysis-hdr{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.bio-analysis-body{font-size:12px;color:var(--fg);line-height:1.8;}
+.bio-analysis.hl{background:var(--fg);}
+.bio-analysis.hl .bio-analysis-hdr{color:var(--bg);opacity:.5;}
+.bio-analysis.hl .bio-analysis-body{color:var(--bg);}
+.bio-timeline-item{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--rim2);}
+.bio-timeline-item:last-child{border-bottom:none;}
+.bio-timeline-dot{width:8px;height:8px;border:1.5px solid var(--fg);margin-top:3px;flex-shrink:0;}
+.bio-timeline-dot.on{background:var(--fg);}
+.bio-timeline-content{flex:1;}
+.bio-timeline-title{font-size:12px;font-weight:700;color:var(--fg);margin-bottom:3px;}
+.bio-timeline-desc{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* BESLENMEview */
+.beslenme-view{padding:0 0 100px;}
+.beslenme-cat-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--rim);}
+.beslenme-cat-tabs::-webkit-scrollbar{display:none;}
+.beslenme-cat-tab{flex:1;padding:11px 8px;min-height:44px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;white-space:nowrap;transition:all var(--ease);}
+.beslenme-cat-tab:last-child{border-right:none;}
+.beslenme-cat-tab.on{background:var(--fg);color:var(--bg);}
+
+.beslenme-hero{padding:20px 16px 16px;background:var(--rim2);border-bottom:1px solid var(--rim);}
+.beslenme-hero-title{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:6px;}
+.beslenme-hero-sub{font-size:10px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.beslenme-hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--rim);overflow:hidden;}
+.beslenme-hero-stat{padding:10px 8px;text-align:center;border-right:1px solid var(--rim);}
+.beslenme-hero-stat:last-child{border-right:none;}
+.beslenme-hero-stat-val{font-size:18px;font-weight:900;color:var(--fg);line-height:1;}
+.beslenme-hero-stat-lbl{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.beslenme-ogün{margin-bottom:0;border-bottom:1px solid var(--rim);}
+.beslenme-ogün-hdr{padding:14px 16px;background:var(--fg);display:flex;align-items:center;justify-content:space-between;}
+.beslenme-ogün-title{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);}
+.beslenme-ogün-meta{font-size:8px;color:var(--bg);opacity:.45;letter-spacing:.06em;}
+.beslenme-card{padding:16px;}
+.beslenme-card-name{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--fg);margin-bottom:4px;line-height:1.1;}
+.beslenme-card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.beslenme-tag{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rim);color:var(--muted);}
+.beslenme-tag.protein{border-color:var(--fg);color:var(--fg);}
+.beslenme-ing{font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--rim2);}
+.beslenme-steps{font-size:12px;color:var(--fg);line-height:1.8;}
+.beslenme-step{display:flex;gap:10px;margin-bottom:6px;}
+.beslenme-step-num{font-size:9px;font-weight:800;color:var(--bg);background:var(--fg);width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.beslenme-step-text{font-size:11px;color:var(--muted);line-height:1.6;}
+.beslenme-degistir{width:100%;padding:13px 16px;background:transparent;border:none;border-top:1px solid var(--rim);font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all var(--ease);}
+.beslenme-degistir:active{background:var(--rim2);}
+.beslenme-degistir-icon{font-size:14px;}
+.beslenme-degistir-icon.spin{animation:bSpin .35s linear;}
+@keyframes bSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
 /* RAKİP MODU */
 .rakip-view{padding:0 0 100px;}
@@ -678,13 +880,13 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .gen-param-group{margin-bottom:16px;}
 .gen-param-lbl{font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:3px 10px;margin-bottom:10px;}
 .gen-param-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.gen-opt{padding:10px 12px;border:1px solid var(--rim);cursor:pointer;transition:all .12s;background:var(--bg);}
+.gen-opt{padding:10px 12px;min-height:44px;border:1px solid var(--rim);cursor:pointer;transition:all var(--ease);background:var(--bg);}
 .gen-opt.on{background:var(--fg);border-color:var(--fg);}
 .gen-opt-lbl{font-size:11px;font-weight:700;color:var(--fg);transition:color .12s;}
 .gen-opt.on .gen-opt-lbl{color:var(--bg);}
 .gen-opt-desc{font-size:9px;color:var(--muted);margin-top:2px;transition:color .12s;}
 .gen-opt.on .gen-opt-desc{color:var(--bg);opacity:.6;}
-.gen-btn{width:100%;padding:16px;background:var(--fg);border:none;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);cursor:pointer;transition:opacity .15s;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.gen-btn{width:100%;padding:16px;min-height:52px;background:var(--fg);border:none;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);cursor:pointer;transition:opacity var(--ease);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;}
 .gen-btn:active{opacity:.7;}
 .gen-btn-icon{font-size:18px;}
 .gen-btn-icon.spin{animation:genSpin .4s linear;}
@@ -703,7 +905,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .gen-result-tip{font-size:10px;color:var(--muted);line-height:1.7;border-left:2px solid var(--rim);padding-left:10px;}
 .gen-again{width:100%;padding:13px;background:transparent;border:1px solid var(--rim);font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);cursor:pointer;margin-top:10px;transition:all .12s;}
 .gen-again:active{background:var(--rim2);}
-.gen-empty{padding:40px 16px;text-align:center;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;line-height:2;}
+.gen-empty{padding:48px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.gen-empty-icon{font-size:32px;opacity:.2;}
+.gen-empty-text{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.8;}
+.gen-empty-arrow{font-size:20px;opacity:.2;margin-top:4px;}
 </style>
 </head>
 <body>
@@ -712,9 +917,17 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <div class="header" id="header">
   <div class="header-identity">
-    <div class="header-logo">
-      <div class="logo-name">M. Çağrı <span>Ulu</span></div>
-      <div class="logo-sub">PPL · 2026</div>
+    <div class="header-logo" style="display:flex;flex-direction:row;align-items:center;gap:12px;">
+      <button class="athlete-icon-btn" onclick="setAthleteProfile()" aria-label="Athlete Profile">
+        <div class="mcu-badge">
+          <div class="mcu-badge-text">MCU</div>
+          <div class="mcu-badge-sub">ATHLETE</div>
+        </div>
+      </button>
+      <div>
+        <div class="logo-name">M. Çağrı <span>Ulu</span></div>
+        <div class="logo-sub">PPL · 2026</div>
+      </div>
     </div>
     <div class="header-controls">
       <div class="header-year">MMXXVI</div>
@@ -739,11 +952,11 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <button class="main-nav-btn" id="mnav-rakip" onclick="mainNavSwitch('rakip')">RAKİP</button>
   <button class="main-nav-btn" id="mnav-gen" onclick="mainNavSwitch('gen')">JENERATÖR</button>
   <button class="main-nav-btn" id="mnav-boks" onclick="mainNavSwitch('boks')">BOKS</button>
+  <button class="main-nav-btn" id="mnav-beslenme" onclick="mainNavSwitch('beslenme')">BESLENME</button>
   <button class="main-nav-btn" id="mnav-recipes" onclick="mainNavSwitch('recipes')">TARİFLER</button>
 </div>
 <!-- PROGRAM ALTI: GÜN SEKMELERİ -->
 <div class="nav" id="nav"></div>
-
 <div class="scroll" id="main-scroll">
   <!-- ARAÇLAR MENÜSÜ — scroll içinde olmalı -->
   <div class="araclar-menu" id="araclar-menu" style="display:none;"></div>
@@ -757,6 +970,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="emom-view" id="emom-view" style="display:none;"></div>
   <div class="rakip-view" id="rakip-view" style="display:none;"></div>
   <div class="gen-view" id="gen-view" style="display:none;"></div>
+  <div class="athlete-view" id="athlete-view" style="display:none;"></div>
+  <div class="beslenme-view" id="beslenme-view" style="display:none;"></div>
 </div>
 </div>
 
@@ -1337,11 +1552,13 @@ function mainNavSwitch(tab){
   const isBoks=tab==='boks';
   const isRakip=tab==='rakip';
   const isGen=tab==='gen';
+  const isBeslenme=tab==='beslenme';
   document.getElementById('mnav-program').classList.toggle('on',isProgram);
   document.getElementById('mnav-wod100').classList.toggle('on',isWod100);
   document.getElementById('mnav-emom').classList.toggle('on',isEmom);
   document.getElementById('mnav-rakip').classList.toggle('on',isRakip);
   document.getElementById('mnav-gen').classList.toggle('on',isGen);
+  document.getElementById('mnav-beslenme').classList.toggle('on',isBeslenme);
   document.getElementById('mnav-boks').classList.toggle('on',isBoks);
   document.getElementById('mnav-recipes').classList.toggle('on',isRecipes);
   document.getElementById('nav').style.display=isProgram?'flex':'none';
@@ -1351,6 +1568,7 @@ function mainNavSwitch(tab){
   else if(isEmom){setEmom();}
   else if(isRakip){setRakip();}
   else if(isGen){setGen();}
+  else if(isBeslenme){setBeslenme();}
   else if(isBoks){setBoks();}
   else if(isRecipes){setRecipes();}
 }
@@ -1368,24 +1586,52 @@ function renderNav(){
     });
   } else if(isPPL){
     DAYS.forEach((d,i)=>{
+      var shortLabel=d.label.replace('PULL B+LEGS','PB+LEG').replace('PUSH B','PUSH B');
       tabs+=`<div class="nav-tab${i===cur?' on':''}" onclick="setDay(${i})">
         <div class="nav-tab-num">0${i+1}</div>
-        <div class="nav-tab-lbl">${d.label}</div>
+        <div class="nav-tab-lbl">${shortLabel}</div>
       </div>`;
     });
   }
   document.getElementById('nav').innerHTML=tabs;
   document.getElementById('nav').style.display=(isHibrit||isPPL)?'flex':'none';
   document.getElementById('araclar-menu').style.display=(mode==='araclar')?'block':'none';
+
   // ana nav aktiflik
   document.getElementById('mnav-program').classList.toggle('on',isHibrit||isPPL);
   document.getElementById('mnav-wod100').classList.toggle('on',mode==='wod100');
   document.getElementById('mnav-emom').classList.toggle('on',mode==='emom');
   document.getElementById('mnav-rakip').classList.toggle('on',mode==='rakip');
   document.getElementById('mnav-gen').classList.toggle('on',mode==='gen');
+  document.getElementById('mnav-beslenme').classList.toggle('on',mode==='beslenme');
   document.getElementById('mnav-boks').classList.toggle('on',mode==='boks');
   document.getElementById('mnav-recipes').classList.toggle('on',mode==='recipes');
   document.getElementById('araclar-menu').style.display='none';
+}
+
+/* ─── PERSONAL RECORDS ─── */
+const PR_LIST=[
+  {name:'Bench Press',val:'75 kg',unit:'× 7'},
+  {name:'OHP',val:'50 kg',unit:'× 5'},
+  {name:'Deadlift',val:'150 kg',unit:'× 6'},
+  {name:'Squat',val:'100 kg',unit:'× 5'},
+];
+
+function buildPRSectionHTML(){
+  var html='<div class="pr-section">'+
+    '<div class="pr-section-hdr"><div class="pr-section-title">PERSONAL RECORDS</div></div>'+
+    '<div class="pr-row-list">';
+  PR_LIST.forEach(function(p){
+    html+='<div class="pr-row">'+
+      '<div class="pr-row-name">'+p.name+'</div>'+
+      '<div class="pr-row-right">'+
+        '<div class="pr-row-val">'+p.val+'</div>'+
+        '<div class="pr-row-unit">'+p.unit+'</div>'+
+      '</div>'+
+    '</div>';
+  });
+  html+='</div></div>';
+  return html;
 }
 
 /* ─── GÜNLÜK WOD SİSTEMİ ─── */
@@ -1939,6 +2185,282 @@ function renderRakipView(){
   renderRakipContent();
 }
 
+/* ─── BESLENMEbölümü ─── */
+/* ─── BESLENMEbölümü ─── */
+var beslenmeActiveCat='sabah';
+var beslenmeActiveSlots={sabah:0,ogle:0,aksam:0,ara:0};
+var beslenmeHistory={sabah:[],ogle:[],aksam:[],ara:[]};
+
+const BESLENME_SABAH=[
+  // YUMURTA & PEYNİR
+  {name:'Protein Omlet',protein:36,kcal:340,sure:'10 dk',ing:['Yumurta 3 adet','Beyaz peynir 30g','Domates 1 adet','Tuz, karabiber'],steps:['Yumurtaları çırp.','Yağsız tavada dök.','Peynir serp, kapat, 3 dk.']},
+  {name:'Lor Peynirli Krep',protein:38,kcal:360,sure:'15 dk',ing:['Yumurta 3 adet','Lor peyniri 100g','Tuz, dereotu'],steps:['Yumurta ve loru çırp.','Teflon tavada her yüz 2 dk.','Domates ile servis et.']},
+  {name:'Haşlanmış Yumurta & Beyaz Peynir',protein:28,kcal:280,sure:'10 dk',ing:['Yumurta 3 adet','Beyaz peynir 50g','Domates, salatalık'],steps:['Yumurtaları 8 dk kaynat.','Soğut ve soy.','Peynir ile servis et.']},
+  {name:'Menemen',protein:26,kcal:300,sure:'15 dk',ing:['Yumurta 3 adet','Domates 2 adet','Biber 1 adet','Tuz, pul biber'],steps:['Biberi kavur.','Domates ekle, 5 dk.','Yumurta kır, karıştır.']},
+  {name:'Çılbır',protein:24,kcal:280,sure:'10 dk',ing:['Yumurta 2 adet','Süzme yoğurt 150g','Sarımsak, tuz','Tereyağı, pul biber'],steps:['Yoğurdu sarımsak ile karıştır.','Yumurtaları haşla.','Yoğurt üstüne koy, tereyağı dök.']},
+  {name:'Sucuklu Menemen',protein:34,kcal:380,sure:'15 dk',ing:['Yumurta 3 adet','Dana sucuk 50g','Domates 2 adet','Biber'],steps:['Sucuğu kızart.','Domates ekle.','Yumurta ekle, karıştır.']},
+  {name:'Pastırmalı Yumurta',protein:30,kcal:340,sure:'10 dk',ing:['Yumurta 2 adet','Pastırma 50g','Tuz, karabiber'],steps:['Pastırmayı kızart.','Üstüne yumurta kır.','Kısık ateşte pişir.']},
+  {name:'Ispanaklı Yumurta',protein:26,kcal:260,sure:'10 dk',ing:['Yumurta 3 adet','Ispanak 100g','Sarımsak, zeytinyağı'],steps:['Sarımsağı sotele.','Ispanağı ekle.','Yumurta kır, pişir.']},
+  {name:'Tulum Peynirli Omlet',protein:36,kcal:340,sure:'10 dk',ing:['Yumurta 3 adet','Tulum peyniri 40g','Maydanoz, domates'],steps:['Yumurtaları çırp.','Peynir ekle.','Tavada katlayarak pişir.']},
+  {name:'Yumurta Akı Omlet',protein:34,kcal:200,sure:'8 dk',ing:['Yumurta akı 6 adet','Kaşar peyniri 30g','Tuz, karabiber'],steps:['Akları çırp.','Tavada pişir.','Peynir serp, katla.']},
+  {name:'Mozzarella & Yumurta',protein:32,kcal:320,sure:'10 dk',ing:['Yumurta 3 adet','Mozzarella 40g','Domates, fesleğen'],steps:['Yumurtaları pişir.','Mozzarella ekle, erit.','Domates ve fesleğenle servis et.']},
+  {name:'Gravyer Omlet',protein:38,kcal:360,sure:'10 dk',ing:['Yumurta 3 adet','Gravyer peyniri 40g','Tuz, karabiber'],steps:['Yumurta çırp.','Tavada pişir.','Gravyer serp, katlayarak bitir.']},
+  {name:'Fırın Yumurta & Domates',protein:22,kcal:260,sure:'12 dk',ing:['Yumurta 2 adet','Domates 1 adet','Kaşar 20g','Tuz, pul biber'],steps:['Domatesi fırın kabına diz.','Yumurta kır üstüne.','200°C 10 dk pişir.']},
+  {name:'Proteinli French Toast',protein:36,kcal:380,sure:'12 dk',ing:['Yumurta 3 adet','Tam buğday ekmek 2 dilim','Süt 3 yemek kaşığı','Tarçın'],steps:['Yumurta ve sütü çırp.','Ekmeği batır.','Her yüz 3 dk pişir.']},
+  {name:'Zeytinli Beyaz Peynir Kahvaltı',protein:24,kcal:280,sure:'5 dk',ing:['Beyaz peynir 80g','Zeytin 50g','Domates, salatalık, maydanoz'],steps:['Peyniri dilimlere kes.','Zeytinleri ekle.','Sebzelerle servis et.']},
+  // WHEY & PROTEIN
+  {name:'Whey Protein Pankek',protein:48,kcal:380,sure:'15 dk',ing:['Whey protein 1.5 ölçek','Yumurta 2 adet','Yulaf 40g','Muz yarım','Kabartma tozu'],steps:['Tüm malzemeleri blenderda karıştır.','Teflon tavada her yüz 3 dk.','Yanında süzme yoğurt ile servis et.']},
+  {name:'Whey Krep',protein:44,kcal:340,sure:'15 dk',ing:['Whey protein 1 ölçek','Yumurta 2 adet','Süzme yoğurt 80g','Tuz'],steps:['Tüm malzemeleri çırp.','İnce krep dökerek pişir.','İçine lor peyniri sarabilirsin.']},
+  {name:'Whey Protein Shake (Temel)',protein:52,kcal:320,sure:'2 dk',ing:['Whey protein 2 ölçek','Süt 300ml','Muz 1 adet'],steps:['Tüm malzemeleri blendere koy.','30 sn karıştır.','Hemen tüket.']},
+  {name:'Çikolatalı Whey Shake',protein:50,kcal:360,sure:'3 dk',ing:['Whey protein 2 ölçek (çikolata)','Yulaf sütü 300ml','Fıstık ezmesi 1 yemek kaşığı','Dark kakao 1 tatlı kaşığı'],steps:['Hepsini blendere koy.','Karıştır.','Soğuk servis et.']},
+  {name:'Whey Mug Cake',protein:42,kcal:360,sure:'5 dk',ing:['Whey protein 1.5 ölçek','Yumurta 1 adet','Badem sütü 3 yemek kaşığı','Dark kakao, kabartma tozu'],steps:['Büyük kupa bardağında karıştır.','Mikrodalgada 90 sn pişir.','Üstüne bir kaşık fıstık ezmesi.']},
+  {name:'Whey Protein Smoothie Bowl',protein:46,kcal:400,sure:'5 dk',ing:['Whey protein 1.5 ölçek','Dondurulmuş muz 1 adet','Yulaf 30g','Badem sütü 100ml'],steps:['Blenderda karıştır.','Kaba dök.','Üstüne chia ve yulaf serp.']},
+  // YULAF & TAHIL
+  {name:'Yüksek Protein Yulaf',protein:34,kcal:380,sure:'8 dk',ing:['Yulaf 60g','Süt 200ml','Whey protein yarım ölçek','Tarçın'],steps:['Yulafı sütle pişir.','Ateşten al, whey karıştır.','Tarçın serp.']},
+  {name:'Protein Overnight Oats',protein:38,kcal:400,sure:'5 dk + gece',ing:['Yulaf 60g','Süt 200ml','Whey protein 1 ölçek','Chia 1 yemek kaşığı'],steps:['Tüm malzemeleri karıştır.','Gece buzdolabına koy.','Sabah hazır.']},
+  {name:'Chia Puding & Whey',protein:36,kcal:360,sure:'5 dk + bekleme',ing:['Chia 3 yemek kaşığı','Badem sütü 200ml','Whey protein 1 ölçek'],steps:['Karıştır.','Gece buzdolabında beklet.','Sabah tüket.']},
+  // PEYNIR BAZLI
+  {name:'Quark Kahvaltı Kasesi',protein:34,kcal:300,sure:'5 dk',ing:['Quark 200g','Yulaf 30g','Tarçın, fıstık ezmesi 1 tatlı kaşığı'],steps:['Quarku kaba koy.','Yulaf ve tarçın serp.','Fıstık ezmesi ekle.']},
+  {name:'Çökelek & Yumurta',protein:32,kcal:280,sure:'10 dk',ing:['Çökelek 100g','Yumurta 2 adet','Tuz, kekik'],steps:['Yumurtaları pişir.','Çökelek ile yanyana servis et.','Kekik serp.']},
+  {name:'Kefir & Yulaf Kasesi',protein:26,kcal:300,sure:'5 dk',ing:['Kefir 200ml','Yulaf 50g','Tarçın, chia'],steps:['Yulafı kefirle karıştır.','5 dk beklet.','Tarçın ve chia serp.']},
+];
+
+const BESLENME_OGLE=[
+  // TAVUK
+  {name:'Tavuk Göğsü & Bulgur',protein:52,kcal:480,sure:'25 dk',ing:['Tavuk göğsü 200g','Bulgur 80g','Tuz, kekik, zeytinyağı'],steps:['Tavuğu baharatla, pişir.','Bulguru demle.','Yanyana servis et.']},
+  {name:'Izgara Tavuk & Kinoa',protein:52,kcal:460,sure:'25 dk',ing:['Tavuk göğsü 200g','Kinoa 80g','Zeytinyağı, limon, tuz'],steps:['Tavuğu ızgara yap.','Kinoayı pişir.','Birlikte servis et.']},
+  {name:'Tavuk Sote & Brokoli',protein:48,kcal:400,sure:'20 dk',ing:['Tavuk göğsü 200g','Brokoli 200g','Sarımsak, zeytinyağı'],steps:['Tavuğu küp kes, kavur.','Brokoli ekle.','8 dk pişir.']},
+  {name:'Nohutlu Tavuk',protein:54,kcal:500,sure:'30 dk',ing:['Tavuk göğsü 200g','Nohut 150g','Soğan, zerdeçal, zeytinyağı'],steps:['Soğan ve tavuğu kavur.','Nohut ekle.','15 dk pişir.']},
+  {name:'Tavuk Şiş & Yoğurt',protein:50,kcal:420,sure:'25 dk',ing:['Tavuk göğsü 200g','Sarımsak, kekik, tuz','Süzme yoğurt 150g'],steps:['Marine et, şişe geç.','Izgarada 15 dk.','Sarımsaklı yoğurtla servis.']},
+  {name:'Tavuk But & Sebze',protein:50,kcal:440,sure:'30 dk',ing:['Tavuk but 2 adet','Kabak, biber, patlıcan','Zeytinyağı, tuz, kekik'],steps:['Tavuğu baharatla.','Sebzelerle fırında 25 dk.','Birlikte servis et.']},
+  {name:'Hindi Göğsü Sote',protein:48,kcal:400,sure:'20 dk',ing:['Hindi göğsü 200g','Mantar, soğan','Soya sosu, zeytinyağı'],steps:['Hindi göğsünü dilimle.','Mantar ve soğanla kavur.','Soya sosu ekle.']},
+  {name:'Hindi Füme Salata',protein:36,kcal:320,sure:'10 dk',ing:['Hindi füme 100g','Roka, marul, domates','Zeytinyağı, limon'],steps:['Salatayı hazırla.','Hindi fümeyi dilimlere kes.','Üstüne koy, sos gezdir.']},
+  // KIRMIZI ET
+  {name:'Dana Köfte & Yoğurt',protein:50,kcal:480,sure:'25 dk',ing:['Dana kıyma 200g','Soğan, kimyon, tuz','Süzme yoğurt 150g'],steps:['Köfte yap.','Tavada her yüz 4 dk.','Sarımsaklı yoğurtla servis.']},
+  {name:'Kıymalı Nohut',protein:48,kcal:460,sure:'25 dk',ing:['Dana kıyma 150g','Nohut 200g','Soğan, domates, kimyon'],steps:['Soğanı kavur.','Kıyma ekle.','Nohut ve domates ekle, kaynat.']},
+  {name:'Dana Ciğer Sote',protein:46,kcal:380,sure:'15 dk',ing:['Dana ciğer 200g','Soğan, zeytinyağı','Tuz, kekik, karabiber'],steps:['Ciğeri dilimle, unla.','Soğanla birlikte kavur.','Kısık ateşte 8 dk.']},
+  {name:'Dana Biftek & Salata',protein:54,kcal:440,sure:'20 dk',ing:['Dana biftek 200g','Roka, domates','Zeytinyağı, tuz'],steps:['Bifteği kızgın tavada pişir.','Dinlendir.','Roka salatası ile servis.']},
+  {name:'Kıymalı Ispanak',protein:42,kcal:380,sure:'20 dk',ing:['Dana kıyma 150g','Ispanak 200g','Soğan, sarımsak'],steps:['Kıymayı kavur.','Ispanak ekle.','10 dk pişir.']},
+  {name:'Bulgurlu Köfte',protein:44,kcal:440,sure:'30 dk',ing:['Dana kıyma 150g','Bulgur 80g','Soğan, kimyon'],steps:['Bulguru ıslatılmış kıymayla yoğur.','Köfte yap.','Tavada pişir.']},
+  // BALIK
+  {name:'Ton Balığı & Kinoa',protein:48,kcal:420,sure:'20 dk',ing:['Ton balığı 2 kutu','Kinoa 80g','Domates, salatalık, zeytinyağı'],steps:['Kinoayı pişir.','Ton balığını süz.','Hepsini karıştır.']},
+  {name:'Sardalya & Salata',protein:36,kcal:360,sure:'10 dk',ing:['Sardalya konserve 2 kutu','Roka, domates','Limon, zeytinyağı'],steps:['Sardalyaları süz.','Salatayı hazırla.','Yanyana servis.']},
+  {name:'Uskumru & Bulgur',protein:44,kcal:460,sure:'25 dk',ing:['Uskumru fileto 200g','Bulgur 80g','Tuz, limon, dereotu'],steps:['Uskumruyu fırında pişir.','Bulguru demle.','Birlikte servis.']},
+  {name:'Hamsi Tava & Salata',protein:38,kcal:380,sure:'15 dk',ing:['Hamsi 250g','Mısır unu, tuz','Roka, limon'],steps:['Hamsiyi una bulaştır.','Tavada kızart.','Roka ile servis.']},
+  // BAKLAGIL
+  {name:'Yeşil Mercimek Çorbası & Tavuk',protein:48,kcal:440,sure:'30 dk',ing:['Yeşil mercimek 150g','Tavuk göğsü 150g','Soğan, havuç, kimyon'],steps:['Mercimek pişir.','Tavuğu didikle ekle.','Kimyon ile servis.']},
+  {name:'Kırmızı Mercimek Çorbası',protein:22,kcal:300,sure:'25 dk',ing:['Kırmızı mercimek 150g','Soğan, havuç, kimyon, tuz'],steps:['Mercimek ve sebzeleri kaynat.','Blenderdan geçir.','Üstüne tereyağlı pul biber.']},
+  {name:'Edamame & Tavuk Bowl',protein:52,kcal:460,sure:'20 dk',ing:['Edamame 150g','Tavuk göğsü 150g','Soya sosu, susam, zencefil'],steps:['Tavuğu pişir.','Edamameyi haşla.','Soya sosu ile karıştır.']},
+  {name:'Tofu Sote',protein:28,kcal:320,sure:'15 dk',ing:['Sert tofu 250g','Soya sosu, sarımsak, zeytinyağı','Brokoli 150g'],steps:['Tofuyu küp kes, kızart.','Brokoli ekle.','Soya sosu ile tatlandır.']},
+  {name:'Soya Kıyması & Nohut',protein:44,kcal:400,sure:'25 dk',ing:['Soya kıyması 100g (ıslatılmış)','Nohut 150g','Soğan, salça, tuz, kimyon'],steps:['Soğanı kavur.','Soya kıyması ekle.','Nohut ve salça ekle, kaynat.']},
+  {name:'Maş Fasulye Salatası',protein:22,kcal:320,sure:'30 dk',ing:['Maş fasulyesi 150g','Domates, salatalık, maydanoz','Zeytinyağı, limon, tuz'],steps:['Maş fasulyesini haşla.','Sebzeleri doğra.','Zeytinyağı ile karıştır.']},
+  {name:'Barbunya Pilaki',protein:18,kcal:320,sure:'40 dk',ing:['Barbunya 200g','Soğan, domates, sarımsak, zeytinyağı'],steps:['Soğan ve sarımsağı kavur.','Barbunya ekle.','25 dk kısık ateşte pişir.']},
+  {name:'Lima Fasulyesi & Kıyma',protein:44,kcal:440,sure:'30 dk',ing:['Lima fasulyesi 150g','Dana kıyma 150g','Soğan, domates, tuz'],steps:['Kıymayı kavur.','Lima fasulyesi ve domates ekle.','20 dk pişir.']},
+];
+
+const BESLENME_AKSAM=[
+  // TAVUK FIRIN
+  {name:'Fırında Tavuk Göğsü',protein:54,kcal:420,sure:'25 dk',ing:['Tavuk göğsü 250g','Zeytinyağı, sarımsak, kekik','Tuz, limon'],steps:['Baharatla.','190°C fırında 22 dk.','Brokoli ile servis.']},
+  {name:'Tavuk But Izgara',protein:50,kcal:440,sure:'25 dk',ing:['Tavuk but 2 adet','Zeytinyağı, sarımsak, tuz','Limon'],steps:['Marine et.','Izgarada 20 dk.','Limon ile servis.']},
+  {name:'Fırında Tavuk & Patates',protein:52,kcal:500,sure:'45 dk',ing:['Tavuk but 2 adet','Patates 2 adet','Biberiye, tuz, zeytinyağı'],steps:['Patatesi önce ver.','Tavuğu ekle.','200°C 30 dk.']},
+  {name:'Tavuk Teriyaki',protein:50,kcal:440,sure:'25 dk',ing:['Tavuk but 200g','Soya sosu, bal, sarımsak','Brokoli 200g'],steps:['Marine et.','Tavada pişir.','Brokoliyle servis.']},
+  {name:'Hindi Göğsü Fırın',protein:56,kcal:420,sure:'35 dk',ing:['Hindi göğsü 250g','Adaçayı, sarımsak, zeytinyağı','Tuz'],steps:['Baharatla.','190°C 30 dk.','Dilimleyerek servis.']},
+  {name:'Tavuk Güveç',protein:50,kcal:440,sure:'40 dk',ing:['Tavuk but 200g','Patates, havuç, soğan','Kekik, tuz'],steps:['Tüm malzemeleri tencereye.','Su ekle.','35 dk kısık ateşte.']},
+  // KIRMIZI ET
+  {name:'Dana Biftek & Brokoli',protein:58,kcal:480,sure:'20 dk',ing:['Dana antrikot 200g','Brokoli 200g','Zeytinyağı, biberiye, tuz'],steps:['Bifteği kızgın tavada 4 dk her yüz.','Brokoli buharda 8 dk.','Birlikte servis.']},
+  {name:'Dana Bonfile',protein:56,kcal:440,sure:'20 dk',ing:['Dana bonfile 200g','Tereyağı, sarımsak, biberiye','Tuz, karabiber'],steps:['Bonfileyi kızgın tavada mühürle.','Her yüz 3 dk.','Dinlendirip servis et.']},
+  {name:'Kuzu Pirzola',protein:50,kcal:480,sure:'20 dk',ing:['Kuzu pirzola 2 adet','Biberiye, sarımsak, zeytinyağı','Tuz, karabiber'],steps:['Marine et.','Izgarada 5 dk her yüz.','Roka ile servis.']},
+  {name:'Dana Nuar Haşlama',protein:52,kcal:420,sure:'90 dk',ing:['Dana nuar 300g','Havuç, soğan, kereviz','Tuz, defne yaprağı'],steps:['Tüm malzemeleri tencereye.','75 dk haşla.','Sebzelerle servis.']},
+  {name:'Dana Rosto',protein:56,kcal:460,sure:'90 dk',ing:['Dana tranç 300g','Havuç, soğan, biberiye','Zeytinyağı, tuz'],steps:['Tavada mühürle.','Fırında 180°C 75 dk.','Dilimleyerek servis.']},
+  {name:'Kuzu Kavurma',protein:54,kcal:500,sure:'45 dk',ing:['Kuzu eti 250g','Soğan, sarımsak, tuz, pul biber'],steps:['Kuzuyu kavur.','Soğan ekle.','Kısık ateşte 30 dk.']},
+  // BALIK
+  {name:'Izgara Somon',protein:50,kcal:460,sure:'15 dk',ing:['Somon fileto 200g','Zeytinyağı, limon, dereotu','Tuz'],steps:['Marine et.','Izgarada 5 dk her yüz.','Limon ile servis.']},
+  {name:'Fırında Somon & Kuşkonmaz',protein:52,kcal:440,sure:'20 dk',ing:['Somon 200g','Kuşkonmaz 150g','Zeytinyağı, limon, tuz'],steps:['Tepsiye diz.','Baharatla.','200°C 18 dk.']},
+  {name:'Levrek Fırın',protein:46,kcal:380,sure:'25 dk',ing:['Levrek fileto 250g','Zeytinyağı, limon, sarımsak','Kekik, tuz'],steps:['Baharatla.','190°C 20 dk.','Limon ile servis.']},
+  {name:'Çipura Izgara',protein:44,kcal:360,sure:'20 dk',ing:['Çipura 300g','Zeytinyağı, limon','Tuz, kekik'],steps:['Balığa çizik at.','Izgarada 8 dk her yüz.','Limon ile servis.']},
+  {name:'Alabalık Fırın',protein:44,kcal:380,sure:'25 dk',ing:['Alabalık 300g','Zeytinyağı, limon, sarımsak','Dereotu, tuz'],steps:['İçine sarımsak ve limon koy.','190°C 22 dk.','Dereotu ile servis.']},
+  {name:'Uskumru Fırın',protein:46,kcal:420,sure:'20 dk',ing:['Uskumru 2 adet','Zeytinyağı, limon, sarımsak','Tuz'],steps:['Baharatla.','200°C 18 dk.','Limon ile servis.']},
+  {name:'Mezgit Buğulama',protein:40,kcal:320,sure:'20 dk',ing:['Mezgit fileto 250g','Zeytinyağı, limon, maydanoz','Tuz'],steps:['Tencerede az suyla kaynat.','Balığı ekle, 12 dk.','Zeytinyağı ve limon ile servis.']},
+  {name:'Karides Sote',protein:38,kcal:360,sure:'10 dk',ing:['Karides 300g','Sarımsak, zeytinyağı, limon','Pul biber, tuz'],steps:['Sarımsağı sotele.','Karides ekle.','6 dk, limon sık.']},
+  {name:'Kalamar Izgara',protein:36,kcal:300,sure:'15 dk',ing:['Kalamar 300g','Zeytinyağı, limon, sarımsak','Tuz, maydanoz'],steps:['Kalamarı temizle.','Izgarada 4 dk her yüz.','Limon ve maydanoz ile servis.']},
+  // SEBZE BAZLI
+  {name:'Fırında Tavuk & Karnabahar',protein:50,kcal:420,sure:'35 dk',ing:['Tavuk göğsü 200g','Karnabahar 300g','Zerdeçal, zeytinyağı, tuz'],steps:['Tepsiye diz.','Baharatla.','200°C 30 dk.']},
+  {name:'Dana Köfte & Izgara Sebze',protein:48,kcal:440,sure:'25 dk',ing:['Dana kıyma 200g','Tuz, kimyon','Kabak, biber, patlıcan'],steps:['Köfte yap, ızgara.','Sebzeleri zeytinyağıyla ızgara.','Birlikte servis.']},
+  {name:'Tavuk & Mantar Sote',protein:48,kcal:400,sure:'20 dk',ing:['Tavuk göğsü 200g','Mantar 150g','Sarımsak, kekik, zeytinyağı'],steps:['Tavuğu kavur.','Mantar ekle.','10 dk pişir.']},
+  {name:'Nohut & Tavuk Güveç',protein:54,kcal:480,sure:'35 dk',ing:['Tavuk 200g','Nohut 150g','Domates, soğan, zerdeçal'],steps:['Soğan ve tavuğu kavur.','Nohut ve domates ekle.','20 dk kaynat.']},
+  {name:'Ton Balığı Avokado',protein:44,kcal:400,sure:'10 dk',ing:['Ton balığı 2 kutu','Avokado 1 adet','Limon, tuz, pul biber'],steps:['Ton balığını süz.','Avokadoya doldur.','Limon sık.']},
+  {name:'Somon & Edamame Bowl',protein:54,kcal:460,sure:'20 dk',ing:['Somon 150g','Edamame 100g','Soya sosu, susam, limon'],steps:['Somonu pişir.','Edamameyi haşla.','Soya sosu ile karıştır.']},
+];
+
+const BESLENME_ARA=[
+  // WHEY SHAKE
+  {name:'Klasik Whey Shake',protein:52,kcal:320,sure:'2 dk',ing:['Whey protein 2 ölçek','Süt 300ml'],steps:['Karıştır.','Hemen tüket.']},
+  {name:'Fıstık Ezmeli Whey',protein:54,kcal:400,sure:'3 dk',ing:['Whey protein 2 ölçek','Süt 250ml','Fıstık ezmesi 1 yemek kaşığı'],steps:['Blenderda karıştır.','Soğuk servis et.']},
+  {name:'Badem Ezmeli Shake',protein:48,kcal:380,sure:'3 dk',ing:['Whey protein 1.5 ölçek','Badem sütü 300ml','Badem ezmesi 1 yemek kaşığı'],steps:['Blenderda karıştır.','Hemen tüket.']},
+  {name:'Dark Kakao Whey Shake',protein:50,kcal:360,sure:'3 dk',ing:['Whey protein 2 ölçek','Süt 250ml','Dark kakao 1 tatlı kaşığı','Buz'],steps:['Tüm malzemeleri blendere.','Karıştır.','Soğuk servis.']},
+  {name:'Muz Whey Shake',protein:48,kcal:380,sure:'3 dk',ing:['Whey protein 1.5 ölçek','Muz 1 adet','Süt 200ml'],steps:['Blenderda karıştır.','Hemen tüket.']},
+  {name:'Kahveli Whey Shake',protein:50,kcal:340,sure:'3 dk',ing:['Whey protein 2 ölçek','Soğuk kahve 200ml','Süt 100ml','Buz'],steps:['Karıştır.','Soğuk servis.']},
+  // YUMURTA BAZLI
+  {name:'Haşlanmış Yumurta & Beyaz Peynir',protein:28,kcal:240,sure:'10 dk',ing:['Yumurta 3 adet','Beyaz peynir 40g'],steps:['Yumurtaları haşla.','Peynirle servis et.']},
+  {name:'Yumurta Akı Atıştırma',protein:30,kcal:160,sure:'8 dk',ing:['Yumurta akı 6 adet','Tuz, karabiber'],steps:['Akları haşla veya pişir.','Tuzla servis.']},
+  // PEYNIR BAZLI
+  {name:'Lor & Salatalık',protein:22,kcal:200,sure:'5 dk',ing:['Lor peyniri 150g','Salatalık 1 adet','Dereotu, tuz'],steps:['Lor peynirini kaba koy.','Salatalık dilimleri ekle.','Dereotu serp.']},
+  {name:'Süzme Yoğurt Kasesi',protein:26,kcal:220,sure:'3 dk',ing:['Süzme yoğurt 200g','Chia 1 yemek kaşığı','Tarçın'],steps:['Yoğurtu kaba koy.','Chia ve tarçın serp.','Hemen tüket.']},
+  {name:'Quark & Kabak Çekirdeği',protein:28,kcal:260,sure:'3 dk',ing:['Quark 200g','Kabak çekirdeği 20g','Tuz'],steps:['Quarku kaba koy.','Kabak çekirdeği ekle.']},
+  {name:'Çökelek & Domates',protein:20,kcal:180,sure:'5 dk',ing:['Çökelek 120g','Domates 1 adet','Zeytinyağı, tuz'],steps:['Çökeleği tabağa koy.','Domates ekle.','Zeytinyağı gezdil.']},
+  // KURUYEMIS & TOHUM
+  {name:'Fıstık Ezmesi & Kereviz',protein:18,kcal:280,sure:'3 dk',ing:['Fıstık ezmesi 2 yemek kaşığı','Kereviz sapı 3 adet'],steps:['Kereviz saplarını kes.','Fıstık ezmesine batırarak ye.']},
+  {name:'Badem & Yumurta',protein:22,kcal:280,sure:'10 dk',ing:['Badem 30g','Yumurta 2 adet (haşlanmış)'],steps:['Yumurtaları haşla.','Badem ile yanyana servis.']},
+  {name:'Chia & Kefir',protein:20,kcal:240,sure:'5 dk + bekleme',ing:['Kefir 200ml','Chia 2 yemek kaşığı','Tarçın'],steps:['Karıştır.','20 dk beklet.','Tüket.']},
+  {name:'Kabak Çekirdeği & Ton Balığı',protein:34,kcal:320,sure:'5 dk',ing:['Ton balığı 1 kutu','Kabak çekirdeği 20g','Limon, tuz'],steps:['Ton balığını süz.','Kabak çekirdeği ekle.','Limon sık.']},
+  // BAKLAGIL
+  {name:'Nohut Atıştırma',protein:18,kcal:280,sure:'5 dk',ing:['Haşlanmış nohut 150g','Zeytinyağı, tuz, pul biber'],steps:['Nohutları ısıt.','Baharatla.','Servis et.']},
+  {name:'Edamame Atıştırma',protein:22,kcal:240,sure:'8 dk',ing:['Edamame 150g','Tuz, soya sosu'],steps:['Edamameyi haşla.','Tuz ve soya sosu ile servis.']},
+  {name:'Maş Fasulyesi Salatası',protein:18,kcal:260,sure:'15 dk',ing:['Maş fasulyesi 100g','Domates, limon, zeytinyağı','Tuz, kimyon'],steps:['Fasulyeyi haşla.','Domates ile karıştır.','Limon sık.']},
+  // PROTEIN BAR/TOP
+  {name:'Ev Yapımı Protein Topu',protein:24,kcal:300,sure:'15 dk + soğutma',ing:['Whey protein 2 ölçek','Fıstık ezmesi 3 yemek kaşığı','Yulaf 60g','Bal 1 yemek kaşığı'],steps:['Tüm malzemeleri yoğur.','Top şekli ver.','Buzdolabında 30 dk.']},
+  {name:'Dark Kakao Protein Top',protein:22,kcal:280,sure:'15 dk + soğutma',ing:['Whey protein 1.5 ölçek','Fıstık ezmesi 2 yemek kaşığı','Dark kakao 1 yemek kaşığı','Yulaf 40g'],steps:['Karıştır.','Top yap.','Buzdolabında beklet.']},
+  {name:'Badem Ezmeli Protein Bar',protein:26,kcal:320,sure:'15 dk + soğutma',ing:['Whey protein 2 ölçek','Badem ezmesi 3 yemek kaşığı','Yulaf 60g','Bal 1 yemek kaşığı'],steps:['Karıştır.','Kaba yay.','Buzdolabında 1 saat, dilimlere kes.']},
+  {name:'Chia Protein Puding',protein:28,kcal:300,sure:'5 dk + gece',ing:['Whey protein 1 ölçek','Chia 3 yemek kaşığı','Badem sütü 200ml'],steps:['Karıştır.','Gece buzdolabında beklet.','Sabah tüket.']},
+  // TON BALIGI ATISTIRMA
+  {name:'Ton Balığı Wrap',protein:38,kcal:360,sure:'5 dk',ing:['Ton balığı 1 kutu','Marul yaprakları','Limon, tuz'],steps:['Ton balığını süz.','Marula sar.','Limon sık.']},
+  {name:'Sardalya & Kraker',protein:28,kcal:300,sure:'5 dk',ing:['Sardalya konserve 1 kutu','Tam buğday kraker 4 adet','Limon, tuz'],steps:['Sardalyaları süz.','Krakerlerin üstüne koy.','Limon sık.']},
+];
+
+var beslenmeActiveCat='sabah';
+
+function beslenmeGetArr(ogün){
+  if(ogün==='sabah') return BESLENME_SABAH;
+  if(ogün==='ogle') return BESLENME_OGLE;
+  if(ogün==='aksam') return BESLENME_AKSAM;
+  return BESLENME_ARA;
+}
+
+function beslenmeGetMeal(ogün){
+  var arr=beslenmeGetArr(ogün);
+  return arr[beslenmeActiveSlots[ogün]%arr.length];
+}
+
+function beslenmeRoll(ogün){
+  var arr=beslenmeGetArr(ogün);
+  var hist=beslenmeHistory[ogün];
+  var avail=arr.map((_,i)=>i).filter(i=>!hist.includes(i));
+  if(!avail.length){beslenmeHistory[ogün]=[];avail=arr.map((_,i)=>i);}
+  var pick=avail[Math.floor(Math.random()*avail.length)];
+  beslenmeHistory[ogün].push(pick);
+  beslenmeActiveSlots[ogün]=pick;
+  renderBeslenmeCard(ogün);
+  updateBeslenmeTotals();
+  var icon=document.getElementById('beslenme-icon-'+ogün);
+  if(icon){icon.classList.add('spin');setTimeout(()=>icon.classList.remove('spin'),350);}
+}
+
+function beslenmeSetCat(cat){
+  beslenmeActiveCat=cat;
+  document.querySelectorAll('.beslenme-cat-tab').forEach(t=>t.classList.remove('on'));
+  var btn=document.getElementById('beslenme-tab-'+cat);
+  if(btn) btn.classList.add('on');
+  renderBeslenmeContent();
+}
+
+function renderBeslenmeCard(ogün){
+  var cont=document.getElementById('beslenme-card-'+ogün);
+  if(!cont) return;
+  var m=beslenmeGetMeal(ogün);
+  var steps=m.steps.map((s,i)=>'<div class="beslenme-step"><div class="beslenme-step-num">'+(i+1)+'</div><div class="beslenme-step-text">'+s+'</div></div>').join('');
+  cont.innerHTML=
+    '<div class="beslenme-card">'+
+      '<div class="beslenme-card-name">'+m.name+'</div>'+
+      '<div class="beslenme-card-tags">'+
+        '<span class="beslenme-tag protein">'+m.protein+'g protein</span>'+
+        '<span class="beslenme-tag">'+m.kcal+' kcal</span>'+
+        '<span class="beslenme-tag">'+m.sure+'</span>'+
+      '</div>'+
+      '<div class="beslenme-ing">'+m.ing.join(' · ')+'</div>'+
+      '<div class="beslenme-steps">'+steps+'</div>'+
+    '</div>';
+}
+
+function renderBeslenmeContent(){
+  var ogün=beslenmeActiveCat;
+  var cont=document.getElementById('beslenme-main-content');
+  if(!cont) return;
+
+  var titles={sabah:'☀ SABAH KAHVALTİSİ',ogle:'⚡ ÖĞLE YEMEĞİ',aksam:'🌙 AKŞAM YEMEĞİ',ara:'🥜 ARA ÖĞÜN'};
+  var metas={sabah:'Yumurta · Whey · Protein odaklı',ogle:'Tavuk · Et · Baklagil · Güç',aksam:'Et · Balık · Sebze · Toparlanma',ara:'Shake · Atıştırma · Hızlı protein'};
+
+  cont.innerHTML=
+    '<div class="beslenme-ogün">'+
+      '<div class="beslenme-ogün-hdr">'+
+        '<div class="beslenme-ogün-title">'+titles[ogün]+'</div>'+
+        '<div class="beslenme-ogün-meta">'+metas[ogün]+'</div>'+
+      '</div>'+
+      '<div id="beslenme-card-'+ogün+'"></div>'+
+      '<button class="beslenme-degistir" onclick="beslenmeRoll(\''+ogün+'\')">'+
+        '<span class="beslenme-degistir-icon" id="beslenme-icon-'+ogün+'">⟳</span> ÖĞÜNÜ DEĞİŞTİR'+
+      '</button>'+
+    '</div>';
+
+  renderBeslenmeCard(ogün);
+}
+
+function updateBeslenmeTotals(){
+  var s=beslenmeGetMeal('sabah');
+  var o=beslenmeGetMeal('ogle');
+  var a=beslenmeGetMeal('aksam');
+  var ar=beslenmeGetMeal('ara');
+  var totalP=s.protein+o.protein+a.protein+ar.protein;
+  var totalK=s.kcal+o.kcal+a.kcal+ar.kcal;
+  var tp=document.getElementById('beslenme-total-protein');
+  var tk=document.getElementById('beslenme-total-kcal');
+  if(tp) tp.textContent=totalP+'g';
+  if(tk) tk.textContent=totalK;
+}
+
+function renderBeslenmeView(){
+  var v=document.getElementById('beslenme-view');
+  var cats=[
+    {id:'sabah',label:'SABAH'},
+    {id:'ogle',label:'ÖĞLE'},
+    {id:'aksam',label:'AKŞAM'},
+    {id:'ara',label:'ARA ÖĞÜN'},
+  ];
+
+  var tabsHtml=cats.map(c=>
+    '<button class="beslenme-cat-tab'+(c.id===beslenmeActiveCat?' on':'')+'" '+
+    'id="beslenme-tab-'+c.id+'" onclick="beslenmeSetCat(\''+c.id+'\')">'+c.label+'</button>'
+  ).join('');
+
+  v.innerHTML=
+    '<div class="beslenme-hero">'+
+      '<div class="beslenme-hero-title">GÜNLÜK BESLENME</div>'+
+      '<div class="beslenme-hero-sub">180g protein hedefi · Yağ yak, kas koru · 4 öğün · Ekonomik</div>'+
+      '<div class="beslenme-hero-stats">'+
+        '<div class="beslenme-hero-stat"><div class="beslenme-hero-stat-val" id="beslenme-total-protein">-</div><div class="beslenme-hero-stat-lbl">Toplam Protein</div></div>'+
+        '<div class="beslenme-hero-stat"><div class="beslenme-hero-stat-val" id="beslenme-total-kcal">-</div><div class="beslenme-hero-stat-lbl">Toplam kcal</div></div>'+
+        '<div class="beslenme-hero-stat"><div class="beslenme-hero-stat-val">180g</div><div class="beslenme-hero-stat-lbl">Hedef Protein</div></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="beslenme-cat-tabs">'+tabsHtml+'</div>'+
+    '<div id="beslenme-main-content"></div>';
+
+  renderBeslenmeContent();
+  updateBeslenmeTotals();
+}
+
+function setBeslenme(){
+  mode='beslenme';
+  document.getElementById('hdr-title').textContent='BESLENME';
+  document.getElementById('hdr-target').textContent='GÜNLÜK PLAN · 180G PROTEİN · KAS KORUMA';
+  hideAll();
+  document.getElementById('beslenme-view').style.display='block';
+  renderBeslenmeView();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
+
+
 /* ─── WOD JENERATÖR ─── */
 var genParams={format:'amrap',kas:'push',sure:'10',yogunluk:'orta',ekipman:'db'};
 var genLastWod=null;
@@ -2152,7 +2674,11 @@ function renderGenView(){
     '</button>'+
   '</div>'+
   '<div class="gen-result" id="gen-result">'+
-    '<div class="gen-empty">Parametreleri seç<br>ve WOD OLUŞTUR\'a bas</div>'+
+    '<div class="gen-empty">'+
+      '<div class="gen-empty-icon">⟳</div>'+
+      '<div class="gen-empty-text">Parametreleri seç<br>ve WOD OLUŞTUR\'a bas</div>'+
+      '<div class="gen-empty-arrow">↑</div>'+
+    '</div>'+
   '</div>';
   v.innerHTML=html;
 }
@@ -2177,6 +2703,129 @@ function setRakip(){
   renderRakipView();
   renderNav();
   document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
+function setAthleteProfile(){
+  mode='athlete';
+  document.getElementById('hdr-title').textContent='PROFİL';
+  document.getElementById('hdr-target').textContent='ATHLETE PROFILE · M. ÇAĞRI ULU';
+  hideAll();
+  document.getElementById('athlete-view').style.display='block';
+  renderAthleteProfile();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
+function renderAthleteProfile(){
+  var v=document.getElementById('athlete-view');
+
+  // 1RM tahminleri (Epley formülü: 1RM = w × (1 + r/30))
+  var bench1rm=Math.round(75*(1+7/30));
+  var dl1rm=Math.round(150*(1+6/30));
+  var sq1rm=Math.round(100*(1+5/30));
+  var ohp1rm=Math.round(50*(1+5/30));
+
+  // Güç/vücut ağırlığı oranları
+  var bw=78;
+  var dlRatio=(dl1rm/bw).toFixed(2);
+  var sqRatio=(sq1rm/bw).toFixed(2);
+  var bpRatio=(bench1rm/bw).toFixed(2);
+  var ohpRatio=(ohp1rm/bw).toFixed(2);
+
+  function bar(name,val,max,label){
+    var pct=Math.round(val/max*100);
+    return '<div class="bio-bar-row">'+
+      '<div class="bio-bar-hdr"><div class="bio-bar-name">'+name+'</div><div class="bio-bar-val">'+label+'</div></div>'+
+      '<div class="bio-bar-track"><div class="bio-bar-fill" style="width:'+pct+'%"></div></div>'+
+    '</div>';
+  }
+
+  v.innerHTML=
+  '<div class="athlete-back" onclick="setPPL()"><span class="athlete-back-arrow">←</span><span class="athlete-back-lbl">Programa dön</span></div>'+
+
+  // KAPAK
+  '<div class="athlete-cover">'+
+    '<div class="athlete-cover-eyebrow">Athlete Profile · MCU 2026</div>'+
+    '<div class="athlete-cover-name">M. Çağrı<span>Ulu</span></div>'+
+    '<div class="athlete-cover-tags">'+
+      '<span class="athlete-cover-tag hl">PPL · 5 Gün</span>'+
+      '<span class="athlete-cover-tag hl">Recomp</span>'+
+      '<span class="athlete-cover-tag">31 Yaş</span>'+
+      '<span class="athlete-cover-tag">170 cm · 78 kg</span>'+
+      '<span class="athlete-cover-tag">~%16–20 BF</span>'+
+    '</div>'+
+    '<div class="athlete-cover-stats">'+
+      '<div class="athlete-cover-stat"><div class="athlete-cover-stat-val">'+dl1rm+'</div><div class="athlete-cover-stat-lbl">DL 1RM</div></div>'+
+      '<div class="athlete-cover-stat"><div class="athlete-cover-stat-val">'+bench1rm+'</div><div class="athlete-cover-stat-lbl">BP 1RM</div></div>'+
+      '<div class="athlete-cover-stat"><div class="athlete-cover-stat-val">'+sq1rm+'</div><div class="athlete-cover-stat-lbl">SQ 1RM</div></div>'+
+      '<div class="athlete-cover-stat"><div class="athlete-cover-stat-val">'+ohp1rm+'</div><div class="athlete-cover-stat-lbl">OHP 1RM</div></div>'+
+    '</div>'+
+  '</div>'+
+
+  // 1 — VÜcut KOMPOZİSYONU
+  '<div class="bio-section">'+
+    '<div class="bio-section-hdr"><span class="bio-section-num">01</span><span class="bio-section-title">Vücut Kompozisyonu</span></div>'+
+    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Vücut Kitle İndeksi (VKİ)</div><div class="bio-metric-desc">Dünya Sağlık Örgütü standartlarına göre 18.5–24.9 aralığı "normal". 25+ fazla kiloya giriyor.</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+(78/(1.7*1.7)).toFixed(1)+'</div><div class="bio-metric-unit">kg/m²</div></div></div>'+
+    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Yağsız Vücut Kütlesi (FFM)</div><div class="bio-metric-desc">%18 yağ oranı baz alınarak hesaplandı. Kas, kemik ve organları kapsar.</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+Math.round(78*0.82)+'</div><div class="bio-metric-unit">kg tahmini</div></div></div>'+
+    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Hedef Vücut Kompozisyonu</div><div class="bio-metric-desc">Recomp fazında yağ yakımı ve kas kazanımı eş zamanlı hedefleniyor. Bu, kalori kısıtlı ve protein yüksek bir yaklaşım gerektirir.</div></div><div class="bio-metric-right"><div class="bio-metric-val">%12–14</div><div class="bio-metric-unit">hedef BF</div></div></div>'+
+  '</div>'+
+
+  // 2 — GÜÇ PROFİLİ
+  '<div class="bio-section">'+
+    '<div class="bio-section-hdr"><span class="bio-section-num">02</span><span class="bio-section-title">Güç Profili — Epley 1RM Tahmini</span></div>'+
+    '<div class="bio-pr-grid">'+
+      '<div class="bio-pr-card"><div class="bio-pr-card-lbl">Deadlift</div><div class="bio-pr-card-main">'+dl1rm+' kg</div><div class="bio-pr-card-sub">'+dlRatio+'× vücut ağırlığı</div><div class="bio-pr-card-target">▶ Intermediate · Hedef 180 kg+</div></div>'+
+      '<div class="bio-pr-card"><div class="bio-pr-card-lbl">Bench Press</div><div class="bio-pr-card-main">'+bench1rm+' kg</div><div class="bio-pr-card-sub">'+bpRatio+'× vücut ağırlığı</div><div class="bio-pr-card-target">▶ Intermediate · Hedef 100 kg</div></div>'+
+      '<div class="bio-pr-card"><div class="bio-pr-card-lbl">Back Squat</div><div class="bio-pr-card-main">'+sq1rm+' kg</div><div class="bio-pr-card-sub">'+sqRatio+'× vücut ağırlığı</div><div class="bio-pr-card-target">▶ Intermediate · Hedef 140 kg</div></div>'+
+      '<div class="bio-pr-card"><div class="bio-pr-card-lbl">OHP</div><div class="bio-pr-card-main">'+ohp1rm+' kg</div><div class="bio-pr-card-sub">'+ohpRatio+'× vücut ağırlığı</div><div class="bio-pr-card-target">▶ Beginner · Hedef 70 kg</div></div>'+
+    '</div>'+
+  '</div>'+
+
+  // 3 — GÜCE GÖRE SEVİYE
+  '<div class="bio-section">'+
+    '<div class="bio-section-hdr"><span class="bio-section-num">03</span><span class="bio-section-title">Strength Standards — BW Oranı</span></div>'+
+    '<div style="padding-bottom:8px;">'+
+    bar('Deadlift / BW',''+dlRatio,3,''+dlRatio+'×')+
+    bar('Squat / BW',''+sqRatio,2.5,''+sqRatio+'×')+
+    bar('Bench / BW',''+bpRatio,2,''+bpRatio+'×')+
+    bar('OHP / BW',''+ohpRatio,1.5,''+ohpRatio+'×')+
+    '</div>'+
+    '<div class="bio-analysis"><div class="bio-analysis-hdr">Referans Eşikleri</div><div class="bio-analysis-body">Erkek (intermediate): DL 2.0× · SQ 1.75× · BP 1.25× · OHP 0.75×<br>Erkek (advanced): DL 2.5× · SQ 2.0× · BP 1.5× · OHP 1.0×</div></div>'+
+  '</div>'+
+
+  // 4 — ANTROPOMETRİ & FİZYOLOJİ
+  '<div class="bio-section">'+
+    '<div class="bio-section-hdr"><span class="bio-section-num">04</span><span class="bio-section-title">Antromometri & Fizyoloji</span></div>'+
+    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Bazal Metabolizma Hızı (BMR)</div><div class="bio-metric-desc">Mifflin-St Jeor denklemi: (10×78) + (6.25×170) − (5×31) + 5</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+Math.round(10*78+6.25*170-5*31+5)+'</div><div class="bio-metric-unit">kcal/gün</div></div></div>'+
+    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Toplam Günlük Enerji (TDEE)</div><div class="bio-metric-desc">BMR × 1.725 (çok aktif — haftada 5 gün ağır antrenman + masa başı iş). Recomp için bu değerde kalın.</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+Math.round((10*78+6.25*170-5*31+5)*1.725)+'</div><div class="bio-metric-unit">kcal/gün</div></div></div>'+
+    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Günlük Protein Hedefi</div><div class="bio-metric-desc">Recomp için 2.2–2.6 g/kg önerisi (Helms et al., 2014). Kas koruma ve sentezi için kritik.</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+Math.round(78*2.4)+'</div><div class="bio-metric-unit">g/gün</div></div></div>'+
+    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Haftalık Antrenman Hacmi</div><div class="bio-metric-desc">5 gün × ~65 dk = ~325 dk/hafta. Çoğu meta-analiz 3–5 gün arası optimal bulmuştur (Ralston et al., 2017).</div></div><div class="bio-metric-right"><div class="bio-metric-val">~325</div><div class="bio-metric-unit">dk/hafta</div></div></div>'+
+  '</div>'+
+
+  // 5 — TOPARLANMA ANALİZİ
+  '<div class="bio-section">'+
+    '<div class="bio-section-hdr"><span class="bio-section-num">05</span><span class="bio-section-title">Toparlanma & Risk Analizi</span></div>'+
+    '<div class="bio-analysis hl"><div class="bio-analysis-hdr">KRİTİK BULGULAR</div><div class="bio-analysis-body">5–6 saat uyku, recomp hedefi için en büyük kısıtlayıcıdır. Walker (2017) ve Dattilo et al. (2011) çalışmaları gösteriyor ki 7 saatin altındaki uyku kas protein sentezini %18–30 azaltıyor ve kortizol seviyelerini yükseltiyor. Bu durum hem yağ yakımını hem kas kazanımını doğrudan kısıtlar.</div></div>'+
+    '<div class="bio-analysis"><div class="bio-analysis-hdr">Mobilite Riski</div><div class="bio-analysis-body">Günlük 8+ saat masa başı çalışma + sıfır mobilite rutini: hip flexor kısalığı, thoracic kyfosis artışı ve rotator cuff instabilitesi risk faktörleri. Bu tablo özellikle OHP performansını ve squat derinliğini kısıtlar (Sahrmann, 2002).</div></div>'+
+    '<div class="bio-analysis"><div class="bio-analysis-hdr">Deload Stratejisi</div><div class="bio-analysis-body">Deload yapılmıyor. Bilimsel literatür her 4–8 haftada 1 deload haftası öneriyor (Haff & Triplett, 2015). Uzun vadede kümülatif yorgunluk performans tavanını düşürür ve sakatlık riskini artırır.</div></div>'+
+  '</div>'+
+
+  // 6 — GELİŞİM YOLU
+  '<div class="bio-section">'+
+    '<div class="bio-section-hdr"><span class="bio-section-num">06</span><span class="bio-section-title">Gelişim Yol Haritası</span></div>'+
+    '<div class="bio-timeline-item"><div class="bio-timeline-dot on"></div><div class="bio-timeline-content"><div class="bio-timeline-title">Şu An — Intermediate Geçişi</div><div class="bio-timeline-desc">Deadlift güçlü, bench orta, OHP zayıf. PPL programı çalışıyor. Recomp fazı aktif.</div></div></div>'+
+    '<div class="bio-timeline-item"><div class="bio-timeline-dot"></div><div class="bio-timeline-content"><div class="bio-timeline-title">6 Ay — Güç Benchmarkı</div><div class="bio-timeline-desc">Bench 100 kg · OHP 65 kg · Squat 120 kg · DL 170 kg hedefleri. OHP önceliklendir — omuz stabilitesi bench tavanını belirliyor.</div></div></div>'+
+    '<div class="bio-timeline-item"><div class="bio-timeline-dot"></div><div class="bio-timeline-content"><div class="bio-timeline-title">1 Yıl — Olimpik Kaldırış Giriş</div><div class="bio-timeline-desc">Power Clean ve Push Jerk teknik öğrenme. Mevcut güç bazı bu hareketler için yeterli. Teknik koçluk önerilir.</div></div></div>'+
+    '<div class="bio-timeline-item"><div class="bio-timeline-dot"></div><div class="bio-timeline-content"><div class="bio-timeline-title">2 Yıl — CrossFit Atletizmi</div><div class="bio-timeline-desc">Tam vücut atletizmi: güç + kondisyon + gymnastics dengesi. Mat Fraser metodolojisi: önce güç tabanı, sonra kondisyon katmanı.</div></div></div>'+
+  '</div>'+
+
+  // 7 — SPORCU KİMLİĞİ
+  '<div class="bio-section" style="padding-bottom:24px;">'+
+    '<div class="bio-section-hdr"><span class="bio-section-num">07</span><span class="bio-section-title">Sporcu Kimliği & Felsefe</span></div>'+
+    '<div class="bio-analysis"><div class="bio-analysis-hdr">Metodoloji</div><div class="bio-analysis-body">Güray Aydın\'ın pragmatik salon kültürü + Jeff Nippard\'ın kanıta dayalı hipertrofi yaklaşımı. Bu kombinasyon doğru: bilimsel temelli ama sahaya dönük, estetik odaklı ama güçten ödün vermeyen.</div></div>'+
+    '<div class="bio-analysis"><div class="bio-analysis-hdr">Motivasyon Tipi</div><div class="bio-analysis-body">Estetik ve PR odaklı iç motivasyon. Araştırmalar bu tipin (özerk motivasyon) uzun vadede en sürdürülebilir olduğunu gösteriyor. Yalnız çalışma tercihi derin odak sağlar.</div></div>'+
+    '<div class="bio-analysis hl"><div class="bio-analysis-hdr">Temel Sonuç</div><div class="bio-analysis-body">Güçlü bir taban, hiç sakatlık geçmemiş temiz bir profil ve net bir vizyon. En büyük kısıtlayıcılar uyku ve mobilite — bunlar çözülürse gelişim hızı önemli ölçüde artar.</div></div>'+
+  '</div>';
 }
 
 function setPPL(){
@@ -2217,6 +2866,7 @@ function renderDay2(){
     html+='</div>';
   });
   if(DAY_WODS[d.key]) html+=buildDayWodHTML(d.key);
+  html+=buildPRSectionHTML();
   document.getElementById('day-view').innerHTML=html;
 }
 
@@ -2231,6 +2881,8 @@ function hideAll(){
   document.getElementById('emom-view').style.display='none';
   document.getElementById('rakip-view').style.display='none';
   document.getElementById('gen-view').style.display='none';
+  document.getElementById('athlete-view').style.display='none';
+  document.getElementById('beslenme-view').style.display='none';
 }
 
 function setRecipes(){
