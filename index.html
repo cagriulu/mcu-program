@@ -56,11 +56,6 @@ button:active,
 .header{flex-shrink:0;border-bottom:1px solid var(--rim);}
 .header-identity{display:flex;align-items:stretch;justify-content:space-between;padding:0;border-bottom:1px solid var(--rim);}
 .header-logo{padding:var(--sp-3) var(--sp-4);display:flex;flex-direction:column;gap:4px;}
-.athlete-icon-btn{background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity var(--ease);}
-.athlete-icon-btn:active{opacity:.5;}
-.mcu-badge{width:38px;height:38px;border:1.5px solid var(--fg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;opacity:.75;}
-.mcu-badge-text{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--fg);line-height:1;}
-.mcu-badge-sub{font-size:5px;font-weight:700;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;}
 .logo-name{font-size:20px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1;color:var(--fg);}
 .logo-name span{font-weight:400;opacity:.45;}
 .logo-sub{font-size:var(--text-xs);font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);}
@@ -728,6 +723,58 @@ button:active,
 .beslenme-degistir-icon.spin{animation:bSpin .35s linear;}
 @keyframes bSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
+/* OLİMPİK KALDIRIŞ REHBERİ */
+.olimpik-view{padding:0 0 100px;}
+.olimpik-hero{padding:24px 16px 20px;background:var(--rim2);border-bottom:1px solid var(--rim);}
+.olimpik-hero-title{font-size:28px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:6px;}
+.olimpik-hero-sub{font-size:10px;color:var(--muted);line-height:1.7;margin-bottom:14px;}
+.olimpik-hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--rim);overflow:hidden;}
+.olimpik-hero-stat{padding:10px 8px;text-align:center;border-right:1px solid var(--rim);}
+.olimpik-hero-stat:last-child{border-right:none;}
+.olimpik-hero-stat-val{font-size:18px;font-weight:900;color:var(--fg);line-height:1;}
+.olimpik-hero-stat-lbl{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.olimpik-faz-tabs{display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--rim);position:relative;}
+.olimpik-faz-tabs::-webkit-scrollbar{display:none;}
+.olimpik-faz-tabs::after{content:'';position:absolute;right:0;top:0;bottom:0;width:24px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none;}
+.olimpik-faz-tab{flex-shrink:0;padding:11px 16px;min-height:44px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;white-space:nowrap;transition:all var(--ease);}
+.olimpik-faz-tab.on{background:var(--fg);color:var(--bg);}
+.olimpik-content{display:none;}
+.olimpik-content.on{display:block;}
+.olimpik-gun{border-bottom:1px solid var(--rim2);}
+.olimpik-gun-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;min-height:56px;}
+.olimpik-gun-left{display:flex;flex-direction:column;gap:3px;}
+.olimpik-gun-num{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.olimpik-gun-title{font-size:16px;font-weight:800;color:var(--fg);letter-spacing:-.01em;}
+.olimpik-gun-sub{font-size:9px;color:var(--muted);}
+.olimpik-gun-arrow{font-size:12px;color:var(--muted);transition:transform .2s;}
+.olimpik-gun-arrow.open{transform:rotate(180deg);}
+.olimpik-gun-body{display:none;background:var(--rim2);border-top:1px solid var(--rim2);}
+.olimpik-gun-body.open{display:block;}
+.olimpik-drill{border-bottom:1px solid var(--rim2);padding:14px 16px;}
+.olimpik-drill:last-child{border-bottom:none;}
+.olimpik-drill-hdr{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.olimpik-drill-num{font-size:9px;font-weight:800;color:var(--bg);background:var(--fg);width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.olimpik-drill-info{flex:1;}
+.olimpik-drill-name{font-size:14px;font-weight:700;color:var(--fg);margin-bottom:3px;}
+.olimpik-drill-type{font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.olimpik-drill-sets{font-size:11px;font-weight:700;color:var(--fg);text-align:right;white-space:nowrap;}
+.olimpik-figur{background:var(--bg);border:1px solid var(--rim);padding:14px;margin-bottom:10px;font-family:monospace;line-height:1.6;}
+.olimpik-figur-title{font-size:7px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-family:'Inter Tight',sans-serif;}
+.olimpik-figur-art{font-size:11px;color:var(--fg);white-space:pre;overflow-x:auto;}
+.olimpik-steps{display:flex;flex-direction:column;gap:4px;margin-bottom:10px;}
+.olimpik-step{display:flex;gap:10px;font-size:11px;color:var(--muted);line-height:1.6;}
+.olimpik-step-n{font-size:9px;font-weight:700;color:var(--muted);min-width:18px;flex-shrink:0;margin-top:1px;}
+.olimpik-hata{background:rgba(255,255,255,.04);border-left:2px solid var(--rim);padding:8px 12px;font-size:10px;color:var(--muted);line-height:1.7;margin-bottom:10px;}
+.olimpik-hata strong{color:var(--fg);}
+.olimpik-yt{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg);border:1px solid var(--rim);font-size:10px;color:var(--muted);text-decoration:none;transition:border-color var(--ease);}
+.olimpik-yt:hover{border-color:var(--fg);}
+.olimpik-yt-icon{font-size:14px;flex-shrink:0;}
+.olimpik-yt-text{flex:1;line-height:1.4;}
+.olimpik-yt-lbl{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;}
+.olimpik-mobil{padding:14px 16px;background:var(--bg);}
+.olimpik-mobil-title{font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--fg);background:var(--muted);display:inline-block;padding:3px 10px;margin-bottom:10px;}
+.olimpik-mobil-item{font-size:11px;color:var(--muted);padding:4px 0;line-height:1.6;}
+
 /* RAKİP MODU */
 .rakip-view{padding:0 0 100px;}
 .rakip-hero{padding:20px 16px 16px;background:var(--rim2);border-bottom:1px solid var(--rim);}
@@ -934,17 +981,9 @@ button:active,
 
 <div class="header" id="header">
   <div class="header-identity">
-    <div class="header-logo" style="display:flex;flex-direction:row;align-items:center;gap:12px;">
-      <button class="athlete-icon-btn" onclick="setAthleteProfile()" aria-label="Athlete Profile">
-        <div class="mcu-badge">
-          <div class="mcu-badge-text">MCU</div>
-          <div class="mcu-badge-sub">ATHLETE</div>
-        </div>
-      </button>
-      <div>
+    <div class="header-logo">
         <div class="logo-name">M. Çağrı <span>Ulu</span></div>
         <div class="logo-sub">PPL · 2026</div>
-      </div>
     </div>
     <div class="header-controls">
       <div class="header-year">MMXXVI</div>
@@ -1006,6 +1045,13 @@ button:active,
     BOKS
   </button>
 
+  <button class="main-nav-btn" id="mnav-olimpik" onclick="mainNavSwitch('olimpik')">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="2" y1="12" x2="22" y2="12"/><rect x="5" y="9" width="3" height="6" rx=".5"/><rect x="16" y="9" width="3" height="6" rx=".5"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="13" x2="16" y2="13"/>
+    </svg>
+    OLİMPİK
+  </button>
+
   <button class="main-nav-btn" id="mnav-beslenme" onclick="mainNavSwitch('beslenme')">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 11l19-9-9 19-2-8-8-2z"/>
@@ -1036,8 +1082,8 @@ button:active,
   <div class="emom-view" id="emom-view" style="display:none;"></div>
   <div class="rakip-view" id="rakip-view" style="display:none;"></div>
   <div class="gen-view" id="gen-view" style="display:none;"></div>
-  <div class="athlete-view" id="athlete-view" style="display:none;"></div>
   <div class="beslenme-view" id="beslenme-view" style="display:none;"></div>
+  <div class="olimpik-view" id="olimpik-view" style="display:none;"></div>
 </div>
 </div>
 
@@ -1619,12 +1665,14 @@ function mainNavSwitch(tab){
   const isRakip=tab==='rakip';
   const isGen=tab==='gen';
   const isBeslenme=tab==='beslenme';
+  const isOlimpik=tab==='olimpik';
   document.getElementById('mnav-program').classList.toggle('on',isProgram);
   document.getElementById('mnav-wod100').classList.toggle('on',isWod100);
   document.getElementById('mnav-emom').classList.toggle('on',isEmom);
   document.getElementById('mnav-rakip').classList.toggle('on',isRakip);
   document.getElementById('mnav-gen').classList.toggle('on',isGen);
   document.getElementById('mnav-beslenme').classList.toggle('on',isBeslenme);
+  document.getElementById('mnav-olimpik').classList.toggle('on',isOlimpik);
   document.getElementById('mnav-boks').classList.toggle('on',isBoks);
   document.getElementById('mnav-recipes').classList.toggle('on',isRecipes);
   document.getElementById('nav').style.display=isProgram?'flex':'none';
@@ -1635,6 +1683,7 @@ function mainNavSwitch(tab){
   else if(isRakip){setRakip();}
   else if(isGen){setGen();}
   else if(isBeslenme){setBeslenme();}
+  else if(isOlimpik){setOlimpik();}
   else if(isBoks){setBoks();}
   else if(isRecipes){setRecipes();}
 }
@@ -1670,6 +1719,7 @@ function renderNav(){
   document.getElementById('mnav-rakip').classList.toggle('on',mode==='rakip');
   document.getElementById('mnav-gen').classList.toggle('on',mode==='gen');
   document.getElementById('mnav-beslenme').classList.toggle('on',mode==='beslenme');
+  document.getElementById('mnav-olimpik').classList.toggle('on',mode==='olimpik');
   document.getElementById('mnav-boks').classList.toggle('on',mode==='boks');
   document.getElementById('mnav-recipes').classList.toggle('on',mode==='recipes');
   document.getElementById('araclar-menu').style.display='none';
@@ -2609,6 +2659,1277 @@ function setBeslenme(){
 
 
 
+/* ─── OLİMPİK KALDIRIŞ REHBERİ ─── */
+var olimpikActiveFaz=0;
+var olimpikOpenGuns={};
+
+const OLIMPIK_FAZLAR=[
+  {
+    label:'FAZ 1',
+    sub:'Hafta 1–4 · Temel',
+    gunler:[
+      {
+        num:'Gün 1',
+        title:'Vücut Mekaniği & Hook Grip',
+        sub:'Barbell ile ilk temas — hiç ağırlık yok',
+        drill:[
+          {
+            num:1,
+            name:'Hook Grip Öğrenimi',
+            type:'Teknik Drill · PVC veya bare bar',
+            sets:'5 × 30 sn tutuş',
+            figur:{
+              title:'HOOK GRİP — PARMAK POZİSYONU',
+              art:
+'  Baş parmak barı kavrar\n'+
+'  ┌─────────────────┐\n'+
+'  │  ━━━━━━━━━━━━━  │  ← Bar\n'+
+'  │  👍 altında    │\n'+
+'  │  2-3 parmak    │\n'+
+'  │  üstünde       │\n'+
+'  └─────────────────┘\n'+
+'  Baş parmak kilitlenir\n'+
+'  İlk başta acıtır — normal'
+            },
+            steps:[
+              'Barı zemine koy, önünde dur.',
+              'Baş parmağını bara koy, üstüne 2. ve 3. parmakları kapat.',
+              'Sıkı kavra — baş parmak kilitli, diğerleri üstte.',
+              '30 saniye tut, bırak, tekrarla.',
+              'İlk haftalar acıtır, 2-3 haftada alışılır.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Baş parmağı alta almamak. Hook grip olmadan olimpik kaldırışta bar kontrolü imkânsız.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'Hook Grip & Weightlifting Basics — Quinn Henoch'},
+          },
+          {
+            num:2,
+            name:'Overhead Squat (PVC)',
+            type:'Mobilite & Stabilite · PVC boru',
+            sets:'5 × 5 tekrar — çok yavaş',
+            figur:{
+              title:'OVERHEAD SQUAT POZİSYONU',
+              art:
+'     \\\\ /\n'+
+'      |\n'+
+'    ──┼──  ← Bar geniş tutuşla overhead\n'+
+'      |\n'+
+'     /|\\\n'+
+'    / | \\\n'+
+'  Omuzlar aktif\n'+
+'  Kulakların arkasında bar\n'+
+'  Göğüs dik, core sıkı\n'+
+'     ||||\n'+
+'  Derin squat — topuklar yerde'
+            },
+            steps:[
+              'PVC boruyu geniş tutarak başın üstüne kaldır.',
+              'Kollar kilitleniyor, omuzlar aktif — bar "yukarı itilir".',
+              'Yavaşça squat\'a in, mümkün olduğunca derine.',
+              'Topuklar yerde, diz ayak ucuyla aynı yönde.',
+              '2 saniye altta dur, yavaşça kalk.',
+            ],
+            hatalar:'<strong>Yaygın hatalar:</strong> Bar öne düşmesi → omuz mobilitesi zayıf. Topuk kalkması → ayak bileği mobilitesi zayıf. Her ikisi için mobilite bölümüne bak.',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'Snatch & Clean Jerk Ultimate Guide'},
+          },
+          {
+            num:3,
+            name:'Front Squat Pozisyonu',
+            type:'Mobilite · Bare bar',
+            sets:'5 × 5 tekrar — duraklamalı',
+            figur:{
+              title:'FRONT RACK & FRONT SQUAT',
+              art:
+'  ━━━━━━━━━  ← Bar omuz üstünde\n'+
+'  Dirsekler YÜKSEK ve İLERİ\n'+
+'  ┌──────────────┐\n'+
+'  │  \\  │  /   │\n'+
+'  │   \\ │ /    │\n'+
+'  │    \\│/     │\n'+
+'  │     |      │\n'+
+'  │    / \\     │\n'+
+'  Diz dışa, göğüs dik\n'+
+'  Topuklar yerde'
+            },
+            steps:[
+              'Barı rack\'e koy, omuz yüksekliğinde.',
+              'Dirsekleri yükseğe kaldır — bar parmak uçlarında değil, omuzda.',
+              'Rack\'ten alıp front squat\'a in.',
+              '2 saniye altta tut, kalk.',
+              'Dirsekler düştüğünde dur, tekrar yükselt.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Dirseklerin düşmesi. Front rack pozisyonu clean\'in temeldir — bu olmadan bar kontrol edilemez.',
+            yt:{url:'https://wodprep.com/blog/how-clean-jerk-progressions/',kanal:'WODprep',baslik:'Clean & Jerk Progressions — Front Rack Focus'},
+          },
+        ],
+        mobil:[
+          'Ayak bileği: Duvardan 5 cm uzakta durarak diz duvara değdirme — 2×10 her bacak',
+          'Omuz: Doorway stretch — 2×30 sn',
+          'T-spine: Foam roller göğüs üstü — 2 dk',
+          'Bilek: Yerde dört ayakta bilek daireleri — 1 dk',
+        ],
+      },
+      {
+        num:'Gün 2',
+        title:'Romanian Deadlift & İlk Pull',
+        sub:'Bar yolunu öğrenmek — hafif ağırlık',
+        drill:[
+          {
+            num:1,
+            name:'Romanian Deadlift (RDL)',
+            type:'Güç Temeli · %40–50 çalışma ağırlığı',
+            sets:'4 × 5 — kontrollü',
+            figur:{
+              title:'RDL — BAR YOLU VE VÜCUT POZİSYONU',
+              art:
+'  Başlangıç:\n'+
+'  | Bar kalça hizasında\n'+
+'  | Sırt düz, omuzlar geri\n'+
+'  | Dizler hafif kırık\n'+
+'  ↓\n'+
+'  İniş:\n'+
+'  | Kalçadan öne eğil\n'+
+'  | Bar bacak boyunca kayar\n'+
+'  | Baldır gerginliği hissedince dur\n'+
+'  ↓\n'+
+'  Geri:\n'+
+'  | Kalçayı öne it\n'+
+'  | Dik pozisyona dön'
+            },
+            steps:[
+              'Bar kalça genişliğinde tutuşla, bacak boyunca.',
+              'Dizleri hafif bükerek kalçadan öne eğil.',
+              'Bar bacak boyunca aşağı kayar — zemine değmez.',
+              'Hamstring gerginliği hissedince dur.',
+              'Kalçayı öne iterek kalk.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Sırtin bükülmesi. RDL\'de sırt her zaman düz kalır. Bu hareket clean ve snatch\'in "ilk pull" temeli.',
+            yt:{url:'https://www.youtube.com/watch?v=-vTERuuGzvc',kanal:'Movers Odyssey',baslik:'Olympic Weightlifting 101'},
+          },
+          {
+            num:2,
+            name:'Snatch Grip RDL',
+            type:'Snatch Hazırlık · Geniş tutuş',
+            sets:'4 × 5',
+            figur:{
+              title:'SNATCH TUTUŞ GENIŞLIĞI',
+              art:
+'  ┌─── Snatch grip ───┐\n'+
+'  |  |  |  BAR  |  |  |\n'+
+'  ←─── Dirsek genişliği ───→\n'+
+'  ←──────── Omuz+30 cm ──────→\n'+
+'\n'+
+'  Test: Bar kasığa değince\n'+
+'  kollar düz ise tutuş doğru'
+            },
+            steps:[
+              'Barı çok geniş tut — iki dirsek genişliği kadar.',
+              'RDL\'nin aynısını uygula.',
+              'Bar kasığa ya da üst uyluk hizasına gelince dur.',
+              'Bu pozisyon snatch\'in "power position"ıdır.',
+              '5 kez tekrarla.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Tutuşun çok dar olması. Snatch\'te bar göğüse gelmez, kasığa gelir.',
+            yt:{url:'https://www.youtube.com/watch?v=TDBklY2RTRE',kanal:'Big Bend SC',baslik:'Fixing Beginner Olympic Weightlifting Technique'},
+          },
+          {
+            num:3,
+            name:'High Pull',
+            type:'Patlayıcı Çekiş · Hafif ağırlık',
+            sets:'5 × 3',
+            figur:{
+              title:'HIGH PULL — HAREKET SIRASI',
+              art:
+'  1. Başlangıç: Bar diz üstü\n'+
+'      ┃ Bar diz hizasında\n'+
+'  2. Extension:\n'+
+'      ↑ Topuklardan kalk\n'+
+'      ↑ Kalça öne\n'+
+'      ↑ Omuzlar shrug\n'+
+'  3. Pull:\n'+
+'      ↑ Dirsekler YUKARI ve DIŞARI\n'+
+'      ↑ Bar göğse yaklaşır\n'+
+'      (Yakalamazsın — sadece çekiş)'
+            },
+            steps:[
+              'Barı diz üstüne getir (hang pozisyon).',
+              'Patla — topuklardan kalk, kalça öne, omuz shrug.',
+              'Dirsekleri yüksek ve dışarı çekerek barı yukarı çek.',
+              'Bar göğüs hizasına kadar çıkar, yakalamıyorsun.',
+              'Kontrollü indir, tekrarla.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Kollarla çekmek. Güç bacaktan ve kalçadan gelir. Dirsekler sadece barı yönlendirir.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'Clean & Jerk Beginner Guide — Quinn Henoch'},
+          },
+        ],
+        mobil:[
+          'Kalça fleksörü: Lunge pozisyonunda 30 sn her taraf',
+          'Hamstring: Standing toe touch — 2×10',
+          'Omuz iç rotasyon: Band ile 2×15',
+          'Bilek dorsiflexion: Duvar drilli 2×10',
+        ],
+      },
+      {
+        num:'Gün 3',
+        title:'Hang Power Clean — İlk Yakalama',
+        sub:'Clean ailesinin ilk ve en kolay hareketi',
+        drill:[
+          {
+            num:1,
+            name:'Muscle Clean',
+            type:'Teknik Drill · Bare bar',
+            sets:'5 × 5',
+            figur:{
+              title:'MUSCLE CLEAN — KOLU ÇEVIRME',
+              art:
+'  1. Hang pozisyon\n'+
+'     Bar uyluğa değiyor\n'+
+'  2. Shrug + dirsek yukarı\n'+
+'     ↑↑↑\n'+
+'  3. Dirsekler ÖNE döner\n'+
+'     Bar omuza gelir\n'+
+'     ←── Front rack ──→\n'+
+'  Bacak yok, sadece kol ve omuz'
+            },
+            steps:[
+              'Barı uyluğa değdir (hang pozisyon).',
+              'Shrug yap, dirsekleri yukari çek.',
+              'Dirsekleri öne döndürerek barı omuza al.',
+              'Front rack pozisyonu — dirsekler yüksek.',
+              'Geri koy, tekrarla. Bacak kullanmıyorsun.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Kol bükmek yerine dirsek döndürmemek. Bar omuza değil ele gelir. Dirsek dönüşü temiz olmalı.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'Clean Beginner Progressions'},
+          },
+          {
+            num:2,
+            name:'Hang Power Clean',
+            type:'Ana Hareket · Hafif ağırlık ile başla',
+            sets:'5 × 3 — form önce',
+            figur:{
+              title:'HANG POWER CLEAN — TAM HAREKET',
+              art:
+'  Başlangıç: Bar uyluğa değiyor\n'+
+'  ─────────────────────────\n'+
+'  1. Küçük dip (pre-load)\n'+
+'     Dizler hafif\n'+
+'  2. PATLAMA\n'+
+'     ↑ Topuklar kalkar\n'+
+'     ↑ Kalça öne\n'+
+'     ↑ Shrug\n'+
+'  3. Çekiş + Döndürme\n'+
+'     ↑ Dirsekler yukari\n'+
+'     → Dirsekler öne\n'+
+'  4. Yakalama\n'+
+'     Partial squat (~quarter)\n'+
+'     Front rack\n'+
+'     ─────────────────────────\n'+
+'     Power = yarım squat ile yakala'
+            },
+            steps:[
+              'Bar diz üstünde, uyluğa değiyor.',
+              'Küçük dip (pre-load) — hafif diz bükümü.',
+              'Patlat: topuklardan kalk, kalça öne, shrug.',
+              'Dirsekler yukari çek, sonra öne döndür.',
+              'Yarım squat pozisyonunda yakala — front rack.',
+              'Ayaklar yere inerek stabilize et.',
+            ],
+            hatalar:'<strong>Yaygın hatalar:</strong> 1) Erken kol çekme — güç bacaktan gelir. 2) Dirsekler düşük yakalama — bar ellerde kalır, omuza gelmiyor. 3) Öne eğilme — gövde dik kalmalı.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'How to Clean & Jerk Complete Guide'},
+          },
+        ],
+        mobil:[
+          'Front rack mobilite: Barla ön kol germe — 2×30 sn',
+          'Bilek esnekliği: Yerde bilek push-up pozisyonu — 1 dk',
+          'Omuz: Sleeper stretch — 2×30 sn her taraf',
+          'T-spine rotation: Seated twist — 2×10',
+        ],
+      },
+      {
+        num:'Gün 4',
+        title:'Push Press & Jerk Temeli',
+        sub:'Overhead güç — clean\'den jerk\'e köprü',
+        drill:[
+          {
+            num:1,
+            name:'Strict Press',
+            type:'Güç Temeli · %60–70 OHP ağırlığı',
+            sets:'4 × 5',
+            figur:{
+              title:'STRICT PRESS — JERK\'İN TEMELİ',
+              art:
+'  Başlangıç: Front rack\n'+
+'  ─────────────────────\n'+
+'  Dirsekler HAFIF ÖRNDE\n'+
+'  Bar köprücük kemiğinde\n'+
+'  ↓ Gövde tamamen sabit\n'+
+'  ↑ Sadece kollar çalışır\n'+
+'  ─────────────────────\n'+
+'  Overhead:\n'+
+'  Bar kulakların arkasında\n'+
+'  Kollar tam kilitli\n'+
+'  Core sıkı'
+            },
+            steps:[
+              'Front rack pozisyonundan başla.',
+              'Core\'u sık, nefes al.',
+              'Barı dikey olarak yukarı it.',
+              'Bar kulakların arkasına gelir — öne değil.',
+              'Tam kilitli pozisyonda 1 sn tut, indir.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Bar öne gitmesi. Overhead pozisyonda bar kulak hizasında veya arkasında olmalı. Öne giderse sırt aşırı extansiyona girer.',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'Clean & Jerk Overhead Position'},
+          },
+          {
+            num:2,
+            name:'Push Press',
+            type:'Jerk Hazırlık · OHP\'den ağır',
+            sets:'5 × 3',
+            figur:{
+              title:'PUSH PRESS — DIP & DRIVE',
+              art:
+'  1. Front rack başlangıç\n'+
+'  2. DİP:\n'+
+'     Dizler hafif büküm\n'+
+'     Gövde DUYGUDAN dimdik\n'+
+'     ↓ ~10–15 cm\n'+
+'  3. DRİVE:\n'+
+'     ↑ Bacaklar patlıyor\n'+
+'     ↑ Momentum barı taşır\n'+
+'  4. Press:\n'+
+'     Kollar kilitleniyor\n'+
+'     Bar kulak arkasında'
+            },
+            steps:[
+              'Front rack — dirsekler hafif önde.',
+              'Hafif dip: dizler öne, gövde dik.',
+              'Patla: bacaklar açılıyor, momentum yukarı.',
+              'Kol kilitleniyor — bacak gücü barı taşır.',
+              'Kontrollü indir, tekrar.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Öne eğilmek. Push press\'te gövde dip sırasında tamamen dik kalır. Öne eğilince güç kaybı olur.',
+            yt:{url:'https://barbend.com/clarence-kennedy-olympic-weightlifting-guide/',kanal:'BarBend',baslik:'Clarence Kennedy Olympic Lifting Guide'},
+          },
+          {
+            num:3,
+            name:'Split Jerk Duruşu',
+            type:'Teknik Drill · Bare bar',
+            sets:'10 × tekrar ayak pozisyonu',
+            figur:{
+              title:'SPLİT JERK AYAK POZİSYONU',
+              art:
+'  Önden görünüş:\n'+
+'      [SOL]     [SAĞ]\n'+
+'       │            │\n'+
+'       │<── 30cm ──>│\n'+
+'  ─────┴────────────┴─────\n'+
+'\n'+
+'  Yandan görünüş:\n'+
+'  ÖN AYAK:        ARKA AYAK:\n'+
+'  · Düz          · Parmak ucu\n'+
+'  · Diz dikey    · Diz yerde yakın\n'+
+'  · Kanca açısı  · Kalça gerilmiş\n'+
+'\n'+
+'  Ağırlık merkezi: ortada'
+            },
+            steps:[
+              'Ayakları yan yana koy — başlangıç pozisyon.',
+              'Bir adım ileri, bir adım geri — aynı anda.',
+              'Ön ayak düz, arka ayak parmak ucunda.',
+              'Ön diz dikey — ayak ucunun üstünde.',
+              'Pratik: boş elinle 20 kez tekrar et.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Ayakların dar durması. Sanki ray üzerinde yürür gibi dar değil, omuz genişliğinde açık durmalı.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'Jerk Technique & Split Position'},
+          },
+        ],
+        mobil:[
+          'Hip flexor: Split squat stretch — 2×30 sn her taraf (split jerk için)',
+          'Anterior shoulder: Bar-assisted chest stretch — 2×30 sn',
+          'Ankle: Weighted ankle stretch — 2×20',
+          'Thoracic: Thread the needle — 2×8 her taraf',
+        ],
+      },
+    ],
+  },
+  {
+    label:'FAZ 2',
+    sub:'Hafta 5–8 · Entegrasyon',
+    gunler:[
+      {
+        num:'Gün 5',
+        title:'Hang Clean (Full) — Derin Yakalama',
+        sub:'Power clean\'den full clean\'e geçiş',
+        drill:[
+          {
+            num:1,
+            name:'Pause Front Squat',
+            type:'Güç & Pozisyon · %60 1RM',
+            sets:'4 × 3 — 3 sn pause',
+            figur:{
+              title:'PAUSE FRONT SQUAT — ALT POZİSYON',
+              art:
+'  ─────────────────────────\n'+
+'  En altta 3 saniye dur:\n'+
+'  · Dirsekler yüksek\n'+
+'  · Göğüs dik\n'+
+'  · Diz dışa\n'+
+'  · Topuklar yerde\n'+
+'  ─────────────────────────\n'+
+'  Hyrox clean catch\'i bu pozisyon\n'+
+'  Güçlü alt = güçlü clean'
+            },
+            steps:[
+              'Front rack\'tan full squat\'a in.',
+              'En altta 3 saniye dur — düz tut her şeyi.',
+              'Dirsekler yüksek kalmıyorsa ağırlık çok fazla.',
+              'Kalk, tekrar.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Alt pozisyonda dirseklerin düşmesi. Bar düşerse ağırlığı azalt.',
+            yt:{url:'https://www.youtube.com/watch?v=TDBklY2RTRE',kanal:'Big Bend SC',baslik:'Front Squat for Olympic Lifting'},
+          },
+          {
+            num:2,
+            name:'Hang Clean',
+            type:'Ana Hareket · Hafif-orta ağırlık',
+            sets:'6 × 2',
+            figur:{
+              title:'HANG CLEAN vs POWER CLEAN FARK',
+              art:
+'  Power Clean:          Full Clean:\n'+
+'  ┌──────────┐          ┌──────────┐\n'+
+'  │ Quarter  │          │  Derin   │\n'+
+'  │  squat   │          │  squat   │\n'+
+'  │  catch   │          │  catch   │\n'+
+'  │  ~90°    │          │  <90°    │\n'+
+'  └──────────┘          └──────────┘\n'+
+'  Daha az teknik       Daha fazla teknik\n'+
+'  Daha az ağırlık      Daha fazla ağırlık'
+            },
+            steps:[
+              'Hang pozisyondan başla — bar uyluğa değiyor.',
+              'Patlat, shrug, dirsekler yukari.',
+              'Bu sefer full squat altına in.',
+              'Front rack pozisyonunda derin squat yakala.',
+              'Ayağa kalk.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Squat altında paniklemek. Yakalama pozisyonu sağlamsa bar düşmez. Güven inşası zaman alır.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'Hang Clean Progression'},
+          },
+        ],
+        mobil:[
+          'Overhead squat hold: PVC ile 3×10 sn alt pozisyon',
+          'Wrist mobility: Prayer stretch — 2×30 sn',
+          'Hip: Pigeon pose — 2×45 sn her taraf',
+          'Lat stretch: Bar asılı 2×20 sn',
+        ],
+      },
+      {
+        num:'Gün 6',
+        title:'Power Snatch — Tek Hamlede Overhead',
+        sub:'Snatch ailesinin giriş noktası',
+        drill:[
+          {
+            num:1,
+            name:'Overhead Squat (bare bar)',
+            type:'Snatch Temeli · Bare bar',
+            sets:'5 × 5 — derin, duraklı',
+            figur:{
+              title:'OVERHEAD SQUAT — SNATCH CATCH POZİSYONU',
+              art:
+'  Bar kulak arkasında:\n'+
+'  ┌─────────────────────┐\n'+
+'  │  \\   [BAR]   /    │\n'+
+'  │   \\    |    /     │\n'+
+'  │    \\   |   /      │\n'+
+'  │     \\  |  /       │\n'+
+'  │      \\ | /        │\n'+
+'  │  Derin squat       │\n'+
+'  │  Topuklar yerde    │\n'+
+'  └─────────────────────┘\n'+
+'  Geniş tutuş (snatch grip)\n'+
+'  Omuzlar aktif — bar yukarı itiliyor'
+            },
+            steps:[
+              'Geniş tutuşla barı overhead\'e al (rack\'ten).',
+              'Omuzları aktif et — bar "yukarı itilir" hissi.',
+              'Squat\'a in, mümkün olduğunca derine.',
+              '2 sn tut, kalk.',
+              'Topuk kalkarsa ayak bileği mobilitesi gerekiyor.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Pasif omuzlar — bar sadece tutulur, itilmez. Aktif omuz instabilitenin önüne geçer.',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'Snatch Overhead Squat Tutorial'},
+          },
+          {
+            num:2,
+            name:'Snatch Balance',
+            type:'Snatch Teknik Drill · Bare bar→hafif',
+            sets:'5 × 3',
+            figur:{
+              title:'SNATCH BALANCE — HIZLI ALTINA GİRME',
+              art:
+'  1. Bar arka squat gibi sırtta\n'+
+'     Geniş tutuş\n'+
+'  2. Küçük dip\n'+
+'  3. HIZLA squata in\n'+
+'     Aynı anda kollar itiyor\n'+
+'  4. Alt pozisyonda yakala\n'+
+'     Bar overhead, kollar kilitli\n'+
+'\n'+
+'  Amaç: Hızlı altına girmeyi öğrenmek'
+            },
+            steps:[
+              'Bar sırtında, geniş snatch tutuşuyla.',
+              'Küçük dip yap.',
+              'Hızla squat\'a inerken kolları kilitle.',
+              'Bar overhead pozisyona gelirken sen altına giriyorsun.',
+              'Stabil yakalamak için pratik yap.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Yavaş altına girmek. Snatch\'te hız kritik — gecikirsen bar öne gider.',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'Snatch Balance Drill Tutorial'},
+          },
+          {
+            num:3,
+            name:'Hang Power Snatch',
+            type:'Ana Hareket · Hafif ağırlık',
+            sets:'6 × 2',
+            figur:{
+              title:'HANG POWER SNATCH — HAREKET SIRASI',
+              art:
+'  1. Snatch grip, bar uyluğa değiyor\n'+
+'     ───────────────────────────\n'+
+'  2. Küçük dip\n'+
+'     ↓ hafif\n'+
+'  3. PATLAMA\n'+
+'     ↑ topuklar\n'+
+'     ↑ kalça öne\n'+
+'     ↑ shrug (geniş)\n'+
+'  4. Scarecrow (dirsekler dışarı)\n'+
+'     → dirsekler dışarı ve yukari\n'+
+'  5. Quarter squat yakalama\n'+
+'     Bar overhead, kollar kilitli\n'+
+'  Power = derin değil quarter squat'
+            },
+            steps:[
+              'Snatch tutuşuyla bar uyluğa değsin.',
+              'Küçük dip (pre-load).',
+              'Patlat: topuklardan kalk, kalça öne, omuz shrug.',
+              'Dirsekler dışarı ve yukarı — bar yükseğe.',
+              'Quarter squat altına girerek yakala.',
+              'Kollar tam kilitli, omuzlar aktif.',
+            ],
+            hatalar:'<strong>Yaygın hatalar:</strong> 1) Bar öne gitmesi — kol çekimi erken. 2) Dar yakalama — geniş tutuş overhead\'de korunmalı. 3) Öne eğilme.',
+            yt:{url:'https://www.youtube.com/watch?v=-vTERuuGzvc',kanal:'Movers Odyssey',baslik:'Power Snatch Step by Step'},
+          },
+        ],
+        mobil:[
+          'Snatch mobility: PVC pass-through — 3×10',
+          'Omuz dış rotasyon: Band ile 3×15',
+          'Overhead squat hold: 30 sn × 3',
+          'Kalça: Goblet squat hold — 2×30 sn',
+        ],
+      },
+      {
+        num:'Gün 7',
+        title:'Split Jerk — Tam Hareket',
+        sub:'Clean\'in tamamlayıcısı — overhead final',
+        drill:[
+          {
+            num:1,
+            name:'Jerk Balance',
+            type:'Teknik Drill · Bare bar',
+            sets:'5 × 5',
+            figur:{
+              title:'JERK BALANCE — ÖN ADIM ALIŞKANLIGI',
+              art:
+'  Bar overhead pozisyonda başla\n'+
+'  ─────────────────────────────\n'+
+'  1. Bar zaten yukarıda\n'+
+'  2. Sadece ayakları split\'e al\n'+
+'     [ÖN] ve [ARKA]\n'+
+'  3. Stabil pozisyon — 2 sn\n'+
+'  4. Ayakları geri getir\n'+
+'  ─────────────────────────────\n'+
+'  Amaç: Altına girmeyi öğrenmek\n'+
+'  Bar sabit, ayaklar hareket ediyor'
+            },
+            steps:[
+              'Barı rack\'ten alarak overhead\'e kaldır (push press ile).',
+              'Bar sabit overhead\'de dururken ayakları split pozisyona al.',
+              'Ön ayak düz, arka ayak parmak ucunda.',
+              '2 sn tut, ayakları geri al.',
+              'Sürekli tekrarla — ayak otomatikleşmeli.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Gövdenin öne eğilmesi. Split jerk\'te gövde dik ve bar kulak hizasında olmalı.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'Split Jerk Technique Breakdown'},
+          },
+          {
+            num:2,
+            name:'Push Jerk',
+            type:'Jerk Varyasyonu · Orta ağırlık',
+            sets:'5 × 3',
+            figur:{
+              title:'PUSH JERK vs SPLİT JERK',
+              art:
+'  Push Jerk:           Split Jerk:\n'+
+'  ┌──────────┐         ┌──────────┐\n'+
+'  │  Ayaklar │         │  Bir öne │\n'+
+'  │  squat   │         │  Bir geri│\n'+
+'  │  genişli │         │  split   │\n'+
+'  └──────────┘         └──────────┘\n'+
+'  Daha basit           Daha güçlü\n'+
+'  Daha az teknik       Daha fazla teknik\n'+
+'  Öğrenmek için iyi    Yarışmada tercih'
+            },
+            steps:[
+              'Front rack\'tan dip & drive.',
+              'Bacaklar açılırken kollar kilitleniyor.',
+              'Squat altına gir — ayaklar yana açılır.',
+              'Overhead stabil, kalk.',
+              'Push jerk split jerk öncesi iyi geçiş.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Dip ve drive ayrılmadan yapılması. Dip ve drive tek akıcı hareket olmalı — duraksama güç kaybı.',
+            yt:{url:'https://barbend.com/clarence-kennedy-olympic-weightlifting-guide/',kanal:'BarBend',baslik:'Jerk Variations for Beginners'},
+          },
+          {
+            num:3,
+            name:'Split Jerk',
+            type:'Ana Hareket · Hafif-orta ağırlık',
+            sets:'5 × 2',
+            figur:{
+              title:'SPLİT JERK — TAM HAREKET SIRASI',
+              art:
+'  1. Front rack başlangıç\n'+
+'     ↓ DIP: ~15 cm, gövde dik\n'+
+'     ↑ DRİVE: bacaklar patlıyor\n'+
+'     ─────────────────────\n'+
+'  2. Ayaklar ayrılıyor:\n'+
+'     ÖN: bir adım ileri\n'+
+'     ARKA: bir adım geri\n'+
+'     AYNI ANDA\n'+
+'     ─────────────────────\n'+
+'  3. Yakalama:\n'+
+'     Kollar kilitli\n'+
+'     Ön diz dikey\n'+
+'     Ağırlık ortada\n'+
+'     ─────────────────────\n'+
+'  4. Toparlanma:\n'+
+'     Önce ön ayak geri\n'+
+'     Sonra arka ayak ileri'
+            },
+            steps:[
+              'Front rack, hafif dip — gövde tamamen dik.',
+              'Drive: bacaklar patlıyor.',
+              'Aynı anda: bir ayak öne, bir ayak geri.',
+              'Overhead yakalamak: kollar tam kilitli.',
+              'Önce ön ayağı geri çek, sonra arkayı.',
+            ],
+            hatalar:'<strong>Yaygın hatalar:</strong> 1) Ayakları sırayla koymak — aynı anda olmalı. 2) Ön dizin öne gitmesi. 3) Gövdenin öne yatması.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'Split Jerk Full Tutorial'},
+          },
+        ],
+        mobil:[
+          'Hip flexor: Split stance stretch — 3×30 sn',
+          'Shoulder: PVC pass-through + overhead hold',
+          'Ankle: Single leg balance — 2×20 sn',
+          'T-spine: Cat-camel + rotation — 2×10',
+        ],
+      },
+      {
+        num:'Gün 8',
+        title:'Clean & Jerk — Birleştirme',
+        sub:'İki hareketi birleştirmek',
+        drill:[
+          {
+            num:1,
+            name:'Clean + Push Press Kompleks',
+            type:'Birleştirme · Hafif ağırlık',
+            sets:'5 × (1 clean + 2 push press)',
+            figur:{
+              title:'CLEAN + PRESS KOMPLEKS',
+              art:
+'  ┌─────────────────────────┐\n'+
+'  │ 1. Hang Power Clean     │\n'+
+'  │    ↓                    │\n'+
+'  │ 2. Push Press × 2       │\n'+
+'  │    Bar bırakılmaz       │\n'+
+'  │    Kompleks bitişik      │\n'+
+'  └─────────────────────────┘\n'+
+'  Amaç: Geçişi akıcı yapmak\n'+
+'  Front rack → overhead → front rack'
+            },
+            steps:[
+              'Hang power clean yap.',
+              'Barı bırakmadan hemen push press.',
+              'Tekrar front rack\'e al, ikinci push press.',
+              'Barı indir, 3 set dinlen, tekrar.',
+              'Amaç: clean\'den jerk\'e geçişi otomatikleştirmek.',
+            ],
+            hatalar:'<strong>Dikkat:</strong> Clean sonrası nefes almayı unutma. Front rack\'ta 1 nefes al, sonra jerk\'e gir.',
+            yt:{url:'https://wodprep.com/blog/how-clean-jerk-progressions/',kanal:'WODprep',baslik:'Clean & Jerk Complex for Beginners'},
+          },
+          {
+            num:2,
+            name:'Clean & Jerk (Tam)',
+            type:'Ana Hareket · Hafif ağırlık',
+            sets:'5 × 1 — her tekrar mükemmel',
+            figur:{
+              title:'CLEAN & JERK — TOPLAM HAREKET',
+              art:
+'  ZEMİN\n'+
+'    ↓\n'+
+'  PULL (1. pull — zemin → diz)\n'+
+'    ↓\n'+
+'  PULL (2. pull — diz → kalça)\n'+
+'    ↓\n'+
+'  EXTENSION (patlama)\n'+
+'    ↓\n'+
+'  CLEAN CATCH (front squat)\n'+
+'    ↓\n'+
+'  STAND (ayağa kalk)\n'+
+'    ↓\n'+
+'  DIP & DRIVE\n'+
+'    ↓\n'+
+'  SPLIT & CATCH\n'+
+'    ↓\n'+
+'  RECOVER\n'+
+'    ↓\n'+
+'  OVERHEAD — TAMAMLANDI'
+            },
+            steps:[
+              '1. Pull: Bar zeminden diz seviyesine.',
+              '2. Pull: Dizden kalçaya — sırt açısı korunur.',
+              'Extension: Patlama — topuklardan kalk, kalça öne, shrug.',
+              'Clean catch: Dirsekler döner, derin front squat.',
+              'Stand: Ayağa kalk, nefes al.',
+              'Dip & Drive: Jerk için hazırlık.',
+              'Split: Ayaklar ayrılıyor, overhead yakalama.',
+              'Recover: Ön ayak geri, arka ayak ileri.',
+            ],
+            hatalar:'<strong>En sık sorun:</strong> Clean ile jerk arası bekleme. Tempoyu bul — ne çok hızlı ne çok yavaş. Nefes alacak kadar bekle, hazır hisset.',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'Clean & Jerk Full Movement Tutorial'},
+          },
+        ],
+        mobil:[
+          'Tüm mobilite: 5 dk genel warm-up rutin',
+          'Front rack: Partner-assisted — 2×20 sn',
+          'Overhead: Wall squat hold — 3×10 sn',
+          'Cool down: 10 dk genel esneme',
+        ],
+      },
+    ],
+  },
+  {
+    label:'FAZ 3',
+    sub:'Hafta 9–16 · Snatch Tam & Ağırlık',
+    gunler:[
+      {
+        num:'Gün 9',
+        title:'Snatch — Zeminden Tam Hareket',
+        sub:'Power snatch\'ten full snatch\'e',
+        drill:[
+          {
+            num:1,
+            name:'Snatch Deadlift',
+            type:'Güç Temeli · Snatch grip',
+            sets:'5 × 3 — yavaş ve kontrollü',
+            figur:{
+              title:'SNATCH DEADLİFT — BAŞLANGIÇ POZİSYONU',
+              art:
+'  Snatch grip (çok geniş)\n'+
+'  ─────────────────────────\n'+
+'  · Kalça deadlift\'ten DAHA DÜŞÜK\n'+
+'  · Omuzlar bar ÖNÜNDE\n'+
+'  · Sırt düz — lordoz korunuyor\n'+
+'  · Göğüs dışarıda\n'+
+'  · Dirsekler dışarı dönük\n'+
+'  · Topuklar yerde\n'+
+'  ─────────────────────────\n'+
+'  Neden daha alçak kalça?\n'+
+'  Snatch\'te daha dik torso gerekli'
+            },
+            steps:[
+              'Snatch tutuşuyla barı tut.',
+              'Kalçayı normal deadlift\'ten daha aşağı al.',
+              'Omuzlar barın biraz önünde.',
+              'Sırt düz — lordoz korunuyor.',
+              'Yavaşça ayağa kalk — bar bacak boyunca.',
+            ],
+            hatalar:'<strong>Yaygın hata:</strong> Kalçanın yüksek başlaması. Snatch başlangıcı squat gibi görünmeli — kalça aşağıda.',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'Snatch from the Floor Tutorial'},
+          },
+          {
+            num:2,
+            name:'Full Snatch',
+            type:'Ana Hareket · Hafif ağırlık',
+            sets:'6 × 1 — form önce',
+            figur:{
+              title:'FULL SNATCH — TAM HAREKET',
+              art:
+'  ZEMİN\n'+
+'    ↓ 1. Pull (yavaş, kontrollü)\n'+
+'  DİZ SEVİYESİ\n'+
+'    ↓ 2. Pull (hızlanıyor)\n'+
+'  KALÇA SEVİYESİ — bar değiyor\n'+
+'    ↓ EXTENSION (patlama)\n'+
+'  YÜKSEK NOKTA\n'+
+'    ↓ TURNOVER (döndürme)\n'+
+'  CATCH — derin overhead squat\n'+
+'    ↓ STAND\n'+
+'  TAMAMLANDI'
+            },
+            steps:[
+              '1. Pull: Zemin → diz, sırt açısı korunur.',
+              '2. Pull: Diz → kalça, hız artıyor.',
+              'Extension: Kalça bar\'a değiyor, patlama.',
+              'Turnover: Dirsekler dışarı, bar overhead\'e.',
+              'Catch: Derin overhead squat ile yakala.',
+              'Overhead squat ile kalk.',
+            ],
+            hatalar:'<strong>Yaygın hatalar:</strong> 1) Bar bedenden uzaklaşması. 2) Erken kol çekme. 3) Overhead squat altında instabilite.',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'Full Snatch Complete Tutorial'},
+          },
+        ],
+        mobil:[
+          'Overhead squat: 3×5 derin ve yavaş — snatch grip',
+          'Kol esnekliği: PVC pass-through 2×15',
+          'Kalça: Cossack squat — 2×5 her taraf',
+          'Bileği: Weighted ankle mobility — 3×10',
+        ],
+      },
+      {
+        num:'Gün 10',
+        title:'Ağırlık Artışı & Program Yapısı',
+        sub:'Progressif yüklenme prensipleri',
+        drill:[
+          {
+            num:1,
+            name:'Clean & Jerk — Ağırlık Artışı',
+            type:'%50–70 1RM · Progressif',
+            sets:'6 × 1 — her set biraz ağır',
+            figur:{
+              title:'OLİMPİK KALDIRIŞ AĞIRLIK PROGRESYonu',
+              art:
+'  Piramit Protokolü:\n'+
+'  Set 1: %50 1RM × 3\n'+
+'  Set 2: %60 1RM × 2\n'+
+'  Set 3: %70 1RM × 1\n'+
+'  Set 4: %75 1RM × 1\n'+
+'  Set 5: %70 1RM × 1\n'+
+'  Set 6: %65 1RM × 2\n'+
+'  ─────────────────────\n'+
+'  İlk aylarda PR peşine düşme\n'+
+'  Teknik = performans'
+            },
+            steps:[
+              'Her sette ağırlığı artır.',
+              '%70 ile teknik bozuluyorsa geri dön.',
+              '1RM denemesi için en az 3 ay bekle.',
+              'Olimpik kaldırışta teknik = ağırlık.',
+              'Her set video çek, forma bak.',
+            ],
+            hatalar:'<strong>Kritik not:</strong> Olimpik kaldırışta teknik bozulurken ağırlık artırmak tehlikeli. Hafif ağırlıkla mükemmel teknik, ağır ağırlıkla kötü teknikten her zaman iyidir.',
+            yt:{url:'https://gohighlanders.com/sports/2009/1/16/GEN_0116092900.aspx?id=32',kanal:'UC Riverside Athletics',baslik:'Olympic Lifting Teaching Progression'},
+          },
+          {
+            num:2,
+            name:'Snatch — Ağırlık Artışı',
+            type:'%50–65 1RM · Teknik önce',
+            sets:'5 × 1',
+            figur:{
+              title:'SNATCH İÇİN AĞIRLIK REHBERİ',
+              art:
+'  Snatch genellikle Clean & Jerk\'in\n'+
+'  %80\'i civarındadır:\n'+
+'  ─────────────────────────\n'+
+'  Eğer C&J = 100 kg\n'+
+'  Snatch hedefi ≈ 80 kg\n'+
+'  ─────────────────────────\n'+
+'  Başlangıçta bu oran\n'+
+'  değişebilir — normal\n'+
+'  Güç bazın artıkça normalize olur'
+            },
+            steps:[
+              'Snatch, clean\'den daha teknik ve daha hafif.',
+              'Her set arasında tam dinlenme — olimpik kaldırışta 3-5 dk.',
+              '%65 üstünde teknik bozuluyorsa o gün bırak.',
+              'Video kaydı en iyi koç.',
+            ],
+            hatalar:'<strong>Sabır gerektirir:</strong> Snatch\'te ilerlemek 6-12 ay alabilir. Bu normal — teknik en karmaşık barbell hareketidir.',
+            yt:{url:'https://barbend.com/clarence-kennedy-olympic-weightlifting-guide/',kanal:'BarBend',baslik:'Snatch Progression Guide — Clarence Kennedy'},
+          },
+        ],
+        mobil:[
+          'Dinamik ısınma: 10 dk — full body',
+          'Snatch mobility: PVC complex — 5 dk',
+          'Cool down: Foam roll T-spine + kalça — 10 dk',
+        ],
+      },
+    ],
+  },
+  {
+    label:'MOBİLİTE',
+    sub:'Her antrenman öncesi/sonrası',
+    gunler:[
+      {
+        num:'Rutin',
+        title:'Olimpik Kaldırış Mobilite Programı',
+        sub:'15–20 dk · Her antrenman öncesi',
+        drill:[
+          {
+            num:1,
+            name:'Ayak Bileği Mobilitesi',
+            type:'Kritik · Her gün',
+            sets:'3 × 10 her taraf',
+            figur:{
+              title:'AYAK BİLEĞİ MOBİLİTE DRILLS',
+              art:
+'  1. Duvar Drili:\n'+
+'     Duvardan 5 cm\n'+
+'     Diz duvara değdirmeye çalış\n'+
+'     10 tekrar\n'+
+'\n'+
+'  2. Weighted Stretch:\n'+
+'     Plate üzerinde ayak ucu\n'+
+'     Öne eğil, topuk yerde\n'+
+'     30 sn tut\n'+
+'\n'+
+'  3. Calf Raise:\n'+
+'     Step üzerinde — tam aşağı\n'+
+'     Yavaş 3×15'
+            },
+            steps:[
+              'Duvardan 5 cm uzakta dur.',
+              'Dizi duvara değdirmeye çalış — topuk yerde.',
+              'Her gün 1 cm geri git.',
+              '10 cm uzaktan yapabiliyorsan yeterli.',
+            ],
+            hatalar:'<strong>Neden önemli:</strong> Ayak bileği sertliği squat derinliğini ve torso dikliğini etkiler. Hem clean hem snatch catch için kritik.',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'Ankle Mobility for Olympic Lifting'},
+          },
+          {
+            num:2,
+            name:'Front Rack Mobilitesi',
+            type:'Kritik · Her antrenman öncesi',
+            sets:'2 × 30 sn her yönde',
+            figur:{
+              title:'FRONT RACK MOBİLİTE — 3 DRILL',
+              art:
+'  1. Bar-Assisted Stretch:\n'+
+'     Bar rackta · Dirsekler üstünde\n'+
+'     Öne düş · 30 sn\n'+
+'\n'+
+'  2. Wrist Circles:\n'+
+'     Yerde dört ayakta\n'+
+'     İç-dış daireler · 10+10\n'+
+'\n'+
+'  3. Prayer Stretch:\n'+
+'     El içleri birbirine\n'+
+'     Masteye koy, aşağı bas\n'+
+'     30 sn × 3'
+            },
+            steps:[
+              'Barı rack\'e koy, dirseklerin üstüne değdir.',
+              'Vücudunu öne düşür — 30 sn tut.',
+              'Wrist circles: dört ayakta 10 iç, 10 dış.',
+              'Prayer stretch: 30 sn.',
+            ],
+            hatalar:'<strong>Neden önemli:</strong> Front rack kısıtlığı en yaygın clean problemidir. Günde 5 dk bu drillere ayıran lifter hızla ilerler.',
+            yt:{url:'https://wodprep.com/blog/best-weightlifting-tips-snatch-clean-jerk/',kanal:'WODprep',baslik:'Front Rack Mobility Guide'},
+          },
+          {
+            num:3,
+            name:'Overhead Pozisyon Mobilitesi',
+            type:'Snatch için · Her gün',
+            sets:'3 × 10–15',
+            figur:{
+              title:'OVERHEAD MOBİLİTE — SNATCH İÇİN',
+              art:
+'  1. PVC Pass-Through:\n'+
+'     Geniş tutarak önden arkaya\n'+
+'     Giderek daraltarak\n'+
+'     10 tekrar\n'+
+'\n'+
+'  2. Overhead Squat Hold:\n'+
+'     PVC overhead\n'+
+'     En derin squat\n'+
+'     10 sn × 3\n'+
+'\n'+
+'  3. Lat Stretch:\n'+
+'     Bar-assisted\n'+
+'     Kalça geri, kol uzun\n'+
+'     30 sn × 2'
+            },
+            steps:[
+              'PVC pass-through: Önden arkaya, kademeli daralma.',
+              'Overhead squat hold: En derin pozisyonda tut.',
+              'Lat stretch: Rack\'te bar tut, kalça geri it.',
+            ],
+            hatalar:'<strong>Neden önemli:</strong> Snatch yakalama pozisyonu lat ve omuz mobilitesine bağlı. Kısıtlıysa bar öne gider.',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'Overhead Mobility for Snatch'},
+          },
+        ],
+        mobil:[],
+      },
+    ],
+  },
+  {
+    label:'KAYNAK',
+    sub:'YouTube & Linkler',
+    gunler:[
+      {
+        num:'Kaynaklar',
+        title:'En İyi YouTube Kanalları & Linkler',
+        sub:'Teknik öğrenmek için güvenilir kaynaklar',
+        drill:[
+          {
+            num:1,
+            name:'Juggernaut Training Systems',
+            type:'Seviye: Başlangıç → İleri · İngilizce',
+            sets:'Kanal',
+            figur:{
+              title:'JUGGERNAUT — NEDEN?',
+              art:
+'  · Quinn Henoch (DPT) anlatıyor\n'+
+'  · Fizyoterapi temelli yaklaşım\n'+
+'  · Her hareket için mobilite önerileri\n'+
+'  · Başlangıç videolar çok açıklayıcı\n'+
+'  · Clean & Jerk tam rehber videosu\n'+
+'    dünyanın en iyi başlangıç videosu'
+            },
+            steps:[
+              'Kanal: Juggernaut Training Systems',
+              'Başlangıç videosu: "How to Clean & Jerk — Quinn Henoch"',
+              'Bu videoyla başla: tekrar tekrar izle.',
+            ],
+            hatalar:'',
+            yt:{url:'https://www.youtube.com/watch?v=nJEMcnFKWQ8',kanal:'Juggernaut Training',baslik:'How to Clean & Jerk Complete Beginners Guide ft. Quinn Henoch'},
+          },
+          {
+            num:2,
+            name:'Technique Team',
+            type:'Seviye: Başlangıç → Orta · İngilizce',
+            sets:'Kanal',
+            figur:{
+              title:'TECHNIQUE TEAM — NEDEN?',
+              art:
+'  · CrossFit temelli olimpik kaldırış\n'+
+'  · Snatch + Clean & Jerk\n'+
+'  · Hata düzeltme videoları\n'+
+'  · Ultimate guide videosu kapsamlı\n'+
+'  · Mobilite drills dahil'
+            },
+            steps:[
+              'Kanal: Technique Team',
+              'Başlangıç: "SNATCH, CLEAN & JERK Ultimate Guide"',
+              'Mobilite ve teknik birlikte.',
+            ],
+            hatalar:'',
+            yt:{url:'https://www.youtube.com/watch?v=pn4lkYxOg0M',kanal:'Technique Team',baslik:'SNATCH, CLEAN & JERK: ULTIMATE Guide to Dominate Olympic Lifting'},
+          },
+          {
+            num:3,
+            name:'Catalyst Athletics',
+            type:'Seviye: Orta → İleri · İngilizce',
+            sets:'Kanal & Website',
+            figur:{
+              title:'CATALYST ATHLETICS — NEDEN?',
+              art:
+'  · Dünyanın en büyük olimpik\n'+
+'    kaldırış eğitim kaynağı\n'+
+'  · Greg Everett — uzman koç\n'+
+'  · Teknik drill kütüphanesi\n'+
+'  · Ücretsiz program rehberleri\n'+
+'  · cathletics.com çok kapsamlı'
+            },
+            steps:[
+              'Website: cathletics.com',
+              'YouTube: Catalyst Athletics',
+              'Greg Everett Seminar serisi: temel teknik.',
+            ],
+            hatalar:'',
+            yt:{url:'https://cathletics.gumroad.com',kanal:'Catalyst Athletics',baslik:'Catalyst Athletics — Dünyanın En Büyük OLY Eğitim Kaynağı'},
+          },
+          {
+            num:4,
+            name:'Clarence Kennedy',
+            type:'Seviye: Orta → İleri · İngilizce',
+            sets:'Kanal',
+            figur:{
+              title:'CLARENCE KENNEDY — NEDEN?',
+              art:
+'  · Dünya standartlarında lifter\n'+
+'  · Snatch ve Clean & Jerk için\n'+
+'    en kapsamlı kişisel rehber\n'+
+'  · BarBend ile tam guide\n'+
+'  · Yavaş motion teknik analizi'
+            },
+            steps:[
+              'YouTube: Clarence Kennedy',
+              'BarBend article: Ultimate guide.',
+              'Snatch tekniği için özellikle önerilir.',
+            ],
+            hatalar:'',
+            yt:{url:'https://barbend.com/clarence-kennedy-olympic-weightlifting-guide/',kanal:'BarBend × Clarence Kennedy',baslik:'Clarence Kennedy Made an Ultimate Guide to Snatch and Clean & Jerk'},
+          },
+          {
+            num:5,
+            name:'WODprep',
+            type:'Seviye: Başlangıç · CrossFit odaklı',
+            sets:'Website & YouTube',
+            figur:{
+              title:'WODPREP — NEDEN?',
+              art:
+'  · CrossFit atletleri için\n'+
+'  · Clean & Jerk hata düzeltme\n'+
+'  · Front rack mobilite\n'+
+'  · Adım adım progression\n'+
+'  · Türk atletler de kullanıyor'
+            },
+            steps:[
+              'Website: wodprep.com',
+              'Clean & Jerk progressions makalesi çok kapsamlı.',
+              'Mobilite drills için iyi kaynak.',
+            ],
+            hatalar:'',
+            yt:{url:'https://wodprep.com/blog/how-clean-jerk-progressions/',kanal:'WODprep',baslik:'How to Clean & Jerk — Progressions & Common Mistakes'},
+          },
+        ],
+        mobil:[],
+      },
+    ],
+  },
+];
+
+var olimpikOpenGuns={};
+
+function olimpikToggleGun(fazIdx,gunIdx){
+  var key=fazIdx+'-'+gunIdx;
+  olimpikOpenGuns[key]=!olimpikOpenGuns[key];
+  var body=document.getElementById('olimpik-gun-body-'+key);
+  var arrow=document.getElementById('olimpik-gun-arrow-'+key);
+  if(body) body.classList.toggle('open',!!olimpikOpenGuns[key]);
+  if(arrow) arrow.classList.toggle('open',!!olimpikOpenGuns[key]);
+}
+
+function olimpikSetFaz(i){
+  olimpikActiveFaz=i;
+  document.querySelectorAll('.olimpik-faz-tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+  document.querySelectorAll('.olimpik-content').forEach((c,j)=>c.classList.toggle('on',j===i));
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+function renderOlimpikView(){
+  var v=document.getElementById('olimpik-view');
+  if(!v) return;
+
+  var html=
+    '<div class="olimpik-hero">'+
+      '<div class="olimpik-hero-title">OLİMPİK KALDIRIŞ</div>'+
+      '<div class="olimpik-hero-sub">Sıfırdan ileri seviyeye. Her hareket adım adım, YouTube linkleriyle, ASCII çizimlerle. Kendi temponuzda ilerleyin.</div>'+
+      '<div class="olimpik-hero-stats">'+
+        '<div class="olimpik-hero-stat"><div class="olimpik-hero-stat-val">10</div><div class="olimpik-hero-stat-lbl">Seans</div></div>'+
+        '<div class="olimpik-hero-stat"><div class="olimpik-hero-stat-val">3</div><div class="olimpik-hero-stat-lbl">Ana Hareket</div></div>'+
+        '<div class="olimpik-hero-stat"><div class="olimpik-hero-stat-val">5</div><div class="olimpik-hero-stat-lbl">Kaynak Kanal</div></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="olimpik-faz-tabs">';
+
+  OLIMPIK_FAZLAR.forEach(function(faz,i){
+    html+='<button class="olimpik-faz-tab'+(i===olimpikActiveFaz?' on':'')+'" onclick="olimpikSetFaz('+i+')">'+faz.label+'</button>';
+  });
+  html+='</div>';
+
+  OLIMPIK_FAZLAR.forEach(function(faz,fazIdx){
+    html+='<div class="olimpik-content'+(fazIdx===olimpikActiveFaz?' on':'')+'">';
+    faz.gunler.forEach(function(gun,gunIdx){
+      var key=fazIdx+'-'+gunIdx;
+      var open=!!olimpikOpenGuns[key];
+      html+=
+        '<div class="olimpik-gun">'+
+          '<div class="olimpik-gun-hdr" onclick="olimpikToggleGun('+fazIdx+','+gunIdx+')">'+
+            '<div class="olimpik-gun-left">'+
+              '<div class="olimpik-gun-num">'+gun.num+'</div>'+
+              '<div class="olimpik-gun-title">'+gun.title+'</div>'+
+              '<div class="olimpik-gun-sub">'+gun.sub+'</div>'+
+            '</div>'+
+            '<div class="olimpik-gun-arrow'+(open?' open':'')+'" id="olimpik-gun-arrow-'+key+'">↓</div>'+
+          '</div>'+
+          '<div class="olimpik-gun-body'+(open?' open':'')+'" id="olimpik-gun-body-'+key+'">';
+
+      gun.drill.forEach(function(d){
+        html+=
+          '<div class="olimpik-drill">'+
+            '<div class="olimpik-drill-hdr">'+
+              '<div class="olimpik-drill-num">'+d.num+'</div>'+
+              '<div class="olimpik-drill-info">'+
+                '<div class="olimpik-drill-name">'+d.name+'</div>'+
+                '<div class="olimpik-drill-type">'+d.type+'</div>'+
+              '</div>'+
+              '<div class="olimpik-drill-sets">'+d.sets+'</div>'+
+            '</div>';
+
+        if(d.figur){
+          html+=
+            '<div class="olimpik-figur">'+
+              '<div class="olimpik-figur-title">'+d.figur.title+'</div>'+
+              '<div class="olimpik-figur-art">'+d.figur.art+'</div>'+
+            '</div>';
+        }
+
+        html+='<div class="olimpik-steps">';
+        d.steps.forEach(function(s,si){
+          html+='<div class="olimpik-step"><div class="olimpik-step-n">'+(si+1)+'.</div><div>'+s+'</div></div>';
+        });
+        html+='</div>';
+
+        if(d.hatalar){
+          html+='<div class="olimpik-hata">'+d.hatalar+'</div>';
+        }
+
+        if(d.yt){
+          html+='<a class="olimpik-yt" href="'+d.yt.url+'" target="_blank">'+
+            '<span class="olimpik-yt-icon">▶</span>'+
+            '<div class="olimpik-yt-text">'+
+              '<span class="olimpik-yt-lbl">'+d.yt.kanal+'</span>'+
+              d.yt.baslik+
+            '</div>'+
+          '</a>';
+        }
+
+        html+='</div>';
+      });
+
+      if(gun.mobil && gun.mobil.length){
+        html+=
+          '<div class="olimpik-mobil">'+
+            '<div class="olimpik-mobil-title">MOBİLİTE — Bu Seans İçin</div>';
+        gun.mobil.forEach(function(m){
+          html+='<div class="olimpik-mobil-item">· '+m+'</div>';
+        });
+        html+='</div>';
+      }
+
+      html+='</div></div>';
+    });
+    html+='</div>';
+  });
+
+  v.innerHTML=html;
+}
+
+function setOlimpik(){
+  mode='olimpik';
+  setHdrTitle('OLİMPİK');
+  document.getElementById('hdr-target').textContent='KALDIRIŞ REHBERİ · SIFIRDAN İLERİ SEVİYEYE';
+  hideAll();
+  document.getElementById('olimpik-view').style.display='block';
+  renderOlimpikView();
+  renderNav();
+  document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
+
+
 /* ─── WOD JENERATÖR ─── */
 var genParams={format:'amrap',kas:'push',sure:'10',yogunluk:'orta',ekipman:'db'};
 var genLastWod=null;
@@ -2853,129 +4174,16 @@ function setRakip(){
   document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
-function setAthleteProfile(){
-  mode='athlete';
-  setHdrTitle('PROFİL');
-  document.getElementById('hdr-target').textContent='ATHLETE PROFILE · M. ÇAĞRI ULU';
-  hideAll();
-  document.getElementById('athlete-view').style.display='block';
-  renderAthleteProfile();
+
+
+
+var hibritActiveDay=0;
+function hibritSetDay(i){
+  hibritActiveDay=i;
   renderNav();
-  document.getElementById('main-scroll').scrollTop=0;resetHeader();
+  renderDay2();
+  document.getElementById('main-scroll').scrollTop=0;
 }
-
-function renderAthleteProfile(){
-  var v=document.getElementById('athlete-view');
-
-  // 1RM tahminleri (Epley formülü: 1RM = w × (1 + r/30))
-  var bench1rm=Math.round(75*(1+7/30));
-  var dl1rm=Math.round(150*(1+6/30));
-  var sq1rm=Math.round(100*(1+5/30));
-  var ohp1rm=Math.round(50*(1+5/30));
-
-  // Güç/vücut ağırlığı oranları
-  var bw=78;
-  var dlRatio=(dl1rm/bw).toFixed(2);
-  var sqRatio=(sq1rm/bw).toFixed(2);
-  var bpRatio=(bench1rm/bw).toFixed(2);
-  var ohpRatio=(ohp1rm/bw).toFixed(2);
-
-  function bar(name,val,max,label){
-    var pct=Math.round(val/max*100);
-    return '<div class="bio-bar-row">'+
-      '<div class="bio-bar-hdr"><div class="bio-bar-name">'+name+'</div><div class="bio-bar-val">'+label+'</div></div>'+
-      '<div class="bio-bar-track"><div class="bio-bar-fill" style="width:'+pct+'%"></div></div>'+
-    '</div>';
-  }
-
-  v.innerHTML=
-  '<div class="athlete-back" onclick="setPPL()"><span class="athlete-back-arrow">←</span><span class="athlete-back-lbl">Programa dön</span></div>'+
-
-  // KAPAK
-  '<div class="athlete-cover">'+
-    '<div class="athlete-cover-eyebrow">Athlete Profile · MCU 2026</div>'+
-    '<div class="athlete-cover-name">M. Çağrı<span>Ulu</span></div>'+
-    '<div class="athlete-cover-tags">'+
-      '<span class="athlete-cover-tag hl">PPL · 5 Gün</span>'+
-      '<span class="athlete-cover-tag hl">Recomp</span>'+
-      '<span class="athlete-cover-tag">31 Yaş</span>'+
-      '<span class="athlete-cover-tag">170 cm · 78 kg</span>'+
-      '<span class="athlete-cover-tag">~%16–20 BF</span>'+
-    '</div>'+
-    '<div class="athlete-cover-stats">'+
-      '<div class="athlete-cover-stat"><div class="athlete-cover-stat-val">'+dl1rm+'</div><div class="athlete-cover-stat-lbl">DL 1RM</div></div>'+
-      '<div class="athlete-cover-stat"><div class="athlete-cover-stat-val">'+bench1rm+'</div><div class="athlete-cover-stat-lbl">BP 1RM</div></div>'+
-      '<div class="athlete-cover-stat"><div class="athlete-cover-stat-val">'+sq1rm+'</div><div class="athlete-cover-stat-lbl">SQ 1RM</div></div>'+
-      '<div class="athlete-cover-stat"><div class="athlete-cover-stat-val">'+ohp1rm+'</div><div class="athlete-cover-stat-lbl">OHP 1RM</div></div>'+
-    '</div>'+
-  '</div>'+
-
-  // 1 — VÜcut KOMPOZİSYONU
-  '<div class="bio-section">'+
-    '<div class="bio-section-hdr"><span class="bio-section-num">01</span><span class="bio-section-title">Vücut Kompozisyonu</span></div>'+
-    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Vücut Kitle İndeksi (VKİ)</div><div class="bio-metric-desc">Dünya Sağlık Örgütü standartlarına göre 18.5–24.9 aralığı "normal". 25+ fazla kiloya giriyor.</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+(78/(1.7*1.7)).toFixed(1)+'</div><div class="bio-metric-unit">kg/m²</div></div></div>'+
-    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Yağsız Vücut Kütlesi (FFM)</div><div class="bio-metric-desc">%18 yağ oranı baz alınarak hesaplandı. Kas, kemik ve organları kapsar.</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+Math.round(78*0.82)+'</div><div class="bio-metric-unit">kg tahmini</div></div></div>'+
-    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Hedef Vücut Kompozisyonu</div><div class="bio-metric-desc">Recomp fazında yağ yakımı ve kas kazanımı eş zamanlı hedefleniyor. Bu, kalori kısıtlı ve protein yüksek bir yaklaşım gerektirir.</div></div><div class="bio-metric-right"><div class="bio-metric-val">%12–14</div><div class="bio-metric-unit">hedef BF</div></div></div>'+
-  '</div>'+
-
-  // 2 — GÜÇ PROFİLİ
-  '<div class="bio-section">'+
-    '<div class="bio-section-hdr"><span class="bio-section-num">02</span><span class="bio-section-title">Güç Profili — Epley 1RM Tahmini</span></div>'+
-    '<div class="bio-pr-grid">'+
-      '<div class="bio-pr-card"><div class="bio-pr-card-lbl">Deadlift</div><div class="bio-pr-card-main">'+dl1rm+' kg</div><div class="bio-pr-card-sub">'+dlRatio+'× vücut ağırlığı</div><div class="bio-pr-card-target">▶ Intermediate · Hedef 180 kg+</div></div>'+
-      '<div class="bio-pr-card"><div class="bio-pr-card-lbl">Bench Press</div><div class="bio-pr-card-main">'+bench1rm+' kg</div><div class="bio-pr-card-sub">'+bpRatio+'× vücut ağırlığı</div><div class="bio-pr-card-target">▶ Intermediate · Hedef 100 kg</div></div>'+
-      '<div class="bio-pr-card"><div class="bio-pr-card-lbl">Back Squat</div><div class="bio-pr-card-main">'+sq1rm+' kg</div><div class="bio-pr-card-sub">'+sqRatio+'× vücut ağırlığı</div><div class="bio-pr-card-target">▶ Intermediate · Hedef 140 kg</div></div>'+
-      '<div class="bio-pr-card"><div class="bio-pr-card-lbl">OHP</div><div class="bio-pr-card-main">'+ohp1rm+' kg</div><div class="bio-pr-card-sub">'+ohpRatio+'× vücut ağırlığı</div><div class="bio-pr-card-target">▶ Beginner · Hedef 70 kg</div></div>'+
-    '</div>'+
-  '</div>'+
-
-  // 3 — GÜCE GÖRE SEVİYE
-  '<div class="bio-section">'+
-    '<div class="bio-section-hdr"><span class="bio-section-num">03</span><span class="bio-section-title">Strength Standards — BW Oranı</span></div>'+
-    '<div style="padding-bottom:8px;">'+
-    bar('Deadlift / BW',''+dlRatio,3,''+dlRatio+'×')+
-    bar('Squat / BW',''+sqRatio,2.5,''+sqRatio+'×')+
-    bar('Bench / BW',''+bpRatio,2,''+bpRatio+'×')+
-    bar('OHP / BW',''+ohpRatio,1.5,''+ohpRatio+'×')+
-    '</div>'+
-    '<div class="bio-analysis"><div class="bio-analysis-hdr">Referans Eşikleri</div><div class="bio-analysis-body">Erkek (intermediate): DL 2.0× · SQ 1.75× · BP 1.25× · OHP 0.75×<br>Erkek (advanced): DL 2.5× · SQ 2.0× · BP 1.5× · OHP 1.0×</div></div>'+
-  '</div>'+
-
-  // 4 — ANTROPOMETRİ & FİZYOLOJİ
-  '<div class="bio-section">'+
-    '<div class="bio-section-hdr"><span class="bio-section-num">04</span><span class="bio-section-title">Antromometri & Fizyoloji</span></div>'+
-    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Bazal Metabolizma Hızı (BMR)</div><div class="bio-metric-desc">Mifflin-St Jeor denklemi: (10×78) + (6.25×170) − (5×31) + 5</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+Math.round(10*78+6.25*170-5*31+5)+'</div><div class="bio-metric-unit">kcal/gün</div></div></div>'+
-    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Toplam Günlük Enerji (TDEE)</div><div class="bio-metric-desc">BMR × 1.725 (çok aktif — haftada 5 gün ağır antrenman + masa başı iş). Recomp için bu değerde kalın.</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+Math.round((10*78+6.25*170-5*31+5)*1.725)+'</div><div class="bio-metric-unit">kcal/gün</div></div></div>'+
-    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Günlük Protein Hedefi</div><div class="bio-metric-desc">Recomp için 2.2–2.6 g/kg önerisi (Helms et al., 2014). Kas koruma ve sentezi için kritik.</div></div><div class="bio-metric-right"><div class="bio-metric-val">'+Math.round(78*2.4)+'</div><div class="bio-metric-unit">g/gün</div></div></div>'+
-    '<div class="bio-metric"><div class="bio-metric-left"><div class="bio-metric-name">Haftalık Antrenman Hacmi</div><div class="bio-metric-desc">5 gün × ~65 dk = ~325 dk/hafta. Çoğu meta-analiz 3–5 gün arası optimal bulmuştur (Ralston et al., 2017).</div></div><div class="bio-metric-right"><div class="bio-metric-val">~325</div><div class="bio-metric-unit">dk/hafta</div></div></div>'+
-  '</div>'+
-
-  // 5 — TOPARLANMA ANALİZİ
-  '<div class="bio-section">'+
-    '<div class="bio-section-hdr"><span class="bio-section-num">05</span><span class="bio-section-title">Toparlanma & Risk Analizi</span></div>'+
-    '<div class="bio-analysis hl"><div class="bio-analysis-hdr">KRİTİK BULGULAR</div><div class="bio-analysis-body">5–6 saat uyku, recomp hedefi için en büyük kısıtlayıcıdır. Walker (2017) ve Dattilo et al. (2011) çalışmaları gösteriyor ki 7 saatin altındaki uyku kas protein sentezini %18–30 azaltıyor ve kortizol seviyelerini yükseltiyor. Bu durum hem yağ yakımını hem kas kazanımını doğrudan kısıtlar.</div></div>'+
-    '<div class="bio-analysis"><div class="bio-analysis-hdr">Mobilite Riski</div><div class="bio-analysis-body">Günlük 8+ saat masa başı çalışma + sıfır mobilite rutini: hip flexor kısalığı, thoracic kyfosis artışı ve rotator cuff instabilitesi risk faktörleri. Bu tablo özellikle OHP performansını ve squat derinliğini kısıtlar (Sahrmann, 2002).</div></div>'+
-    '<div class="bio-analysis"><div class="bio-analysis-hdr">Deload Stratejisi</div><div class="bio-analysis-body">Deload yapılmıyor. Bilimsel literatür her 4–8 haftada 1 deload haftası öneriyor (Haff & Triplett, 2015). Uzun vadede kümülatif yorgunluk performans tavanını düşürür ve sakatlık riskini artırır.</div></div>'+
-  '</div>'+
-
-  // 6 — GELİŞİM YOLU
-  '<div class="bio-section">'+
-    '<div class="bio-section-hdr"><span class="bio-section-num">06</span><span class="bio-section-title">Gelişim Yol Haritası</span></div>'+
-    '<div class="bio-timeline-item"><div class="bio-timeline-dot on"></div><div class="bio-timeline-content"><div class="bio-timeline-title">Şu An — Intermediate Geçişi</div><div class="bio-timeline-desc">Deadlift güçlü, bench orta, OHP zayıf. PPL programı çalışıyor. Recomp fazı aktif.</div></div></div>'+
-    '<div class="bio-timeline-item"><div class="bio-timeline-dot"></div><div class="bio-timeline-content"><div class="bio-timeline-title">6 Ay — Güç Benchmarkı</div><div class="bio-timeline-desc">Bench 100 kg · OHP 65 kg · Squat 120 kg · DL 170 kg hedefleri. OHP önceliklendir — omuz stabilitesi bench tavanını belirliyor.</div></div></div>'+
-    '<div class="bio-timeline-item"><div class="bio-timeline-dot"></div><div class="bio-timeline-content"><div class="bio-timeline-title">1 Yıl — Olimpik Kaldırış Giriş</div><div class="bio-timeline-desc">Power Clean ve Push Jerk teknik öğrenme. Mevcut güç bazı bu hareketler için yeterli. Teknik koçluk önerilir.</div></div></div>'+
-    '<div class="bio-timeline-item"><div class="bio-timeline-dot"></div><div class="bio-timeline-content"><div class="bio-timeline-title">2 Yıl — CrossFit Atletizmi</div><div class="bio-timeline-desc">Tam vücut atletizmi: güç + kondisyon + gymnastics dengesi. Mat Fraser metodolojisi: önce güç tabanı, sonra kondisyon katmanı.</div></div></div>'+
-  '</div>'+
-
-  // 7 — SPORCU KİMLİĞİ
-  '<div class="bio-section" style="padding-bottom:24px;">'+
-    '<div class="bio-section-hdr"><span class="bio-section-num">07</span><span class="bio-section-title">Sporcu Kimliği & Felsefe</span></div>'+
-    '<div class="bio-analysis"><div class="bio-analysis-hdr">Metodoloji</div><div class="bio-analysis-body">Güray Aydın\'ın pragmatik salon kültürü + Jeff Nippard\'ın kanıta dayalı hipertrofi yaklaşımı. Bu kombinasyon doğru: bilimsel temelli ama sahaya dönük, estetik odaklı ama güçten ödün vermeyen.</div></div>'+
-    '<div class="bio-analysis"><div class="bio-analysis-hdr">Motivasyon Tipi</div><div class="bio-analysis-body">Estetik ve PR odaklı iç motivasyon. Araştırmalar bu tipin (özerk motivasyon) uzun vadede en sürdürülebilir olduğunu gösteriyor. Yalnız çalışma tercihi derin odak sağlar.</div></div>'+
-    '<div class="bio-analysis hl"><div class="bio-analysis-hdr">Temel Sonuç</div><div class="bio-analysis-body">Güçlü bir taban, hiç sakatlık geçmemiş temiz bir profil ve net bir vizyon. En büyük kısıtlayıcılar uyku ve mobilite — bunlar çözülürse gelişim hızı önemli ölçüde artar.</div></div>'+
-  '</div>';
-}
-
 
 function setHdrTitle(text){
   var el=document.getElementById('hdr-title');
@@ -3037,8 +4245,8 @@ function hideAll(){
   document.getElementById('emom-view').style.display='none';
   document.getElementById('rakip-view').style.display='none';
   document.getElementById('gen-view').style.display='none';
-  document.getElementById('athlete-view').style.display='none';
   document.getElementById('beslenme-view').style.display='none';
+  document.getElementById('olimpik-view').style.display='none';
 }
 
 function setRecipes(){
