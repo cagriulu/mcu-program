@@ -125,7 +125,7 @@ button:active,
 .pr-row-val{font-size:20px;font-weight:900;letter-spacing:-.02em;color:var(--fg);}
 .pr-row-unit{font-size:9px;font-weight:500;color:var(--muted);letter-spacing:.06em;}
 
-/* GÜN GÖRÜNÜMü */
+
 .day-view{padding:0 var(--sp-4) 100px;}
 .block{margin-top:var(--sp-5);}
 .block-hdr{display:grid;grid-template-columns:1fr auto auto auto;background:var(--fg);padding:0 var(--sp-2);}
@@ -794,6 +794,19 @@ button:active,
 .wod-meta-lbl{font-size:7px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .wod-meta-val{font-size:13px;font-weight:700;color:var(--fg);}
 .wod-result-note{font-size:10px;color:var(--muted);line-height:1.7;}
+/* BLOK C — WOD / HYROX SEKME */
+.blokc-tabs{display:flex;border-bottom:1px solid var(--rim);}
+.blokc-tab{flex:1;padding:10px 8px;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:transparent;border:none;border-right:1px solid var(--rim);color:var(--muted);font-family:'Inter Tight',sans-serif;cursor:pointer;transition:all var(--ease);min-height:40px;}
+.blokc-tab:last-child{border-right:none;}
+.blokc-tab.on{background:var(--fg);color:var(--bg);}
+.blokc-pane{display:none;}
+.blokc-pane.on{display:block;}
+.hyrox-ek-card{padding:14px 16px;}
+.hyrox-ek-label{font-size:7px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.hyrox-ek-name{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--fg);margin-bottom:6px;}
+.hyrox-ek-detail{font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:12px;white-space:pre-line;}
+.hyrox-ek-note{font-size:10px;color:var(--muted);border-left:2px solid var(--rim);padding-left:10px;line-height:1.7;margin-bottom:12px;}
+.hyrox-ek-faz{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);background:var(--fg);display:inline-block;padding:3px 10px;}
 .wod-roll-btn{display:flex;align-items:center;gap:8px;background:var(--fg);border:none;padding:13px 16px;font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);cursor:pointer;transition:opacity .15s;width:100%;border-top:1px solid var(--rim);}
 .wod-roll-btn:active{opacity:.6;}
 .wod-roll-icon{font-size:16px;}
@@ -1869,19 +1882,101 @@ function renderDayWodResult(dayKey){
     '<div class="wod-result-note">'+w.note+'</div></div>';
 }
 
+/* ─── HYROX GÜNLÜK EK ─── */
+const HYROX_EKLER={
+  'push-a':{
+    name:'Wall Ball Adaptasyonu',
+    detail:'3 × 20 tekrar Wall Ball\n6 kg top · 3 m hedef\nDurmadan, istikrarlı tempo',
+    note:'Hyrox\'ta son istasyon — bacaklar ve omuzlar yorgunken 100 tekrar. Bugün omuz dayanıklılığını inşa ediyorsun.',
+    faz:'Faz 1 · Hafta 1–4',
+    faz2:{name:'Wall Ball (artıyor)',detail:'4 × 20 tekrar → 2 × 50 tekrar\n50 tekrar durmadan hedefle',faz:'Faz 1 · Hafta 5–8'},
+  },
+  'pull-a':{
+    name:'Zone 2 Koşu',
+    detail:'20–25 dk Zone 2\nKonuşabildiğin tempo\nAkşam — salondan 3 saat sonra',
+    note:'Aerobik motor bu seansta inşa ediliyor. Hız değil, süre. Nefes sıkışıyorsa yavaşla ama durma.',
+    faz:'Faz 1 · Hafta 1–4',
+    faz2:{name:'400m Interval',detail:'6–8 × 400m koşu\n90 sn dinlenme arası\nKontrollü ama tempolu',faz:'Faz 1 · Hafta 5–8'},
+  },
+  'legs':{
+    name:'Farmers Carry',
+    detail:'3 × 50 m\nH 1–2: 2×16 kg\nH 3–4: 2×20 kg\nDik dur, core sıkı, adım kısa',
+    note:'Hyrox\'ta 200m carry yapılıyor. Bacaklar yorgunken taşımak — bu gün bunun için mükemmel.',
+    faz:'Faz 1 · Hafta 1–4',
+    faz2:{name:'Farmers + Sandbag Lunge',detail:'3 × 60m Farmers (2×24 kg)\n2 × 20m Sandbag Lunge (15–20 kg)',faz:'Faz 1 · Hafta 5–8'},
+  },
+  'push-b':{
+    name:'RowErg',
+    detail:'4 × 500m\n90 sn dinlenme arası\nPace: 2:30–2:45/500m\nSalonda yoksa: 15 dk sabit bisiklet',
+    note:'Teknik: bacak-gövde-kol sırasıyla it. Hyrox\'ta 1000m row var — bugün yarısını pratik ediyorsun.',
+    faz:'Faz 1 · Hafta 1–4',
+    faz2:{name:'RowErg (artıyor)',detail:'3 × 500m → 2 × 750m\nHedef pace: 2:20–2:30/500m',faz:'Faz 1 · Hafta 5–8'},
+  },
+  'pull-b':{
+    name:'Burpee Broad Jump',
+    detail:'3 × 15 tekrar\nYere yat → kalk → iki ayakla ileri atla\nH 3–4: 3 × 20 tekrar',
+    note:'Hyrox\'ta 80m = ~45 burpee broad jump. En çok nefes tüketiyor. Form bozulursa azalt, durma.',
+    faz:'Faz 1 · Hafta 1–4',
+    faz2:{name:'Burpee Broad Jump (artıyor)',detail:'3 × 25 tekrar → 4 × 20 tekrar',faz:'Faz 1 · Hafta 5–8'},
+  },
+};
+
+var blokCTab={};
+
+function blokCSetTab(dayKey,tab){
+  blokCTab[dayKey]=tab;
+  var wodPane=document.getElementById('blokc-wod-'+dayKey);
+  var hyroxPane=document.getElementById('blokc-hyrox-'+dayKey);
+  var tabWod=document.getElementById('blokc-tab-wod-'+dayKey);
+  var tabHyrox=document.getElementById('blokc-tab-hyrox-'+dayKey);
+  if(!wodPane) return;
+  var showWod=tab==='wod';
+  wodPane.classList.toggle('on',showWod);
+  hyroxPane.classList.toggle('on',!showWod);
+  tabWod.classList.toggle('on',showWod);
+  tabHyrox.classList.toggle('on',!showWod);
+}
+
 function buildDayWodHTML(dayKey){
   dayWodInit(dayKey);
   var st=dayWodState[dayKey];
-  var html='<div class="day-wod-section">'+
-    '<div class="day-wod-header"><div class="day-wod-title">BLOK C — RANDOM WOD</div></div>'+
+  var ek=HYROX_EKLER[dayKey];
+
+  // WOD içeriği
+  var wodContent='<div class="blokc-pane on" id="blokc-wod-'+dayKey+'">'+
     '<div class="wod-intensity-btns">';
   INT_LABELS.forEach(function(lbl,i){
-    html+='<button class="wod-int-btn'+(i===st.int?' on':'')+'" data-day="'+dayKey+'" onclick="dayWodSetInt(\''+dayKey+'\','+i+')">'+lbl+'</button>';
+    wodContent+='<button class="wod-int-btn'+(i===st.int?' on':'')+'" data-day="'+dayKey+'" onclick="dayWodSetInt(\''+dayKey+'\','+i+')">'+lbl+'</button>';
   });
-  html+='</div>';
-  html+='<div id="wod-result-'+dayKey+'"><div class="wod-empty">⟳ YENİLE\'ye bas</div></div>';
-  html+='<button class="wod-roll-btn" onclick="dayWodRoll(\''+dayKey+'\')"><span class="wod-roll-icon" id="wod-roll-icon-'+dayKey+'">⟳</span> YENİLE</button>';
-  html+='</div>';
+  wodContent+='</div>';
+  wodContent+='<div id="wod-result-'+dayKey+'"><div class="wod-empty">⟳ YENİLE\'ye bas</div></div>';
+  wodContent+='<button class="wod-roll-btn" onclick="dayWodRoll(\''+dayKey+'\')"><span class="wod-roll-icon" id="wod-roll-icon-'+dayKey+'">⟳</span> YENİLE</button>';
+  wodContent+='</div>';
+
+  // Hyrox içeriği
+  var hyroxContent='<div class="blokc-pane" id="blokc-hyrox-'+dayKey+'">';
+  if(ek){
+    hyroxContent+='<div class="hyrox-ek-card">'+
+      '<div class="hyrox-ek-label">Hyrox Eki — '+ek.faz+'</div>'+
+      '<div class="hyrox-ek-name">'+ek.name+'</div>'+
+      '<div class="hyrox-ek-detail">'+ek.detail+'</div>'+
+      '<div class="hyrox-ek-note">'+ek.note+'</div>';
+    if(ek.faz2){
+      hyroxContent+='<div class="hyrox-ek-faz">'+ek.faz2.faz+': '+ek.faz2.name+'</div>';
+    }
+    hyroxContent+='</div>';
+  }
+  hyroxContent+='</div>';
+
+  var html='<div class="day-wod-section">'+
+    '<div class="day-wod-header"><div class="day-wod-title">BLOK C</div></div>'+
+    '<div class="blokc-tabs">'+
+      '<button class="blokc-tab on" id="blokc-tab-wod-'+dayKey+'" onclick="blokCSetTab(\''+dayKey+'\',\'wod\')">RANDOM WOD</button>'+
+      '<button class="blokc-tab" id="blokc-tab-hyrox-'+dayKey+'" onclick="blokCSetTab(\''+dayKey+'\',\'hyrox\')">HYROX EKİ</button>'+
+    '</div>'+
+    wodContent+
+    hyroxContent+
+  '</div>';
   return html;
 }
 
