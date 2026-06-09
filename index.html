@@ -4217,9 +4217,149 @@ function setDay(i){
   document.getElementById('main-scroll').scrollTop=0;resetHeader();
 }
 
+/* ─── LEGS WOD SİSTEMİ ─── */
+var legsTab='standart'; // 'standart' veya 'wod'
+var legsWodHistory=[];
+var legsActiveWod=null;
+
+const LEGS_WODS=[
+  // AMRAP
+  {name:'SQUAT STORM',format:'AMRAP 15 dk',icerik:'15 × Air Squat\n10 × Jump Squat\n5 × Burpee',sure:'15 dk',zorluk:'Orta',note:'Duraksama yok. Son 3 dakikada aynı tempoyu koru.'},
+  {name:'LUNGE LADDER',format:'AMRAP 12 dk',icerik:'20 × Walking Lunge\n15 × Box Jump (veya Jump Squat)\n10 × Glute Bridge',sure:'12 dk',zorluk:'Orta',note:'Lunge\'da gövde dik, diz yere değiyor.'},
+  {name:'POSTERIOR CHAIN',format:'AMRAP 10 dk',icerik:'10 × Romanian DL (70 kg)\n15 × Glute Bridge\n20 × Reverse Lunge',sure:'10 dk',zorluk:'Orta-Ağır',note:'Hamstring ve glute odaklı. RDL\'de sırt düz.'},
+  {name:'QUAD DESTROYER',format:'AMRAP 20 dk',icerik:'20 × Air Squat\n15 × Lunge (her bacak)\n10 × Jump Squat\n5 × Burpee Broad Jump',sure:'20 dk',zorluk:'Ağır',note:'20 dakika — pace sabitle, ilk 5 dakikada yanma.'},
+  {name:'KETTLEBELL LEGS',format:'AMRAP 15 dk',icerik:'15 × KB Swing (24 kg)\n10 × KB Goblet Squat\n5 × KB Romanian DL',sure:'15 dk',zorluk:'Orta',note:'KB swing\'de kalça öne — diz değil.'},
+  {name:'STEP UP CIRCUIT',format:'AMRAP 12 dk',icerik:'10 × Box Step Up (her bacak)\n10 × Bulgarian Split Squat (her bacak)\n15 × Calf Raise',sure:'12 dk',zorluk:'Orta',note:'Tek bacak çalışması — denge ve stabilite.'},
+  // FOR TIME
+  {name:'THE 150',format:'For Time',icerik:'50 × Air Squat\n40 × Lunge (adım)\n30 × Jump Squat\n20 × Burpee\n10 × Tuck Jump',sure:'~15-20 dk',zorluk:'Ağır',note:'150 tekrar toplam. Pace\'ini baştan belirle — dağılma.'},
+  {name:'BARBELL LEGS',format:'5 Round For Time',icerik:'10 × Back Squat (60 kg)\n10 × Romanian DL (80 kg)\n10 × Walking Lunge',sure:'~25 dk',zorluk:'Ağır',note:'Bar yere bırakılmaz her round içinde. Set arası 90 sn.'},
+  {name:'DEATH LUNGE',format:'For Time',icerik:'100 m Walking Lunge\n50 × Jump Squat\n100 m Walking Lunge',sure:'~20 dk',zorluk:'Çok Ağır',note:'100 metre lunge başlamadan bitti diyeceksin. Devam et.'},
+  {name:'QUAD CHIPPER',format:'For Time',icerik:'40 × Air Squat\n30 × Box Jump\n20 × Front Squat (50 kg)\n10 × Overhead Squat (30 kg)\n20 × Front Squat (50 kg)\n30 × Box Jump\n40 × Air Squat',sure:'~20-30 dk',zorluk:'Çok Ağır',note:'Piramit format. Ortada en ağır — çıkarken yorulmuş olacaksın.'},
+  {name:'SPRINT & SQUAT',format:'For Time',icerik:'400m Koşu\n30 × Air Squat\n400m Koşu\n20 × Jump Squat\n400m Koşu\n10 × Burpee Squat',sure:'~20 dk',zorluk:'Ağır',note:'Koşudan squata geçiş — bacaklar yanıyor olacak.'},
+  {name:'THE 300 LEGS',format:'For Time',icerik:'100 × Air Squat\n100 × Lunge (adım)\n100 × Glute Bridge',sure:'~20-30 dk',zorluk:'Orta',note:'300 tekrar. Tempo düşük tut, bitir.'},
+  // EMOM
+  {name:'SQUAT EMOM',format:'EMOM 16 dk',icerik:'Tek dk → 10 × Back Squat (%60 1RM)\nÇift dk → 15 × Jump Squat',sure:'16 dk',zorluk:'Orta-Ağır',note:'8 round. Squat ağırlığı ağırsa azalt — tempo şart.'},
+  {name:'LUNGE EMOM',format:'EMOM 12 dk',icerik:'Dk 1 → 10 × Reverse Lunge (her bacak)\nDk 2 → 12 × Glute Bridge\nDk 3 → 10 × Box Step Up',sure:'12 dk',zorluk:'Orta',note:'3 hareket döngüsü × 4 tur.'},
+  {name:'POWER LEGS EMOM',format:'EMOM 10 dk',icerik:'Tek dk → 5 × Deadlift (%75 1RM)\nÇift dk → 10 × Jump Squat',sure:'10 dk',zorluk:'Ağır',note:'Deadlift güç, jump squat patlayıcılık. Kombinasyon güçlü.'},
+  {name:'HYROX LEG EMOM',format:'EMOM 15 dk',icerik:'Dk 1 → 15 × Wall Ball (6 kg)\nDk 2 → 30 m Farmers Carry (2×20 kg)\nDk 3 → 10 × Sandbag Lunge (20 kg)',sure:'15 dk',zorluk:'Ağır',note:'Hyrox\'un 3 bacak istasyonu. 5 tur döngüsü.'},
+  {name:'KB SWING EMOM',format:'EMOM 12 dk',icerik:'Tek dk → 15 × KB Swing (24 kg)\nÇift dk → 10 × KB Goblet Squat',sure:'12 dk',zorluk:'Orta',note:'KB swing tempo — kalça snap önemli.'},
+  // INTERVAL
+  {name:'TABATA SQUAT',format:'Tabata 8 Round',icerik:'20 sn → Air Squat (max)\n10 sn → Dinlenme\n× 8 round',sure:'4 dk',zorluk:'Çok Ağır',note:'4 dakika ama yanacaksın. Round 5\'ten sonra tempo düşer — normal.'},
+  {name:'QUAD INTERVALS',format:'6 × 90sn / 30sn',icerik:'90 sn → Jump Squat max\n30 sn → Dinlenme\n× 6',sure:'12 dk',zorluk:'Ağır',note:'90 saniye max effort. Her round aynı tempoyu koru.'},
+  {name:'LUNGE INTERVALS',format:'5 × 45sn / 15sn',icerik:'45 sn → Walking Lunge max\n15 sn → Dinlenme\n× 5',sure:'5 dk',zorluk:'Orta',note:'Adım sayını her roundda say — düşmemeli.'},
+  // CROSSFIT KLASİKLERİ
+  {name:'NANCY',format:'5 Round For Time',icerik:'400m Koşu\n15 × Overhead Squat (40 kg)',sure:'~20-25 dk',zorluk:'Ağır',note:'CrossFit benchmark. OHS tekniği zayıfsa front squat yap.'},
+  {name:'KAREN',format:'For Time',icerik:'150 × Wall Ball (6 kg)\n3 m hedef',sure:'~8-15 dk',zorluk:'Ağır',note:'150 durmadan hedef. Elite: altı dakika. Senin hedef: 12 dk altı.'},
+  {name:'SQUAT GRACE',format:'For Time',icerik:'30 × Front Squat (60 kg)',sure:'~5-10 dk',zorluk:'Çok Ağır',note:'Grace\'in bacak versiyonu. Tempo sabit tut — yarım yolda çökürsün.'},
+  {name:'ANNIE LEGS',format:'For Time',icerik:'50-40-30-20-10:\nAir Squat\nSit-up',sure:'~15-20 dk',zorluk:'Orta',note:'Annie\'nin bacak versiyonu. İki hareket sadece — tempo her şey.'},
+  // AĞIR BACAK
+  {name:'DEAD LEGS',format:'4 Round For Time',icerik:'8 × Deadlift (120 kg)\n12 × Box Jump\n16 × Walking Lunge',sure:'~20-25 dk',zorluk:'Çok Ağır',note:'Deadlift sonrası jump — patlayıcılık. 3 dk ara setler arası.'},
+  {name:'FRONT SQUAT GRIND',format:'EMOM 10 dk',icerik:'Her dk: 3 × Front Squat (%80 1RM)',sure:'10 dk',zorluk:'Çok Ağır',note:'30 tekrar toplam, ağır. Form bozulursa dur.'},
+  {name:'BULGARIAN BLAST',format:'3 Round For Time',icerik:'10 × Bulgarian Split Squat (her bacak, 20 kg DB)\n15 × Jump Squat\n20 × Glute Bridge',sure:'~15-20 dk',zorluk:'Ağır',note:'Single leg dominans. Denge + güç kombinasyonu.'},
+  {name:'THE HYROX LEGS',format:'For Time',icerik:'50 × Wall Ball (6 kg)\n100 m Sandbag Lunge (20 kg)\n200 m Farmers Carry (2×20 kg)\n50 × Wall Ball (6 kg)',sure:'~20-30 dk',zorluk:'Çok Ağır',note:'Hyrox bacak istasyonları tek seansta. Gerçek yarış hazırlığı.'},
+  {name:'SIMPLE LEGS',format:'AMRAP 10 dk',icerik:'10 × Air Squat\n10 × Lunge\n10 × Glute Bridge',sure:'10 dk',zorluk:'Basit',note:'Enerjin düşükse bu. Basit ama etkili.'},
+  {name:'JUMP & SQUAT',format:'For Time',icerik:'10-9-8-7-6-5-4-3-2-1:\nBox Jump\nGoblet Squat (24 kg)',sure:'~15 dk',zorluk:'Orta',note:'55 tekrar toplam her hareketten. Ladder azalıyor — sonunda kurtulursun.'},
+  {name:'POSTERIOR POWER',format:'5 Round For Time',icerik:'10 × Romanian DL (90 kg)\n10 × KB Swing (32 kg)\n10 × Reverse Lunge',sure:'~20 dk',zorluk:'Ağır',note:'Hamstring ve glute dominant. DT tarzı — bar yere bırakılmaz RDL\'de.'},
+  {name:'WALL BALL MASSACRE',format:'AMRAP 20 dk',icerik:'20 × Wall Ball (6 kg)\n20 × Air Squat\n10 × Box Jump',sure:'20 dk',zorluk:'Orta-Ağır',note:'Wall ball hyrox hazırlığı. Tempo sabit — koşmuyorsun.'},
+  {name:'LEG DAY WOD',format:'3 Round For Time',icerik:'20 × Back Squat (50 kg)\n15 × Box Jump\n10 × Overhead Squat (30 kg)',sure:'~20 dk',zorluk:'Orta-Ağır',note:'Üç squat varyasyonu — teknik değişiyor, kası aynı.'},
+  {name:'SLED DOG',format:'4 Round For Time',icerik:'50 m Yük Taşıma (2×20 kg)\n20 × Jump Squat\n50 m Geri Yürüyüş',sure:'~20 dk',zorluk:'Ağır',note:'Sled push simülasyonu. Geri yürüyüş glute ve hamstring.'},
+  {name:'CINDY LEGS',format:'AMRAP 20 dk',icerik:'10 × Air Squat\n10 × Lunge\n5 × Box Jump',sure:'20 dk',zorluk:'Orta',note:'Cindy\'nin bacak versiyonu. Round sayını kaydet.'},
+  {name:'100 SQUAT CHALLENGE',format:'For Time',icerik:'100 × Back Squat (vücut ağırlığı %50\'si)',sure:'~10-15 dk',zorluk:'Orta-Ağır',note:'78 kg için ~39 kg. Durmadan veya mümkün olduğunca az ara ile.'},
+  {name:'TURKISH GET-UP LEGS',format:'AMRAP 12 dk',icerik:'5 × Turkish Get-Up (her taraf, 16 kg)\n10 × Goblet Squat\n15 × Glute Bridge',sure:'12 dk',zorluk:'Orta',note:'TGU yavaş ve kontrollü — bu WOD\'un nabzı TGU ile belirlenir.'},
+  {name:'MOUNTAIN LEGS',format:'For Time',icerik:'50 × Mountain Climber\n40 × Air Squat\n30 × Jump Squat\n20 × Lunge\n10 × Burpee Squat',sure:'~15 dk',zorluk:'Orta-Ağır',note:'Azalan piramit. Mountain climber core + bacak.'},
+];
+
+var legsWodState={wod:null};
+
+function legsRollWod(){
+  var avail=LEGS_WODS.filter((_,i)=>!legsWodHistory.includes(i));
+  if(!avail.length){legsWodHistory=[];avail=LEGS_WODS.slice();}
+  var pickIdx=Math.floor(Math.random()*avail.length);
+  var realIdx=LEGS_WODS.indexOf(avail[pickIdx]);
+  legsWodHistory.push(realIdx);
+  legsWodState.wod=LEGS_WODS[realIdx];
+  renderLegsWodCard();
+  var icon=document.getElementById('legs-wod-icon');
+  if(icon){icon.classList.add('spin');setTimeout(()=>icon.classList.remove('spin'),350);}
+}
+
+function renderLegsWodCard(){
+  var cont=document.getElementById('legs-wod-card');
+  if(!cont) return;
+  var w=legsWodState.wod;
+  if(!w){
+    cont.innerHTML='<div class="wod-empty" style="padding:20px 16px;text-align:center;font-size:10px;color:var(--muted);">RANDOM WOD\'a bas</div>';
+    return;
+  }
+  cont.innerHTML=
+    '<div style="background:var(--fg);padding:14px 16px;">'+
+      '<div style="font-size:7px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);opacity:.5;margin-bottom:4px;">LEG WOD</div>'+
+      '<div style="font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--bg);line-height:1;margin-bottom:4px;">'+w.name+'</div>'+
+      '<div style="font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);opacity:.45;">'+w.format+'</div>'+
+    '</div>'+
+    '<div style="padding:14px 16px;background:var(--bg);">'+
+      '<div style="font-size:14px;font-weight:600;color:var(--fg);line-height:1.9;white-space:pre-line;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--rim2);">'+w.icerik+'</div>'+
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">'+
+        '<span style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rim);color:var(--muted);">'+w.sure+'</span>'+
+        '<span style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rim);color:var(--muted);">'+w.zorluk+'</span>'+
+      '</div>'+
+      (w.note?'<div style="font-size:10px;color:var(--muted);border-left:2px solid var(--rim);padding-left:10px;line-height:1.7;">'+w.note+'</div>':'')+
+    '</div>';
+}
+
+function setLegsTab(tab){
+  legsTab=tab;
+  var standart=document.getElementById('legs-standart');
+  var wod=document.getElementById('legs-wod');
+  var tabS=document.getElementById('legs-tab-standart');
+  var tabW=document.getElementById('legs-tab-wod');
+  if(!standart) return;
+  standart.style.display=tab==='standart'?'block':'none';
+  wod.style.display=tab==='wod'?'block':'none';
+  tabS.classList.toggle('on',tab==='standart');
+  tabW.classList.toggle('on',tab==='wod');
+}
+
+function buildLegsHTML(blocks){
+  var blocksHtml='';
+  blocks.forEach((b,bi)=>{
+    if(bi>0) blocksHtml+='<div class="block-sep"></div>';
+    blocksHtml+='<div class="block"><div class="block-hdr"><div class="bh-title">'+b.name+'</div><div class="bh-col">SET</div><div class="bh-col">REP</div><div class="bh-col">NOT</div></div>';
+    b.exercises.forEach(ex=>{
+      const pills=ex.warmup&&ex.warmup.length>0?'<div class="warmup-pills">'+ex.warmup.map(w=>'<div class="wp">'+w+'</div>').join('')+'</div>':'';
+      blocksHtml+='<div class="ex-row"><div><div class="ex-num">'+ex.num+'</div><div class="ex-name">'+ex.name+'</div>'+pills+'</div><div class="ex-val">'+ex.sets+'</div><div class="ex-val">'+ex.reps+'</div><div class="ex-val muted">'+ex.notes+'</div></div>';
+    });
+    blocksHtml+='</div>';
+  });
+  return blocksHtml;
+}
+
 function renderDay2(){
   const d=DAYS[cur];
   let html='';
+
+  // Legs günü için özel sekme sistemi
+  if(d.key==='legs'){
+    var blocksHtml=buildLegsHTML(d.blocks);
+    html+=
+      '<div style="display:flex;border-bottom:1px solid var(--rim);">'+
+        '<button class="blokc-tab on" id="legs-tab-standart" onclick="setLegsTab(\'standart\')" style="flex:1;">STANDART PROGRAM</button>'+
+        '<button class="blokc-tab" id="legs-tab-wod" onclick="setLegsTab(\'wod\')" style="flex:1;">LEG WOD</button>'+
+      '</div>'+
+      '<div id="legs-standart">'+blocksHtml+'</div>'+
+      '<div id="legs-wod" style="display:none;">'+
+        '<div id="legs-wod-card"></div>'+
+        '<button class="wod-roll-btn" onclick="legsRollWod()">'+
+          '<span class="wod-roll-icon" id="legs-wod-icon">⟳</span> RANDOM WOD'+
+        '</button>'+
+      '</div>';
+    if(DAY_WODS[d.key]) html+=buildDayWodHTML(d.key);
+    html+=buildPRSectionHTML();
+    document.getElementById('day-view').innerHTML=html;
+    renderLegsWodCard();
+    return;
+  }
+
   d.blocks.forEach((b,bi)=>{
     if(bi>0) html+='<div class="block-sep"></div>';
     html+='<div class="block"><div class="block-hdr"><div class="bh-title">'+b.name+'</div><div class="bh-col">SET</div><div class="bh-col">REP</div><div class="bh-col">NOT</div></div>';
