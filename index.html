@@ -4223,51 +4223,56 @@ var legsWodHistory=[];
 var legsActiveWod=null;
 
 const LEGS_WODS=[
-  // AMRAP
-  {name:'SQUAT STORM',format:'AMRAP 15 dk',icerik:'15 × Air Squat\n10 × Jump Squat\n5 × Burpee',sure:'15 dk',zorluk:'Orta',note:'Duraksama yok. Son 3 dakikada aynı tempoyu koru.'},
-  {name:'LUNGE LADDER',format:'AMRAP 12 dk',icerik:'20 × Walking Lunge\n15 × Box Jump (veya Jump Squat)\n10 × Glute Bridge',sure:'12 dk',zorluk:'Orta',note:'Lunge\'da gövde dik, diz yere değiyor.'},
-  {name:'POSTERIOR CHAIN',format:'AMRAP 10 dk',icerik:'10 × Romanian DL (70 kg)\n15 × Glute Bridge\n20 × Reverse Lunge',sure:'10 dk',zorluk:'Orta-Ağır',note:'Hamstring ve glute odaklı. RDL\'de sırt düz.'},
-  {name:'QUAD DESTROYER',format:'AMRAP 20 dk',icerik:'20 × Air Squat\n15 × Lunge (her bacak)\n10 × Jump Squat\n5 × Burpee Broad Jump',sure:'20 dk',zorluk:'Ağır',note:'20 dakika — pace sabitle, ilk 5 dakikada yanma.'},
-  {name:'KETTLEBELL LEGS',format:'AMRAP 15 dk',icerik:'15 × KB Swing (24 kg)\n10 × KB Goblet Squat\n5 × KB Romanian DL',sure:'15 dk',zorluk:'Orta',note:'KB swing\'de kalça öne — diz değil.'},
-  {name:'STEP UP CIRCUIT',format:'AMRAP 12 dk',icerik:'10 × Box Step Up (her bacak)\n10 × Bulgarian Split Squat (her bacak)\n15 × Calf Raise',sure:'12 dk',zorluk:'Orta',note:'Tek bacak çalışması — denge ve stabilite.'},
-  // FOR TIME
-  {name:'THE 150',format:'For Time',icerik:'50 × Air Squat\n40 × Lunge (adım)\n30 × Jump Squat\n20 × Burpee\n10 × Tuck Jump',sure:'~15-20 dk',zorluk:'Ağır',note:'150 tekrar toplam. Pace\'ini baştan belirle — dağılma.'},
-  {name:'BARBELL LEGS',format:'5 Round For Time',icerik:'10 × Back Squat (60 kg)\n10 × Romanian DL (80 kg)\n10 × Walking Lunge',sure:'~25 dk',zorluk:'Ağır',note:'Bar yere bırakılmaz her round içinde. Set arası 90 sn.'},
-  {name:'DEATH LUNGE',format:'For Time',icerik:'100 m Walking Lunge\n50 × Jump Squat\n100 m Walking Lunge',sure:'~20 dk',zorluk:'Çok Ağır',note:'100 metre lunge başlamadan bitti diyeceksin. Devam et.'},
-  {name:'QUAD CHIPPER',format:'For Time',icerik:'40 × Air Squat\n30 × Box Jump\n20 × Front Squat (50 kg)\n10 × Overhead Squat (30 kg)\n20 × Front Squat (50 kg)\n30 × Box Jump\n40 × Air Squat',sure:'~20-30 dk',zorluk:'Çok Ağır',note:'Piramit format. Ortada en ağır — çıkarken yorulmuş olacaksın.'},
-  {name:'SPRINT & SQUAT',format:'For Time',icerik:'400m Koşu\n30 × Air Squat\n400m Koşu\n20 × Jump Squat\n400m Koşu\n10 × Burpee Squat',sure:'~20 dk',zorluk:'Ağır',note:'Koşudan squata geçiş — bacaklar yanıyor olacak.'},
-  {name:'THE 300 LEGS',format:'For Time',icerik:'100 × Air Squat\n100 × Lunge (adım)\n100 × Glute Bridge',sure:'~20-30 dk',zorluk:'Orta',note:'300 tekrar. Tempo düşük tut, bitir.'},
-  // EMOM
-  {name:'SQUAT EMOM',format:'EMOM 16 dk',icerik:'Tek dk → 10 × Back Squat (%60 1RM)\nÇift dk → 15 × Jump Squat',sure:'16 dk',zorluk:'Orta-Ağır',note:'8 round. Squat ağırlığı ağırsa azalt — tempo şart.'},
-  {name:'LUNGE EMOM',format:'EMOM 12 dk',icerik:'Dk 1 → 10 × Reverse Lunge (her bacak)\nDk 2 → 12 × Glute Bridge\nDk 3 → 10 × Box Step Up',sure:'12 dk',zorluk:'Orta',note:'3 hareket döngüsü × 4 tur.'},
-  {name:'POWER LEGS EMOM',format:'EMOM 10 dk',icerik:'Tek dk → 5 × Deadlift (%75 1RM)\nÇift dk → 10 × Jump Squat',sure:'10 dk',zorluk:'Ağır',note:'Deadlift güç, jump squat patlayıcılık. Kombinasyon güçlü.'},
-  {name:'HYROX LEG EMOM',format:'EMOM 15 dk',icerik:'Dk 1 → 15 × Wall Ball (6 kg)\nDk 2 → 30 m Farmers Carry (2×20 kg)\nDk 3 → 10 × Sandbag Lunge (20 kg)',sure:'15 dk',zorluk:'Ağır',note:'Hyrox\'un 3 bacak istasyonu. 5 tur döngüsü.'},
-  {name:'KB SWING EMOM',format:'EMOM 12 dk',icerik:'Tek dk → 15 × KB Swing (24 kg)\nÇift dk → 10 × KB Goblet Squat',sure:'12 dk',zorluk:'Orta',note:'KB swing tempo — kalça snap önemli.'},
-  // INTERVAL
-  {name:'TABATA SQUAT',format:'Tabata 8 Round',icerik:'20 sn → Air Squat (max)\n10 sn → Dinlenme\n× 8 round',sure:'4 dk',zorluk:'Çok Ağır',note:'4 dakika ama yanacaksın. Round 5\'ten sonra tempo düşer — normal.'},
-  {name:'QUAD INTERVALS',format:'6 × 90sn / 30sn',icerik:'90 sn → Jump Squat max\n30 sn → Dinlenme\n× 6',sure:'12 dk',zorluk:'Ağır',note:'90 saniye max effort. Her round aynı tempoyu koru.'},
-  {name:'LUNGE INTERVALS',format:'5 × 45sn / 15sn',icerik:'45 sn → Walking Lunge max\n15 sn → Dinlenme\n× 5',sure:'5 dk',zorluk:'Orta',note:'Adım sayını her roundda say — düşmemeli.'},
-  // CROSSFIT KLASİKLERİ
-  {name:'NANCY',format:'5 Round For Time',icerik:'400m Koşu\n15 × Overhead Squat (40 kg)',sure:'~20-25 dk',zorluk:'Ağır',note:'CrossFit benchmark. OHS tekniği zayıfsa front squat yap.'},
-  {name:'KAREN',format:'For Time',icerik:'150 × Wall Ball (6 kg)\n3 m hedef',sure:'~8-15 dk',zorluk:'Ağır',note:'150 durmadan hedef. Elite: altı dakika. Senin hedef: 12 dk altı.'},
-  {name:'SQUAT GRACE',format:'For Time',icerik:'30 × Front Squat (60 kg)',sure:'~5-10 dk',zorluk:'Çok Ağır',note:'Grace\'in bacak versiyonu. Tempo sabit tut — yarım yolda çökürsün.'},
-  {name:'ANNIE LEGS',format:'For Time',icerik:'50-40-30-20-10:\nAir Squat\nSit-up',sure:'~15-20 dk',zorluk:'Orta',note:'Annie\'nin bacak versiyonu. İki hareket sadece — tempo her şey.'},
-  // AĞIR BACAK
-  {name:'DEAD LEGS',format:'4 Round For Time',icerik:'8 × Deadlift (120 kg)\n12 × Box Jump\n16 × Walking Lunge',sure:'~20-25 dk',zorluk:'Çok Ağır',note:'Deadlift sonrası jump — patlayıcılık. 3 dk ara setler arası.'},
-  {name:'FRONT SQUAT GRIND',format:'EMOM 10 dk',icerik:'Her dk: 3 × Front Squat (%80 1RM)',sure:'10 dk',zorluk:'Çok Ağır',note:'30 tekrar toplam, ağır. Form bozulursa dur.'},
-  {name:'BULGARIAN BLAST',format:'3 Round For Time',icerik:'10 × Bulgarian Split Squat (her bacak, 20 kg DB)\n15 × Jump Squat\n20 × Glute Bridge',sure:'~15-20 dk',zorluk:'Ağır',note:'Single leg dominans. Denge + güç kombinasyonu.'},
-  {name:'THE HYROX LEGS',format:'For Time',icerik:'50 × Wall Ball (6 kg)\n100 m Sandbag Lunge (20 kg)\n200 m Farmers Carry (2×20 kg)\n50 × Wall Ball (6 kg)',sure:'~20-30 dk',zorluk:'Çok Ağır',note:'Hyrox bacak istasyonları tek seansta. Gerçek yarış hazırlığı.'},
-  {name:'SIMPLE LEGS',format:'AMRAP 10 dk',icerik:'10 × Air Squat\n10 × Lunge\n10 × Glute Bridge',sure:'10 dk',zorluk:'Basit',note:'Enerjin düşükse bu. Basit ama etkili.'},
-  {name:'JUMP & SQUAT',format:'For Time',icerik:'10-9-8-7-6-5-4-3-2-1:\nBox Jump\nGoblet Squat (24 kg)',sure:'~15 dk',zorluk:'Orta',note:'55 tekrar toplam her hareketten. Ladder azalıyor — sonunda kurtulursun.'},
-  {name:'POSTERIOR POWER',format:'5 Round For Time',icerik:'10 × Romanian DL (90 kg)\n10 × KB Swing (32 kg)\n10 × Reverse Lunge',sure:'~20 dk',zorluk:'Ağır',note:'Hamstring ve glute dominant. DT tarzı — bar yere bırakılmaz RDL\'de.'},
-  {name:'WALL BALL MASSACRE',format:'AMRAP 20 dk',icerik:'20 × Wall Ball (6 kg)\n20 × Air Squat\n10 × Box Jump',sure:'20 dk',zorluk:'Orta-Ağır',note:'Wall ball hyrox hazırlığı. Tempo sabit — koşmuyorsun.'},
-  {name:'LEG DAY WOD',format:'3 Round For Time',icerik:'20 × Back Squat (50 kg)\n15 × Box Jump\n10 × Overhead Squat (30 kg)',sure:'~20 dk',zorluk:'Orta-Ağır',note:'Üç squat varyasyonu — teknik değişiyor, kası aynı.'},
-  {name:'SLED DOG',format:'4 Round For Time',icerik:'50 m Yük Taşıma (2×20 kg)\n20 × Jump Squat\n50 m Geri Yürüyüş',sure:'~20 dk',zorluk:'Ağır',note:'Sled push simülasyonu. Geri yürüyüş glute ve hamstring.'},
-  {name:'CINDY LEGS',format:'AMRAP 20 dk',icerik:'10 × Air Squat\n10 × Lunge\n5 × Box Jump',sure:'20 dk',zorluk:'Orta',note:'Cindy\'nin bacak versiyonu. Round sayını kaydet.'},
-  {name:'100 SQUAT CHALLENGE',format:'For Time',icerik:'100 × Back Squat (vücut ağırlığı %50\'si)',sure:'~10-15 dk',zorluk:'Orta-Ağır',note:'78 kg için ~39 kg. Durmadan veya mümkün olduğunca az ara ile.'},
-  {name:'TURKISH GET-UP LEGS',format:'AMRAP 12 dk',icerik:'5 × Turkish Get-Up (her taraf, 16 kg)\n10 × Goblet Squat\n15 × Glute Bridge',sure:'12 dk',zorluk:'Orta',note:'TGU yavaş ve kontrollü — bu WOD\'un nabzı TGU ile belirlenir.'},
-  {name:'MOUNTAIN LEGS',format:'For Time',icerik:'50 × Mountain Climber\n40 × Air Squat\n30 × Jump Squat\n20 × Lunge\n10 × Burpee Squat',sure:'~15 dk',zorluk:'Orta-Ağır',note:'Azalan piramit. Mountain climber core + bacak.'},
+  // ── THRUSTER AĞIRLIKLI ──
+  {name:'FRAN LEGS',format:'21-15-9 For Time',icerik:'Thruster (42.5 kg)\nPull-up',sure:'~5-10 dk',zorluk:'Ağır',note:'CrossFit\'in en ikonik WOD\'u. Thruster = front squat + push press. 42.5 kg hafif geliyorsa 50 kg dene.'},
+  {name:'THRUSTER HELL',format:'5 Round For Time',icerik:'10 × Thruster (50 kg)\n15 × Box Jump (60 cm)',sure:'~20-25 dk',zorluk:'Çok Ağır',note:'Thruster yorgunluğu bacak + omuz kombine. Box jump\'ta tam açılma şart.'},
+  {name:'THRUSTER EMOM',format:'EMOM 12 dk',icerik:'Tek dk → 6 × Thruster (50 kg)\nÇift dk → 10 × Box Jump',sure:'12 dk',zorluk:'Ağır',note:'Dakika içinde bitirmezsen ağırlık fazla. 45 kg ile başla.'},
+  {name:'JACKIE LEGS',format:'For Time',icerik:'1000m Row\n50 × Thruster (20 kg)\n30 × Pull-up',sure:'~10-15 dk',zorluk:'Orta-Ağır',note:'CrossFit benchmark Jackie. Thruster hafif ama 50 tekrar — pace yönetimi kritik.'},
+  {name:'THRUSTER LADDER',format:'AMRAP 15 dk',icerik:'3-6-9-12... Thruster (40 kg)\n3-6-9-12... Pull-up',sure:'15 dk',zorluk:'Ağır',note:'Her round 3\'er artar. Ne kadar gidebilirsin? Hedef: 12\'yi geçmek.'},
+  {name:'DB THRUSTER BLAST',format:'4 Round For Time',icerik:'15 × DB Thruster (2×15 kg)\n15 × Burpee\n15 × Box Jump',sure:'~20 dk',zorluk:'Ağır',note:'Dumbbell thruster barbell\'den farklı — daha fazla stabilite. Her hareketi durmadan yap.'},
+  // ── FRONT SQUAT AĞIRLIKLI ──
+  {name:'FRONT SQUAT GRIND',format:'EMOM 12 dk',icerik:'Her dk: 3 × Front Squat (%80 1RM)',sure:'12 dk',zorluk:'Çok Ağır',note:'36 tekrar toplam ağır yükle. Form bozulursa dur. Quad ve upper back dayanıklılığı.'},
+  {name:'NANCY',format:'5 Round For Time',icerik:'400m Koşu\n15 × Overhead Squat (40 kg)',sure:'~20-25 dk',zorluk:'Ağır',note:'CrossFit benchmark. OHS tekniği zayıfsa front squat yap. 5 round koşu + squat klasiği.'},
+  {name:'FRONT SQUAT CHIPPER',format:'For Time',icerik:'30 × Front Squat (60 kg)\n20 × Front Squat (70 kg)\n10 × Front Squat (80 kg)',sure:'~15-20 dk',zorluk:'Çok Ağır',note:'Ağırlık artarken tekrar azalır. İlk sete tempo koru — son 10\'u bitirmek için enerji bırak.'},
+  {name:'FS AMRAP',format:'AMRAP 10 dk',icerik:'5 × Front Squat (70 kg)\n10 × Burpee Box Jump\n15 × KB Swing (24 kg)',sure:'10 dk',zorluk:'Ağır',note:'Kısa ama yoğun. Front squat ağırsa 60 kg. Her round aynı tempoyu koru.'},
+  {name:'FRONT SQUAT + ROW',format:'3 Round For Time',icerik:'10 × Front Squat (80 kg)\n500m Row\n10 × Front Squat (80 kg)',sure:'~25 dk',zorluk:'Çok Ağır',note:'Row araya giriyor ama front squat ön planda. 3 dk ara setler arası.'},
+  // ── BACK SQUAT AĞIRLIKLI ──
+  {name:'20 REP SQUAT',format:'1 Set',icerik:'20 × Back Squat (%60 1RM)\nNefes alarak devam et',sure:'~10 dk',zorluk:'Çok Ağır',note:'Powerlifting\'in efsanevi testi. 78 kg için ~59 kg. Durmak yasak — sadece nefes al, devam et. Zihinsel dayanıklılık.'},
+  {name:'BACK SQUAT LADDER',format:'EMOM artarak',icerik:'Dk 1: 2 tekrar\nDk 2: 4 tekrar\nDk 3: 6 tekrar...\n%65 1RM sabit',sure:'Failure\'a kadar',zorluk:'Ağır',note:'Her dk 2 tekrar artar. Dakikayı tamamlayamazsan biter. Kaç dakika gidebilirsin?'},
+  {name:'SQUAT STORM',format:'5 Round For Time',icerik:'10 × Back Squat (80 kg)\n10 × Box Jump (60 cm)\n10 × Jump Squat',sure:'~20-25 dk',zorluk:'Ağır',note:'Ağır squat + patlayıcılık kombinasyonu. Box jump\'ta tam açılma, jump squat\'ta derine in.'},
+  {name:'BARBELL BARBARIAN',format:'For Time',icerik:'21 × Back Squat (60 kg)\n21 × Deadlift (100 kg)\n15 × Back Squat (70 kg)\n15 × Deadlift (110 kg)\n9 × Back Squat (80 kg)\n9 × Deadlift (120 kg)',sure:'~20-30 dk',zorluk:'Çok Ağır',note:'21-15-9 format ama iki barbell. Ağırlıkları senin seviyene göre ayarla.'},
+  {name:'SQUAT KAREN',format:'For Time',icerik:'150 × Back Squat (vücut ağırlığı %40\'ı)',sure:'~15-20 dk',zorluk:'Orta-Ağır',note:'~31 kg (78 kg için). Karen\'in squat versiyonu. 150 tekrar zihinsel dayanıklılık testi.'},
+  // ── LUNGE AĞIRLIKLI ──
+  {name:'LUNGE & THRUSTER',format:'4 Round For Time',icerik:'20 × Walking Lunge (2×15 kg DB)\n10 × Thruster (50 kg)\n10 × Pull-up',sure:'~20-25 dk',zorluk:'Ağır',note:'Lunge hip flexor, thruster quads. Kombinasyon çok yorucu — pace sabitle.'},
+  {name:'MANION',format:'7 Round For Time',icerik:'29 × Back Squat (61 kg)\n400m Koşu',sure:'~50-60 dk',zorluk:'Çok Ağır',note:'Hero WOD. 203 squat + 2.8 km koşu. Agresif değil, sürdürülebilir pace. Zaman baskısı yok — bitirmek kazanmak.'},
+  {name:'LUNGE CHIPPER',format:'For Time',icerik:'50 × Walking Lunge\n40 × Front Squat (50 kg)\n30 × Box Jump\n20 × Thruster (40 kg)\n10 × Overhead Squat (30 kg)',sure:'~25-35 dk',zorluk:'Çok Ağır',note:'Beş hareket azalan piramit. Squat varyasyonları zincirleme — hamstrings ve quads tam çalışır.'},
+  {name:'DB LUNGE AMRAP',format:'AMRAP 15 dk',icerik:'12 × DB Walking Lunge (2×20 kg)\n10 × DB Goblet Squat (32 kg)\n8 × Box Step-up (2×20 kg)',sure:'15 dk',zorluk:'Orta-Ağır',note:'Tek bacak çalışması dominans. Balance + güç. Her harekette gövde dik.'},
+  {name:'BULGARIAN BLAST',format:'3 Round For Time',icerik:'10 × Bulgarian Split Squat (her bacak, 2×20 kg)\n10 × Jump Squat\n10 × Box Jump\n10 × Reverse Lunge (her bacak)',sure:'~20 dk',zorluk:'Ağır',note:'Single-leg movement dominant. Denge + güç. Split squat\'ta ön diz ayak ucunun üstünde.'},
+  {name:'RUNNING LUNGE',format:'5 Round For Time',icerik:'400m Koşu\n20 × Alternating Lunge\n10 × Overhead Lunge (20 kg)',sure:'~25 dk',zorluk:'Ağır',note:'Her roundda koşu + lunge. Overhead lunge mobility gerektirir — hafif başla.'},
+  // ── DEADLIFT + BACAK ──
+  {name:'DEAD LEGS',format:'4 Round For Time',icerik:'8 × Deadlift (120 kg)\n10 × Box Jump (60 cm)\n12 × Walking Lunge',sure:'~20-25 dk',zorluk:'Çok Ağır',note:'Deadlift sonrası hemen jump — posterior chain patlaması. 3 dk ara setler arası.'},
+  {name:'DT LEGS',format:'5 Round For Time',icerik:'12 × Deadlift (70 kg)\n9 × Hang Power Clean\n6 × Front Squat (70 kg)',sure:'~15-20 dk',zorluk:'Çok Ağır',note:'DT\'nin front squat versiyonu. Bar yere bırakılmaz round içinde. Bacak + kondisyon.'},
+  {name:'POSTERIOR POWER',format:'5 Round For Time',icerik:'10 × Romanian DL (90 kg)\n10 × KB Swing (24 kg)\n10 × Glute Bridge (80 kg)',sure:'~20-25 dk',zorluk:'Ağır',note:'Hamstring ve glute dominant. RDL\'de sırt düz, KB swing\'de kalça snap.'},
+  {name:'STRENGTH ENDURANCE',format:'AMRAP 20 dk',icerik:'5 × Deadlift (100 kg)\n10 × Front Squat (60 kg)\n15 × Box Jump',sure:'20 dk',zorluk:'Ağır',note:'Üç hareket — her round yaklaşık 2 dk. 10 round hedef.'},
+  // ── KLASIK CROSSFIT BENCHMARK ──
+  {name:'KAREN',format:'For Time',icerik:'150 × Wall Ball (6 kg)\n3 m hedef',sure:'~8-15 dk',zorluk:'Ağır',note:'CrossFit benchmark. Elite: 6 dk. Hedefin: 12 dk altı. Bacak yorgunluğu dominant. Durmadan gitmeyi öğren.'},
+  {name:'CHELSEA SQUAT',format:'EMOM 30 dk',icerik:'Her dk:\n5 × Pull-up\n10 × Push-up\n15 × Air Squat',sure:'30 dk',zorluk:'Orta',note:'Chelsea\'nin klasiği. 450 squat toplam. Dakika bitişe kadar yetiştirmek zorundasın.'},
+  {name:'SUPER LEGS',format:'For Time',icerik:'50 × Thruster (40 kg)\n50 × Box Jump (60 cm)\n50 × Lunge\n50 × Wall Ball (6 kg)',sure:'~30-40 dk',zorluk:'Çok Ağır',note:'200 tekrar toplam — 4 hareket. Chipper mantığı. Her hareketi set halinde böl.'},
+  {name:'JUMPING JACK FLASH',format:'AMRAP 20 dk',icerik:'10 × Jump Squat\n10 × Box Jump\n10 × Burpee Broad Jump\n10 × Tuck Jump',sure:'20 dk',zorluk:'Ağır',note:'Tamamen patlayıcı. 4 jump varyasyonu. Kondisyon + bacak gücü. Kalça tam açılımı kritik.'},
+  {name:'NOVEMBER RAIN',format:'For Time',icerik:'800m Koşu\n21 × Thruster (40 kg)\n800m Koşu\n15 × Thruster (40 kg)\n800m Koşu\n9 × Thruster (40 kg)',sure:'~25-35 dk',zorluk:'Çok Ağır',note:'3 koşu + 3 thruster seti. 45 thruster toplam. Koşu temposunu korumak için thruster\'da pace sabitle.'},
+  {name:'BUZZKILL',format:'3 Round For Time',icerik:'21 × Back Squat (60 kg)\n21 × Box Jump\n21 × KB Swing (24 kg)',sure:'~20-25 dk',zorluk:'Ağır',note:'Her round 63 tekrar. 3 round için 189 tekrar. Koşusuz ama sürekli.'},
+  // ── HYROX BACAK ──
+  {name:'HYROX LEG SPECIAL',format:'For Time',icerik:'50 × Wall Ball (6 kg)\n100 m Sandbag Lunge (20 kg)\n200 m Farmers Carry (2×20 kg)\n50 × Wall Ball (6 kg)',sure:'~20-30 dk',zorluk:'Çok Ağır',note:'Hyrox\'un 3 bacak istasyonu tek seansta. Gerçek yarış hazırlığı. Süreyi kaydet — her ay karşılaştır.'},
+  {name:'HYROX LEG EMOM',format:'EMOM 15 dk',icerik:'Dk 1 → 15 × Wall Ball (6 kg)\nDk 2 → 30 m Farmers Carry (2×20 kg)\nDk 3 → 10 × Sandbag Lunge (20 kg)',sure:'15 dk',zorluk:'Ağır',note:'5 tur Hyrox istasyon döngüsü. Dakika içinde bitiremezseen ağırlığı azalt.'},
+  // ── KISA & ŞİDDETLİ ──
+  {name:'TABATA SQUAT',format:'Tabata 8 Round',icerik:'20 sn → Air Squat max\n10 sn → Dinlenme\n× 8',sure:'4 dk',zorluk:'Çok Ağır',note:'4 dakika ama yanacaksın. Round 5\'ten sonra tempo düşer — normal. Hedef: her roundda 15+ tekrar.'},
+  {name:'SQUAT GRACE',format:'For Time',icerik:'30 × Front Squat (60 kg)',sure:'~5-10 dk',zorluk:'Çok Ağır',note:'Grace\'in front squat versiyonu. Durmadan gitmek idealdir. 3-4 dk hedefle.'},
+  {name:'SIMPLE LEGS',format:'AMRAP 10 dk',icerik:'10 × Air Squat\n10 × Lunge\n10 × Glute Bridge',sure:'10 dk',zorluk:'Basit',note:'Enerjin düşükse bu. Deload haftası veya yorgun günler için. Basit ama hacimli.'},
+  {name:'QUAD INTERVALS',format:'6 × 90sn / 30sn',icerik:'90 sn → Front Squat max (50 kg)\n30 sn → Dinlenme\n× 6',sure:'12 dk',zorluk:'Ağır',note:'90 saniye front squat — ne kadar tekrar? Her round sayı aynı kalmalı. Düşüyorsa çok ağır.'},
+  {name:'CINDY LEGS',format:'AMRAP 20 dk',icerik:'5 × Pull-up\n10 × Push-up\n15 × Air Squat',sure:'20 dk',zorluk:'Orta',note:'CrossFit benchmark Cindy. 15 squat her roundda. 20 round hedef — Elite: 30+.'},
+  {name:'100 SQUAT CHALLENGE',format:'For Time',icerik:'100 × Back Squat (%40 1RM)',sure:'~10-15 dk',zorluk:'Orta-Ağır',note:'78 kg için ~40 kg. Mümkün olduğunca az ara. PR: kaç bölümde bitirdin?'},
 ];
+
 
 var legsWodState={wod:null};
 
@@ -4341,20 +4346,35 @@ function renderDay2(){
   // Legs günü için özel sekme sistemi
   if(d.key==='legs'){
     var blocksHtml=buildLegsHTML(d.blocks);
+    var hyroxEk=HYROX_EKLER['legs'];
+    var hyroxHtml='<div class="hyrox-ek-card">'+
+      '<div class="hyrox-ek-label">Hyrox Eki — '+hyroxEk.faz+'</div>'+
+      '<div class="hyrox-ek-name">'+hyroxEk.name+'</div>'+
+      '<div class="hyrox-ek-detail">'+hyroxEk.detail+'</div>'+
+      '<div class="hyrox-ek-note">'+hyroxEk.note+'</div>'+
+      (hyroxEk.faz2?'<div class="hyrox-ek-faz">'+hyroxEk.faz2.faz+': '+hyroxEk.faz2.name+'</div>':'')+
+    '</div>';
+
     html+=
       '<div style="display:flex;border-bottom:1px solid var(--rim);">'+
-        '<button class="blokc-tab on" id="legs-tab-standart" onclick="setLegsTab(\'standart\')" style="flex:1;">STANDART PROGRAM</button>'+
+        '<button class="blokc-tab on" id="legs-tab-standart" onclick="setLegsTab(\'standart\')" style="flex:1;">STANDART</button>'+
         '<button class="blokc-tab" id="legs-tab-wod" onclick="setLegsTab(\'wod\')" style="flex:1;">LEG WOD</button>'+
       '</div>'+
-      '<div id="legs-standart">'+blocksHtml+'</div>'+
+      // STANDART: program + BLOK C
+      '<div id="legs-standart">'+
+        blocksHtml+
+        (DAY_WODS[d.key]?buildDayWodHTML(d.key):'')+
+        buildPRSectionHTML()+
+      '</div>'+
+      // LEG WOD: WOD kütüphanesi + Hyrox eki
       '<div id="legs-wod" style="display:none;">'+
         '<div id="legs-wod-card"></div>'+
         '<button class="wod-roll-btn" onclick="legsRollWod()">'+
           '<span class="wod-roll-icon" id="legs-wod-icon">⟳</span> RANDOM WOD'+
         '</button>'+
+        hyroxHtml+
       '</div>';
-    if(DAY_WODS[d.key]) html+=buildDayWodHTML(d.key);
-    html+=buildPRSectionHTML();
+
     document.getElementById('day-view').innerHTML=html;
     renderLegsWodCard();
     return;
