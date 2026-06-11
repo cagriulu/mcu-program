@@ -1973,62 +1973,257 @@ const HYROX_EKLER={
 
 var blokCTab={};
 
+/* ─── CORE / KARIN SEKMESİ ─── */
+
+// Her hareket için alternatif havuzu
+const CORE_ALTERNATIFLER={
+  'Agirlikli Plank':[ 
+    {name:'Ağırlıklı Plank',sets:'3 × 45 sn',aciklama:'Sırtına 20 kg plaka koy. Dirsekler 90°, kalça düz.',kaslar:'Rectus abdominis · Transversus · Oblique'},
+    {name:'Ağırlıklı Plank — Tek Kol',sets:'3 × 30 sn her taraf',aciklama:'Plankta bir kol havaya. Kalça dönmüyor. Anti-rotasyon.',kaslar:'Oblique · Serratus · Rotator cuff'},
+    {name:'RKC Plank',sets:'4 × 20 sn',aciklama:'Normal plank ama tüm kaslar maksimum kasılı. Dirsekler öne çek, ayaklar geri it.',kaslar:'Tüm core — maksimum aktivasyon'},
+    {name:'Plank Drag',sets:'3 × 10 her taraf',aciklama:'Plankta yerdeki plakayı karşıya çek. Core sabit kalıyor.',kaslar:'Oblique · Transversus · Shoulder'},
+    {name:'Plank + Shoulder Tap',sets:'3 × 20',aciklama:'Plankta sırayla omuza dokun. Kalça sallanmıyor.',kaslar:'Core · Shoulder stabilizasyon'},
+    {name:'Plank — Ayak Kaldırma',sets:'3 × 10 her taraf',aciklama:'Plankta bir ayak 5 sn yukarda. Yavaş, kontrollü.',kaslar:'Glute · Core · Balance'},
+  ],
+  'Ab Wheel Rollout':[
+    {name:'Ab Wheel Rollout (Diz)',sets:'4 × 8',aciklama:'Dizlerden. Tam uzanma, tam geri dönüş. Kontrollü tempo.',kaslar:'Tüm core · Lat · Serratus'},
+    {name:'Ab Wheel Rollout (Ayak)',sets:'4 × 6',aciklama:'Ayaktan yapılan rollout. Tam uzanma, zemine değme.',kaslar:'Tüm core · Lat · Serratus anterior'},
+    {name:'Ab Wheel — Yan',sets:'3 × 6 her taraf',aciklama:'Yana doğru uzan. Lateral core güçlendirme.',kaslar:'Oblique · Lat · Core'},
+    {name:'Barbell Rollout',sets:'4 × 8',aciklama:'Ab wheel yoksa barbell ile. Aynı hareket, daha ağır.',kaslar:'Tüm core · Lat'},
+    {name:'TRX Pike',sets:'4 × 8',aciklama:'TRX\'te push-up pozisyonundan kalçayı yukari kal, bacaklar düz.',kaslar:'Tüm core · Shoulder · Hip flexor'},
+    {name:'Hollow Body Rockg',sets:'4 × 20',aciklama:'Ab wheel alternatifi, daha az ekipman. Aynı kas grupları.',kaslar:'Rectus abdominis · Hip flexor'},
+  ],
+  'Hollow Body Hold':[
+    {name:'Hollow Body Hold',sets:'4 × 30 sn',aciklama:'Eller-ayaklar 15 cm yukarda. Bel zemine yapışık.',kaslar:'Rectus abdominis · Hip flexor · Core'},
+    {name:'Hollow Rock',sets:'4 × 20',aciklama:'Hollow pozisyonunda öne-arkaya salla. Jimnastik hareketi.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Hollow Body + Top Geçişi',sets:'4 × 8',aciklama:'Hollow dan arch a geç, sürekli döngü. Jimnastçı hareketi.',kaslar:'Tüm core — antagonist kaslar'},
+    {name:'V-Up',sets:'4 × 12',aciklama:'Eller ve ayaklar aynı anda havaya. Tam V şekli.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Tuck Compression',sets:'4 × 20 sn',aciklama:'Otur, dizleri göğse çek, eller havada. L-sit öncesi.',kaslar:'Hip flexor · Lower abs'},
+    {name:'Superman Hold',sets:'3 × 30 sn',aciklama:'Hollow karşıtı. Yüzüstü, eller-ayaklar havada. Posterior chain.',kaslar:'Spinal erektör · Glute · Posterior chain'},
+  ],
+  'Dragon Flag':[
+    {name:'Dragon Flag — Negatif',sets:'4 × 5',aciklama:'Tezgaha tut, gövdeyi 4 sn inerek indir. Sadece eksantrik.',kaslar:'Tüm core · Spinal erektörler'},
+    {name:'Dragon Flag — Tam',sets:'4 × 4',aciklama:'Tam hareket. İniş ve kalkış. Bruce Lee hareketi.',kaslar:'Tüm core · Spinal erektör · Hip flexor'},
+    {name:'Dragon Flag — Diz Kırık',sets:'4 × 6',aciklama:'Dizleri bükerek daha kolay versiyon. Teknik öğrenmek için.',kaslar:'Tüm core'},
+    {name:'Hanging Leg Raise',sets:'4 × 10',aciklama:'Bardan asılı bacak kaldırma. Dragon flag öncesi seviye.',kaslar:'Lower abs · Hip flexor · Grip'},
+    {name:'GHD Sit-up',sets:'4 × 12',aciklama:'GHD varsa. Tam açılma, tam yukarı. Core ve hip flexor.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Ağırlıklı Sit-up',sets:'4 × 12',aciklama:'Göğüste 10-15 kg plaka. Tam hareket aralığı.',kaslar:'Rectus abdominis · Hip flexor'},
+  ],
+  'Toes-to-Bar':[
+    {name:'Toes-to-Bar',sets:'5 × 8',aciklama:'Tam asılma, ayaklar bara değiyor. Strict yap.',kaslar:'Rectus abdominis · Hip flexor · Lat'},
+    {name:'Toes-to-Bar Ağırlıklı',sets:'4 × 6',aciklama:'Ayak bileklerine 5 kg. Strict toes-to-bar.',kaslar:'Rectus abdominis · Hip flexor · Lat'},
+    {name:'Knees-to-Elbow',sets:'4 × 10',aciklama:'Dizler dirseğe. Toes-to-bar basamağı.',kaslar:'Lower abs · Hip flexor · Lat'},
+    {name:'Hanging Leg Raise',sets:'4 × 10',aciklama:'Bardan asılı, bacaklar düz yukari. Kontrollü iniş.',kaslar:'Lower abs · Hip flexor'},
+    {name:'Tuck Hang',sets:'4 × 10 sn',aciklama:'Bardan asılı diz çekme, 2 sn tut. Temel seviye.',kaslar:'Lower abs · Hip flexor · Grip'},
+    {name:'L-Sit Hold',sets:'4 × 20 sn',aciklama:'Paralel bar. Bacaklar düz, kalça asılı.',kaslar:'Hip flexor · Rectus abdominis · Triceps'},
+  ],
+  'GHD Sit-up':[
+    {name:'GHD Sit-up',sets:'4 × 12',aciklama:'Tam açılma şart. En etkili karın hareketi.',kaslar:'Rectus abdominis · Hip flexor · Spinal erektör'},
+    {name:'Decline Sit-up',sets:'4 × 12',aciklama:'GHD yoksa. Bench i eğ, başa ağırlık tut.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Ağırlıklı Sit-up',sets:'4 × 15',aciklama:'Göğüste 15-20 kg. Tam yukarı, tam aşağı.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Ab Mat Sit-up',sets:'4 × 20',aciklama:'Ab mat üzerinde. CrossFit standart hareketi.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'V-Up',sets:'4 × 12',aciklama:'Eller ve ayaklar aynı anda kalkıyor. Zor versiyon.',kaslar:'Tüm core · Hip flexor'},
+    {name:'Butterfly Sit-up',sets:'4 × 15',aciklama:'Ayaklar birbirine değiyor. Hip flexor devre dışı, saf karın.',kaslar:'Rectus abdominis'},
+  ],
+  'Hanging Knee Raise':[
+    {name:'Ağırlıklı Hanging Knee Raise',sets:'4 × 10',aciklama:'5 kg ayak bileğinde. Tam asılma, diz göğse.',kaslar:'Lower abs · Hip flexor · Grip'},
+    {name:'Hanging Leg Raise',sets:'4 × 10',aciklama:'Dizler değil, bacaklar düz yukari.',kaslar:'Lower abs · Hip flexor'},
+    {name:'Toes-to-Bar',sets:'4 × 8',aciklama:'Bir üst seviye. Ayaklar bara değiyor.',kaslar:'Tüm core · Lat'},
+    {name:'Windshield Wiper',sets:'3 × 6 her taraf',aciklama:'Bardan asılı, bacaklar yanlara sallanıyor. Zor rotasyonel.',kaslar:'Oblique · Lower abs'},
+    {name:'Tuck Hang Hold',sets:'4 × 15 sn',aciklama:'Dizleri çek, tut. Temel versiyon.',kaslar:'Lower abs · Hip flexor'},
+    {name:'Ring Toes-to-Ring',sets:'4 × 8',aciklama:'Halkada. Daha zor çünkü instabil.',kaslar:'Tüm core · Stabilizatörler'},
+  ],
+  'L-Sit Hold':[
+    {name:'L-Sit Hold',sets:'4 × 20 sn',aciklama:'Paralel bar. Bacaklar düz, kalça asılı.',kaslar:'Hip flexor · Rectus abdominis · Triceps'},
+    {name:'L-Sit Progression — Tuck',sets:'4 × 20 sn',aciklama:'Tuck pozisyonu. L-sit basamağı.',kaslar:'Hip flexor · Core'},
+    {name:'L-Sit — Tek Bacak',sets:'4 × 15 sn her taraf',aciklama:'Bir bacak düz, biri kırık. Geçiş seviyesi.',kaslar:'Hip flexor · Core'},
+    {name:'Box L-Sit',sets:'4 × 20 sn',aciklama:'Iki kutu üstünde. Zemin L-sit geçişi.',kaslar:'Hip flexor · Triceps · Core'},
+    {name:'Tuck Compression',sets:'4 × 15 sn',aciklama:'Yerde otur, dizleri göğse çek. Başlangıç.',kaslar:'Hip flexor · Lower abs'},
+    {name:'Ring L-Sit',sets:'4 × 15 sn',aciklama:'Halkada L-sit. En zor versiyon.',kaslar:'Hip flexor · Core · Shoulder'},
+  ],
+  'Asimetrik Farmers Carry':[
+    {name:'Asimetrik Farmers Carry',sets:'4 × 40 m',aciklama:'Bir elde 32 kg KB. Gövdeyi dik tut, rotasyona izin verme.',kaslar:'Oblique · Quadratus lumborum · Core'},
+    {name:'Farmers Carry — İki El',sets:'4 × 50 m',aciklama:'İki elde 24 kg. Simetrik yük, postür ve core.',kaslar:'Core · Trapez · Grip'},
+    {name:'Suitcase Carry',sets:'4 × 30 m her taraf',aciklama:'Bir yanda dambıl veya KB. Çanta gibi tut.',kaslar:'Oblique · Quadratus lumborum'},
+    {name:'Bottoms Up KB Carry',sets:'3 × 30 m',aciklama:'KB ters tutarak taşı. Omuz + core stabilizasyon.',kaslar:'Shoulder · Core · Wrist'},
+    {name:'Overhead Carry',sets:'3 × 30 m',aciklama:'Tek elde KB overhead. Omuz + lateral core.',kaslar:'Shoulder · Oblique · Core'},
+    {name:'Zercher Carry',sets:'3 × 30 m',aciklama:'Dirseklerin içinde bar veya KB. Core + üst sırt.',kaslar:'Core · Upper back · Biceps'},
+  ],
+  'Pallof Press':[
+    {name:'Pallof Press',sets:'4 × 10 her taraf',aciklama:'Kablo veya band. Anti-rotasyon core.',kaslar:'Oblique · Transversus · Core'},
+    {name:'Pallof Press — Overhead',sets:'3 × 10 her taraf',aciklama:'Bastırırken kolları da yukari kaldır. Daha zor.',kaslar:'Oblique · Shoulder · Core'},
+    {name:'Pallof Press — Squat',sets:'3 × 8 her taraf',aciklama:'Squat yaparken Pallof press. Kombine hareket.',kaslar:'Tüm core · Quad · Oblique'},
+    {name:'Band Anti-Rotation Hold',sets:'4 × 20 sn her taraf',aciklama:'Band ile statik anti-rotasyon tutma.',kaslar:'Oblique · Transversus'},
+    {name:'Suitcase Deadlift',sets:'4 × 8',aciklama:'Barı yan taraftan kaldır. Lateral core güç.',kaslar:'Oblique · Quadratus lumborum · Glute'},
+    {name:'Copenhagen Plank',sets:'3 × 20 sn her taraf',aciklama:'Yan plank, üst bacak bench te. Adductor + core.',kaslar:'Adductor · Oblique · Core'},
+  ],
+  'Agirlikli Sit-up':[
+    {name:'Ağırlıklı Sit-up',sets:'4 × 12',aciklama:'Göğüste 10-15 kg plaka. Tam hareket aralığı.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Cable Crunch',sets:'4 × 15',aciklama:'Kablo ile crunch. Kablo yüksekten. Ağırlığı artır.',kaslar:'Rectus abdominis'},
+    {name:'Decline Crunch',sets:'4 × 15',aciklama:'Bench eğik, dizler kırık. Ağırlık ile.',kaslar:'Rectus abdominis · Oblique'},
+    {name:'Rope Crunch',sets:'4 × 15',aciklama:'Kabloda ip tutarak crunch. CrossFit salonlarında yaygın.',kaslar:'Rectus abdominis'},
+    {name:'GHD Sit-up',sets:'4 × 12',aciklama:'Tam açılma şart. Ağırlıklı sit-up un üst versiyonu.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Ab Mat Sit-up',sets:'5 × 20',aciklama:'Ab mat üstünde, ağırlıksız ama yüksek hacim.',kaslar:'Rectus abdominis'},
+  ],
+  'Windmill':[
+    {name:'Windmill (KB)',sets:'3 × 6 her taraf',aciklama:'KB 20 kg overhead. Karşı ayağa uzan.',kaslar:'Oblique · Gluteus medius · Shoulder'},
+    {name:'Windmill — Barbell',sets:'3 × 5 her taraf',aciklama:'Barbell ile. Daha ağır, daha stabil.',kaslar:'Oblique · Shoulder · Hip'},
+    {name:'Side Bend — KB',sets:'4 × 12 her taraf',aciklama:'Bir elde KB. Yana eğ. Lateral core.',kaslar:'Oblique · Quadratus lumborum'},
+    {name:'Turkish Get-up',sets:'3 × 4 her taraf',aciklama:'Windmill nin tam versiyonu. Kompleks hareket.',kaslar:'Tüm core · Shoulder · Hip'},
+    {name:'Lateral Band Walk',sets:'3 × 20 adım',aciklama:'Band ile yana yürüyüş. Gluteus medius + core.',kaslar:'Gluteus medius · Oblique'},
+    {name:'Copenhagen Side Plank',sets:'3 × 30 sn her taraf',aciklama:'Yan plankın zor versiyonu. Bench destekli.',kaslar:'Oblique · Adductor · Core'},
+  ],
+  'Hollow Rock':[
+    {name:'Hollow Rock',sets:'4 × 20',aciklama:'Hollow body pozisyonunda öne arkaya salla.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Hollow Body Hold',sets:'4 × 30 sn',aciklama:'Sallamadan sadece tut. Daha statik.',kaslar:'Rectus abdominis · Hip flexor'},
+    {name:'Arch Body Rock',sets:'4 × 20',aciklama:'Hollow un karşıtı. Posterior chain.',kaslar:'Spinal erektör · Glute'},
+    {name:'Hollow to Superman',sets:'4 × 10',aciklama:'Hollow dan arch a geç. Jimnastik döngüsü.',kaslar:'Tüm core — anterior ve posterior'},
+    {name:'V-Up',sets:'4 × 12',aciklama:'Hollow un dinamik versiyonu.',kaslar:'Tüm core · Hip flexor'},
+    {name:'Tuck Rock',sets:'4 × 20',aciklama:'Hollow rock ın daha kolay versiyonu. Dizler kırık.',kaslar:'Rectus abdominis · Hip flexor'},
+  ],
+  'Ring Ab Rollout':[
+    {name:'Ring Ab Rollout',sets:'4 × 8',aciklama:'TRX veya halka. Ab wheel dan zor — instabil zemin.',kaslar:'Tüm core · Pectoral · Shoulder'},
+    {name:'Ab Wheel Rollout',sets:'4 × 8',aciklama:'Halkalar yoksa ab wheel ile.',kaslar:'Tüm core · Lat · Serratus'},
+    {name:'Ring Fallout',sets:'4 × 8',aciklama:'Halkada düz ilerle. Ab wheel benzeri.',kaslar:'Tüm core · Chest · Shoulder'},
+    {name:'Ring Pike',sets:'4 × 8',aciklama:'Halkada pike pozisyonu. Kalçayı yukari kaldır.',kaslar:'Core · Shoulder · Hip flexor'},
+    {name:'Bodysaw',sets:'4 × 10',aciklama:'Plankta öne geri kayarak. TRX veya ayak kayar pedleri.',kaslar:'Tüm core'},
+    {name:'Stir the Pot',sets:'4 × 10 her yon',aciklama:'Plankta dirsekleri daire çiz. Core stabilizasyon.',kaslar:'Tüm core — dinamik stabilizasyon'},
+  ],
+  'Tek Kol Plank':[
+    {name:'Tek Kol Plank',sets:'3 × 30 sn her taraf',aciklama:'Plankta bir kol havaya. Anti-rotasyon.',kaslar:'Oblique · Serratus · Core'},
+    {name:'Ağırlıklı Plank',sets:'3 × 45 sn',aciklama:'Sırtına 20 kg. Her iki kol yerde.',kaslar:'Rectus abdominis · Core'},
+    {name:'Side Plank',sets:'3 × 45 sn her taraf',aciklama:'Yana dön. Oblique odaklı.',kaslar:'Oblique · Gluteus medius'},
+    {name:'Side Plank — Ağırlıklı',sets:'3 × 30 sn her taraf',aciklama:'Yan plankta belde plaka. Oblique ye direk yük.',kaslar:'Oblique · Core'},
+    {name:'Plank Drag',sets:'3 × 10 her taraf',aciklama:'Plankta yerdeki plakayı karşıya çek.',kaslar:'Oblique · Transversus'},
+    {name:'Star Plank',sets:'3 × 20 sn her taraf',aciklama:'Yan plankta üst el ve ayak açılıyor. Çok zor.',kaslar:'Oblique · Abductor · Core'},
+  ],
+  'GHD Hip Extension':[
+    {name:'GHD Hip Extension + Twist',sets:'3 × 10 her taraf',aciklama:'GHD de tam acil, kalkarken yana don.',kaslar:'Oblique · Spinal erektör · Glute'},
+    {name:'Good Morning',sets:'4 × 10',aciklama:'Barbell ile. Kalçadan öne eğil. Posterior chain.',kaslar:'Hamstring · Spinal erektör · Glute'},
+    {name:'Hyperextension',sets:'4 × 15',aciklama:'GHD veya Roman chair. Ağırlık tutarak yap.',kaslar:'Spinal erektör · Glute · Hamstring'},
+    {name:'Bird Dog',sets:'4 × 10 her taraf',aciklama:'Dört ayakta karşı kol ve ayak uzat. Spinal stabilizasyon.',kaslar:'Spinal erektör · Glute · Core'},
+    {name:'Deadlift — Yavaş Eksantrik',sets:'4 × 5',aciklama:'5 sn iniş. Spinal erektör mekanik yükleme.',kaslar:'Spinal erektör · Hamstring · Glute'},
+    {name:'Romanian DL + Twist',sets:'3 × 8',aciklama:'RDL yapıp yukari gelince yana dön. Rotasyonel.',kaslar:'Oblique · Hamstring · Spinal erektör'},
+  ],
+};
+
+// Her gün için ana hareketler (alternatif listesiyle eşleşiyor)
+const CORE_GUNLUK={
+  'push-a':['Agirlikli Plank','Ab Wheel Rollout','Hollow Body Hold','Dragon Flag'],
+  'pull-a':['Toes-to-Bar','GHD Sit-up','Hanging Knee Raise','L-Sit Hold'],
+  'legs':['Asimetrik Farmers Carry','Pallof Press','Agirlikli Sit-up','Windmill'],
+  'push-b':['Ab Wheel Rollout','Dragon Flag','Windmill','Hollow Rock'],
+  'pull-b':['Toes-to-Bar','Ring Ab Rollout','GHD Hip Extension','Tek Kol Plank'],
+};
+
+// Her günün her hareketi için aktif alternatif indeksi
+var coreAktifIdx={};
+
+function coreGetHareket(dayKey, hareketKey){
+  var pool=CORE_ALTERNATIFLER[hareketKey];
+  if(!pool) return null;
+  var idx=coreAktifIdx[dayKey+'_'+hareketKey]||0;
+  return pool[idx%pool.length];
+}
+
+function coreDegistir(dayKey, hareketKey){
+  var key=dayKey+'_'+hareketKey;
+  var pool=CORE_ALTERNATIFLER[hareketKey];
+  if(!pool) return;
+  var current=(coreAktifIdx[key]||0);
+  coreAktifIdx[key]=(current+1)%pool.length;
+  renderCoreHareket(dayKey, hareketKey);
+}
+
+function renderCoreHareket(dayKey, hareketKey){
+  var cont=document.getElementById('core-h-'+dayKey+'_'+hareketKey.replace(/[^a-zA-Z0-9]/g,'_'));
+  if(!cont) return;
+  var h=coreGetHareket(dayKey, hareketKey);
+  if(!h) return;
+  cont.innerHTML=
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">'+
+      '<div style="flex:1;">'+
+        '<div style="font-size:13px;font-weight:700;color:var(--fg);margin-bottom:3px;">'+h.name+'</div>'+
+        '<div style="font-size:10px;font-weight:700;color:var(--muted);margin-bottom:6px;">'+h.sets+'</div>'+
+        '<div style="font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:6px;">'+h.aciklama+'</div>'+
+        '<div style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);opacity:.5;">'+h.kaslar+'</div>'+
+      '</div>'+
+      '<button onclick="coreDegistir(\''+dayKey+'\',\''+hareketKey+'\')" style="flex-shrink:0;width:32px;height:32px;background:transparent;border:1px solid var(--rim);color:var(--muted);font-size:14px;cursor:pointer;font-family:inherit;transition:all var(--ease);">⟳</button>'+
+    '</div>';
+}
+
+var blokCTab={};
+
+/* ─── CORE / KARIN SEKMESİ ─── */
+
+var blokCTab={};
+
 function blokCSetTab(dayKey,tab){
   blokCTab[dayKey]=tab;
-  var wodPane=document.getElementById('blokc-wod-'+dayKey);
-  var hyroxPane=document.getElementById('blokc-hyrox-'+dayKey);
-  var tabWod=document.getElementById('blokc-tab-wod-'+dayKey);
-  var tabHyrox=document.getElementById('blokc-tab-hyrox-'+dayKey);
-  if(!wodPane) return;
-  var showWod=tab==='wod';
-  wodPane.classList.toggle('on',showWod);
-  hyroxPane.classList.toggle('on',!showWod);
-  tabWod.classList.toggle('on',showWod);
-  tabHyrox.classList.toggle('on',!showWod);
+  ['wod','hyrox','core'].forEach(function(t){
+    var pane=document.getElementById('blokc-'+t+'-'+dayKey);
+    var btn=document.getElementById('blokc-tab-'+t+'-'+dayKey);
+    if(pane) pane.classList.toggle('on',t===tab);
+    if(btn) btn.classList.toggle('on',t===tab);
+  });
 }
 
 function buildDayWodHTML(dayKey){
   dayWodInit(dayKey);
   var st=dayWodState[dayKey];
   var ek=HYROX_EKLER[dayKey];
+  var coreHareketler=CORE_GUNLUK[dayKey]||[];
 
-  // WOD içeriği
-  var wodContent='<div class="blokc-pane on" id="blokc-wod-'+dayKey+'">'+
-    '<div class="wod-intensity-btns">';
+  // WOD
+  var wodContent='<div class="blokc-pane on" id="blokc-wod-'+dayKey+'"><div class="wod-intensity-btns">';
   INT_LABELS.forEach(function(lbl,i){
     wodContent+='<button class="wod-int-btn'+(i===st.int?' on':'')+'" data-day="'+dayKey+'" onclick="dayWodSetInt(\''+dayKey+'\','+i+')">'+lbl+'</button>';
   });
-  wodContent+='</div>';
-  wodContent+='<div id="wod-result-'+dayKey+'"><div class="wod-empty">⟳ YENİLE\'ye bas</div></div>';
-  wodContent+='<button class="wod-roll-btn" onclick="dayWodRoll(\''+dayKey+'\')"><span class="wod-roll-icon" id="wod-roll-icon-'+dayKey+'">⟳</span> YENİLE</button>';
-  wodContent+='</div>';
+  wodContent+='</div><div id="wod-result-'+dayKey+'"><div class="wod-empty">⟳ YENİLE\'ye bas</div></div>';
+  wodContent+='<button class="wod-roll-btn" onclick="dayWodRoll(\''+dayKey+'\')"><span class="wod-roll-icon" id="wod-roll-icon-'+dayKey+'">⟳</span> YENİLE</button></div>';
 
-  // Hyrox içeriği
+  // Hyrox
   var hyroxContent='<div class="blokc-pane" id="blokc-hyrox-'+dayKey+'">';
   if(ek){
-    hyroxContent+='<div class="hyrox-ek-card">'+
-      '<div class="hyrox-ek-label">Hyrox Eki — '+ek.faz+'</div>'+
-      '<div class="hyrox-ek-name">'+ek.name+'</div>'+
-      '<div class="hyrox-ek-detail">'+ek.detail+'</div>'+
-      '<div class="hyrox-ek-note">'+ek.note+'</div>';
-    if(ek.faz2){
-      hyroxContent+='<div class="hyrox-ek-faz">'+ek.faz2.faz+': '+ek.faz2.name+'</div>';
-    }
+    hyroxContent+='<div class="hyrox-ek-card"><div class="hyrox-ek-label">Hyrox Eki — '+ek.faz+'</div><div class="hyrox-ek-name">'+ek.name+'</div><div class="hyrox-ek-detail">'+ek.detail+'</div><div class="hyrox-ek-note">'+ek.note+'</div>';
+    if(ek.faz2) hyroxContent+='<div class="hyrox-ek-faz">'+ek.faz2.faz+': '+ek.faz2.name+'</div>';
     hyroxContent+='</div>';
   }
   hyroxContent+='</div>';
 
-  var html='<div class="day-wod-section">'+
+  // Core
+  var coreKeys=CORE_GUNLUK[dayKey]||[];
+  var coreContent='<div class="blokc-pane" id="blokc-core-'+dayKey+'">';
+  coreContent+='<div style="background:var(--fg);padding:10px 16px;"><div style="font-size:7px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);opacity:.5;margin-bottom:2px;">OPSİYONEL · AĞIRLIKLI CORE</div><div style="font-size:11px;font-weight:700;color:var(--bg);">Fonksiyonel · Kalın · CrossFit Standartı</div></div>';
+  coreKeys.forEach(function(hKey){
+    var safeKey=hKey.replace(/[^a-zA-Z0-9]/g,'_');
+    var h=coreGetHareket(dayKey,hKey);
+    if(!h) return;
+    coreContent+='<div style="padding:14px 16px;border-bottom:1px solid var(--rim2);" id="core-h-'+dayKey+'_'+safeKey+'">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">'+
+        '<div style="flex:1;">'+
+          '<div style="font-size:13px;font-weight:700;color:var(--fg);margin-bottom:3px;">'+h.name+'</div>'+
+          '<div style="font-size:10px;font-weight:700;color:var(--muted);margin-bottom:6px;">'+h.sets+'</div>'+
+          '<div style="font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:6px;">'+h.aciklama+'</div>'+
+          '<div style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);opacity:.5;">'+h.kaslar+'</div>'+
+        '</div>'+
+        '<button onclick="coreDegistir(\''+dayKey+'\',\''+hKey+'\')" style="flex-shrink:0;width:32px;height:32px;background:transparent;border:1px solid var(--rim);color:var(--muted);font-size:14px;cursor:pointer;font-family:inherit;transition:all var(--ease);">⟳</button>'+
+      '</div>'+
+    '</div>';
+  });
+  coreContent+='</div>';
+
+  return '<div class="day-wod-section">'+
     '<div class="day-wod-header"><div class="day-wod-title">BLOK C</div></div>'+
     '<div class="blokc-tabs">'+
       '<button class="blokc-tab on" id="blokc-tab-wod-'+dayKey+'" onclick="blokCSetTab(\''+dayKey+'\',\'wod\')">RANDOM WOD</button>'+
       '<button class="blokc-tab" id="blokc-tab-hyrox-'+dayKey+'" onclick="blokCSetTab(\''+dayKey+'\',\'hyrox\')">HYROX EKİ</button>'+
+      '<button class="blokc-tab" id="blokc-tab-core-'+dayKey+'" onclick="blokCSetTab(\''+dayKey+'\',\'core\')">CORE</button>'+
     '</div>'+
-    wodContent+
-    hyroxContent+
+    wodContent+hyroxContent+coreContent+
   '</div>';
-  return html;
 }
+
 
 /* ─── RAKİP MODU ─── */
 var rakipActiveCat=0;
