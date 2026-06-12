@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -100,6 +100,19 @@ button:active,
 .main-nav-btn svg{opacity:.45;transition:opacity var(--ease);flex-shrink:0;}
 .main-nav-btn.on svg{opacity:1;}
 .main-nav-btn:not(.on):hover svg{opacity:.7;}
+
+/* WORKOUT OLUŞTUR — özel şerit */
+.wo-strip{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:13px 16px;background:#1c1c1c;border-bottom:1px solid var(--rim);cursor:pointer;transition:opacity var(--ease);}
+.wo-strip:active{opacity:.7;}
+.wo-strip-left{display:flex;align-items:center;gap:10px;}
+.wo-strip-icon{width:28px;height:28px;border:1.5px solid #555;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
+.wo-strip-icon svg{opacity:1;}
+.wo-strip-text{display:flex;flex-direction:column;gap:2px;}
+.wo-strip-title{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;}
+.wo-strip-sub{font-size:8px;color:#999;letter-spacing:.04em;}
+.wo-strip-arrow{font-size:14px;color:#999;}
+.wo-strip.on{background:#1c1c1c;}
+.wo-strip-divider{height:8px;background:var(--rim2);border-bottom:1px solid var(--rim);flex-shrink:0;}
 
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
 .scroll::-webkit-scrollbar{display:none;}
@@ -723,6 +736,76 @@ button:active,
 .beslenme-degistir-icon.spin{animation:bSpin .35s linear;}
 @keyframes bSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
+/* WORKOUT OLUŞTUR */
+.wo-view{padding:0 0 100px;}
+.wo-hero{padding:20px 16px;background:var(--rim2);border-bottom:1px solid var(--rim);}
+.wo-hero-title{font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:6px;}
+.wo-hero-sub{font-size:10px;color:var(--muted);line-height:1.7;}
+.wo-back{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--rim);cursor:pointer;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.wo-back:active{opacity:.6;}
+
+/* Kategori grid */
+.wo-cat-grid{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.wo-cat-card{border:1px solid var(--rim);padding:16px 12px;cursor:pointer;transition:all var(--ease);display:flex;flex-direction:column;gap:8px;}
+.wo-cat-card:active{background:var(--rim2);}
+.wo-cat-icon{width:30px;height:30px;border:1px solid var(--rim);display:flex;align-items:center;justify-content:center;color:var(--fg);}
+.wo-cat-name{font-size:13px;font-weight:800;color:var(--fg);letter-spacing:-.01em;}
+.wo-cat-desc{font-size:9px;color:var(--muted);line-height:1.5;}
+
+/* Hedef seçim */
+.wo-hedef-grid{padding:16px;display:flex;flex-direction:column;gap:8px;}
+.wo-hedef-card{border:1px solid var(--rim);padding:16px;cursor:pointer;transition:all var(--ease);}
+.wo-hedef-card:active{background:var(--rim2);}
+.wo-hedef-name{font-size:15px;font-weight:800;color:var(--fg);margin-bottom:4px;}
+.wo-hedef-desc{font-size:10px;color:var(--muted);line-height:1.6;margin-bottom:8px;}
+.wo-hedef-spec{display:flex;gap:6px;flex-wrap:wrap;}
+.wo-hedef-tag{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rim);color:var(--muted);}
+
+/* PPL alt seçim */
+.wo-ppl-grid{padding:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.wo-ppl-card{border:1px solid var(--rim);padding:16px 8px;text-align:center;cursor:pointer;transition:all var(--ease);}
+.wo-ppl-card:active{background:var(--rim2);}
+.wo-ppl-name{font-size:13px;font-weight:800;color:var(--fg);}
+
+/* Kas grubu sayaç paneli */
+.wo-progress{padding:12px 16px;background:var(--rim2);border-bottom:1px solid var(--rim);display:flex;flex-wrap:wrap;gap:6px;}
+.wo-progress-item{display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--rim);background:var(--bg);}
+.wo-progress-item.done{border-color:var(--fg);background:var(--fg);}
+.wo-progress-name{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg);}
+.wo-progress-item.done .wo-progress-name{color:var(--bg);}
+.wo-progress-count{font-size:10px;font-weight:900;color:var(--muted);}
+.wo-progress-item.done .wo-progress-count{color:var(--bg);}
+
+/* Egzersiz havuzu */
+.wo-pool-section{border-bottom:1px solid var(--rim2);}
+.wo-pool-hdr{padding:10px 16px;background:var(--fg);display:flex;justify-content:space-between;align-items:center;}
+.wo-pool-title{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bg);}
+.wo-pool-need{font-size:9px;font-weight:700;color:var(--bg);opacity:.6;}
+.wo-pool-list{display:flex;flex-direction:column;}
+.wo-ex-row{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--rim2);cursor:pointer;transition:background var(--ease);}
+.wo-ex-row:last-child{border-bottom:none;}
+.wo-ex-row:active{background:var(--rim2);}
+.wo-ex-row.selected{background:var(--rim2);}
+.wo-ex-name{font-size:12px;font-weight:600;color:var(--fg);}
+.wo-ex-check{width:18px;height:18px;border:1px solid var(--rim);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:transparent;}
+.wo-ex-row.selected .wo-ex-check{background:var(--fg);border-color:var(--fg);color:var(--bg);}
+
+/* Seçilen program özeti */
+.wo-summary{padding:16px;}
+.wo-summary-title{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.wo-summary-item{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--rim2);gap:10px;}
+.wo-summary-item:last-child{border-bottom:none;}
+.wo-summary-ex{font-size:12px;font-weight:600;color:var(--fg);flex:1;}
+.wo-summary-detail-btn{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rim);padding:4px 8px;cursor:pointer;background:transparent;font-family:'Inter Tight',sans-serif;white-space:nowrap;}
+.wo-detail-card{padding:10px 0 0;font-size:11px;color:var(--muted);line-height:1.7;display:none;}
+.wo-detail-card.open{display:block;}
+.wo-detail-tags{display:flex;gap:6px;margin-bottom:6px;}
+.wo-detail-tag{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--rim);color:var(--fg);}
+
+.wo-complete-btn{width:100%;padding:16px;background:var(--fg);border:none;font-family:'Inter Tight',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);cursor:pointer;}
+.wo-complete-btn:disabled{opacity:.3;}
+.wo-reset-btn{width:100%;padding:13px;background:transparent;border:1px solid var(--rim);border-top:none;font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);cursor:pointer;}
+
 /* OLİMPİK KALDIRIŞ REHBERİ */
 .olimpik-view{padding:0 0 100px;}
 .olimpik-hero{padding:24px 16px 20px;background:var(--rim2);border-bottom:1px solid var(--rim);}
@@ -987,7 +1070,7 @@ button:active,
     </div>
     <div class="header-controls">
       <div class="header-year">MMXXVI</div>
-      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">AÇIK</button>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">KOYU</button>
     </div>
   </div>
   <div class="header-session">
@@ -999,6 +1082,23 @@ button:active,
     </div>
   </div>
 </div>
+
+<!-- WORKOUT OLUŞTUR ŞERİDİ -->
+<div class="wo-strip" id="wo-strip" onclick="toggleWorkoutBuilder()">
+  <div class="wo-strip-left">
+    <div class="wo-strip-icon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+    </div>
+    <div class="wo-strip-text">
+      <div class="wo-strip-title">WORKOUT OLUŞTUR</div>
+      <div class="wo-strip-sub">Kategori seç, hedefe göre hacim al, kendi antrenmanını tasarla</div>
+    </div>
+  </div>
+  <div class="wo-strip-arrow" id="wo-strip-arrow">→</div>
+</div>
+<div class="wo-strip-divider"></div>
 
 <!-- ANA NAV: PROGRAM / WOD'LAR / EMOM·AMRAP / RAKİP / BOKS / TARİFLER -->
 <div class="main-nav" id="main-nav">
@@ -1072,6 +1172,7 @@ button:active,
 <div class="scroll" id="main-scroll">
   <!-- ARAÇLAR MENÜSÜ — scroll içinde olmalı -->
   <div class="araclar-menu" id="araclar-menu" style="display:none;"></div>
+  <div class="workout-builder-view" id="workout-builder-view" style="display:none;"></div>
   <div class="day-view" id="day-view"></div>
   <div class="recipe-view" id="recipe-view" style="display:none;"></div>
   <div class="recipe-detail" id="recipe-detail" style="display:none;"></div>
@@ -1640,7 +1741,7 @@ const RECIPES=[
 
 
 const CATS=['Tümü','Sabah','Öğle','Akşam','Atıştırma','Ninja Crispi'];
-let cur=0,light=false,mode='ppl',activeRecipe=null,recipeCat='Tümü';
+let cur=0,light=true,mode='ppl',activeRecipe=null,recipeCat='Tümü';
 
 function toggleTheme(){
   light=!light;
@@ -2850,6 +2951,838 @@ function setBeslenme(){
   renderBeslenmeView();
   renderNav();
   document.getElementById('main-scroll').scrollTop=0;resetHeader();
+}
+
+
+
+/* ─── WORKOUT OLUŞTUR ─── */
+var woOpen=false;
+var woStep='kategori'; // kategori | hedef | ppl-alt | egzersiz | ozet
+var woKategori=null;
+var woHedef=null; // güç | hacim | dayanıklılık
+var woPplAlt=null; // push | pull | legs
+var woSecimler={}; // {kasGrubu: [egzersiz objeleri]}
+var woAktifKasGrubu=null;
+var woDetayAcik={};
+
+const WO_KATEGORILER=[
+  {id:'upper',name:'UPPER BODY',desc:'Göğüs · Sırt · Omuz · Kollar',icon:'upper'},
+  {id:'lower',name:'LOWER BODY',desc:'Quad · Hamstring · Glute · Kalf',icon:'lower'},
+  {id:'full',name:'FULL BODY',desc:'Tüm vücut · Compound odaklı',icon:'full'},
+  {id:'ppl',name:'PUSH / PULL / LEGS',desc:'Klasik 3 günlük split',icon:'ppl'},
+  {id:'hiit',name:'HIIT',desc:'Yüksek yoğunluk interval',icon:'hiit'},
+  {id:'cardio',name:'KARDİYO',desc:'Koşu · Row · Bike tabanlı',icon:'cardio'},
+  {id:'crossfit',name:'CROSSFIT / WOD',desc:'Fonksiyonel · Karışık',icon:'crossfit'},
+  {id:'core',name:'CORE',desc:'Karın · Bel · Stabilizasyon',icon:'core'},
+  {id:'olimpik',name:'OLİMPİK KALDIRIŞ',desc:'Snatch · Clean · Jerk',icon:'oly'},
+  {id:'hyrox',name:'HYROX SİMÜLASYON',desc:'8 istasyon · Koşu',icon:'hyrox'},
+];
+
+const WO_ICONS={
+  upper:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v6M6 11l6 2 6-2M9 21l3-6 3 6"/></svg>',
+  lower:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v4M9 10h6M10 10l-2 11M14 10l2 11"/></svg>',
+  full:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v8M7 9l5-1 5 1M8 22l4-8 4 8"/></svg>',
+  ppl:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6"/><rect x="9" y="9" width="6" height="6"/><rect x="15" y="15" width="6" height="6"/></svg>',
+  hiit:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  cardio:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+  crossfit:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11v11h-11z"/><path d="M3 3l3.5 3.5M21 3l-3.5 3.5M3 21l3.5-3.5M21 21l-3.5-3.5"/></svg>',
+  core:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="4" y1="14" x2="20" y2="14"/></svg>',
+  oly:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="12" x2="22" y2="12"/><rect x="5" y="8" width="3" height="8" rx=".5"/><rect x="16" y="8" width="3" height="8" rx=".5"/></svg>',
+  hyrox:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>',
+};
+
+// ─── HEDEF TANIMLARI ───
+const WO_HEDEFLER=[
+  {id:'güç',name:'GÜÇ',desc:'Az hareket, ağır yük, düşük tekrar. Maksimum kuvvet gelişimi.',sets:'4–5 set',reps:'3–6 tekrar',rest:'2–3 dk dinlenme'},
+  {id:'hacim',name:'HACİM',desc:'Orta hareket sayısı, dengeli yük. Kas büyümesi (hypertrophy) odaklı.',sets:'3–4 set',reps:'8–12 tekrar',rest:'60–90 sn dinlenme'},
+  {id:'dayanıklılık',name:'DAYANIKLILIK',desc:'Çok hareket, hafif yük, yüksek tekrar. Kondisyon ve kas dayanıklılığı.',sets:'2–3 set',reps:'15–20 tekrar',rest:'30–45 sn dinlenme'},
+];
+
+// ─── KAS GRUBU HACİM MATRİSİ (Kategori × Hedef → kas grubu sayıları) ───
+const WO_HACIM_MATRIS={
+  upper:{
+    'güç':{'Göğüs':1,'Sırt':1,'Omuz':1,'Biseps':1,'Triseps':1},
+    'hacim':{'Göğüs':2,'Sırt':2,'Omuz':2,'Biseps':1,'Triseps':1},
+    'dayanıklılık':{'Göğüs':2,'Sırt':2,'Omuz':2,'Biseps':2,'Triseps':2},
+  },
+  lower:{
+    'güç':{'Quadriceps':1,'Hamstring':1,'Glute':1,'Kalf':1},
+    'hacim':{'Quadriceps':2,'Hamstring':2,'Glute':1,'Kalf':1},
+    'dayanıklılık':{'Quadriceps':2,'Hamstring':2,'Glute':2,'Kalf':2},
+  },
+  full:{
+    'güç':{'Göğüs':1,'Sırt':1,'Quadriceps':1,'Hamstring':1,'Omuz':1},
+    'hacim':{'Göğüs':1,'Sırt':1,'Quadriceps':1,'Hamstring':1,'Omuz':1,'Kollar':1,'Core':1},
+    'dayanıklılık':{'Göğüs':1,'Sırt':1,'Quadriceps':1,'Hamstring':1,'Omuz':1,'Kollar':1,'Core':1,'Kalf':1},
+  },
+  ppl_push:{
+    'güç':{'Göğüs':2,'Omuz':1,'Triseps':1},
+    'hacim':{'Göğüs':2,'Omuz':2,'Triseps':2},
+    'dayanıklılık':{'Göğüs':2,'Omuz':2,'Triseps':2,'Core':1},
+  },
+  ppl_pull:{
+    'güç':{'Sırt':2,'Biseps':1},
+    'hacim':{'Sırt':3,'Biseps':2},
+    'dayanıklılık':{'Sırt':3,'Biseps':2,'Core':1},
+  },
+  ppl_legs:{
+    'güç':{'Quadriceps':1,'Hamstring':1,'Glute':1},
+    'hacim':{'Quadriceps':2,'Hamstring':2,'Glute':1,'Kalf':1},
+    'dayanıklılık':{'Quadriceps':2,'Hamstring':2,'Glute':2,'Kalf':1,'Core':1},
+  },
+  hiit:{
+    'güç':{'Patlayıcı Üst':1,'Patlayıcı Alt':1,'Tam Vücut':1},
+    'hacim':{'Patlayıcı Üst':2,'Patlayıcı Alt':2,'Tam Vücut':1},
+    'dayanıklılık':{'Patlayıcı Üst':2,'Patlayıcı Alt':2,'Tam Vücut':2,'Core':1},
+  },
+  cardio:{
+    'güç':{'Sprint/Güç':2},
+    'hacim':{'Sprint/Güç':1,'Steady State':1,'Interval':1},
+    'dayanıklılık':{'Steady State':2,'Interval':1,'Uzun Mesafe':1},
+  },
+  crossfit:{
+    'güç':{'Olimpik/Güç':1,'Gymnastic':1,'Monostructural':1},
+    'hacim':{'Olimpik/Güç':1,'Gymnastic':2,'Monostructural':1,'Core':1},
+    'dayanıklılık':{'Olimpik/Güç':1,'Gymnastic':2,'Monostructural':2,'Core':1},
+  },
+  core:{
+    'güç':{'Anti-Extension':1,'Anti-Rotasyon':1,'Ağırlıklı':1},
+    'hacim':{'Anti-Extension':2,'Anti-Rotasyon':1,'Ağırlıklı':1,'Hip Flexor':1},
+    'dayanıklılık':{'Anti-Extension':2,'Anti-Rotasyon':2,'Ağırlıklı':1,'Hip Flexor':1,'Lateral':1},
+  },
+  olimpik:{
+    'güç':{'Snatch Ailesi':1,'Clean Ailesi':1,'Jerk Ailesi':1},
+    'hacim':{'Snatch Ailesi':1,'Clean Ailesi':1,'Jerk Ailesi':1,'Pull Varyasyon':1,'Squat Varyasyon':1},
+    'dayanıklılık':{'Snatch Ailesi':1,'Clean Ailesi':1,'Pull Varyasyon':2,'Squat Varyasyon':1,'Aksesuar':1},
+  },
+  hyrox:{
+    'güç':{'Sled':1,'Yük Taşıma':1,'Patlayıcı':1,'Koşu':1},
+    'hacim':{'Sled':1,'Yük Taşıma':1,'Patlayıcı':1,'Wall Ball':1,'Erg':1,'Koşu':1},
+    'dayanıklılık':{'Sled':1,'Yük Taşıma':1,'Patlayıcı':1,'Wall Ball':1,'Erg':1,'Koşu':2,'Lunge':1},
+  },
+};
+
+// ─── EGZERSİZ HAVUZLARI (kategori bazlı, kas grubu anahtarlı) ───
+const WO_EGZERSIZLER={
+  // ═══ UPPER BODY ═══
+  upper:{
+    'Göğüs':[
+      {name:'Barbell Bench Press',ekip:'Barbell',aciklama:'Temel göğüs hareketi. Bar göğse iner, dirsekler 75° açıda.',kaslar:'Pectoralis major · Triceps · Anterior deltoid'},
+      {name:'Incline Barbell Press',ekip:'Barbell',aciklama:'Eğimli bench, üst göğüs odaklı. 30-45° açı ideal.',kaslar:'Üst pectoralis · Anterior deltoid'},
+      {name:'Dumbbell Bench Press',ekip:'Dumbbell',aciklama:'Daha fazla hareket aralığı, stabilizasyon gerektirir.',kaslar:'Pectoralis major · Triceps'},
+      {name:'Incline Dumbbell Press',ekip:'Dumbbell',aciklama:'Üst göğüs, dambıl ile daha fazla esneklik.',kaslar:'Üst pectoralis · Anterior deltoid'},
+      {name:'Decline Bench Press',ekip:'Barbell',aciklama:'Alt göğüs odaklı. Bench eğimi geriye.',kaslar:'Alt pectoralis · Triceps'},
+      {name:'Cable Fly',ekip:'Kablo',aciklama:'İzolasyon hareketi. Sabit gerginlik, kontrollü açma-kapama.',kaslar:'Pectoralis major — izolasyon'},
+      {name:'Pec Deck',ekip:'Makine',aciklama:'Makine ile göğüs izolasyonu. Omuz yorulmadan göğüs çalışır.',kaslar:'Pectoralis major'},
+      {name:'Push-up',ekip:'Vücut Ağırlığı',aciklama:'Klasik. Eller omuz genişliği, gövde düz çizgi.',kaslar:'Pectoralis · Triceps · Core'},
+      {name:'Dips',ekip:'Bar',aciklama:'Öne eğilerek göğüs ağırlıklı, dik durarak triceps ağırlıklı.',kaslar:'Alt pectoralis · Triceps'},
+      {name:'Smith Machine Press',ekip:'Makine',aciklama:'Sabit yol, güvenli ağır çalışma için ideal.',kaslar:'Pectoralis major · Triceps'},
+      {name:'Landmine Press',ekip:'Barbell',aciklama:'Bar bir ucu sabit, diğer ucu kaldırılır. Omuz dostu.',kaslar:'Üst pectoralis · Anterior deltoid'},
+    ],
+    'Sırt':[
+      {name:'Pull-up',ekip:'Bar',aciklama:'Üst tutuş, çene bara değene kadar çek.',kaslar:'Latissimus dorsi · Biceps · Trapez'},
+      {name:'Lat Pulldown',ekip:'Kablo',aciklama:'Geniş tutuş, kürek kemiklerini aşağı çek.',kaslar:'Latissimus dorsi · Biceps'},
+      {name:'Barbell Row',ekip:'Barbell',aciklama:'Öne eğil, barı karın altına çek. Sırt düz.',kaslar:'Latissimus dorsi · Rhomboid · Trapez'},
+      {name:'T-Bar Row',ekip:'Barbell',aciklama:'Göğüs destekli veya açık. Orta sırt kalınlığı için ideal.',kaslar:'Rhomboid · Latissimus dorsi · Trapez'},
+      {name:'Seated Cable Row',ekip:'Kablo',aciklama:'Oturarak çekiş. Sırt düz, dirsekler vücuda yakın.',kaslar:'Latissimus dorsi · Rhomboid'},
+      {name:'Single Arm Dumbbell Row',ekip:'Dumbbell',aciklama:'Tek kol, bench desteğiyle. Rotasyon kontrolü.',kaslar:'Latissimus dorsi · Rhomboid'},
+      {name:'Chest Supported Row',ekip:'Makine/Bench',aciklama:'Göğüs destekli, sırt izolasyonu — momentum yok.',kaslar:'Rhomboid · Latissimus dorsi'},
+      {name:'Face Pull',ekip:'Kablo',aciklama:'Yüz hizasına çekiş, dirsekler dışarı. Arka omuz ve üst sırt.',kaslar:'Rear deltoid · Trapez · Rotator cuff'},
+      {name:'Straight Arm Pulldown',ekip:'Kablo',aciklama:'Kollar düz, lat izolasyonu için.',kaslar:'Latissimus dorsi'},
+      {name:'Inverted Row',ekip:'Bar/TRX',aciklama:'Vücut ağırlığıyla yatay çekiş.',kaslar:'Latissimus dorsi · Rhomboid · Biceps'},
+      {name:'Meadows Row',ekip:'Barbell',aciklama:'Tek taraflı, landmine pozisyonunda. Geniş hareket aralığı.',kaslar:'Latissimus dorsi · Rhomboid'},
+    ],
+    'Omuz':[
+      {name:'Barbell Overhead Press',ekip:'Barbell',aciklama:'Ayakta, bar göğüsten başın üstüne. Core sıkı.',kaslar:'Deltoid · Triceps · Trapez'},
+      {name:'Dumbbell Shoulder Press',ekip:'Dumbbell',aciklama:'Oturarak veya ayakta. Daha fazla hareket aralığı.',kaslar:'Deltoid · Triceps'},
+      {name:'Arnold Press',ekip:'Dumbbell',aciklama:'Rotasyonlu press, tüm omuz kafalarını çalıştırır.',kaslar:'Tüm deltoid kafaları'},
+      {name:'Lateral Raise',ekip:'Dumbbell',aciklama:'Yana kaldırış, omuz genişliği için.',kaslar:'Lateral deltoid'},
+      {name:'Cable Lateral Raise',ekip:'Kablo',aciklama:'Sabit gerginlik, tüm hareket aralığında direnç.',kaslar:'Lateral deltoid'},
+      {name:'Rear Delt Fly',ekip:'Dumbbell/Kablo',aciklama:'Öne eğil, kolları yana aç. Arka omuz.',kaslar:'Posterior deltoid'},
+      {name:'Front Raise',ekip:'Dumbbell/Plaka',aciklama:'Öne kaldırış, ön omuz izolasyonu.',kaslar:'Anterior deltoid'},
+      {name:'Upright Row',ekip:'Barbell/Kablo',aciklama:'Dikey çekiş, omuz ve trapez.',kaslar:'Deltoid · Trapez'},
+      {name:'Cuban Press',ekip:'Dumbbell',aciklama:'Rotasyon + press kombinasyonu. Rotator cuff sağlığı.',kaslar:'Deltoid · Rotator cuff'},
+      {name:'Push Press',ekip:'Barbell',aciklama:'Bacak desteğiyle overhead press. Daha ağır yük.',kaslar:'Deltoid · Triceps · Quadriceps'},
+    ],
+    'Biseps':[
+      {name:'Barbell Curl',ekip:'Barbell',aciklama:'Klasik biseps hareketi. Dirsekler sabit.',kaslar:'Biceps brachii'},
+      {name:'Dumbbell Curl',ekip:'Dumbbell',aciklama:'Tek kol veya iki kol, supinasyon eklenebilir.',kaslar:'Biceps brachii'},
+      {name:'Hammer Curl',ekip:'Dumbbell',aciklama:'Nötr tutuş, brakialis ve önkol vurgusu.',kaslar:'Brachialis · Biceps brachii'},
+      {name:'Incline Dumbbell Curl',ekip:'Dumbbell',aciklama:'Eğimli bench, biceps uzun başını gerer.',kaslar:'Biceps brachii — uzun baş'},
+      {name:'Cable Curl',ekip:'Kablo',aciklama:'Sabit gerginlik, tüm hareket aralığında direnç.',kaslar:'Biceps brachii'},
+      {name:'Reverse Curl',ekip:'Barbell',aciklama:'Pronasyon tutuş, önkol ve brakioradialis.',kaslar:'Brachioradialis · Önkol ekstensorları'},
+      {name:'Preacher Curl',ekip:'Barbell/Dumbbell',aciklama:'Kol bench üzerinde sabit, izolasyon maksimum.',kaslar:'Biceps brachii — kısa baş'},
+      {name:'Concentration Curl',ekip:'Dumbbell',aciklama:'Oturarak, dirsek diz içine sabitlenir.',kaslar:'Biceps brachii — pik'},
+      {name:'Spider Curl',ekip:'Barbell/Dumbbell',aciklama:'Eğimli bench üzerine yüzükoyun, izolasyon.',kaslar:'Biceps brachii'},
+    ],
+    'Triseps':[
+      {name:'Triceps Pushdown',ekip:'Kablo',aciklama:'Kablo yukarıdan, dirsekler sabit, aşağı it.',kaslar:'Triceps brachii'},
+      {name:'Overhead Triceps Extension',ekip:'Dumbbell/Kablo',aciklama:'Kol başın üstünde, uzun baş vurgusu.',kaslar:'Triceps brachii — uzun baş'},
+      {name:'Close Grip Bench Press',ekip:'Barbell',aciklama:'Dar tutuş bench press, triceps ağırlıklı.',kaslar:'Triceps brachii · Pectoralis'},
+      {name:'Dips',ekip:'Bar',aciklama:'Dik duruş, triceps ağırlıklı versiyon.',kaslar:'Triceps brachii · Pectoralis'},
+      {name:'Skull Crusher',ekip:'Barbell/EZ Bar',aciklama:'Sırtüstü, kol alına doğru iner.',kaslar:'Triceps brachii'},
+      {name:'Rope Pushdown',ekip:'Kablo',aciklama:'İp ile pushdown, sonunda eller dışarı açılır.',kaslar:'Triceps brachii — lateral baş'},
+      {name:'Diamond Push-up',ekip:'Vücut Ağırlığı',aciklama:'Eller birbirine yakın, triceps vurgusu.',kaslar:'Triceps brachii'},
+      {name:'Tate Press',ekip:'Dumbbell',aciklama:'Dirsekler içe, dambıllar göğse iner.',kaslar:'Triceps brachii — medial baş'},
+      {name:'JM Press',ekip:'Barbell',aciklama:'Skull crusher ve close grip arası hibrit.',kaslar:'Triceps brachii'},
+    ],
+  },
+
+  // ═══ LOWER BODY ═══
+  lower:{
+    'Quadriceps':[
+      {name:'Back Squat',ekip:'Barbell',aciklama:'Bar sırtta, derin squat. Temel bacak hareketi.',kaslar:'Quadriceps · Glute · Hamstring'},
+      {name:'Front Squat',ekip:'Barbell',aciklama:'Bar önde, dik gövde. Quad vurgusu yüksek.',kaslar:'Quadriceps · Core'},
+      {name:'Leg Press',ekip:'Makine',aciklama:'Sırt destekli, ayaklar plakaya, itme hareketi.',kaslar:'Quadriceps · Glute'},
+      {name:'Hack Squat',ekip:'Makine',aciklama:'Sırt açılı destekli squat makinesi.',kaslar:'Quadriceps'},
+      {name:'Leg Extension',ekip:'Makine',aciklama:'Oturarak, diz ekstansiyonu. İzolasyon.',kaslar:'Quadriceps — izolasyon'},
+      {name:'Bulgarian Split Squat',ekip:'Dumbbell',aciklama:'Tek bacak, arka ayak bench üzerinde.',kaslar:'Quadriceps · Glute — tek taraflı'},
+      {name:'Walking Lunge',ekip:'Dumbbell/Barbell',aciklama:'İleri adım, dinamik. Denge ve güç.',kaslar:'Quadriceps · Glute · Hamstring'},
+      {name:'Goblet Squat',ekip:'Dumbbell/KB',aciklama:'Ağırlık göğüste tutulur, derin squat.',kaslar:'Quadriceps · Core'},
+      {name:'Step-up',ekip:'Dumbbell/Box',aciklama:'Kutuya çıkış, tek bacak gücü.',kaslar:'Quadriceps · Glute'},
+      {name:'Sissy Squat',ekip:'Vücut Ağırlığı',aciklama:'Geriye eğilerek squat, saf quad izolasyonu.',kaslar:'Quadriceps — rectus femoris'},
+    ],
+    'Hamstring':[
+      {name:'Romanian Deadlift',ekip:'Barbell',aciklama:'Kalçadan öne eğil, sırt düz, hamstring gerimi.',kaslar:'Hamstring · Glute · Spinal erektör'},
+      {name:'Conventional Deadlift',ekip:'Barbell',aciklama:'Zeminden kaldırış, tam vücut hareketi.',kaslar:'Hamstring · Glute · Sırt'},
+      {name:'Lying Leg Curl',ekip:'Makine',aciklama:'Yüzükoyun, diz fleksiyonu. İzolasyon.',kaslar:'Hamstring — izolasyon'},
+      {name:'Seated Leg Curl',ekip:'Makine',aciklama:'Oturarak diz fleksiyonu.',kaslar:'Hamstring'},
+      {name:'Nordic Curl',ekip:'Vücut Ağırlığı',aciklama:'Diz sabit, gövde öne kontrollü iner.',kaslar:'Hamstring — eksantrik güç'},
+      {name:'Good Morning',ekip:'Barbell',aciklama:'Bar sırtta, kalçadan öne eğil.',kaslar:'Hamstring · Spinal erektör'},
+      {name:'Single Leg RDL',ekip:'Dumbbell',aciklama:'Tek bacak, denge ve hamstring.',kaslar:'Hamstring · Glute · Denge'},
+      {name:'Stability Ball Curl',ekip:'Top',aciklama:'Sırtüstü, topu ayaklarla çek.',kaslar:'Hamstring · Core'},
+    ],
+    'Glute':[
+      {name:'Hip Thrust',ekip:'Barbell',aciklama:'Sırt bench üzerinde, kalça ekstansiyonu.',kaslar:'Gluteus maximus'},
+      {name:'Glute Bridge',ekip:'Vücut Ağırlığı/Barbell',aciklama:'Sırtüstü, kalça yukarı kaldır.',kaslar:'Gluteus maximus'},
+      {name:'Cable Kickback',ekip:'Kablo',aciklama:'Bacak geriye iter, glute izolasyonu.',kaslar:'Gluteus maximus'},
+      {name:'Hip Abduction',ekip:'Makine/Band',aciklama:'Yana açma, glute medius.',kaslar:'Gluteus medius'},
+      {name:'Curtsy Lunge',ekip:'Dumbbell',aciklama:'Çapraz adım, glute medius ve maximus.',kaslar:'Gluteus medius · Gluteus maximus'},
+      {name:'Single Leg Hip Thrust',ekip:'Vücut Ağırlığı',aciklama:'Tek bacak, denge ve glute gücü.',kaslar:'Gluteus maximus — tek taraflı'},
+      {name:'Sumo Deadlift',ekip:'Barbell',aciklama:'Geniş duruş, glute ve adduktör vurgusu.',kaslar:'Gluteus maximus · Adduktör'},
+    ],
+    'Kalf':[
+      {name:'Standing Calf Raise',ekip:'Makine/Barbell',aciklama:'Ayakta, topuk kaldırış.',kaslar:'Gastrocnemius'},
+      {name:'Seated Calf Raise',ekip:'Makine',aciklama:'Oturarak, soleus vurgusu.',kaslar:'Soleus'},
+      {name:'Leg Press Calf Raise',ekip:'Makine',aciklama:'Leg press üzerinde topuk kaldırış.',kaslar:'Gastrocnemius · Soleus'},
+      {name:'Donkey Calf Raise',ekip:'Makine',aciklama:'Öne eğik pozisyon, gastrocnemius geriliminde maksimum.',kaslar:'Gastrocnemius'},
+      {name:'Single Leg Calf Raise',ekip:'Vücut Ağırlığı',aciklama:'Tek bacak, denge ve kalf gücü.',kaslar:'Gastrocnemius · Soleus'},
+    ],
+  },
+
+  // ═══ FULL BODY ═══
+  full:{
+    'Göğüs':[
+      {name:'Barbell Bench Press',ekip:'Barbell',aciklama:'Temel göğüs hareketi.',kaslar:'Pectoralis major · Triceps'},
+      {name:'Push-up',ekip:'Vücut Ağırlığı',aciklama:'Klasik, her yerde yapılabilir.',kaslar:'Pectoralis · Triceps · Core'},
+      {name:'Dumbbell Bench Press',ekip:'Dumbbell',aciklama:'Daha fazla hareket aralığı.',kaslar:'Pectoralis major'},
+    ],
+    'Sırt':[
+      {name:'Pull-up',ekip:'Bar',aciklama:'Üst tutuş çekiş.',kaslar:'Latissimus dorsi · Biceps'},
+      {name:'Barbell Row',ekip:'Barbell',aciklama:'Öne eğik çekiş.',kaslar:'Latissimus dorsi · Trapez'},
+      {name:'Deadlift',ekip:'Barbell',aciklama:'Zeminden kaldırış, tam vücut.',kaslar:'Sırt · Hamstring · Glute'},
+    ],
+    'Quadriceps':[
+      {name:'Back Squat',ekip:'Barbell',aciklama:'Temel bacak hareketi.',kaslar:'Quadriceps · Glute'},
+      {name:'Goblet Squat',ekip:'Dumbbell/KB',aciklama:'Ağırlık göğüste, derin squat.',kaslar:'Quadriceps · Core'},
+      {name:'Front Squat',ekip:'Barbell',aciklama:'Bar önde, dik gövde.',kaslar:'Quadriceps · Core'},
+    ],
+    'Hamstring':[
+      {name:'Romanian Deadlift',ekip:'Barbell',aciklama:'Hamstring gerimi, sırt düz.',kaslar:'Hamstring · Glute'},
+      {name:'Kettlebell Swing',ekip:'KB',aciklama:'Kalça öne, patlayıcı hareket.',kaslar:'Hamstring · Glute · Core'},
+    ],
+    'Omuz':[
+      {name:'Overhead Press',ekip:'Barbell/Dumbbell',aciklama:'Bar/dambıl başın üstüne itiş.',kaslar:'Deltoid · Triceps'},
+      {name:'Push Press',ekip:'Barbell',aciklama:'Bacak desteğiyle press.',kaslar:'Deltoid · Quadriceps'},
+    ],
+    'Kollar':[
+      {name:'Dumbbell Curl + Press',ekip:'Dumbbell',aciklama:'Kombinasyon hareket — biseps ve omuz.',kaslar:'Biceps · Deltoid'},
+      {name:'Dips',ekip:'Bar',aciklama:'Triceps ve göğüs.',kaslar:'Triceps · Pectoralis'},
+    ],
+    'Core':[
+      {name:'Plank',ekip:'Vücut Ağırlığı',aciklama:'İzometrik core tutuş.',kaslar:'Rectus abdominis · Core'},
+      {name:'Hanging Leg Raise',ekip:'Bar',aciklama:'Asılı bacak kaldırış.',kaslar:'Lower abs · Hip flexor'},
+    ],
+    'Kalf':[
+      {name:'Standing Calf Raise',ekip:'Vücut Ağırlığı/Barbell',aciklama:'Topuk kaldırış.',kaslar:'Gastrocnemius'},
+      {name:'Jump Rope',ekip:'İp',aciklama:'Atlama ipi, kalf ve kondisyon.',kaslar:'Gastrocnemius · Kondisyon'},
+    ],
+  },
+
+  // ═══ PUSH / PULL / LEGS ═══
+  ppl_push:{
+    'Göğüs':[
+      {name:'Barbell Bench Press',ekip:'Barbell',aciklama:'Temel göğüs hareketi.',kaslar:'Pectoralis major · Triceps'},
+      {name:'Incline Dumbbell Press',ekip:'Dumbbell',aciklama:'Üst göğüs vurgusu.',kaslar:'Üst pectoralis'},
+      {name:'Cable Fly',ekip:'Kablo',aciklama:'İzolasyon, sabit gerginlik.',kaslar:'Pectoralis major'},
+      {name:'Dips',ekip:'Bar',aciklama:'Öne eğik, göğüs ağırlıklı.',kaslar:'Alt pectoralis · Triceps'},
+      {name:'Push-up',ekip:'Vücut Ağırlığı',aciklama:'Klasik göğüs hareketi.',kaslar:'Pectoralis · Triceps'},
+      {name:'Pec Deck',ekip:'Makine',aciklama:'Makine izolasyonu.',kaslar:'Pectoralis major'},
+    ],
+    'Omuz':[
+      {name:'Overhead Press',ekip:'Barbell',aciklama:'Ayakta overhead itiş.',kaslar:'Deltoid · Triceps'},
+      {name:'Lateral Raise',ekip:'Dumbbell',aciklama:'Yana kaldırış.',kaslar:'Lateral deltoid'},
+      {name:'Arnold Press',ekip:'Dumbbell',aciklama:'Rotasyonlu press.',kaslar:'Tüm deltoid'},
+      {name:'Cable Lateral Raise',ekip:'Kablo',aciklama:'Sabit gerginlik yana kaldırış.',kaslar:'Lateral deltoid'},
+      {name:'Push Press',ekip:'Barbell',aciklama:'Bacak destekli press.',kaslar:'Deltoid · Quadriceps'},
+    ],
+    'Triseps':[
+      {name:'Triceps Pushdown',ekip:'Kablo',aciklama:'Kablo ile pushdown.',kaslar:'Triceps brachii'},
+      {name:'Overhead Triceps Extension',ekip:'Dumbbell',aciklama:'Uzun baş vurgusu.',kaslar:'Triceps — uzun baş'},
+      {name:'Close Grip Bench',ekip:'Barbell',aciklama:'Dar tutuş bench press.',kaslar:'Triceps · Pectoralis'},
+      {name:'Skull Crusher',ekip:'EZ Bar',aciklama:'Sırtüstü extension.',kaslar:'Triceps brachii'},
+    ],
+    'Core':[
+      {name:'Hanging Leg Raise',ekip:'Bar',aciklama:'Asılı bacak kaldırış.',kaslar:'Lower abs'},
+      {name:'Ab Wheel Rollout',ekip:'Ab Wheel',aciklama:'Tam core aktivasyonu.',kaslar:'Tüm core'},
+      {name:'Plank',ekip:'Vücut Ağırlığı',aciklama:'İzometrik tutuş.',kaslar:'Core'},
+    ],
+  },
+  ppl_pull:{
+    'Sırt':[
+      {name:'Pull-up',ekip:'Bar',aciklama:'Üst tutuş çekiş.',kaslar:'Latissimus dorsi · Biceps'},
+      {name:'Barbell Row',ekip:'Barbell',aciklama:'Öne eğik çekiş.',kaslar:'Latissimus dorsi · Trapez'},
+      {name:'Lat Pulldown',ekip:'Kablo',aciklama:'Geniş tutuş çekiş.',kaslar:'Latissimus dorsi'},
+      {name:'T-Bar Row',ekip:'Barbell',aciklama:'Orta sırt kalınlığı.',kaslar:'Rhomboid · Latissimus'},
+      {name:'Seated Cable Row',ekip:'Kablo',aciklama:'Oturarak çekiş.',kaslar:'Latissimus dorsi'},
+      {name:'Deadlift',ekip:'Barbell',aciklama:'Zeminden kaldırış.',kaslar:'Sırt · Hamstring · Glute'},
+      {name:'Face Pull',ekip:'Kablo',aciklama:'Arka omuz ve üst sırt.',kaslar:'Rear deltoid · Trapez'},
+    ],
+    'Biseps':[
+      {name:'Barbell Curl',ekip:'Barbell',aciklama:'Klasik biseps.',kaslar:'Biceps brachii'},
+      {name:'Hammer Curl',ekip:'Dumbbell',aciklama:'Nötr tutuş.',kaslar:'Brachialis'},
+      {name:'Cable Curl',ekip:'Kablo',aciklama:'Sabit gerginlik.',kaslar:'Biceps brachii'},
+      {name:'Incline Dumbbell Curl',ekip:'Dumbbell',aciklama:'Uzun baş gerimi.',kaslar:'Biceps — uzun baş'},
+    ],
+    'Core':[
+      {name:'Toes-to-Bar',ekip:'Bar',aciklama:'Asılı, ayaklar bara.',kaslar:'Rectus abdominis · Hip flexor'},
+      {name:'GHD Sit-up',ekip:'GHD',aciklama:'Tam açılma sit-up.',kaslar:'Rectus abdominis'},
+    ],
+  },
+  ppl_legs:{
+    'Quadriceps':[
+      {name:'Back Squat',ekip:'Barbell',aciklama:'Temel bacak hareketi.',kaslar:'Quadriceps · Glute'},
+      {name:'Front Squat',ekip:'Barbell',aciklama:'Dik gövde, quad vurgusu.',kaslar:'Quadriceps'},
+      {name:'Leg Press',ekip:'Makine',aciklama:'Sırt destekli itme.',kaslar:'Quadriceps · Glute'},
+      {name:'Leg Extension',ekip:'Makine',aciklama:'İzolasyon.',kaslar:'Quadriceps'},
+      {name:'Bulgarian Split Squat',ekip:'Dumbbell',aciklama:'Tek bacak.',kaslar:'Quadriceps · Glute'},
+      {name:'Walking Lunge',ekip:'Dumbbell',aciklama:'Dinamik adım.',kaslar:'Quadriceps · Glute'},
+    ],
+    'Hamstring':[
+      {name:'Romanian Deadlift',ekip:'Barbell',aciklama:'Hamstring gerimi.',kaslar:'Hamstring · Glute'},
+      {name:'Lying Leg Curl',ekip:'Makine',aciklama:'İzolasyon.',kaslar:'Hamstring'},
+      {name:'Nordic Curl',ekip:'Vücut Ağırlığı',aciklama:'Eksantrik güç.',kaslar:'Hamstring'},
+      {name:'Good Morning',ekip:'Barbell',aciklama:'Kalçadan öne eğil.',kaslar:'Hamstring · Spinal erektör'},
+    ],
+    'Glute':[
+      {name:'Hip Thrust',ekip:'Barbell',aciklama:'Kalça ekstansiyonu.',kaslar:'Gluteus maximus'},
+      {name:'Glute Bridge',ekip:'Barbell',aciklama:'Sırtüstü kalça kaldırış.',kaslar:'Gluteus maximus'},
+      {name:'Cable Kickback',ekip:'Kablo',aciklama:'Bacak geriye itiş.',kaslar:'Gluteus maximus'},
+    ],
+    'Kalf':[
+      {name:'Standing Calf Raise',ekip:'Makine',aciklama:'Ayakta topuk kaldırış.',kaslar:'Gastrocnemius'},
+      {name:'Seated Calf Raise',ekip:'Makine',aciklama:'Soleus vurgusu.',kaslar:'Soleus'},
+    ],
+    'Core':[
+      {name:'Weighted Sit-up',ekip:'Plaka',aciklama:'Ağırlıklı tam hareket.',kaslar:'Rectus abdominis'},
+      {name:'Pallof Press',ekip:'Kablo',aciklama:'Anti-rotasyon core.',kaslar:'Oblique · Core'},
+    ],
+  },
+
+  // ═══ HIIT ═══
+  hiit:{
+    'Patlayıcı Üst':[
+      {name:'Medicine Ball Slam',ekip:'Medicine Ball',aciklama:'Topu yere vur, tüm gövdeyle.',kaslar:'Core · Lat · Triceps'},
+      {name:'Battle Rope Slam',ekip:'Battle Rope',aciklama:'İpleri yukarı-aşağı çarp.',kaslar:'Omuz · Core · Kondisyon'},
+      {name:'Push Press',ekip:'Barbell/Dumbbell',aciklama:'Patlayıcı overhead itiş.',kaslar:'Deltoid · Quadriceps'},
+      {name:'Plyo Push-up',ekip:'Vücut Ağırlığı',aciklama:'Patlayıcı push-up, eller havalanır.',kaslar:'Pectoralis · Triceps'},
+    ],
+    'Patlayıcı Alt':[
+      {name:'Box Jump',ekip:'Box',aciklama:'Patlayıcı sıçrama, tam açılma.',kaslar:'Quadriceps · Glute · Kalf'},
+      {name:'Jump Squat',ekip:'Vücut Ağırlığı',aciklama:'Squat sonrası patlayıcı sıçrama.',kaslar:'Quadriceps · Glute'},
+      {name:'Broad Jump',ekip:'Vücut Ağırlığı',aciklama:'İleri sıçrama, mesafe odaklı.',kaslar:'Quadriceps · Glute'},
+      {name:'Skater Jump',ekip:'Vücut Ağırlığı',aciklama:'Yana sıçrama, lateral patlayıcılık.',kaslar:'Glute medius · Quadriceps'},
+    ],
+    'Tam Vücut':[
+      {name:'Burpee',ekip:'Vücut Ağırlığı',aciklama:'Şınav + sıçrama kombinasyonu.',kaslar:'Tüm vücut'},
+      {name:'Kettlebell Swing',ekip:'KB',aciklama:'Kalça öne, patlayıcı.',kaslar:'Hamstring · Glute · Core'},
+      {name:'Thruster',ekip:'Dumbbell/Barbell',aciklama:'Squat + overhead press.',kaslar:'Quadriceps · Deltoid'},
+      {name:'Man Maker',ekip:'Dumbbell',aciklama:'Burpee + row + press kombinasyonu.',kaslar:'Tüm vücut'},
+      {name:'Mountain Climber',ekip:'Vücut Ağırlığı',aciklama:'Plank pozisyonunda diz çekme.',kaslar:'Core · Kondisyon'},
+    ],
+    'Core':[
+      {name:'Russian Twist',ekip:'Plaka/Medicine Ball',aciklama:'Oturarak rotasyon.',kaslar:'Oblique'},
+      {name:'Plank Jack',ekip:'Vücut Ağırlığı',aciklama:'Plankta ayak açma-kapama.',kaslar:'Core · Kondisyon'},
+      {name:'V-Up',ekip:'Vücut Ağırlığı',aciklama:'Eller-ayaklar aynı anda kalkış.',kaslar:'Rectus abdominis'},
+    ],
+  },
+
+  // ═══ KARDİYO ═══
+  cardio:{
+    'Sprint/Güç':[
+      {name:'Sprint Interval (Koşu Bandı)',ekip:'Koşu Bandı',aciklama:'30 sn maksimum hız, 90 sn yürüyüş — 8 tur.',kaslar:'Tam vücut · Anaerobik kapasite'},
+      {name:'Hill Sprint',ekip:'Dış Mekan/Bant',aciklama:'Yokuş yukarı sprint, yürüyerek geri dönüş.',kaslar:'Glute · Quadriceps · Anaerobik'},
+      {name:'Assault Bike Sprint',ekip:'Assault Bike',aciklama:'20 sn maksimum, 40 sn hafif — 10 tur.',kaslar:'Tam vücut · Anaerobik'},
+      {name:'RowErg Sprint',ekip:'RowErg',aciklama:'250m maksimum çekiş, 2 dk dinlenme — 5 tekrar.',kaslar:'Bacak · Sırt · Anaerobik'},
+    ],
+    'Steady State':[
+      {name:'Koşu — Zone 2',ekip:'Koşu Bandı/Dış',aciklama:'30-45 dk, konuşabileceğin tempo. Yağ yakım bölgesi.',kaslar:'Aerobik kapasite · Bacak'},
+      {name:'Bisiklet — Zone 2',ekip:'Bisiklet',aciklama:'30-45 dk sabit tempo, düşük direnç.',kaslar:'Quadriceps · Aerobik'},
+      {name:'RowErg — Zone 2',ekip:'RowErg',aciklama:'20-30 dk sabit pace, teknik odaklı.',kaslar:'Tam vücut · Aerobik'},
+      {name:'Yürüyüş — İncline',ekip:'Koşu Bandı',aciklama:'45-60 dk, %10-15 eğim. Düşük etkili kondisyon.',kaslar:'Glute · Hamstring · Aerobik'},
+    ],
+    'Interval':[
+      {name:'4x4 Protokolü',ekip:'Koşu Bandı/Bike',aciklama:'4 dk yüksek tempo, 3 dk aktif dinlenme — 4 tekrar.',kaslar:'VO2max gelişimi'},
+      {name:'Tabata',ekip:'Herhangi',aciklama:'20 sn maksimum, 10 sn dinlenme — 8 tur (4 dk toplam).',kaslar:'Anaerobik + aerobik'},
+      {name:'EMOM Cardio',ekip:'Herhangi',aciklama:'Her dakika belirli mesafe/calorie hedefi.',kaslar:'Kondisyon — karışık'},
+    ],
+    'Uzun Mesafe':[
+      {name:'Uzun Koşu',ekip:'Dış Mekan',aciklama:'60+ dk, sabit düşük tempo. Aerobik taban.',kaslar:'Aerobik kapasite · Bacak dayanıklılığı'},
+      {name:'Uzun Bisiklet',ekip:'Bisiklet',aciklama:'60-90 dk sabit tempo.',kaslar:'Quadriceps · Aerobik taban'},
+    ],
+  },
+
+  // ═══ CROSSFIT / WOD ═══
+  crossfit:{
+    'Olimpik/Güç':[
+      {name:'Clean & Jerk',ekip:'Barbell',aciklama:'Zeminden omuza, sonra overhead.',kaslar:'Tam vücut · Patlayıcılık'},
+      {name:'Snatch',ekip:'Barbell',aciklama:'Zeminden tek hareketle overhead.',kaslar:'Tam vücut · Patlayıcılık'},
+      {name:'Thruster',ekip:'Barbell',aciklama:'Front squat + push press.',kaslar:'Quadriceps · Deltoid'},
+      {name:'Deadlift',ekip:'Barbell',aciklama:'Zeminden kaldırış.',kaslar:'Sırt · Hamstring · Glute'},
+      {name:'Push Press',ekip:'Barbell',aciklama:'Bacak destekli overhead itiş.',kaslar:'Deltoid · Quadriceps'},
+    ],
+    'Gymnastic':[
+      {name:'Pull-up',ekip:'Bar',aciklama:'Strict veya kipping.',kaslar:'Latissimus dorsi · Biceps'},
+      {name:'Toes-to-Bar',ekip:'Bar',aciklama:'Asılı, ayaklar bara.',kaslar:'Core · Hip flexor · Lat'},
+      {name:'Handstand Push-up',ekip:'Duvar',aciklama:'Ters şınav, omuz gücü.',kaslar:'Deltoid · Triceps'},
+      {name:'Muscle-up',ekip:'Bar/Halka',aciklama:'Pull-up + dips kombinasyonu.',kaslar:'Lat · Triceps · Pectoralis'},
+      {name:'Ring Dip',ekip:'Halka',aciklama:'Halkada dips, instabil zemin.',kaslar:'Triceps · Pectoralis · Core'},
+      {name:'Box Jump',ekip:'Box',aciklama:'Patlayıcı sıçrama.',kaslar:'Quadriceps · Glute'},
+    ],
+    'Monostructural':[
+      {name:'Double Under',ekip:'İp',aciklama:'İp iki tur, kondisyon ve koordinasyon.',kaslar:'Kalf · Kondisyon'},
+      {name:'Row',ekip:'RowErg',aciklama:'Mesafe veya calorie hedefi.',kaslar:'Tam vücut · Kondisyon'},
+      {name:'Assault Bike',ekip:'Assault Bike',aciklama:'Calorie hedefi, yüksek yoğunluk.',kaslar:'Tam vücut · Kondisyon'},
+      {name:'Run',ekip:'Dış/Bant',aciklama:'400m-1mile arası, WOD içinde.',kaslar:'Bacak · Kondisyon'},
+    ],
+    'Core':[
+      {name:'GHD Sit-up',ekip:'GHD',aciklama:'Tam açılma sit-up.',kaslar:'Rectus abdominis'},
+      {name:'Wall Ball',ekip:'Medicine Ball',aciklama:'Squat + duvara fırlatma.',kaslar:'Quadriceps · Deltoid · Core'},
+      {name:'Russian Twist',ekip:'Plaka',aciklama:'Rotasyonel core.',kaslar:'Oblique'},
+    ],
+  },
+
+  // ═══ CORE ═══
+  core:{
+    'Anti-Extension':[
+      {name:'Ab Wheel Rollout',ekip:'Ab Wheel',aciklama:'Tam uzanma, kontrollü geri dönüş.',kaslar:'Tüm core · Lat'},
+      {name:'Hollow Body Hold',ekip:'Vücut Ağırlığı',aciklama:'Bel zemine yapışık, eller-ayaklar havada.',kaslar:'Rectus abdominis · Hip flexor'},
+      {name:'Plank',ekip:'Vücut Ağırlığı',aciklama:'İzometrik tutuş.',kaslar:'Rectus abdominis · Core'},
+      {name:'Dragon Flag',ekip:'Bench',aciklama:'Tezgaha tutun, gövde kontrollü iner.',kaslar:'Tüm core · Spinal erektör'},
+    ],
+    'Anti-Rotasyon':[
+      {name:'Pallof Press',ekip:'Kablo/Band',aciklama:'Rotasyona karşı direniş.',kaslar:'Oblique · Transversus'},
+      {name:'Plank Drag',ekip:'Plaka',aciklama:'Plankta plakayı karşıya çek.',kaslar:'Oblique · Core'},
+      {name:'Stir the Pot',ekip:'Stability Ball',aciklama:'Plankta top üzerinde daire çiz.',kaslar:'Tüm core — stabilizasyon'},
+    ],
+    'Ağırlıklı':[
+      {name:'Weighted Sit-up',ekip:'Plaka',aciklama:'Göğüste plaka, tam hareket.',kaslar:'Rectus abdominis'},
+      {name:'Weighted Plank',ekip:'Plaka',aciklama:'Sırtta plaka ile plank.',kaslar:'Core — ağırlıklı'},
+      {name:'Cable Crunch',ekip:'Kablo',aciklama:'Kablo ile crunch, ağırlık artırılabilir.',kaslar:'Rectus abdominis'},
+      {name:'GHD Sit-up',ekip:'GHD',aciklama:'Tam açılma, ağırlık eklenebilir.',kaslar:'Rectus abdominis · Hip flexor'},
+    ],
+    'Hip Flexor':[
+      {name:'Hanging Leg Raise',ekip:'Bar',aciklama:'Asılı, bacaklar düz yukarı.',kaslar:'Hip flexor · Lower abs'},
+      {name:'Toes-to-Bar',ekip:'Bar',aciklama:'Ayaklar bara değiyor.',kaslar:'Hip flexor · Core · Lat'},
+      {name:'L-Sit Hold',ekip:'Paralel Bar',aciklama:'Bacaklar düz, kalça asılı.',kaslar:'Hip flexor · Core'},
+    ],
+    'Lateral':[
+      {name:'Side Plank',ekip:'Vücut Ağırlığı',aciklama:'Yan plank, oblique odaklı.',kaslar:'Oblique · Gluteus medius'},
+      {name:'Windmill',ekip:'KB',aciklama:'Overhead KB, karşı ayağa uzanma.',kaslar:'Oblique · Shoulder'},
+      {name:'Suitcase Carry',ekip:'Dumbbell/KB',aciklama:'Tek elde yük taşıma.',kaslar:'Oblique · Quadratus lumborum'},
+    ],
+  },
+
+  // ═══ OLİMPİK KALDIRIŞ ═══
+  olimpik:{
+    'Snatch Ailesi':[
+      {name:'Snatch',ekip:'Barbell',aciklama:'Zeminden tek hareketle overhead.',kaslar:'Tam vücut · Patlayıcılık'},
+      {name:'Power Snatch',ekip:'Barbell',aciklama:'Quarter squat yakalama.',kaslar:'Tam vücut'},
+      {name:'Hang Snatch',ekip:'Barbell',aciklama:'Diz üstünden başlar.',kaslar:'Tam vücut — pull odaklı'},
+      {name:'Snatch Balance',ekip:'Barbell',aciklama:'Hızlı altına girme drilli.',kaslar:'Overhead stabilite'},
+    ],
+    'Clean Ailesi':[
+      {name:'Clean',ekip:'Barbell',aciklama:'Zeminden omuza, full squat.',kaslar:'Tam vücut'},
+      {name:'Power Clean',ekip:'Barbell',aciklama:'Quarter squat yakalama.',kaslar:'Tam vücut'},
+      {name:'Hang Clean',ekip:'Barbell',aciklama:'Diz üstünden başlar.',kaslar:'Tam vücut — pull odaklı'},
+      {name:'Clean Pull',ekip:'Barbell',aciklama:'Yakalama olmadan çekiş.',kaslar:'Sırt · Bacak — pull gücü'},
+    ],
+    'Jerk Ailesi':[
+      {name:'Split Jerk',ekip:'Barbell',aciklama:'Ayaklar split, overhead yakalama.',kaslar:'Deltoid · Bacak'},
+      {name:'Push Jerk',ekip:'Barbell',aciklama:'Ayaklar squat genişliğinde.',kaslar:'Deltoid · Quadriceps'},
+      {name:'Jerk Balance',ekip:'Barbell',aciklama:'Split pozisyon drilli.',kaslar:'Stabilite · Denge'},
+    ],
+    'Pull Varyasyon':[
+      {name:'Snatch Grip Deadlift',ekip:'Barbell',aciklama:'Geniş tutuş, snatch pozisyonu.',kaslar:'Sırt · Hamstring'},
+      {name:'Clean Grip Deadlift',ekip:'Barbell',aciklama:'Clean tutuşu ile deadlift.',kaslar:'Sırt · Hamstring'},
+      {name:'High Pull',ekip:'Barbell',aciklama:'Patlayıcı çekiş, yakalama yok.',kaslar:'Trapez · Sırt — patlayıcılık'},
+    ],
+    'Squat Varyasyon':[
+      {name:'Front Squat',ekip:'Barbell',aciklama:'Clean catch pozisyonu.',kaslar:'Quadriceps · Core'},
+      {name:'Overhead Squat',ekip:'Barbell',aciklama:'Snatch catch pozisyonu.',kaslar:'Quadriceps · Core · Shoulder'},
+      {name:'Pause Front Squat',ekip:'Barbell',aciklama:'Altta duraklama, pozisyon gücü.',kaslar:'Quadriceps · Core'},
+    ],
+    'Aksesuar':[
+      {name:'Push Press',ekip:'Barbell',aciklama:'Jerk hazırlığı.',kaslar:'Deltoid · Quadriceps'},
+      {name:'Romanian Deadlift',ekip:'Barbell',aciklama:'Posterior chain gücü.',kaslar:'Hamstring · Glute'},
+      {name:'Strict Press',ekip:'Barbell',aciklama:'Overhead stabilite temeli.',kaslar:'Deltoid · Triceps'},
+    ],
+  },
+
+  // ═══ HYROX SİMÜLASYON ═══
+  hyrox:{
+    'Sled':[
+      {name:'Sled Push',ekip:'Sled',aciklama:'50m itme, ağır yük.',kaslar:'Quadriceps · Glute · Core'},
+      {name:'Sled Pull',ekip:'Sled',aciklama:'50m çekme, geri yürüyüş.',kaslar:'Hamstring · Sırt · Core'},
+    ],
+    'Yük Taşıma':[
+      {name:'Farmers Carry',ekip:'KB/Dumbbell',aciklama:'200m, iki elde ağır yük.',kaslar:'Core · Trapez · Grip'},
+      {name:'Sandbag Lunge',ekip:'Sandbag',aciklama:'100m, sırtta sandbag ile lunge.',kaslar:'Quadriceps · Glute · Core'},
+    ],
+    'Patlayıcı':[
+      {name:'Burpee Broad Jump',ekip:'Vücut Ağırlığı',aciklama:'80m, burpee + ileri sıçrama.',kaslar:'Tam vücut · Patlayıcılık'},
+      {name:'Box Jump',ekip:'Box',aciklama:'Patlayıcı sıçrama alternatifi.',kaslar:'Quadriceps · Glute'},
+    ],
+    'Wall Ball':[
+      {name:'Wall Ball',ekip:'Medicine Ball',aciklama:'100 tekrar, squat + fırlatma.',kaslar:'Quadriceps · Deltoid · Core'},
+    ],
+    'Erg':[
+      {name:'RowErg',ekip:'RowErg',aciklama:'1000m, teknik + güç.',kaslar:'Tam vücut'},
+      {name:'SkiErg',ekip:'SkiErg',aciklama:'1000m, üst vücut odaklı.',kaslar:'Lat · Triceps · Core'},
+    ],
+    'Koşu':[
+      {name:'Run',ekip:'Koşu Bandı/Dış',aciklama:'1km, istasyonlar arası.',kaslar:'Bacak · Kondisyon'},
+    ],
+    'Lunge':[
+      {name:'Walking Lunge',ekip:'Dumbbell',aciklama:'Ek lunge hacmi.',kaslar:'Quadriceps · Glute'},
+    ],
+  },
+};
+
+// ─── KATEGORİ → EGZERSİZ HAVUZU & MATRİS ANAHTARI ───
+function woGetMatrisKey(){
+  if(woKategori==='ppl'){
+    if(woPplAlt==='push') return 'ppl_push';
+    if(woPplAlt==='pull') return 'ppl_pull';
+    if(woPplAlt==='legs') return 'ppl_legs';
+    return null;
+  }
+  return woKategori;
+}
+
+function woGetHavuz(){
+  var key=woGetMatrisKey();
+  return WO_EGZERSIZLER[key]||{};
+}
+
+function woGetHacim(){
+  var key=woGetMatrisKey();
+  if(!key||!woHedef) return {};
+  return WO_HACIM_MATRIS[key][woHedef]||{};
+}
+
+// ─── TOGGLE / AÇMA-KAPAMA ───
+function toggleWorkoutBuilder(){
+  woOpen=!woOpen;
+  var strip=document.getElementById('wo-strip');
+  var view=document.getElementById('workout-builder-view');
+  var arrow=document.getElementById('wo-strip-arrow');
+  if(woOpen){
+    strip.classList.add('on');
+    arrow.textContent='✕';
+    // Diğer ana görünümleri gizle
+    hideAll();
+    view.style.display='block';
+    document.getElementById('main-nav').style.display='none';
+    document.getElementById('nav').style.display='none';
+    woReset();
+    renderWorkoutBuilder();
+  }else{
+    strip.classList.remove('on');
+    arrow.textContent='→';
+    document.getElementById('main-nav').style.display='flex';
+    hideAll();
+    // Önceki görünüme dön — mode değerine göre doğru view ve nav
+    if(mode==='ppl'||mode==='hibrit'||mode==='program'){
+      document.getElementById('day-view').style.display='block';
+      mainNavSwitch('program');
+    }else{
+      var tabMap={'wod100':'wod100','emom':'emom','rakip':'rakip','gen':'gen','beslenme':'beslenme','olimpik':'olimpik','boks':'boks','recipes':'recipes'};
+      var targetTab=tabMap[mode]||'program';
+      mainNavSwitch(targetTab);
+    }
+  }
+}
+
+function woReset(){
+  woStep='kategori';
+  woKategori=null;
+  woHedef=null;
+  woPplAlt=null;
+  woSecimler={};
+  woAktifKasGrubu=null;
+  woDetayAcik={};
+}
+
+// ─── ANA RENDER ROUTER ───
+function renderWorkoutBuilder(){
+  var v=document.getElementById('workout-builder-view');
+  if(woStep==='kategori') v.innerHTML=woRenderKategori();
+  else if(woStep==='hedef') v.innerHTML=woRenderHedef();
+  else if(woStep==='ppl-alt') v.innerHTML=woRenderPplAlt();
+  else if(woStep==='egzersiz') v.innerHTML=woRenderEgzersiz();
+  else if(woStep==='ozet') v.innerHTML=woRenderOzet();
+  document.getElementById('main-scroll').scrollTop=0;
+}
+
+// ─── ADIM 1: KATEGORİ SEÇİMİ ───
+function woRenderKategori(){
+  var html='<div class="wo-view">'+
+    '<div class="wo-hero">'+
+      '<div class="wo-hero-title">WORKOUT OLUŞTUR</div>'+
+      '<div class="wo-hero-sub">Antrenman türünü seç. Bilimsel hacim önerilerine göre kendi programını oluştur.</div>'+
+    '</div>'+
+    '<div class="wo-cat-grid">';
+  WO_KATEGORILER.forEach(function(cat){
+    html+='<div class="wo-cat-card" onclick="woSelectKategori(\''+cat.id+'\')">'+
+      '<div class="wo-cat-icon">'+WO_ICONS[cat.icon]+'</div>'+
+      '<div class="wo-cat-name">'+cat.name+'</div>'+
+      '<div class="wo-cat-desc">'+cat.desc+'</div>'+
+    '</div>';
+  });
+  html+='</div></div>';
+  return html;
+}
+
+function woSelectKategori(catId){
+  woKategori=catId;
+  if(catId==='ppl'){
+    woStep='ppl-alt';
+  }else{
+    woStep='hedef';
+  }
+  renderWorkoutBuilder();
+}
+
+// ─── ADIM 1.5: PPL ALT SEÇİM ───
+function woRenderPplAlt(){
+  var html='<div class="wo-view">'+
+    '<div class="wo-back" onclick="woBack(\'kategori\')">← KATEGORİYE DÖN</div>'+
+    '<div class="wo-hero">'+
+      '<div class="wo-hero-title">PUSH / PULL / LEGS</div>'+
+      '<div class="wo-hero-sub">Hangi günü çalışıyorsun?</div>'+
+    '</div>'+
+    '<div class="wo-ppl-grid">'+
+      '<div class="wo-ppl-card" onclick="woSelectPplAlt(\'push\')"><div class="wo-ppl-name">PUSH</div></div>'+
+      '<div class="wo-ppl-card" onclick="woSelectPplAlt(\'pull\')"><div class="wo-ppl-name">PULL</div></div>'+
+      '<div class="wo-ppl-card" onclick="woSelectPplAlt(\'legs\')"><div class="wo-ppl-name">LEGS</div></div>'+
+    '</div></div>';
+  return html;
+}
+
+function woSelectPplAlt(alt){
+  woPplAlt=alt;
+  woStep='hedef';
+  renderWorkoutBuilder();
+}
+
+// ─── ADIM 2: HEDEF SEÇİMİ ───
+function woRenderHedef(){
+  var catName=woKategori==='ppl'?('PUSH/PULL/LEGS — '+woPplAlt.toUpperCase()):WO_KATEGORILER.find(c=>c.id===woKategori).name;
+  var backStep=woKategori==='ppl'?'ppl-alt':'kategori';
+  var html='<div class="wo-view">'+
+    '<div class="wo-back" onclick="woBack(\''+backStep+'\')">← GERİ</div>'+
+    '<div class="wo-hero">'+
+      '<div class="wo-hero-title">'+catName+'</div>'+
+      '<div class="wo-hero-sub">Hedefini seç — hacim ve hareket sayısı buna göre belirlenecek.</div>'+
+    '</div>'+
+    '<div class="wo-hedef-grid">';
+  WO_HEDEFLER.forEach(function(h){
+    html+='<div class="wo-hedef-card" onclick="woSelectHedef(\''+h.id+'\')">'+
+      '<div class="wo-hedef-name">'+h.name+'</div>'+
+      '<div class="wo-hedef-desc">'+h.desc+'</div>'+
+      '<div class="wo-hedef-spec">'+
+        '<span class="wo-hedef-tag">'+h.sets+'</span>'+
+        '<span class="wo-hedef-tag">'+h.reps+'</span>'+
+        '<span class="wo-hedef-tag">'+h.rest+'</span>'+
+      '</div>'+
+    '</div>';
+  });
+  html+='</div></div>';
+  return html;
+}
+
+function woSelectHedef(hedefId){
+  woHedef=hedefId;
+  woStep='egzersiz';
+  woSecimler={};
+  // İlk kas grubunu aktif yap
+  var hacim=woGetHacim();
+  var kasGruplari=Object.keys(hacim);
+  woAktifKasGrubu=kasGruplari.length>0?kasGruplari[0]:null;
+  renderWorkoutBuilder();
+}
+
+// ─── GERİ NAVİGASYON ───
+function woBack(step){
+  if(step==='kategori'){woKategori=null;woPplAlt=null;}
+  if(step==='ppl-alt'){woHedef=null;}
+  if(step==='hedef'){woSecimler={};}
+  woStep=step;
+  renderWorkoutBuilder();
+}
+
+// ─── ADIM 3: EGZERSİZ SEÇİMİ ───
+function woRenderEgzersiz(){
+  var hacim=woGetHacim();
+  var havuz=woGetHavuz();
+  var kasGruplari=Object.keys(hacim);
+  var catName=woKategori==='ppl'?('PUSH/PULL/LEGS — '+woPplAlt.toUpperCase()):WO_KATEGORILER.find(c=>c.id===woKategori).name;
+  var hedefName=WO_HEDEFLER.find(h=>h.id===woHedef).name;
+
+  var html='<div class="wo-view">'+
+    '<div class="wo-back" onclick="woBack(\'hedef\')">← HEDEFİ DEĞİŞTİR</div>'+
+    '<div class="wo-hero">'+
+      '<div class="wo-hero-title">'+catName+'</div>'+
+      '<div class="wo-hero-sub">Hedef: <strong style="color:var(--fg);">'+hedefName+'</strong> — Her bölgeden gerekli sayıda hareket seç.</div>'+
+    '</div>';
+
+  // Sayaç paneli — özet bilgi, tıklanabilir değil artık (sadece ilerleme göstergesi)
+  html+='<div class="wo-progress">';
+  kasGruplari.forEach(function(kas){
+    var ihtiyac=hacim[kas];
+    var secilen=(woSecimler[kas]||[]).length;
+    var kalan=ihtiyac-secilen;
+    var done=kalan<=0;
+    html+='<div class="wo-progress-item'+(done?' done':'')+'">'+
+      '<span class="wo-progress-name">'+kas+'</span>'+
+      '<span class="wo-progress-count">'+(done?'✓':kalan)+'</span>'+
+    '</div>';
+  });
+  html+='</div>';
+
+  // TÜM kas grupları tek sayfada, sırayla
+  kasGruplari.forEach(function(kas){
+    var ihtiyac=hacim[kas]||0;
+    var secilenler=woSecimler[kas]||[];
+    var kalan=ihtiyac-secilenler.length;
+    var pool=havuz[kas]||[];
+
+    html+='<div class="wo-pool-section">'+
+      '<div class="wo-pool-hdr">'+
+        '<div class="wo-pool-title">'+kas+'</div>'+
+        '<div class="wo-pool-need">'+(kalan>0?(kalan+' SEÇ'):'TAMAMLANDI ✓')+'</div>'+
+      '</div>'+
+      '<div class="wo-pool-list">';
+    pool.forEach(function(ex,i){
+      var isSelected=secilenler.some(function(s){return s.name===ex.name;});
+      html+='<div class="wo-ex-row'+(isSelected?' selected':'')+'" onclick="woToggleEgzersiz(\''+kas+'\','+i+')">'+
+        '<div class="wo-ex-name">'+ex.name+'</div>'+
+        '<div class="wo-ex-check">✓</div>'+
+      '</div>';
+    });
+    html+='</div></div>';
+  });
+
+  // Tüm kas grupları tamamlandıysa oluştur butonu
+  var hepsiTamam=kasGruplari.every(function(kas){
+    return (woSecimler[kas]||[]).length>=hacim[kas];
+  });
+  if(hepsiTamam && kasGruplari.length>0){
+    html+='<button class="wo-complete-btn" onclick="woStep=\'ozet\';renderWorkoutBuilder()">PROGRAMI OLUŞTUR</button>';
+  }else{
+    var toplamKalan=kasGruplari.reduce(function(s,kas){return s+Math.max(0,hacim[kas]-(woSecimler[kas]||[]).length);},0);
+    html+='<button class="wo-complete-btn" disabled>'+toplamKalan+' HAREKET DAHA SEÇ</button>';
+  }
+
+  html+='</div>';
+  return html;
+}
+
+function woToggleEgzersiz(kas, idx){
+  var havuz=woGetHavuz();
+  var hacim=woGetHacim();
+  var ex=havuz[kas][idx];
+  if(!woSecimler[kas]) woSecimler[kas]=[];
+
+  var existingIdx=woSecimler[kas].findIndex(function(s){return s.name===ex.name;});
+  if(existingIdx>=0){
+    // Zaten seçili — kaldır
+    woSecimler[kas].splice(existingIdx,1);
+  }else{
+    // Limit kontrolü
+    if(woSecimler[kas].length>=hacim[kas]){
+      // Limit dolu — en eskiyi çıkar, yenisini ekle
+      woSecimler[kas].shift();
+    }
+    woSecimler[kas].push(ex);
+  }
+  renderWorkoutBuilder();
+}
+
+// ─── ADIM 4: ÖZET / FİNAL ───
+function woRenderOzet(){
+  var hedefObj=WO_HEDEFLER.find(h=>h.id===woHedef);
+  var catName=woKategori==='ppl'?('PUSH/PULL/LEGS — '+woPplAlt.toUpperCase()):WO_KATEGORILER.find(c=>c.id===woKategori).name;
+
+  var html='<div class="wo-view">'+
+    '<div class="wo-back" onclick="woStep=\'egzersiz\';renderWorkoutBuilder()">← DÜZENLE</div>'+
+    '<div class="wo-hero">'+
+      '<div class="wo-hero-title">PROGRAMIN HAZIR</div>'+
+      '<div class="wo-hero-sub">'+catName+' · '+hedefObj.name+' · '+hedefObj.sets+' · '+hedefObj.reps+' · '+hedefObj.rest+'</div>'+
+    '</div>'+
+    '<div class="wo-summary">';
+
+  Object.keys(woSecimler).forEach(function(kas){
+    html+='<div class="wo-summary-title">'+kas.toUpperCase()+'</div>';
+    woSecimler[kas].forEach(function(ex,i){
+      var detailKey=kas+'_'+i;
+      var isOpen=!!woDetayAcik[detailKey];
+      html+='<div class="wo-summary-item" style="flex-direction:column;align-items:stretch;gap:6px;">'+
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">'+
+          '<div class="wo-summary-ex">'+ex.name+'</div>'+
+          '<div style="display:flex;gap:6px;flex-shrink:0;">'+
+            '<span class="wo-detail-tag">'+hedefObj.sets+'</span>'+
+            '<span class="wo-detail-tag">'+hedefObj.reps+'</span>'+
+          '</div>'+
+        '</div>'+
+        '<div style="display:flex;justify-content:space-between;align-items:center;">'+
+          '<div style="font-size:10px;color:var(--muted);">'+ex.ekip+' · '+hedefObj.rest+'</div>'+
+          '<button class="wo-summary-detail-btn" onclick="woToggleDetay(\''+detailKey+'\')">'+(isOpen?'GİZLE':'AÇIKLAMA')+'</button>'+
+        '</div>'+
+        '<div class="wo-detail-card'+(isOpen?' open':'')+'" id="wo-detail-'+detailKey+'">'+
+          '<div>'+ex.aciklama+'</div>'+
+          '<div style="margin-top:6px;font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);opacity:.6;">'+ex.kaslar+'</div>'+
+        '</div>'+
+      '</div>';
+    });
+  });
+
+  html+='</div>'+
+    '<button class="wo-reset-btn" onclick="woReset();renderWorkoutBuilder()">YENİ WORKOUT OLUŞTUR</button>'+
+  '</div>';
+  return html;
+}
+
+function woToggleDetay(key){
+  woDetayAcik[key]=!woDetayAcik[key];
+  var card=document.getElementById('wo-detail-'+key);
+  var btn=card.nextElementSibling||card.parentElement.querySelector('.wo-summary-detail-btn');
+  card.classList.toggle('open',!!woDetayAcik[key]);
+  // Buton metnini güncelle
+  var row=card.closest('.wo-summary-item');
+  var b=row.querySelector('.wo-summary-detail-btn');
+  b.textContent=woDetayAcik[key]?'GİZLE':'DETAY';
 }
 
 
@@ -4602,6 +5535,7 @@ function hideAll(){
   document.getElementById('gen-view').style.display='none';
   document.getElementById('beslenme-view').style.display='none';
   document.getElementById('olimpik-view').style.display='none';
+  document.getElementById('workout-builder-view').style.display='none';
 }
 
 function setRecipes(){
