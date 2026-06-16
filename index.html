@@ -883,6 +883,57 @@ button:active,
 .kt-manual-grid label{font-size:7px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;text-align:center;}
 .kt-reset-btn{width:100%;padding:13px;background:transparent;border:1px solid var(--rim);border-top:none;font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);cursor:pointer;}
 
+/* TEK YÜZÜK — YOLCULUK TAKİBİ */
+.ty-view{padding:0 0 100px;}
+.ty-hero{padding:20px 16px;background:var(--rim2);border-bottom:1px solid var(--rim);}
+.ty-hero-title{font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--fg);line-height:1;margin-bottom:6px;}
+.ty-hero-sub{font-size:10px;color:var(--muted);line-height:1.7;}
+.ty-summary{padding:14px 16px;border-bottom:1px solid var(--rim);}
+.ty-summary-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-bottom:10px;}
+.ty-current{padding:14px 16px;border-bottom:1px solid var(--rim);background:var(--rim2);}
+.ty-current-lbl{font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.ty-current-name{font-size:15px;font-weight:800;color:var(--fg);line-height:1.3;}
+.ty-current-desc{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.6;}
+.ty-input-section{padding:16px;border-bottom:1px solid var(--rim);}
+.ty-input-lbl{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.ty-mode-tabs{display:flex;gap:6px;margin-bottom:10px;}
+.ty-mode-tab{flex:1;padding:9px;text-align:center;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--rim);background:var(--bg);color:var(--muted);cursor:pointer;font-family:'Inter Tight',sans-serif;}
+.ty-mode-tab.on{background:var(--fg);color:var(--bg);border-color:var(--fg);}
+.ty-input-row{display:flex;gap:8px;}
+.ty-input-row input{flex:1;padding:11px 14px;border:1px solid var(--rim);background:var(--bg);color:var(--fg);font-family:'Inter Tight',sans-serif;font-size:16px;font-weight:700;outline:none;}
+.ty-input-add-btn{padding:0 18px;background:var(--fg);border:none;font-family:'Inter Tight',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);cursor:pointer;}
+.ty-input-hint{font-size:8.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
+.ty-route{padding:0;}
+.ty-route-hdr{padding:10px 16px;background:var(--fg);}
+.ty-route-title{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bg);}
+.ty-stage{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--rim2);}
+.ty-stage:last-child{border-bottom:none;}
+.ty-stage-marker{display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0;}
+.ty-stage-dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--rim);background:var(--bg);flex-shrink:0;}
+.ty-stage-dot.done{background:var(--fg);border-color:var(--fg);}
+.ty-stage-dot.current{border-color:var(--fg);box-shadow:0 0 0 3px var(--rim2);}
+.ty-stage-line{width:2px;flex:1;background:var(--rim);margin-top:2px;min-height:20px;}
+.ty-stage-line.done{background:var(--fg);}
+.ty-stage-body{flex:1;}
+.ty-stage-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+.ty-stage-no{font-size:8px;font-weight:700;color:var(--muted);letter-spacing:.1em;}
+.ty-stage-km{font-size:9px;color:var(--muted);}
+.ty-stage-name{font-size:13px;font-weight:700;color:var(--fg);line-height:1.3;margin-top:3px;}
+.ty-stage-desc{font-size:9.5px;color:var(--muted);margin-top:3px;line-height:1.5;}
+.ty-stage-badge{display:inline-block;font-size:7px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;background:var(--fg);color:var(--bg);margin-top:6px;}
+.ty-stage-bar-track{height:3px;background:var(--rim2);overflow:hidden;margin-top:8px;}
+.ty-stage-bar-fill{height:100%;background:var(--fg);transition:width .3s;}
+.ty-log-section{padding:0;}
+.ty-log-hdr{padding:10px 16px;background:var(--fg);}
+.ty-log-title{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bg);}
+.ty-log-item{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--rim2);}
+.ty-log-item-info{flex:1;}
+.ty-log-item-name{font-size:12px;font-weight:600;color:var(--fg);}
+.ty-log-item-detail{font-size:9px;color:var(--muted);margin-top:2px;}
+.ty-log-item-del{font-size:14px;color:var(--muted);cursor:pointer;padding:4px 8px;flex-shrink:0;}
+.ty-log-empty{padding:24px 16px;text-align:center;font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;}
+.ty-reset-btn{width:100%;padding:13px;background:transparent;border:1px solid var(--rim);border-top:none;font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);cursor:pointer;}
+
 /* OLİMPİK KALDIRIŞ REHBERİ */
 .olimpik-view{padding:0 0 100px;}
 .olimpik-hero{padding:24px 16px 20px;background:var(--rim2);border-bottom:1px solid var(--rim);}
@@ -1160,6 +1211,23 @@ button:active,
   </div>
 </div>
 
+<!-- TEK YÜZÜK ŞERİDİ -->
+<div class="wo-strip" id="ty-strip" onclick="toggleTekYuzuk()">
+  <div class="wo-strip-left">
+    <div class="wo-strip-icon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>
+      </svg>
+    </div>
+    <div class="wo-strip-text">
+      <div class="wo-strip-title">TEK YÜZÜK</div>
+      <div class="wo-strip-sub" id="ty-strip-sub">Hobbiton'dan Hüküm Dağı'na · 2.000 km'lik yolculuk</div>
+    </div>
+  </div>
+  <div class="wo-strip-arrow" id="ty-strip-arrow">→</div>
+</div>
+<div class="wo-strip-divider"></div>
+
 <!-- WORKOUT OLUŞTUR ŞERİDİ -->
 <div class="wo-strip" id="wo-strip" onclick="toggleWorkoutBuilder()">
   <div class="wo-strip-left">
@@ -1268,6 +1336,7 @@ button:active,
   <div class="araclar-menu" id="araclar-menu" style="display:none;"></div>
   <div class="workout-builder-view" id="workout-builder-view" style="display:none;"></div>
   <div class="kalori-takip-view" id="kalori-takip-view" style="display:none;"></div>
+  <div class="ty-view" id="ty-view" style="display:none;"></div>
   <div class="day-view" id="day-view"></div>
   <div class="recipe-view" id="recipe-view" style="display:none;"></div>
   <div class="recipe-detail" id="recipe-detail" style="display:none;"></div>
@@ -1325,6 +1394,7 @@ const DAYS=[
    blocks:[
     {name:'BLOK #1 — GÜÇ',exercises:[
       {num:'I.',name:'Back Squat',sets:'3',reps:'4–5',notes:'RIR 1–2',warmup:['%40 × 10','%60 × 5','%80 × 3']},
+      {num:'II.',name:'Front Squat',sets:'2',reps:'6–8',notes:'RIR 2 · BS %60',warmup:[]},
     ]},
     {name:'BLOK #2 — COMPOUND',exercises:[
       {num:'I.',name:'Leg Press',sets:'2',reps:'6–8',notes:'RIR 1–2',warmup:[]},
@@ -1946,6 +2016,33 @@ const PREV_DATA={
   ],
   'Dips':[
     {date:'16 Haz 2026', sets:'BW × 9 / BW × 7 / BW × 5 / BW × 3'}
+  ],
+  'Deadlift':[
+    {date:'16 Haz 2026', sets:'155 kg × 4 / 150 kg × 5'}
+  ],
+  'Lat Pulldown':[
+    {date:'16 Haz 2026', sets:'84 kg × 8 / 84 kg × 7'}
+  ],
+  'Pull-up':[
+    {date:'16 Haz 2026', sets:'BW × Tam ROM, hedef tutuldu'}
+  ],
+  'Chest Supported T-Bar Row':[
+    {date:'16 Haz 2026', sets:'65 kg × 5 / 60 kg × 6 / 60 kg × 6'}
+  ],
+  'Cable Row':[
+    {date:'16 Haz 2026', sets:'84 kg × 9'}
+  ],
+  'Incline Dumbbell Curl':[
+    {date:'16 Haz 2026', sets:'25 kg × 7 / 25 kg × 5'}
+  ],
+  'Cable Curl':[
+    {date:'16 Haz 2026', sets:'50 kg × 8 / 50 kg × 7'}
+  ],
+  'Hammer Curl':[
+    {date:'16 Haz 2026', sets:'40 kg × 7 / 40 kg × 6'}
+  ],
+  'Reverse Barbell Curl':[
+    {date:'16 Haz 2026', sets:'20 kg × 10 / 20 kg × 7'}
   ]
 };
 
@@ -3918,6 +4015,29 @@ function woToggleDetay(key){
 }
 
 
+
+/* ─── TEK YÜZÜK — YOLCULUK TAKİBİ ─── */
+var tyOpen=false;
+var tyLog=[]; // [{date, km, raw, mode}]
+var tyInputMode='adim'; // 'adim' | 'km'
+
+const TY_TOPLAM_KM=2000;
+const TY_ADIM_PER_KM=1333; // ortalama adım uzunluğu ~75cm kabulü
+
+const TY_ROTALAR=[
+  {no:1,ad:'Hobbiton → Bree',aciklama:'Bag End\'den çıkış, Eski Orman ve Mezar Tümülüsleri\'nden geçiş',km:220},
+  {no:2,ad:'Bree → Weathertop',aciklama:'Aragorn ile yola çıkış, Midgewater Bataklıkları\'ndan geçiş',km:150},
+  {no:3,ad:'Weathertop → Rivendell',aciklama:'Witch-king saldırısı, Son Köprü, Rivendell\'e varış',km:150},
+  {no:4,ad:'Rivendell → Moria Kapısı',aciklama:'Caradhras Geçidi\'nde başarısız deneme, Moria\'ya yöneliş',km:250},
+  {no:5,ad:'Moria → Lothlórien',aciklama:'Khazad-dûm içinden geçiş, Gandalf\'ın Balrog ile düşüşü',km:90},
+  {no:6,ad:'Lothlórien → Amon Hen',aciklama:'Galadriel ile vedalaşma, Anduin Nehri boyunca ilerleyiş',km:250},
+  {no:7,ad:'Amon Hen → Ölü Bataklıklar',aciklama:'Kardeşliğin dağılması, Gollum\'un yakalanması',km:200},
+  {no:8,ad:'Ölü Bataklıklar → Kara Kapı',aciklama:'Morannon\'a varış, doğrudan girişin imkansız oluşu',km:140},
+  {no:9,ad:'Kara Kapı → Ithilien',aciklama:'Henneth Annûn\'da Faramir ile karşılaşma',km:160},
+  {no:10,ad:'Ithilien → Cirith Ungol',aciklama:'Gizli merdivenler, Shelob\'un İni',km:160},
+  {no:11,ad:'Cirith Ungol → Hüküm Dağı Eteği',aciklama:'Ork kılığıyla Mordor içine giriş',km:150},
+  {no:12,ad:'Hüküm Dağı Eteği → Çatlak Yarık',aciklama:'Sam\'in Frodo\'yu sırtladığı final tırmanış, yüzüğün yok edilişi',km:80},
+];
 
 /* ─── KALORİ TAKİP ─── */
 var ktOpen=false;
@@ -6196,6 +6316,202 @@ function hideAll(){
   document.getElementById('olimpik-view').style.display='none';
   document.getElementById('workout-builder-view').style.display='none';
   document.getElementById('kalori-takip-view').style.display='none';
+  document.getElementById('ty-view').style.display='none';
+}
+
+/* ─── TEK YÜZÜK FONKSİYONLARI ─── */
+function tyLoadData(){
+  try{
+    var saved=JSON.parse(window.localStorage?window.localStorage.getItem('ty_data'):null);
+    if(saved && saved.log) tyLog=saved.log;
+  }catch(e){}
+}
+
+function tySaveData(){
+  try{
+    if(window.localStorage){
+      window.localStorage.setItem('ty_data', JSON.stringify({log:tyLog}));
+    }
+  }catch(e){}
+}
+
+function tyTotalKm(){
+  var t=0;
+  tyLog.forEach(function(e){ t+=e.km; });
+  return t;
+}
+
+function tyGetStageInfo(totalKm){
+  var cum=0;
+  for(var i=0;i<TY_ROTALAR.length;i++){
+    var r=TY_ROTALAR[i];
+    var start=cum, end=cum+r.km;
+    if(totalKm<end || i===TY_ROTALAR.length-1){
+      var into=Math.min(r.km, Math.max(0, totalKm-start));
+      var pct=r.km>0 ? Math.min(100,(into/r.km)*100) : 100;
+      return {index:i, route:r, start:start, end:end, into:into, pct:pct, done: totalKm>=end};
+    }
+    cum=end;
+  }
+  return null;
+}
+
+function toggleTekYuzuk(){
+  tyOpen=!tyOpen;
+  var strip=document.getElementById('ty-strip');
+  var view=document.getElementById('ty-view');
+  var arrow=document.getElementById('ty-strip-arrow');
+  if(tyOpen){
+    strip.classList.add('on');
+    arrow.textContent='✕';
+    hideAll();
+    view.style.display='block';
+    document.getElementById('main-nav').style.display='none';
+    document.getElementById('nav').style.display='none';
+    tyLoadData();
+    renderTekYuzuk();
+  }else{
+    strip.classList.remove('on');
+    arrow.textContent='→';
+    document.getElementById('main-nav').style.display='flex';
+    hideAll();
+    if(mode==='ppl'||mode==='hibrit'||mode==='program'){
+      document.getElementById('day-view').style.display='block';
+      mainNavSwitch('program');
+    }else{
+      var tabMap={'wod100':'wod100','emom':'emom','rakip':'rakip','gen':'gen','beslenme':'beslenme','olimpik':'olimpik','boks':'boks','recipes':'recipes'};
+      mainNavSwitch(tabMap[mode]||'program');
+    }
+  }
+}
+
+function tySetMode(m){
+  tyInputMode=m;
+  renderTekYuzuk();
+}
+
+function tyAddEntry(){
+  var inp=document.getElementById('ty-input-val');
+  if(!inp) return;
+  var raw=parseFloat((inp.value||'').replace(',','.'));
+  if(!raw || raw<=0) return;
+  var km = tyInputMode==='adim' ? raw/TY_ADIM_PER_KM : raw;
+  var today=new Date().toDateString();
+  var existing=tyLog.find(function(e){ return e.date===today; });
+  if(existing){
+    existing.km += km;
+    existing.raw = (existing.raw||0) + raw;
+    existing.mode = tyInputMode;
+  }else{
+    tyLog.push({date:today, km:km, raw:raw, mode:tyInputMode});
+  }
+  tySaveData();
+  renderTekYuzuk();
+}
+
+function tyRemoveLog(idx){
+  tyLog.splice(idx,1);
+  tySaveData();
+  renderTekYuzuk();
+}
+
+function tyResetConfirm(){
+  if(window.confirm('Tüm yolculuk verilerini sıfırlamak istediğine emin misin? Bu işlem geri alınamaz.')){
+    tyLog=[];
+    tySaveData();
+    renderTekYuzuk();
+  }
+}
+
+function renderTekYuzuk(){
+  var totalKm=tyTotalKm();
+  var pctOverall=Math.min(100,(totalKm/TY_TOPLAM_KM)*100);
+  var kalanKm=Math.max(0,TY_TOPLAM_KM-totalKm);
+  var stageInfo=tyGetStageInfo(totalKm);
+  var tamamlandi=totalKm>=TY_TOPLAM_KM;
+
+  var html='<div class="ty-hero">'+
+    '<div class="ty-hero-title">TEK YÜZÜK</div>'+
+    '<div class="ty-hero-sub">Hobbiton\'dan Hüküm Dağı\'na · günlük adımlarınla 2.000 km\'yi tamamla</div>'+
+  '</div>';
+
+  html+='<div class="ty-summary"><div class="ty-summary-grid">'+
+    '<div class="kt-summary-box"><div class="kt-summary-val">'+totalKm.toFixed(1)+'</div><div class="kt-summary-goal">/ '+TY_TOPLAM_KM+'KM</div><div class="kt-summary-lbl">TOPLAM KM</div></div>'+
+    '<div class="kt-summary-box"><div class="kt-summary-val">'+kalanKm.toFixed(1)+'</div><div class="kt-summary-goal">KM</div><div class="kt-summary-lbl">KALAN</div></div>'+
+    '<div class="kt-summary-box"><div class="kt-summary-val">'+pctOverall.toFixed(0)+'%</div><div class="kt-summary-goal">&nbsp;</div><div class="kt-summary-lbl">İLERLEME</div></div>'+
+  '</div>'+
+  '<div class="kt-bar-track"><div class="kt-bar-fill" style="width:'+pctOverall+'%"></div></div>'+
+  '</div>';
+
+  html+='<div class="ty-current">'+
+    '<div class="ty-current-lbl">'+(tamamlandi?'YOLCULUK TAMAMLANDI':'ŞU AN BURADASIN')+'</div>'+
+    '<div class="ty-current-name">'+(tamamlandi?'Çatlak Yarık — Yüzük Yok Edildi':stageInfo.route.ad)+'</div>'+
+    '<div class="ty-current-desc">'+(tamamlandi?'Tebrikler — 2.000 km\'lik yolculuğu tamamladın. İstersen sıfırlayıp yeniden başlayabilirsin.':stageInfo.route.aciklama+' · Bu etapta '+stageInfo.into.toFixed(1)+' / '+stageInfo.route.km+' km')+'</div>'+
+  '</div>';
+
+  html+='<div class="ty-input-section">'+
+    '<div class="ty-input-lbl">BUGÜNÜ KAYDET</div>'+
+    '<div class="ty-mode-tabs">'+
+      '<button class="ty-mode-tab'+(tyInputMode==='adim'?' on':'')+'" onclick="tySetMode(\'adim\')">ADIM</button>'+
+      '<button class="ty-mode-tab'+(tyInputMode==='km'?' on':'')+'" onclick="tySetMode(\'km\')">KM</button>'+
+    '</div>'+
+    '<div class="ty-input-row">'+
+      '<input type="number" inputmode="decimal" id="ty-input-val" placeholder="'+(tyInputMode==='adim'?'Örn. 6500':'Örn. 4.2')+'">'+
+      '<button class="ty-input-add-btn" onclick="tyAddEntry()">EKLE</button>'+
+    '</div>'+
+    '<div class="ty-input-hint">'+(tyInputMode==='adim'?'Yaklaşık 1.333 adım = 1 km olarak hesaplanır.':'Doğrudan kilometre olarak eklenir.')+' Aynı gün tekrar eklersen, o güne toplanır.</div>'+
+  '</div>';
+
+  html+='<div class="ty-route"><div class="ty-route-hdr"><div class="ty-route-title">ROTA · '+TY_ROTALAR.length+' ETAP</div></div>';
+  TY_ROTALAR.forEach(function(r,i){
+    var done = (stageInfo && i<stageInfo.index) || tamamlandi;
+    var isCurrent = stageInfo && i===stageInfo.index && !tamamlandi;
+    var segPct = tamamlandi ? 100 : (isCurrent ? stageInfo.pct : (done?100:0));
+    html+='<div class="ty-stage">'+
+      '<div class="ty-stage-marker">'+
+        '<div class="ty-stage-dot'+(done?' done':'')+(isCurrent?' current':'')+'"></div>'+
+        (i<TY_ROTALAR.length-1?'<div class="ty-stage-line'+(done?' done':'')+'"></div>':'')+
+      '</div>'+
+      '<div class="ty-stage-body">'+
+        '<div class="ty-stage-top"><div class="ty-stage-no">ETAP '+r.no+'</div><div class="ty-stage-km">'+r.km+' KM</div></div>'+
+        '<div class="ty-stage-name">'+r.ad+'</div>'+
+        '<div class="ty-stage-desc">'+r.aciklama+'</div>'+
+        (isCurrent?'<div class="ty-stage-badge">ŞU AN BURADA</div>':'')+
+        '<div class="ty-stage-bar-track"><div class="ty-stage-bar-fill" style="width:'+segPct+'%"></div></div>'+
+      '</div>'+
+    '</div>';
+  });
+  html+='</div>';
+
+  html+='<div class="ty-log-section"><div class="ty-log-hdr"><div class="ty-log-title">GÜNLÜK KAYITLAR ('+tyLog.length+')</div></div>';
+  if(tyLog.length===0){
+    html+='<div class="ty-log-empty">Henüz bir kayıt eklemedin</div>';
+  }else{
+    var sorted=tyLog.slice().sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
+    sorted.forEach(function(item){
+      var idx=tyLog.indexOf(item);
+      var detay = item.mode==='adim' ? Math.round(item.raw)+' adım' : item.raw.toFixed(1)+' km (manuel)';
+      html+='<div class="ty-log-item">'+
+        '<div class="ty-log-item-info">'+
+          '<div class="ty-log-item-name">'+item.date+'</div>'+
+          '<div class="ty-log-item-detail">'+detay+' · '+item.km.toFixed(2)+' km</div>'+
+        '</div>'+
+        '<div class="ty-log-item-del" onclick="tyRemoveLog('+idx+')">✕</div>'+
+      '</div>';
+    });
+  }
+  html+='</div>';
+
+  html+='<button class="ty-reset-btn" onclick="tyResetConfirm()">YOLCULUĞU SIFIRLA</button>';
+
+  document.getElementById('ty-view').innerHTML=html;
+  document.getElementById('main-scroll').scrollTop=0;
+
+  var sub=document.getElementById('ty-strip-sub');
+  if(sub){
+    if(tamamlandi) sub.textContent='Yolculuk tamamlandı · 2.000 / 2.000 km';
+    else sub.textContent=stageInfo.route.ad+' · '+totalKm.toFixed(1)+' / '+TY_TOPLAM_KM+' km';
+  }
 }
 
 function setRecipes(){
