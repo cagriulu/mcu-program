@@ -1362,9 +1362,9 @@ const DAYS=[
   {key:'push-a',label:'PUSH A',title:'PUSH A',target:'GÖĞÜS · OMUZ · TRİSEPS',
    blocks:[
     {name:'BLOK #1 — COMPOUND',exercises:[
-      {num:'I.',name:'Barbell Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['%40 × 12','%60 × 6','%80 × 3']},
-      {num:'II.',name:'Barbell Incline Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['%50 × 8','%70 × 4','%85 × 2']},
-      {num:'III.',name:'Barbell OHP (Standing)',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['%40 × 10','%60 × 5','%80 × 3']},
+      {num:'I.',name:'Chest Press Machine',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['%40 × 12','%60 × 6','%80 × 3']},
+      {num:'II.',name:'Smith Machine Incline Bench Press',sets:'2',reps:'4–6',notes:'RIR 1',warmup:['%50 × 8','%70 × 4','%85 × 2']},
+      {num:'III.',name:'Seated Smith Machine OHP',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['%40 × 10','%60 × 5','%80 × 3']},
     ]},
     {name:'BLOK #2 — İZOLASYON',exercises:[
       {num:'I.',name:'Pec Deck',sets:'2',reps:'6–8',notes:'Failure',warmup:[]},
@@ -1412,8 +1412,8 @@ const DAYS=[
   {key:'push-b',label:'PUSH B',title:'PUSH B',target:'OMUZ · GÖĞÜS · TRİSEPS',
    blocks:[
     {name:'BLOK #1 — COMPOUND',exercises:[
-      {num:'I.',name:'Barbell OHP (Standing)',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['%40 × 10','%60 × 5','%82 × 3']},
-      {num:'II.',name:'Barbell Incline Bench Press',sets:'2',reps:'5–6',notes:'RIR 1',warmup:['%50 × 6']},
+      {num:'I.',name:'Seated Smith Machine OHP',sets:'2',reps:'6–8',notes:'RIR 1',warmup:['%40 × 10','%60 × 5','%82 × 3']},
+      {num:'II.',name:'Smith Machine Incline Bench Press',sets:'2',reps:'5–6',notes:'RIR 1',warmup:['%50 × 6']},
     ]},
     {name:'BLOK #2 — İZOLASYON',exercises:[
       {num:'I.',name:'Cable Lateral Raise',sets:'3',reps:'8–10',notes:'Failure',warmup:[]},
@@ -1992,59 +1992,7 @@ function renderNav(){
 }
 
 /* ─── PREVIOUS SESSION DATA ─── */
-const PREV_DATA={
-  'Barbell Bench Press':[
-    {date:'16 Haz 2026', sets:'85 kg × 5 / 80 kg × 5 / 80 kg × 5'}
-  ],
-  'Barbell Incline Bench Press':[
-    {date:'16 Haz 2026', sets:'65 kg × 8 / 65 kg × 7'}
-  ],
-  'Barbell OHP (Standing)':[
-    {date:'16 Haz 2026', sets:'50 kg × 5 / 45 kg × 5 / 45 kg × 5'}
-  ],
-  'Cable Lateral Raise':[
-    {date:'16 Haz 2026', sets:'20 kg × 7 / 20 kg × 6 / 20 kg × 4'}
-  ],
-  'Pec Deck':[
-    {date:'16 Haz 2026', sets:'64 kg × 10 / 64 kg × 7'}
-  ],
-  'Triceps Pushdown':[
-    {date:'16 Haz 2026', sets:'63 kg × 9 / 63 kg × 7 / 56 kg × 8'}
-  ],
-  'Overhead Cable Triceps Extension':[
-    {date:'16 Haz 2026', sets:'56 kg × 6 / 49 kg × 7'}
-  ],
-  'Dips':[
-    {date:'16 Haz 2026', sets:'BW × 9 / BW × 7 / BW × 5 / BW × 3'}
-  ],
-  'Deadlift':[
-    {date:'16 Haz 2026', sets:'155 kg × 4 / 150 kg × 5'}
-  ],
-  'Lat Pulldown':[
-    {date:'16 Haz 2026', sets:'84 kg × 8 / 84 kg × 7'}
-  ],
-  'Pull-up':[
-    {date:'16 Haz 2026', sets:'BW × Tam ROM, hedef tutuldu'}
-  ],
-  'Chest Supported T-Bar Row':[
-    {date:'16 Haz 2026', sets:'65 kg × 5 / 60 kg × 6 / 60 kg × 6'}
-  ],
-  'Cable Row':[
-    {date:'16 Haz 2026', sets:'84 kg × 9'}
-  ],
-  'Incline Dumbbell Curl':[
-    {date:'16 Haz 2026', sets:'25 kg × 7 / 25 kg × 5'}
-  ],
-  'Cable Curl':[
-    {date:'16 Haz 2026', sets:'50 kg × 8 / 50 kg × 7'}
-  ],
-  'Hammer Curl':[
-    {date:'16 Haz 2026', sets:'40 kg × 7 / 40 kg × 6'}
-  ],
-  'Reverse Barbell Curl':[
-    {date:'16 Haz 2026', sets:'20 kg × 10 / 20 kg × 7'}
-  ]
-};
+const PREV_DATA={};
 
 function togglePrev(id){
   var el=document.getElementById(id);
@@ -2064,20 +2012,7 @@ const PR_LIST=[
 ];
 
 function buildPRSectionHTML(){
-  var html='<div class="pr-section">'+
-    '<div class="pr-section-hdr"><div class="pr-section-title">PERSONAL RECORDS</div></div>'+
-    '<div class="pr-row-list">';
-  PR_LIST.forEach(function(p){
-    html+='<div class="pr-row">'+
-      '<div class="pr-row-name">'+p.name+'</div>'+
-      '<div class="pr-row-right">'+
-        '<div class="pr-row-val">'+p.val+'</div>'+
-        '<div class="pr-row-unit">'+p.unit+'</div>'+
-      '</div>'+
-    '</div>';
-  });
-  html+='</div></div>';
-  return html;
+  return '';
 }
 
 /* ─── GÜNLÜK WOD SİSTEMİ ─── */
