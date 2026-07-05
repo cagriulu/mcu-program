@@ -19,6 +19,8 @@
     --line:#1e1e1e;
     --line2:#141414;
     --done:#454545;
+    --green:#3bf07a;
+    --greenglow:0 0 3px rgba(59,240,122,.4);
     --mono:'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -55,7 +57,8 @@
 
   section{padding:22px 0;border-bottom:1px solid var(--line2)}
   .cmd{color:var(--gray)}
-  .cmd .p{color:var(--white);font-weight:500}
+  .cmd .p{color:var(--green);text-shadow:var(--greenglow);font-weight:500}
+  .gr{color:var(--green);text-shadow:var(--greenglow)}
   .out{color:var(--dim)}
   .ok{color:var(--fg)}
   .hl{color:var(--white);font-weight:500}
@@ -79,7 +82,7 @@
   .dayhead:focus-visible{outline:1px dotted var(--gray);outline-offset:3px}
   .caret{color:var(--dim);transition:transform .18s ease;display:inline-block;width:12px}
   .day.collapsed .caret{transform:rotate(-90deg)}
-  .dayhead .fn{color:var(--white);font-weight:500}
+  .dayhead .fn{color:var(--green);text-shadow:var(--greenglow);font-weight:500}
   .dayhead .fn .kw{color:var(--gray);font-weight:400}
   .dayhead .tag{color:var(--dim);font-size:12px;margin-left:auto;text-align:right}
   .prog{font-size:12px;color:var(--gray);margin:6px 0 10px;font-variant-numeric:tabular-nums}
@@ -100,7 +103,7 @@
   .ex .warm::before{content:"# ";}
   .ex.done .nm{color:var(--done);text-decoration:line-through;text-decoration-color:var(--faint)}
   .ex.done .mt{color:var(--done)}
-  .ex.done .box{color:var(--fg)}
+  .ex.done .box{color:var(--green);text-shadow:var(--greenglow)}
 
   /* volume table */
   .vol{display:grid;grid-template-columns:1fr auto auto;gap:2px 12px;font-size:13px;margin-top:12px}
@@ -117,7 +120,7 @@
   /* footer / prompt */
   .foot{padding:24px 0 0}
   .foot .prompt{color:var(--white)}
-  .foot .prompt .p{color:var(--gray)}
+  .foot .prompt .p{color:var(--green);text-shadow:var(--greenglow)}
   .cur{display:inline-block;width:9px;height:16px;background:var(--white);vertical-align:-3px;margin-left:2px;
     animation:blink 1.05s step-end infinite;box-shadow:0 0 4px rgba(255,255,255,.5)}
   @keyframes blink{50%{opacity:0}}
@@ -127,7 +130,7 @@
   .btn:hover{border-color:var(--dim);color:var(--fg)}
   .btn:active{transform:translateY(1px)}
   .btn:focus-visible{outline:1px dotted var(--gray);outline-offset:2px}
-  .btn .p{color:var(--dim)}
+  .btn .p{color:var(--green)}
 
   .reveal{opacity:0;transform:translateY(6px);animation:rise .5s ease forwards}
   @keyframes rise{to{opacity:1;transform:none}}
@@ -244,11 +247,7 @@ function render(){
   h+='<p class="out">&gt; days: <span class="hl">'+m.days+'</span>   frequency: <span class="hl">'+m.freq+'</span></p>';
   h+='<p class="out">&gt; rating: <span class="hl">'+m.rating+'</span>   status: <span class="hl">LOCKED</span></p>';
   h+='<div class="banner"><div class="big glow">HYPERTROPHY.PROGRAM</div><div class="sub">'+m.athlete+' &nbsp;//&nbsp; PPL·UL &nbsp;//&nbsp; '+m.version+'</div></div>';
-  h+='<dl class="meta">';
-  h+='<dt>hedef</dt><dd>'+m.goal+'</dd>';
-  h+='<dt>seviye</dt><dd>'+m.level+'</dd>';
-  h+='<dt>ekipman</dt><dd>'+m.equip+'</dd>';
-  h+='</dl></section>';
+  h+='</section>';
 
   PROGRAM.days.forEach((d,di)=>{
     h+='<section class="day reveal" id="'+d.id+'" style="animation-delay:'+(.06+di*.03)+'s">';
@@ -303,7 +302,7 @@ function updateProg(di){
   if(!el)return;
   const total=PROGRAM.days[di].ex.length;
   let f=0; for(let ei=0;ei<total;ei++) if(done[di+':'+ei]) f++;
-  el.innerHTML='<span class="bar">'+bar(f,total)+'</span>'+(f===total?'  <span class="hl">✓ done</span>':'');
+  el.innerHTML='<span class="bar">'+bar(f,total)+'</span>'+(f===total?'  <span class="gr">✓ done</span>':'');
 }
 
 function toggle(k){
