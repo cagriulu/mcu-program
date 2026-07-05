@@ -21,6 +21,8 @@
     --done:#454545;
     --green:#3bf07a;
     --greenglow:0 0 3px rgba(59,240,122,.4);
+    --cyan:#4bd6e6;
+    --cyanglow:0 0 3px rgba(75,214,230,.35);
     --mono:'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -96,11 +98,12 @@
   .ex:focus-visible{outline:1px dotted var(--gray);outline-offset:-1px}
   .ex .ln{color:var(--faint);width:26px;flex:0 0 26px;text-align:right;font-size:12.5px;user-select:none}
   .ex .box{color:var(--gray);width:26px;flex:0 0 26px;white-space:nowrap}
-  .ex .nm{color:var(--fg);flex:1 1 200px;min-width:150px}
-  .ex .mt{color:var(--gray);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ex .nm{color:var(--fg);flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+  .ex .mt{color:var(--gray);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums;margin-left:auto;text-align:right}
   .ex .mt .rir{color:var(--dim)}
-  .ex .warm{flex-basis:100%;padding-left:52px;color:var(--faint);font-size:12px}
+  .ex .warm{flex-basis:100%;padding-left:52px;color:var(--dim);font-size:12px}
   .ex .warm::before{content:"# ";}
+  .blk{color:var(--cyan);text-shadow:var(--cyanglow);font-size:12.5px;letter-spacing:.3px;margin:14px 0 6px;padding-left:4px}
   .ex.done .nm{color:var(--done);text-decoration:line-through;text-decoration-color:var(--faint)}
   .ex.done .mt{color:var(--done)}
   .ex.done .box{color:var(--green);text-shadow:var(--greenglow)}
@@ -141,8 +144,8 @@
   }
   @media (max-width:520px){
     body{font-size:13px}
-    .ex .nm{flex-basis:100%;min-width:0}
-    .ex .mt{padding-left:52px}
+    .ex{gap:4px 8px}
+    .ex .mt{font-size:12px}
     .dayhead .tag{display:none}
   }
 </style>
@@ -165,20 +168,20 @@ const PROGRAM = {
     athlete:"M. Çağrı Ulu", split:"PUSH · PULL · LEGS · UPPER · LOWER",
     days:5, freq:"2x / kas", level:"orta seviye (1–3 yıl)",
     goal:"hipertrofi [birincil] · güç + yağ yakımı [ikincil]",
-    equip:"makine ağırlıklı", rating:"9.5 / 10", version:"v1.0"
+    equip:"makine ağırlıklı", rating:"9.3 / 10", version:"v1.0"
   },
   days:[
-    {id:"push", name:"push_day", tag:"göğüs · omuz · triceps", ex:[
+    {id:"push", name:"push_day", tag:"göğüs · omuz · triceps", c:4, ex:[
       {n:"Smith Incline Press", s:"2 × 4–6", r:"1–2", w:"+2 ısınma"},
       {n:"Machine Chest Press", s:"2 × 6–8", r:"1–2"},
-      {n:"Dips", s:"2 × 6–10", r:"1–2"},
-      {n:"Pec Deck", s:"2 × 8–10", r:"1"},
+      {n:"Dips", s:"3 × 6–10", r:"1–2"},
       {n:"Smith Shoulder Press", s:"2 × 5–6", r:"1–2", w:"+2 ısınma"},
+      {n:"Pec Deck", s:"2 × 8–10", r:"1"},
       {n:"Cable Lateral Raise", s:"3 × 8–10", r:"0–1"},
       {n:"Triceps Pushdown", s:"2 × 6–8", r:"0–1"},
       {n:"Overhead Cable Ext", s:"2 × 8–10", r:"0–1"}
     ]},
-    {id:"pull", name:"pull_day", tag:"sırt · biceps · önkol", ex:[
+    {id:"pull", name:"pull_day", tag:"sırt · biceps · önkol", c:3, ex:[
       {n:"Deadlift", s:"2 × 4–5", r:"1–2", w:"+3 ısınma · favori"},
       {n:"Lat Pulldown", s:"3 × 6–8", r:"1–2"},
       {n:"Chest-Supported Row", s:"3 × 6–8", r:"1–2"},
@@ -189,7 +192,7 @@ const PROGRAM = {
       {n:"Cable Hammer Curl", s:"2 × 6–8", r:"1"},
       {n:"Reverse Barbell Curl", s:"2 × 8–10", r:"1"}
     ]},
-    {id:"legs", name:"legs_day", tag:"quad · glute · hamstring", ex:[
+    {id:"legs", name:"legs_day", tag:"quad · glute · hamstring", c:2, ex:[
       {n:"Barbell Back Squat", s:"2 × 4–6", r:"1–2", w:"+3 ısınma"},
       {n:"Leg Press", s:"2 × 6–8", r:"1–2"},
       {n:"Leg Extension", s:"2 × 8–10", r:"0–1"},
@@ -197,17 +200,17 @@ const PROGRAM = {
       {n:"Machine Hip Thrust", s:"2 × 6–8", r:"1"},
       {n:"Standing Calf Raise", s:"3 × 8–10", r:"0–1"}
     ]},
-    {id:"upper", name:"upper_day", tag:"göğüs · sırt · omuz · kol", ex:[
-      {n:"Machine Chest Press", s:"2 × 6–8", r:"1–2"},
-      {n:"Pec Deck", s:"2 × 8–10", r:"1"},
+    {id:"upper", name:"upper_day", tag:"göğüs · sırt · omuz · kol", c:4, ex:[
+      {n:"Smith Shoulder Press", s:"2 × 5–6", r:"1–2", w:"+2 ısınma"},
+      {n:"Smith Incline Press", s:"2 × 6–8", r:"1–2"},
       {n:"Neutral Lat Pulldown", s:"3 × 6–8", r:"1–2"},
       {n:"Seated Cable Row", s:"2 × 6–8", r:"1–2"},
+      {n:"Pec Deck", s:"2 × 8–10", r:"1"},
       {n:"Cable Lateral Raise", s:"3 × 8–10", r:"0–1"},
-      {n:"DB Shrug", s:"2 × 8–10", r:"0–1"},
       {n:"Triceps Pushdown", s:"2 × 6–8", r:"0–1"},
       {n:"Cable Curl", s:"2 × 6–8", r:"1"}
     ]},
-    {id:"lower", name:"lower_day", tag:"quad · glute · baldır", ex:[
+    {id:"lower", name:"lower_day", tag:"quad · glute · baldır", c:2, ex:[
       {n:"Hack Squat", s:"3 × 6–8", r:"1–2", w:"+2 ısınma"},
       {n:"DB Walking Lunges", s:"2 × 8–12", r:"1–2"},
       {n:"Lying Leg Curl", s:"3 × 8–10", r:"0–1"},
@@ -216,16 +219,16 @@ const PROGRAM = {
     ]}
   ],
   volume:[
-    ["göğüs",12,"2x"],["yan omuz",6,"2x"],["arka omuz",2,"1x*"],["triceps",6,"2x"],
+    ["göğüs",13,"2x"],["yan omuz",6,"2x"],["ön omuz",4,"2x"],["arka omuz",2,"1x*"],["triceps",6,"2x"],
     ["sırt (genişlik)",6,"2x"],["sırt (kalınlık)",7,"2x"],["biceps",6,"2x"],["brachialis",2,"2x"],
-    ["trapez",4,"2x"],["quadriceps",11,"2x"],["hamstring",6,"2x"],["glute",6,"2x"],["baldır",6,"2x"]
+    ["trapez",2,"1x*"],["quadriceps",11,"2x"],["hamstring",6,"2x"],["glute",5,"2x"],["baldır",6,"2x"]
   ],
   notes:[
     ["Isınma setleri hacme sayılmaz","— parantezli ağır bileşiklerden önce yap, izolasyonlarda gerek yok."],
     ["Progresyon","aralığın altından başla, her hafta tekrar ekle; üst sınıra ulaşınca ağırlığı artır, alta düş (çift progresyon)."],
     ["Mekanik gerilim","gerilmiş pozisyona kontrollü in, eksantriği 2–3 sn yap — gerilim burada birikir."],
     ["Deload","her 6–8 haftada 1 hafta ana setleri ~%40 azalt, 3–4 RIR'de kal."],
-    ["* arka omuz 2 set / 1x","hafif düşük; istersen Upper gününe 2 set Reverse Pec Deck ekle → 10/10."]
+    ["* arka omuz & trapez 1x","hafif düşük; istersen Upper'a 2 set Reverse Pec Deck + Pull'a 1 set Shrug ekle → 10/10."]
   ]
 };
 
@@ -258,13 +261,20 @@ function render(){
     h+='<div class="prog" data-prog="'+di+'"></div>';
     h+='<div class="list">';
     d.ex.forEach((e,ei)=>{
+      if(ei===0) h+='<div class="blk">// blok #1 · compound</div>';
+      if(ei===d.c) h+='<div class="blk">// blok #2 · izolasyon</div>';
       const k=di+':'+ei, isd=!!done[k];
       h+='<div class="ex'+(isd?' done':'')+'" role="button" tabindex="0" data-k="'+k+'">';
       h+='<span class="ln">'+String(ei+1).padStart(2,'0')+'</span>';
       h+='<span class="box">'+(isd?'[x]':'[ ]')+'</span>';
-      h+='<span class="nm">'+e.n+'</span>';
+      h+='<span class="nm" lang="en">'+e.n+'</span>';
       h+='<span class="mt">'+e.s+' &nbsp; <span class="rir">rir:'+e.r+'</span></span>';
-      if(e.w) h+='<span class="warm">'+e.w+'</span>';
+      if(e.w){
+        const wu=(e.w.match(/\+(\d)/)||[])[1];
+        const fav=e.w.indexOf('favori')>-1;
+        const sch={'2':'%50 × 6 · %75 × 3','3':'%40 × 6 · %60 × 4 · %80 × 2'};
+        h+='<span class="warm">'+(fav?'favori · ':'')+'ısınma '+wu+' set → '+(sch[wu]||'')+' (ana kilonun %si)</span>';
+      }
       h+='</div>';
     });
     h+='</div></section>';
@@ -277,7 +287,7 @@ function render(){
     const low=v[1]<6;
     h+='<div class="k">'+v[0]+'</div><div class="v'+(low?' warnv':'')+'">'+v[1]+'</div><div class="s">'+v[2]+'</div>';
   });
-  h+='</div><p class="cmt" style="margin-top:10px">hedef bölge: 10–18 ana set / kas · hepsi optimal aralıkta</p></section>';
+  h+='</div><p class="cmt" style="margin-top:10px">hedef bölge: 10–18 ana set / kas · * işaretliler (trapez, arka omuz) hafif düşük</p></section>';
 
   h+='<section class="notes reveal" style="animation-delay:.28s">';
   h+='<p class="cmd" style="text-indent:0;padding-left:0"><span class="p">$</span> cat NOTES.md</p>';
