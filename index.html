@@ -155,7 +155,7 @@
 
 <header class="chrome">
   <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-  <span class="path">cagri@hypertrophy: <b>~/program/ppl-ul.sh</b></span>
+  <span class="path">cagri@hypertrophy: <b>~/program/ppl.sh</b></span>
   <span class="clock" id="clock">--:--:--</span>
 </header>
 
@@ -164,74 +164,74 @@
 <script>
 const PROGRAM = {
   meta:{
-    athlete:"M. Çağrı Ulu", split:"PUSH · PULL · LEGS · UPPER · LOWER",
-    days:5, freq:"2x / kas", level:"orta seviye (1–3 yıl)",
+    athlete:"M. Çağrı Ulu", split:"PUSH · PULL · LEGS · PUSH · PULL",
+    days:5, freq:"üst 2x · bacak 1x", level:"orta seviye (1–3 yıl)",
     goal:"hipertrofi [birincil] · güç + yağ yakımı [ikincil]",
-    equip:"makine ağırlıklı", rating:"9.3 / 10", version:"v1.0"
+    equip:"makine ağırlıklı", rating:"9 / 10", version:"v2.0"
   },
   days:[
-    {id:"push", name:"push_day", tag:"göğüs · omuz · triceps", c:4, ex:[
+    {id:"pusha", name:"push_a", tag:"göğüs · omuz · triceps", c:4, ex:[
       {n:"Smith Incline Press", s:"2 × 4–6", r:"1–2", w:"+2 ısınma"},
       {n:"Machine Chest Press", s:"2 × 6–8", r:"1–2"},
       {n:"Dips", s:"3 × 6–10", r:"1–2"},
       {n:"Machine Shoulder Press", s:"2 × 5–6", r:"1–2", w:"+2 ısınma"},
-      {n:"Pec Deck", s:"2 × 8–10", r:"1"},
+      {n:"Pec Deck", s:"2 × 8–10", r:"0–1"},
       {n:"Cable Lateral Raise", s:"3 × 8–10", r:"0–1"},
-      {n:"Triceps Pushdown", s:"2 × 6–8", r:"0–1"},
-      {n:"Overhead Cable Ext", s:"2 × 8–10", r:"0–1"}
+      {n:"Overhead Cable Ext", s:"2 × 8–10", r:"0–1"},
+      {n:"Triceps Pushdown", s:"2 × 6–8", r:"0–1"}
     ]},
-    {id:"pull", name:"pull_day", tag:"sırt · biceps · önkol", c:3, ex:[
-      {n:"Deadlift", s:"2 × 4–5", r:"1–2", w:"+3 ısınma · favori"},
+    {id:"pulla", name:"pull_a", tag:"sırt · biceps · deadlift", c:4, ex:[
+      {n:"Deadlift", s:"2 × 4–5", r:"2–3", w:"+3 ısınma · favori"},
       {n:"Lat Pulldown", s:"3 × 6–8", r:"1–2"},
       {n:"Chest-Supported Row", s:"3 × 6–8", r:"1–2"},
-      {n:"Reverse Pec Deck", s:"2 × 10–12", r:"0–1"},
-      {n:"DB Shrug", s:"2 × 8–10", r:"0–1"},
-      {n:"Incline DB Curl", s:"2 × 6–8", r:"1"},
-      {n:"Cable Curl", s:"2 × 6–8", r:"1"},
-      {n:"Cable Hammer Curl", s:"2 × 6–8", r:"1"},
-      {n:"Reverse Barbell Curl", s:"2 × 8–10", r:"1"}
+      {n:"Cable Row", s:"1 × 8–10", r:"0–1"},
+      {n:"Incline DB Curl", s:"2 × 6–8", r:"0–1"},
+      {n:"Cable Curl", s:"2 × 6–8", r:"0–1"},
+      {n:"Cable Hammer Curl", s:"2 × 8–10", r:"0–1"},
+      {n:"Reverse Barbell Curl", s:"2 × 8–10", r:"0–1"}
     ]},
-    {id:"legs", name:"legs_day", tag:"quad · glute · hamstring", c:2, ex:[
-      {n:"Barbell Back Squat", s:"2 × 4–6", r:"1–2", w:"+3 ısınma"},
-      {n:"Leg Press", s:"2 × 6–8", r:"1–2"},
+    {id:"legs", name:"legs", tag:"quad · hamstring · baldır", c:2, ex:[
+      {n:"Leg Press", s:"2 × 6–8", r:"1–2", w:"+2 ısınma"},
+      {n:"Smith Machine Squat", s:"2 × 6–8", r:"1–2", w:"+2 ısınma"},
       {n:"Leg Extension", s:"2 × 8–10", r:"0–1"},
       {n:"Lying Leg Curl", s:"3 × 8–10", r:"0–1"},
-      {n:"Machine Hip Thrust", s:"2 × 6–8", r:"1"},
       {n:"Standing Calf Raise", s:"3 × 8–10", r:"0–1"}
     ]},
-    {id:"upper", name:"upper_day", tag:"göğüs · sırt · omuz · kol", c:4, ex:[
+    {id:"pushb", name:"push_b", tag:"omuz · göğüs · triceps", c:2, ex:[
       {n:"Machine Shoulder Press", s:"2 × 5–6", r:"1–2", w:"+2 ısınma"},
-      {n:"Smith Incline Press", s:"2 × 6–8", r:"1–2"},
-      {n:"Neutral Lat Pulldown", s:"3 × 6–8", r:"1–2"},
-      {n:"Seated Cable Row", s:"2 × 6–8", r:"1–2"},
-      {n:"Pec Deck", s:"2 × 8–10", r:"1"},
+      {n:"Smith Incline Press", s:"2 × 6–8", r:"1–2", w:"+2 ısınma"},
+      {n:"Pec Deck", s:"3 × 8–10", r:"0–1"},
       {n:"Cable Lateral Raise", s:"3 × 8–10", r:"0–1"},
-      {n:"Triceps Pushdown", s:"2 × 6–8", r:"0–1"},
-      {n:"Cable Curl", s:"2 × 6–8", r:"1"}
+      {n:"Reverse Pec Deck", s:"2 × 10–12", r:"0–1"},
+      {n:"Overhead Cable Ext", s:"2 × 8–10", r:"0–1"},
+      {n:"Triceps Pushdown", s:"2 × 6–8", r:"0–1"}
     ]},
-    {id:"lower", name:"lower_day", tag:"quad · glute · baldır", c:2, ex:[
-      {n:"Hack Squat", s:"3 × 6–8", r:"1–2", w:"+2 ısınma"},
-      {n:"DB Walking Lunges", s:"2 × 8–12", r:"1–2"},
-      {n:"Lying Leg Curl", s:"3 × 8–10", r:"0–1"},
-      {n:"Machine Hip Thrust", s:"2 × 6–8", r:"1"},
-      {n:"Seated Calf Raise", s:"3 × 10–12", r:"0–1"}
+    {id:"pullb", name:"pull_b", tag:"sırt · kol · quad", c:2, ex:[
+      {n:"Chest-Supported Row", s:"3 × 6–8", r:"1–2"},
+      {n:"Neutral Lat Pulldown", s:"3 × 6–8", r:"1–2"},
+      {n:"Straight-Arm Pulldown", s:"3 × 10–12", r:"0–1"},
+      {n:"Cable Curl", s:"2 × 6–8", r:"0–1"},
+      {n:"Cable Hammer Curl", s:"2 × 8–10", r:"0–1"},
+      {n:"Reverse Barbell Curl", s:"2 × 8–10", r:"0–1"},
+      {n:"Leg Extension", s:"2 × 8–10", r:"0–1"}
     ]}
   ],
   volume:[
-    ["göğüs",13,"2x"],["yan omuz",6,"2x"],["ön omuz",4,"2x"],["arka omuz",2,"1x*"],["triceps",6,"2x"],
-    ["sırt (genişlik)",6,"2x"],["sırt (kalınlık)",7,"2x"],["biceps",6,"2x"],["brachialis",2,"2x"],
-    ["trapez",2,"1x*"],["quadriceps",11,"2x"],["hamstring",6,"2x"],["glute",5,"2x"],["baldır",6,"2x"]
+    ["göğüs",14,"2x"],["yan omuz",6,"2x"],["ön omuz",4,"2x"],["arka omuz",2,"1x*"],["triceps",8,"2x"],
+    ["sırt (genişlik)",9,"2x"],["sırt (kalınlık)",9,"2x"],["biceps",6,"2x"],["önkol",8,"2x"],
+    ["trapez",0,"yok*"],["quadriceps",8,"2x"],["hamstring",3,"1x*"],["glute",0,"dolaylı*"],["baldır",3,"1x*"]
   ],
   notes:[
     ["Isınma setleri hacme sayılmaz","— parantezli ağır bileşiklerden önce yap, izolasyonlarda gerek yok."],
+    ["RIR şeması (bilimsel)","ağır bileşik (deadlift) 2–3 · makine/smith bileşik 1–2 · izolasyon 0–1; failure sadece izolasyonun son setinde."],
     ["Progresyon","aralığın altından başla, her hafta tekrar ekle; üst sınıra ulaşınca ağırlığı artır, alta düş (çift progresyon)."],
     ["Mekanik gerilim","gerilmiş pozisyona kontrollü in, eksantriği 2–3 sn yap — gerilim burada birikir."],
     ["Deload","her 6–8 haftada 1 hafta ana setleri ~%40 azalt, 3–4 RIR'de kal."],
-    ["* arka omuz & trapez 1x","hafif düşük; istersen Upper'a 2 set Reverse Pec Deck + Pull'a 1 set Shrug ekle → 10/10."]
+    ["* düşük / tek doz","trapez, glute (dolaylı), hamstring, baldır, arka omuz senin tercihinle geride; istersen birer hareketle kapatırız."]
   ]
 };
 
-const KEY='cu_hypertrophy_v1';
+const KEY='cu_hypertrophy_v2';
 let done={};
 try{done=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){done={}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}}
@@ -270,28 +270,13 @@ function render(){
       h+='<span class="mt">'+e.s+' &nbsp; <span class="rir">rir:'+e.r+'</span></span>';
       if(e.w){
         const wu=(e.w.match(/\+(\d)/)||[])[1];
-        const fav=e.w.indexOf('favori')>-1;
-        const sch={'2':'%50 × 6 · %75 × 3','3':'%40 × 6 · %60 × 4 · %80 × 2'};
-        h+='<span class="warm">'+(fav?'favori · ':'')+'ısınma '+wu+' set → '+(sch[wu]||'')+' · yüzdeler ana kiloya göre</span>';
+        const sch={'2':'%50·%75','3':'%40·%60·%80'};
+        h+='<span class="warm">ıs '+(sch[wu]||'')+'</span>';
       }
       h+='</div>';
     });
     h+='</div></section>';
   });
-
-  h+='<section class="reveal" style="animation-delay:.24s">';
-  h+='<p class="cmd"><span class="p">$</span> ./weekly_volume.sh <span class="out">--per-muscle</span></p>';
-  h+='<div class="vol"><div class="h">kas</div><div class="h v">set</div><div class="h s">frekans</div>';
-  PROGRAM.volume.forEach(v=>{
-    const low=v[1]<6;
-    h+='<div class="k">'+v[0]+'</div><div class="v'+(low?' warnv':'')+'">'+v[1]+'</div><div class="s">'+v[2]+'</div>';
-  });
-  h+='</div><p class="cmt" style="margin-top:10px">hedef bölge: 10–18 ana set / kas · * işaretliler (trapez, arka omuz) hafif düşük</p></section>';
-
-  h+='<section class="notes reveal" style="animation-delay:.28s">';
-  h+='<p class="cmd" style="text-indent:0;padding-left:0"><span class="p">$</span> cat NOTES.md</p>';
-  PROGRAM.notes.forEach(n=>{ h+='<p><b>'+n[0]+'</b> '+n[1]+'</p>'; });
-  h+='</section>';
 
   h+='<section class="foot reveal" style="animation-delay:.3s;border:none">';
   h+='<div class="actions">';
