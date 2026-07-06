@@ -42,7 +42,7 @@
   }
   /* CRT overlays */
   .scan,.vig{position:fixed;inset:0;pointer-events:none;z-index:50}
-  .scan{background:repeating-linear-gradient(rgba(255,255,255,.022) 0 1px, transparent 1px 3px);mix-blend-mode:screen;opacity:.6}
+  .scan{background:repeating-linear-gradient(rgba(255,255,255,.05) 0 1px, transparent 1px 3px);opacity:.75}
   .vig{background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)}
   .glow{text-shadow:0 0 1px rgba(255,255,255,.25)}
 
@@ -140,7 +140,6 @@
   @media (prefers-reduced-motion: reduce){
     .reveal{animation:none;opacity:1;transform:none}
     .cur{animation:none}
-    .scan{display:none}
   }
   @media (max-width:520px){
     body{font-size:13px}
@@ -175,7 +174,7 @@ const PROGRAM = {
       {n:"Smith Incline Press", s:"2 × 4–6", r:"1–2", w:"+2 ısınma"},
       {n:"Machine Chest Press", s:"2 × 6–8", r:"1–2"},
       {n:"Dips", s:"3 × 6–10", r:"1–2"},
-      {n:"Smith Shoulder Press", s:"2 × 5–6", r:"1–2", w:"+2 ısınma"},
+      {n:"Machine Shoulder Press", s:"2 × 5–6", r:"1–2", w:"+2 ısınma"},
       {n:"Pec Deck", s:"2 × 8–10", r:"1"},
       {n:"Cable Lateral Raise", s:"3 × 8–10", r:"0–1"},
       {n:"Triceps Pushdown", s:"2 × 6–8", r:"0–1"},
@@ -201,7 +200,7 @@ const PROGRAM = {
       {n:"Standing Calf Raise", s:"3 × 8–10", r:"0–1"}
     ]},
     {id:"upper", name:"upper_day", tag:"göğüs · sırt · omuz · kol", c:4, ex:[
-      {n:"Smith Shoulder Press", s:"2 × 5–6", r:"1–2", w:"+2 ısınma"},
+      {n:"Machine Shoulder Press", s:"2 × 5–6", r:"1–2", w:"+2 ısınma"},
       {n:"Smith Incline Press", s:"2 × 6–8", r:"1–2"},
       {n:"Neutral Lat Pulldown", s:"3 × 6–8", r:"1–2"},
       {n:"Seated Cable Row", s:"2 × 6–8", r:"1–2"},
@@ -273,7 +272,7 @@ function render(){
         const wu=(e.w.match(/\+(\d)/)||[])[1];
         const fav=e.w.indexOf('favori')>-1;
         const sch={'2':'%50 × 6 · %75 × 3','3':'%40 × 6 · %60 × 4 · %80 × 2'};
-        h+='<span class="warm">'+(fav?'favori · ':'')+'ısınma '+wu+' set → '+(sch[wu]||'')+' (ana kilonun %si)</span>';
+        h+='<span class="warm">'+(fav?'favori · ':'')+'ısınma '+wu+' set → '+(sch[wu]||'')+' · yüzdeler ana kiloya göre</span>';
       }
       h+='</div>';
     });
