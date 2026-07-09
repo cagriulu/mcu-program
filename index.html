@@ -180,10 +180,11 @@ const PROGRAM = {
       {n:"Overhead Cable Ext", s:"2 × 8–10", r:"0–1"},
       {n:"Triceps Pushdown", s:"2 × 6–8", r:"0–1"}
     ]},
-    {id:"pulla", name:"pull_a", tag:"sırt · biceps", c:3, ex:[
+    {id:"pulla", name:"pull_a", tag:"sırt · arka omuz · biceps", c:3, ex:[
       {n:"Lat Pulldown", s:"3 × 6–8", r:"1–2"},
       {n:"Chest-Supported Row", s:"3 × 6–8", r:"1–2"},
       {n:"Cable Row", s:"2 × 8–10", r:"0–1"},
+      {n:"Face Pull", s:"3 × 12–20", r:"0–1"},
       {n:"Incline DB Curl", s:"2 × 6–8", r:"0–1"},
       {n:"Cable Curl", s:"2 × 6–8", r:"0–1"},
       {n:"Cable Hammer Curl", s:"2 × 8–10", r:"0–1"},
@@ -230,7 +231,7 @@ const PROGRAM = {
   ]
 };
 
-const KEY='cu_hypertrophy_v2';
+const KEY='cu_hypertrophy_v3';
 let done={};
 try{done=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){done={}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}}
